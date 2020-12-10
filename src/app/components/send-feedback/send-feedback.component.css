@@ -1,0 +1,22 @@
+#btn-submit-feedback-form{
+  background-color: orange;
+  color: white;
+}
+
+.focus-style {
+  position:absolute;
+  left: 25%;
+  top: 10px;
+  font-size: 18px;
+  font-weight: 200;
+  color: #cecece;
+  transition: all 0.5s ease;
+  pointer-events: none;
+}
+
+div .focus-input:focus.focus-style {
+  display:block;
+  color: black;
+  top: -20px;
+  font-size: 14px;
+}
