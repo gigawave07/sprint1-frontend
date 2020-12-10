@@ -1,0 +1,32 @@
+div.col-6 > input, select, button {
+  margin: 5px;
+}
+div.col-6 > button {
+  width: 180px;
+}
+form {
+  margin: 10px;
+}
+button {
+  background-color: #FAA61A;
+  color: white;
+  width: 50px;
+  height: 40px;
+  border: none;
+}
+button:hover {
+  background-color: black;
+}
+.social-login {
+  width: 500px;
+  background-color: white;
+  border-color: #FAA61A;
+  color: black;
+}
+.social-login > span {
+  color: #FAA61A;
+}
+.social-login:hover {
+  background-color: white;
+  border-color: black;
+}
