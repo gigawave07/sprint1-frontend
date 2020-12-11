@@ -5,60 +5,110 @@
   <title>Title</title>
 </head>
 <body>
-<div class="d-flex justify-content-center">
-  <h1>Đăng kí tài khoản</h1>
-</div>
 <div class="container-fluid">
-  <div class="row">
-    <div class="col-3"></div>
+  <div class="row border" style="border-radius: 20px;">
+    <div class="col-6"><img src="https://64.media.tumblr.com/844af3b050fc6c5705f648c8d3580049/tumblr_n567qpN1841qg20eyo1_500.jpg" alt="airplane" style="width: 100%"></div>
     <div class="col-6">
-      <div class="border" style="border-radius: 20px;">
+      <div class="d-flex justify-content-center">
+        <h1>Đăng kí tài khoản</h1>
+      </div>
+      <div>
         <form action="">
           <div class="row">
-            <div class="col-6 d-flex pl-5">Email</div>
-            <div class="col-6"><input type="text"></div>
-          </div>
-          <div class="row">
-            <div class="col-6 d-flex pl-5">Mật khẩu</div>
-            <div class="col-6"><input type="text"></div>
-          </div>
-          <div class="row">
-            <div class="col-6 d-flex pl-5">Xác nhận mật khẩu</div>
-            <div class="col-6"><input type="text"></div>
-          </div>
-          <div class="row">
-            <div class="col-6 d-flex pl-5">Điện thoại</div>
-            <div class="col-6"><input type="text"></div>
-          </div>
-          <div class="row">
-            <div class="col-6 d-flex pl-5">Họ và tên</div>
-            <div class="col-6"><input type="text"></div>
-          </div>
-          <div class="row">
-            <div class="col-6 d-flex pl-5">Ngày sinh</div>
-            <div class="col-6"><input type="date"></div>
-          </div>
-          <div class="row">
-            <div class="col-6 d-flex pl-5">Địa chỉ</div>
-            <div class="col-6"><input type="text"></div>
-          </div>
-          <div class="row">
-            <div class="col-6 d-flex pl-5">Giới tính</div>
+            <div class="col-3"></div>
             <div class="col-6">
-              <select name="">
-                <option value="male">Nam</option>
-                <option value="female">Nữ</option>
-              </select>
+              <mat-form-field class="example-full-width">
+                <mat-label>Email</mat-label>
+                <input matInput>
+              </mat-form-field>
+            </div>
+            <div class="col-3"></div>
+          </div>
+          <div class="row">
+            <div class="col-3"></div>
+            <div class="col-6">
+              <mat-form-field class="example-full-width">
+                <mat-label>Mật khẩu</mat-label>
+                <input type="password" matInput>
+              </mat-form-field>
+            </div>
+            <div class="col-3"></div>
+          </div>
+          <div class="row">
+            <div class="col-3"></div>
+            <div class="col-6">
+              <mat-form-field class="example-full-width">
+                <mat-label>Xác nhận mật khẩu</mat-label>
+                <input type="password" matInput>
+              </mat-form-field>
+            </div>
+            <div class="col-3"></div>
+          </div>
+          <div class="row">
+            <div class="col-3"></div>
+            <div class="col-6">
+              <mat-form-field class="example-full-width">
+                <mat-label>Điện thoại</mat-label>
+                <input matInput>
+              </mat-form-field>
+            </div>
+            <div class="col-3"></div>
+          </div>
+          <div class="row">
+            <div class="col-3"></div>
+            <div class="col-6">
+              <mat-form-field class="example-full-width">
+                <mat-label>Họ và tên</mat-label>
+                <input matInput>
+              </mat-form-field>
+            </div>
+            <div class="col-3"></div>
+          </div>
+          <div class="row">
+            <div class="col-3"></div>
+            <div class="col-6">
+              <mat-form-field>
+                <mat-label>Ngày sinh</mat-label>
+                <input matInput [matDatepicker]="picker">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+            </div>
+            <div class="col-3"></div>
+          </div>
+          <div class="row">
+            <div class="col-3"></div>
+            <div class="col-6">
+              <mat-form-field class="example-full-width">
+                <mat-label>Địa chỉ</mat-label>
+                <input matInput>
+              </mat-form-field>
+            </div>
+            <div class="col-3"></div>
+          </div>
+          <div class="row">
+            <div class="col-3"></div>
+            <div class="col-6">
+              <mat-form-field>
+                <mat-label>Giới tính</mat-label>
+                <mat-select>
+                  <mat-option value="1">Male</mat-option>
+                  <mat-option value="0">Female</mat-option>
+                </mat-select>
+              </mat-form-field>
+              <div class="col-3"></div>
             </div>
           </div>
           <div class="row">
-            <div class="col-6"><button>Trở về</button></div>
-            <div class="col-6"><button>Đăng kí</button></div>
+           <div class="col-3"></div>
+            <div class="col-6">
+              <button>Đăng kí</button>
+            </div>
+            <div class="col-3"></div>
           </div>
         </form>
       </div>
     </div>
-    <div class="col-3"></div>
   </div>
 
 </div>
