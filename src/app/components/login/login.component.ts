@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup} from "@angular/forms";
 import {AppUser} from "../../model/AppUser";
 import {LoginService} from "../../service/login.service";
 import {JwtStorageService} from "../../service/jwt-storage.service";
+import {HttpHeaders} from "@angular/common/http";
 
 @Component({
   selector: 'app-login',
@@ -33,7 +34,9 @@ export class LoginComponent implements OnInit {
       this.jwtStorageService.user = this.user;
       this.jwtStorageService.token = data.token;
       this.jwtStorageService.isAuthenticated = true;
-      console.log(this.jwtStorageService.token, this.jwtStorageService.isAuthenticated)
+      this.loginService.helloWorld().subscribe(hello => {
+        console.log(hello);
+      });
     })
   }
 }
