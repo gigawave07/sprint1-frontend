@@ -12,6 +12,6 @@ export class RegisterService {
   constructor(public http: HttpClient) { }
 
   register(user: AppUser): Observable<any> {
-    return this.http.post(this.API, user);
+    return this.http.post(this.API, user, {headers:{skip:"true"}});
   }
 }
