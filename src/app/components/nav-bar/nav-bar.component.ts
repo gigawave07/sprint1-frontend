@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {JwtStorageService} from "../../service/jwt-storage.service";
 
 @Component({
   selector: 'app-nav-bar',
@@ -6,10 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./nav-bar.component.css']
 })
 export class NavBarComponent implements OnInit {
+  isAuthenticated = false;
 
-  constructor() { }
+  constructor(public jwtStorageService: JwtStorageService) { }
 
   ngOnInit() {
+    this.isAuthenticated = this.jwtStorageService.isAuthenticated;
   }
 
 }

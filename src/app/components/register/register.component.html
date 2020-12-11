@@ -13,13 +13,13 @@
         <h1>Đăng kí tài khoản</h1>
       </div>
       <div>
-        <form action="">
+        <form (ngSubmit)="onSubmit()" [formGroup]="registerForm">
           <div class="row">
             <div class="col-3"></div>
             <div class="col-6">
               <mat-form-field class="example-full-width">
                 <mat-label>Email</mat-label>
-                <input matInput>
+                <input matInput formControlName="email">
               </mat-form-field>
             </div>
             <div class="col-3"></div>
@@ -29,7 +29,7 @@
             <div class="col-6">
               <mat-form-field class="example-full-width">
                 <mat-label>Mật khẩu</mat-label>
-                <input type="password" matInput>
+                <input type="password" matInput formControlName="password">
               </mat-form-field>
             </div>
             <div class="col-3"></div>
@@ -92,8 +92,8 @@
               <mat-form-field>
                 <mat-label>Giới tính</mat-label>
                 <mat-select>
-                  <mat-option value="1">Male</mat-option>
-                  <mat-option value="0">Female</mat-option>
+                  <mat-option value="1">Nam</mat-option>
+                  <mat-option value="0">Nữ</mat-option>
                 </mat-select>
               </mat-form-field>
               <div class="col-3"></div>
@@ -102,7 +102,7 @@
           <div class="row">
            <div class="col-3"></div>
             <div class="col-6">
-              <button>Đăng kí</button>
+              <button type="submit">Đăng kí</button>
             </div>
             <div class="col-3"></div>
           </div>
