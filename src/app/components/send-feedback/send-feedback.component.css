@@ -3,6 +3,10 @@
   color: white;
 }
 
+#btn-submit-feedback-form:hover{
+  background-color: black;
+}
+
 .focus-style {
   position:absolute;
   left: 25%;

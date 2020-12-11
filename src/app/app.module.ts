@@ -9,8 +9,10 @@ import {RegisterComponent} from './components/register/register.component';
 import {MaterialModule} from './material.module';
 import {NavBarComponent} from './components/nav-bar/nav-bar.component';
 import {FooterComponent} from './components/footer/footer.component';
-import { MessageUserComponent } from './components/message-user/message-user.component';
 import { SendFeedbackComponent } from './components/send-feedback/send-feedback.component';
+import { MessUserComponent } from './components/mess-user/mess-user.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -20,13 +22,15 @@ import { SendFeedbackComponent } from './components/send-feedback/send-feedback.
     RegisterComponent,
     NavBarComponent,
     FooterComponent,
-    MessageUserComponent,
-    SendFeedbackComponent
+    SendFeedbackComponent,
+    MessUserComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     MaterialModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
