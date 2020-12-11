@@ -1,0 +1,47 @@
+<div class="container-fluid">
+  <div class="row">
+    <form>
+      <h3>Sửa thông tin vé có mã đặt chỗ SPJ52795</h3>
+      <hr>
+      <div class="row smallRow">
+        <div class="col-sm-5">
+          <h5 class="first">Chuyến bay :</h5>
+        </div>
+        <div class="col-sm-7">
+          <input class="form-control" value="Đà Nẵng - Sài Gòn" readonly>
+        </div>
+      </div>
+      <div class="row smallRow">
+        <div class="col-sm-5">
+          <h5>Ngày đi :</h5>
+        </div>
+        <div class="col-sm-7">
+          <input class="form-control" value="22/12/2020" readonly>
+        </div>
+      </div>
+      <div class="row smallRow">
+        <div class="col-sm-5">
+          <h5>Tên người đi :<span> (*)</span></h5>
+        </div>
+        <div class="col-sm-7">
+          <input class="form-control" type="text">
+          <p hidden>Sorry</p>
+        </div>
+      </div>
+      <div class="row smallRow">
+        <div class="col-sm-5">
+          <h5>Email thanh toán :<span> (*)</span></h5>
+        </div>
+        <div class="col-sm-7">
+          <input class="form-control" type="text">
+          <p hidden>Sorry</p>
+        </div>
+      </div>
+      <hr>
+      <div class="row smallRow">
+        <button mat-dialog-close class="back">Hủy</button>
+        <button class="accept" (click)="edit()">Xác Nhận</button>
+      </div>
+    </form>
+  </div>
+</div>
