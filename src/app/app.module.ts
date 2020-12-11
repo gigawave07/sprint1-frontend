@@ -13,31 +13,27 @@ import {InputTicketSellComponent} from './components/input-ticket-sell/input-tic
 import {DeleteTicketComponent} from './components/delete-ticket/delete-ticket.component';
 import {EditTicketComponent} from './components/edit-ticket/edit-ticket.component';
 import {PrintTicketComponent} from './components/print-ticket/print-ticket.component';
-import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
+import {HttpClientModule} from '@angular/common/http';
 import {ListTicketComponent} from './components/list-ticket/list-ticket.component';
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {AuthInterceptor} from "./service/AuthInterceptor";
-import { VerificationEmailComponent } from './components/verification-email/verification-email.component';
+import { ListPendingTicketComponent } from './components/list-pending-ticket/list-pending-ticket/list-pending-ticket.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     // Quân
-    HomeComponent, LoginComponent, RegisterComponent, NavBarComponent, FooterComponent, VerificationEmailComponent,
+    HomeComponent, LoginComponent, RegisterComponent, NavBarComponent, FooterComponent,
     // Châu
     InputTicketSellComponent, DeleteTicketComponent, EditTicketComponent, PrintTicketComponent, ListTicketComponent,
+      // Đăng
+    ListPendingTicketComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     MaterialModule,
-    HttpClientModule,
-    ReactiveFormsModule,
-    FormsModule
+    HttpClientModule
   ],
-  providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {
