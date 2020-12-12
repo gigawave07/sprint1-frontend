@@ -9,7 +9,7 @@ ul.list-inline{
   background: black;
   font-size: 15px;
 }
-span {
+#logo-text {
   font-family: 'Lato', sans-serif;
   color: #FAA61A;
 }

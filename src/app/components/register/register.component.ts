@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {RegisterService} from "../../service/register.service";
 import {AppUser} from "../../model/AppUser";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-register',
@@ -13,7 +14,8 @@ export class RegisterComponent implements OnInit {
   user: AppUser;
 
   constructor(public formBuilder: FormBuilder,
-              public registerService: RegisterService) { }
+              public registerService: RegisterService,
+              public router: Router) { }
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
@@ -29,7 +31,7 @@ export class RegisterComponent implements OnInit {
       password: this.registerForm.value.password,
     }
     this.registerService.register(this.user).subscribe(data => {
-      console.log(data);
+      this.router.navigateByUrl("/verification-email");
     });
   }
 }
