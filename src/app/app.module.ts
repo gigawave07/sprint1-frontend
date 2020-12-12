@@ -17,14 +17,15 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {ListTicketComponent} from './components/list-ticket/list-ticket.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {AuthInterceptor} from "./service/AuthInterceptor";
+import { VerificationEmailComponent } from './components/verification-email/verification-email.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     // Quân
-    HomeComponent, LoginComponent, RegisterComponent, NavBarComponent, FooterComponent,
+    HomeComponent, LoginComponent, RegisterComponent, NavBarComponent, FooterComponent, VerificationEmailComponent,
     // Châu
-    InputTicketSellComponent, DeleteTicketComponent, EditTicketComponent, PrintTicketComponent, ListTicketComponent
+    InputTicketSellComponent, DeleteTicketComponent, EditTicketComponent, PrintTicketComponent, ListTicketComponent,
   ],
   imports: [
     BrowserModule,

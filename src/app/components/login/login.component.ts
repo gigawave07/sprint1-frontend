@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {AppUser} from "../../model/AppUser";
 import {LoginService} from "../../service/login.service";
 import {JwtStorageService} from "../../service/jwt-storage.service";
-import {HttpHeaders} from "@angular/common/http";
+import {Router} from "@angular/router";
+import {NavBarComponent} from "../nav-bar/nav-bar.component";
 
 @Component({
   selector: 'app-login',
@@ -16,7 +17,10 @@ export class LoginComponent implements OnInit {
 
   constructor(public formBuilder: FormBuilder,
               public loginService: LoginService,
-              public jwtStorageService: JwtStorageService) { }
+              public jwtStorageService: JwtStorageService,
+              public router: Router,
+              ) {
+  }
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
@@ -34,9 +38,10 @@ export class LoginComponent implements OnInit {
       this.jwtStorageService.user = this.user;
       this.jwtStorageService.token = data.token;
       this.jwtStorageService.isAuthenticated = true;
-      this.loginService.helloWorld().subscribe(hello => {
-        console.log(hello);
-      });
+      this.loginService.broadcastLoginChange(this.user.username);
+
+      this.router.navigateByUrl("");
+
     })
   }
 }
