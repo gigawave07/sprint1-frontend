@@ -15,7 +15,10 @@ import {EditTicketComponent} from './components/edit-ticket/edit-ticket.componen
 import {PrintTicketComponent} from './components/print-ticket/print-ticket.component';
 import {HttpClientModule} from '@angular/common/http';
 import {ListTicketComponent} from './components/list-ticket/list-ticket.component';
-import { ListPendingTicketComponent } from './components/list-pending-ticket/list-pending-ticket/list-pending-ticket.component';
+import {ListPendingTicketComponent} from './components/list-pending-ticket/list-pending-ticket/list-pending-ticket.component';
+import {FormsModule} from '@angular/forms';
+import {CancelPendingTicketComponent} from './components/list-pending-ticket/cancel-pending-ticket/cancel-pending-ticket.component';
+import {MatDialogModule} from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -25,14 +28,8 @@ import { ListPendingTicketComponent } from './components/list-pending-ticket/lis
     // Châu
     InputTicketSellComponent, DeleteTicketComponent, EditTicketComponent, PrintTicketComponent, ListTicketComponent,
       // Đăng
-    ListPendingTicketComponent,
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    MaterialModule,
-    HttpClientModule
-  ],
+    ListPendingTicketComponent, CancelPendingTicketComponent,
+  ], imports: [BrowserModule, AppRoutingModule, MaterialModule, HttpClientModule, FormsModule, MatDialogModule],
   providers: [],
   bootstrap: [AppComponent]
 })
