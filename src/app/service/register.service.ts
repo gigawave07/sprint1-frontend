@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {AppUser} from "../model/AppUser";
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +10,7 @@ export class RegisterService {
 
   constructor(public http: HttpClient) { }
 
-  register(user: AppUser): Observable<any> {
+  register(user): Observable<any> {
     return this.http.post(this.API, user, {headers:{skip:"true"}});
   }
 }

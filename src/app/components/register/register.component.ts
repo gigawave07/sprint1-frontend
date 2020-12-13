@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {RegisterService} from "../../service/register.service";
-import {AppUser} from "../../model/AppUser";
 import {Router} from "@angular/router";
 
 @Component({
@@ -11,7 +10,8 @@ import {Router} from "@angular/router";
 })
 export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
-  user: AppUser;
+  user;
+  message;
 
   constructor(public formBuilder: FormBuilder,
               public registerService: RegisterService,
@@ -31,7 +31,9 @@ export class RegisterComponent implements OnInit {
       password: this.registerForm.value.password,
     }
     this.registerService.register(this.user).subscribe(data => {
-      this.router.navigateByUrl("/verification-email");
+      if (data.message) {
+        this.message = data.message;
+      } else this.router.navigateByUrl("/verification-email");
     });
   }
 }
