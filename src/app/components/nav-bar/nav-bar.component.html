@@ -3,19 +3,19 @@
   <div id="info-bar" class="row text-white">
     <div class="col-6 d-flex align-items-center" style="padding-left: 100px">
       <ul class="list-inline">
-        <li class="list-inline-item"><i class="fa fa-map-marker"></i> 295 Nguyễn Tất Thành, DN</li>
-        <li class="list-inline-item"><i class="fa fa-phone"></i> 0236 6517 021</li>
+        <li class="list-inline-item pr-2"><i class="fa fa-map-marker p-1"></i> 295 Nguyễn Tất Thành, DN</li>
+        <li class="list-inline-item"><i class="fa fa-phone p-1"></i> 0236 6517 021</li>
       </ul>
     </div>
     <div class="col-6 d-flex align-items-center" style="padding-right: 100px">
       <ul class="list-inline ml-auto" *ngIf="!username">
-        <li class="list-inline-item"><i class="fa fa-lock"></i><a routerLink="/login">Đăng nhập</a> </li>
-        <li class="list-inline-item"><i class="fa fa-plus"></i><a routerLink="/register"> Đăng kí</a></li>
+        <li class="list-inline-item pr-2"><i class="fa fa-lock p-1"></i><a routerLink="/login">Đăng nhập</a> </li>
+        <li class="list-inline-item"><i class="fa fa-plus p-1"></i><a routerLink="/register"> Đăng kí</a></li>
       </ul>
 
       <ul class="list-inline ml-auto" *ngIf="username">
-        <li class="nav-item dropdown show">
-          <a class="dropdown-toggle nav-link" href="#"
+        <li class="list-inline-item dropdown show">
+          <a class="dropdown-toggle nav-link p-0" href="#"
              id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <span>{{username}}</span>
           </a>

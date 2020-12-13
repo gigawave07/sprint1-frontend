@@ -1,10 +1,8 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup} from "@angular/forms";
-import {AppUser} from "../../model/AppUser";
 import {LoginService} from "../../service/login.service";
 import {JwtStorageService} from "../../service/jwt-storage.service";
 import {Router} from "@angular/router";
-import {NavBarComponent} from "../nav-bar/nav-bar.component";
 
 @Component({
   selector: 'app-login',
@@ -13,7 +11,7 @@ import {NavBarComponent} from "../nav-bar/nav-bar.component";
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
-  user: AppUser;
+  user;
 
   constructor(public formBuilder: FormBuilder,
               public loginService: LoginService,
