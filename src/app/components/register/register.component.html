@@ -22,6 +22,8 @@
               <mat-form-field class="example-full-width">
                 <mat-label>Email</mat-label>
                 <input matInput formControlName="email">
+                <mat-error *ngIf="registerForm.controls.email.errors?.required">Email không được để trống</mat-error>
+                <mat-error *ngIf="registerForm.controls.email.errors?.pattern">Sai định dạng email</mat-error>
               </mat-form-field>
             </div>
             <div class="col-2"></div>
@@ -32,6 +34,7 @@
               <mat-form-field class="example-full-width">
                 <mat-label>Mật khẩu</mat-label>
                 <input type="password" matInput formControlName="password">
+                <mat-error *ngIf="registerForm.controls.password.errors?.required">Mật khẩu không được để trống</mat-error>
               </mat-form-field>
             </div>
             <div class="col-2"></div>
@@ -41,7 +44,9 @@
             <div class="col-8">
               <mat-form-field class="example-full-width">
                 <mat-label>Xác nhận mật khẩu</mat-label>
-                <input type="password" matInput>
+                <input type="password" matInput formControlName="confirmPassword" [errorStateMatcher]="matcher">
+                <mat-error *ngIf="registerForm.controls.confirmPassword.errors?.required">Xác nhận mật khẩu không đươc để trống</mat-error>
+                <mat-error *ngIf="registerForm.controls.confirmPassword.errors?.confirmedValidator">Mật khẩu không trùng khớp</mat-error>
               </mat-form-field>
             </div>
             <div class="col-2"></div>
