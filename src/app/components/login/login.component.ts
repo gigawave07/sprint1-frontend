@@ -12,12 +12,13 @@ import {Router} from "@angular/router";
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   user;
+  message;
 
   constructor(public formBuilder: FormBuilder,
               public loginService: LoginService,
               public jwtStorageService: JwtStorageService,
               public router: Router,
-              ) {
+  ) {
   }
 
   ngOnInit() {
@@ -33,13 +34,18 @@ export class LoginComponent implements OnInit {
       password: this.loginForm.value.password
     }
     this.loginService.authenticate(this.user).subscribe(data => {
-      this.jwtStorageService.user = this.user;
-      this.jwtStorageService.token = data.token;
-      this.jwtStorageService.isAuthenticated = true;
-      this.loginService.broadcastLoginChange(this.user.username);
+      if (data.message) {
+        this.message = data.message;
+      } else {
+        this.jwtStorageService.user = this.user;
+        this.jwtStorageService.token = data.token;
+        this.jwtStorageService.isAuthenticated = true;
+        this.loginService.broadcastLoginChange(this.user.username);
 
-      this.router.navigateByUrl("");
-
+        this.router.navigateByUrl("");
+      }
+    }, error => {
+      this.message = "Sai email hoặc password";
     })
   }
 }
