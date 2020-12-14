@@ -25,14 +25,14 @@ export class LoginComponent implements OnInit {
     this.loginForm = this.formBuilder.group({
       email: [''],
       password: [''],
-    })
+    });
   }
 
   onSubmit() {
     this.user = {
       username: this.loginForm.value.email,
       password: this.loginForm.value.password
-    }
+    };
     this.loginService.authenticate(this.user).subscribe(data => {
       if (data.message) {
         this.message = data.message;

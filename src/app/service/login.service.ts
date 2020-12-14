@@ -7,6 +7,7 @@ import {Observable, Subject} from "rxjs";
 })
 export class LoginService {
   readonly API = "http://localhost:8080/authenticate";
+  readonly API2 = "http://localhost:8080/hello";
   name:Subject<string> = new Subject();
 
   broadcastLoginChange(text:string) {
@@ -19,4 +20,7 @@ export class LoginService {
     return this.http.post(this.API, user);
   }
 
+  hello(): Observable<any> {
+    return this.http.get(this.API2);
+  }
 }

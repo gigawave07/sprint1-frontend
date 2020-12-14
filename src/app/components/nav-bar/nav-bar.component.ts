@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {JwtStorageService} from "../../service/jwt-storage.service";
-import {LoginService} from "../../service/login.service";
+import {JwtStorageService} from '../../service/jwt-storage.service';
+import {LoginService} from '../../service/login.service';
 
 @Component({
   selector: 'app-nav-bar',
@@ -17,12 +17,18 @@ export class NavBarComponent implements OnInit {
   ngOnInit() {
     this.loginService.name.subscribe(val => {
       this.username = val;
-    })
+    });
   }
 
   logout() {
-    this.username = "";
+    this.username = '';
     this.jwtStorageService.isAuthenticated = false;
-    this.jwtStorageService.token = "";
+    this.jwtStorageService.token = '';
+  }
+
+  hello() {
+    this.loginService.hello().subscribe(data => {
+      alert(data.message);
+    });
   }
 }
