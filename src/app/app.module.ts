@@ -16,9 +16,10 @@ import {PrintTicketComponent} from './components/print-ticket/print-ticket.compo
 import {HttpClientModule} from '@angular/common/http';
 import {ListTicketComponent} from './components/list-ticket/list-ticket.component';
 import {ListPendingTicketComponent} from './components/list-pending-ticket/list-pending-ticket/list-pending-ticket.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {CancelPendingTicketComponent} from './components/list-pending-ticket/cancel-pending-ticket/cancel-pending-ticket.component';
 import {MatDialogModule} from '@angular/material/dialog';
+import { SearchPendingTicketComponent } from './components/search-pending-ticket/search-pending-ticket/search-pending-ticket.component';
 
 @NgModule({
   declarations: [
@@ -28,8 +29,9 @@ import {MatDialogModule} from '@angular/material/dialog';
     // Châu
     InputTicketSellComponent, DeleteTicketComponent, EditTicketComponent, PrintTicketComponent, ListTicketComponent,
       // Đăng
-    ListPendingTicketComponent, CancelPendingTicketComponent,
-  ], imports: [BrowserModule, AppRoutingModule, MaterialModule, HttpClientModule, FormsModule, MatDialogModule],
+    ListPendingTicketComponent, CancelPendingTicketComponent, SearchPendingTicketComponent,
+  ],
+  imports: [BrowserModule, AppRoutingModule, MaterialModule, HttpClientModule, FormsModule, MatDialogModule, ReactiveFormsModule],
   providers: [],
   bootstrap: [AppComponent]
 })
