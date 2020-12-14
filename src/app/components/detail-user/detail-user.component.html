@@ -8,25 +8,7 @@
 
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-white">
-  <a class="navbar-brand" href="#"><span><i class="fa fa-plane"></i>C06</span>AIRLINE</a>
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav ml-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">TRANG CHỦ <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item border-left">
-        <a class="nav-link" href="#">TIN KHUYẾN MÃI</a>
-      </li>
-      <li class="nav-item border-left">
-        <a class="nav-link" href="#">GIỚI THIỆU</a>
-      </li>
-      <li class="nav-item border-left" style="padding-right: 80px">
-        <a class="nav-link" href="#">QUY ĐỊNH HÀNH LÍ</a>
-      </li>
-    </ul>
-  </div>
-</nav>
+
 <div class="row px-0 mx-0">
   <div class="col-2 px-0 mt-5">
     <ul class="list-group border border-primary rounded h-100">
@@ -37,16 +19,14 @@
     </ul>
   </div>
   <div class="col-10 p-3">
-    <router-outlet></router-outlet>
-
     <div class="container-fluid p-5 d-flex justify-content-center ">
-      <form class="mt-2 form-inline w-75" *ngFor="let user of users" >
+      <form class="mt-2 form-inline w-75" [formGroup]="infoForm">
         <div class="container-fluid row col-lg-12 col-md-12">
           <div class="col-lg-8 col-md-8">
             <h3 class="text-center">Xem Thông Tin Cá Nhân</h3>
             <div class=" form-group mt-4">
               <label class="col-lg-3 col-md-3 d-flex justify-content-start">Tên  <span style="color: red" >(*)</span>:</label>
-              <p>{{user.fullName}}</p>
+              <input type="text" class="col-lg-9 col-md-9 form-control form-control-sm " formControlName="fullName" readonly>
             </div>
             <div class=" form-group mt-4">
               <label class="col-lg-3 col-md-3 d-flex justify-content-start">Ngày sinh <span style="color: red" >(*)</span>:</label>
