@@ -16,7 +16,6 @@ export class LoginComponent implements OnInit {
   }
 
   setConsultant() {
-    console.log("đã nhấn");
-    this.consultantService.setConsultantStatus();
+    this.consultantService.setConsultantStatus(true);
   }
 }

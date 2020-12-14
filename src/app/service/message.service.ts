@@ -20,7 +20,7 @@ export class MessageService {
     return this.http.post(this.baseUrl + 'send-mess', message);
   }
 
-  public getMess(): Observable<any> {
-    return this.http.get(this.baseUrl + 'mess-user');
+  public getMess(room: string): Observable<any> {
+    return this.http.get(this.baseUrl + 'mess-user/' + room);
   }
 }

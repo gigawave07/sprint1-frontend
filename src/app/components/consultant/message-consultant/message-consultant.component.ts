@@ -18,6 +18,10 @@ export class MessageConsultantComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.loadMess();
+  }
+
+  loadMess() {
     this.sub = this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
       const room = paramMap.get('id');
       this.messageService.getMess(room).subscribe(data => {

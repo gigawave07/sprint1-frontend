@@ -1,8 +1,8 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {MessageService} from '../../service/message.service';
 import {ConsultantService} from '../../service/consultant.service';
-
+import * as io from 'socket.io-client';
 declare var $: any;
 
 @Component({
@@ -11,20 +11,24 @@ declare var $: any;
   styleUrls: ['./mess-user.component.css']
 })
 export class MessUserComponent implements OnInit {
-  private consultant: boolean;
+
+  socket: any;
+
+  readonly uri: string = 'http://localhost:8080';
+
+  public isRequest = false;
   public listMess = [];
+  public room: string;
 
   formSend: FormGroup;
   formSendRequest: FormGroup;
 
   constructor(private fb: FormBuilder, private messageService: MessageService, private consultantService: ConsultantService) {
+    // @ts-ignore
+    this.socket = io.Socket(this.uri);
   }
 
   ngOnInit() {
-
-    setInterval(() => {
-      this.consultant = this.consultantService.getConsultantStatus();
-    }, 1000);
 
     this.loadMess();
 
@@ -37,6 +41,8 @@ export class MessUserComponent implements OnInit {
     this.formSend = this.fb.group({
       id: '',
       content: ['', Validators.required],
+      roomId: '',
+      isUser: 'true',
       sendDate: '',
       status: '0',
     });
@@ -44,19 +50,22 @@ export class MessUserComponent implements OnInit {
     // tslint:disable-next-line:only-arrow-functions
     $(document).ready(function() {
 
-      $('#file-upload').hide();
-
-      // tslint:disable-next-line:only-arrow-functions
-      $('.openChatBtn').click(function() {
-        $('.requiredChat').show('1000');
-        $('.openChatBtn').hide();
-      });
+      if ($('#is-request').val() !== 'true') {
+        // tslint:disable-next-line:only-arrow-functions
+        $('.openChatBtn').click(function() {
+          $('.requiredChat').show('1000');
+          $('.openChatBtn').hide();
+        });
+      } else {
+        $('.openChatBtn').show();
+      }
 
       // tslint:disable-next-line:only-arrow-functions
       $('.close').click(function() {
         $('.openChat').hide();
         $('.requiredChat').hide();
         $('.openChatBtn').show('1000');
+        $('#is-request').val('false');
       }),
         // tslint:disable-next-line:only-arrow-functions
         $('.begin-chat').click(function() {
@@ -82,20 +91,29 @@ export class MessUserComponent implements OnInit {
   }
 
   sendMessage() {
-    this.messageService.sendMess(this.formSend.value).subscribe(data => {
-      this.loadMess();
-    });
+    if (this.formSend.value.content !== '') {
+      this.formSend.value.roomId = this.room;
+      this.messageService.sendMess(this.formSend.value).subscribe(data => {
+        this.formSend.value.content = '';
+        this.loadMess();
+      });
+    }
   }
 
   sendRequest() {
-    console.log(this.formSendRequest.value);
     this.messageService.sendRequestChat(this.formSendRequest.value).subscribe(data => {
+      this.isRequest = true;
+      this.room = data;
     });
   }
 
   loadMess() {
-    this.messageService.getMess().subscribe(data => {
-      this.listMess = data;
-    });
+    if (this.isRequest) {
+      this.messageService.getMess(this.room).subscribe(data => {
+        this.listMess = data;
+      });
+    }
+
   }
+
 }

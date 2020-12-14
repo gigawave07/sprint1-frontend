@@ -10,8 +10,8 @@ export class ConsultantService {
   constructor() {
   }
 
-  public setConsultantStatus() {
-    this.consultantStatus = true;
+  public setConsultantStatus(status: boolean) {
+    this.consultantStatus = status;
     this.getConsultantStatus();
   }
 

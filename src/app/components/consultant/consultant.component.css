@@ -1,0 +1,43 @@
+div .user-box {
+  border-radius: 5px;
+  background: linear-gradient(white, #efe0c2, #aaa8a8);
+  height: 70px;
+  width: 100%;
+  margin-top: 1px;
+
+}
+
+.user-box:hover {
+  background: #62CFC1;
+}
+
+div #user-list {
+  height: 353px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+div #chat-with-user {
+  height: 353px;
+}
+
+div #content-mess-body {
+  height: 300px
+}
+
+div #chat-option {
+  height: 53px;
+}
+
+.content-mess:focus {
+  border: none;
+}
+
+#content-chat-cons {
+  width: 90vh;
+}
+
+#mess-user {
+  height: 70px;
+  width: 100%;
+}

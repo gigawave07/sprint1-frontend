@@ -1,1 +1,38 @@
-<p id="test-consultant">consultant works!</p>
+<div class="container-fluid">
+  <div class="row" id="consultant-chat-box">
+    <div class="col-lg-3" id="user-list">
+      <div *ngFor="let user of listUser" class="user-box">
+        <input type="hidden"/>
+        <a [routerLink]="['mess', user.id]" (click)="getRoomId(user.id)">
+          <div id="mess-user">{{user.name}}</div>
+        </a>
+      </div>
+      <br>
+    </div>
+    <div class="col-lg-9" id="chat-with-user">
+      <div id="content-mess-body">
+        <router-outlet></router-outlet>
+      </div>
+      <div id="chat-option">
+        <form (ngSubmit)="sendMess()" [formGroup]="formSendMess" class="form-inline">
+          <div class="input-group form-inline" id="input-inline">
+            <input formControlName="content" class="form-control" type="text"
+                   placeholder="Type message ..." id="content-chat-cons">
+            <span class="input-group-btn ml-1 mt-1">
+              <i class="fas fa-paperclip"></i>
+            </span>
+            <span class="input-group-btn ml-1 mt-1">
+              <i class="fas fa-kiss-wink-heart"></i>
+            </span>
+
+            <button [disabled]="formSendMess.controls.content.errors?.required" type="submit"
+                    class="input-group-btn ml-1 mt-1" id="sumit-consultant">
+              <i class="fas fa-paper-plane icon-option"></i>
+            </button>
+
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,5 +1,4 @@
 <i class="openChatBtn fab fa-facebook-messenger" id="icon-message"></i>
-<input id="isConsultant" type="hidden" [ngModel]="consultant"/>
 <div class="requiredChat container-fluid">
   <div class="row">
     <div class="col-lg-12 header-openChat">
@@ -145,10 +144,10 @@
         </div>
       </div>
       <div class="row row-option">
+        <input type="hidden" id="is-request" [ngModel]="isRequest"/>
         <form (ngSubmit)="sendMessage()" [formGroup]="formSend" class="form-inline">
           <div class="input-group form-inline" id="input-inline">
-            <input id="content-mess" formControlName="content" class="form-control haha" type="text"
-                   (change)="loadMess()" placeholder="Type message ...">
+            <input id="content-mess" formControlName="content" class="form-control" type="text" placeholder="Type message ...">
             <span class="input-group-btn ml-1 mt-1">
               <i class="fas fa-paperclip icon-option " id="icon-upload-file"></i>
             </span>
@@ -156,7 +155,7 @@
               <i class="fas fa-kiss-wink-heart icon-option" id="icon"></i>
             </span>
             <button [disabled]="formSend.controls.content.errors?.required" type="submit"
-                    class="input-group-btn ml-1 mt-1" id="btn-submit-mess" (click)="loadMess()">
+                    class="input-group-btn ml-1 mt-1" id="btn-submit-mess">
               <i class="fas fa-paper-plane icon-option"></i>
             </button>
           </div>
@@ -165,5 +164,4 @@
     </div>
   </div>
 </div>
-
 

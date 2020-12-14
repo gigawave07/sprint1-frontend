@@ -1,0 +1,14 @@
+#body-chat-consultant{
+  height: 290px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+.mess-consultant{
+  color: blue;
+
+}
+
+.mess-from-user{
+  color: red;
+}

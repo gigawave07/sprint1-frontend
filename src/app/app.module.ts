@@ -15,6 +15,9 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MessageService} from './service/message.service';
 import {HttpClientModule} from '@angular/common/http';
 import { ConsultantComponent } from './components/consultant/consultant.component';
+import {FeedbackService} from './service/feedback.service';
+import {UserMessService} from './service/user-mess.service';
+import { MessageConsultantComponent } from './components/consultant/message-consultant/message-consultant.component';
 
 
 @NgModule({
@@ -27,7 +30,8 @@ import { ConsultantComponent } from './components/consultant/consultant.componen
     FooterComponent,
     SendFeedbackComponent,
     MessUserComponent,
-    ConsultantComponent
+    ConsultantComponent,
+    MessageConsultantComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +41,7 @@ import { ConsultantComponent } from './components/consultant/consultant.componen
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [MessageService],
+  providers: [MessageService, FeedbackService, UserMessService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
