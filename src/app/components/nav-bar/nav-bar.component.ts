@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {JwtStorageService} from "../../service/jwt-storage.service";
+import {LoginService} from "../../service/login.service";
 
 @Component({
   selector: 'app-nav-bar',
@@ -6,10 +8,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./nav-bar.component.css']
 })
 export class NavBarComponent implements OnInit {
+  username;
 
-  constructor() { }
-
-  ngOnInit() {
+  constructor(public loginService: LoginService,
+              public jwtStorageService: JwtStorageService) {
   }
 
+  ngOnInit() {
+    this.loginService.name.subscribe(val => {
+      this.username = val;
+    })
+  }
+
+  logout() {
+    this.username = "";
+    this.jwtStorageService.isAuthenticated = false;
+    this.jwtStorageService.token = "";
+  }
 }
