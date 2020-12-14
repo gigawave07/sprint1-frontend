@@ -24,6 +24,8 @@ export class NavBarComponent implements OnInit {
     this.username = '';
     this.jwtStorageService.isAuthenticated = false;
     this.jwtStorageService.token = '';
+    this.loginService.logout();
+    this.loginService.broadcastLoginChange(this.username);
   }
 
   hello() {
