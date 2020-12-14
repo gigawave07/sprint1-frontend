@@ -3,9 +3,9 @@ import { Routes, RouterModule } from '@angular/router';
 import {HomeComponent} from './components/home/home.component';
 import {LoginComponent} from './components/login/login.component';
 import {RegisterComponent} from './components/register/register.component';
-import {DeleteTicketComponent} from "./components/delete-ticket/delete-ticket.component";
-import {ListTicketComponent} from "./components/list-ticket/list-ticket.component";
-import {VerificationEmailComponent} from "./components/verification-email/verification-email.component";
+import {DeleteTicketComponent} from './components/delete-ticket/delete-ticket.component';
+import {ListTicketComponent} from './components/list-ticket/list-ticket.component';
+import {VerificationEmailComponent} from './components/verification-email/verification-email.component';
 
 
 const routes: Routes = [
