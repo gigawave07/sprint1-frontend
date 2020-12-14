@@ -20,12 +20,13 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {CancelPendingTicketComponent} from './components/list-pending-ticket/cancel-pending-ticket/cancel-pending-ticket.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { SearchPendingTicketComponent } from './components/search-pending-ticket/search-pending-ticket/search-pending-ticket.component';
+import {VerificationEmailComponent} from './components/verification-email/verification-email.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     // Quân
-    HomeComponent, LoginComponent, RegisterComponent, NavBarComponent, FooterComponent,
+    HomeComponent, LoginComponent, RegisterComponent, NavBarComponent, FooterComponent, VerificationEmailComponent,
     // Châu
     InputTicketSellComponent, DeleteTicketComponent, EditTicketComponent, PrintTicketComponent, ListTicketComponent,
       // Đăng
