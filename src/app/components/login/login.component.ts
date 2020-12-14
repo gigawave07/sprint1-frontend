@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup} from "@angular/forms";
-import {LoginService} from "../../service/login.service";
-import {JwtStorageService} from "../../service/jwt-storage.service";
-import {Router} from "@angular/router";
+import {FormBuilder, FormGroup} from '@angular/forms';
+import {LoginService} from '../../service/login.service';
+import {JwtStorageService} from '../../service/jwt-storage.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -42,10 +42,10 @@ export class LoginComponent implements OnInit {
         this.jwtStorageService.isAuthenticated = true;
         this.loginService.broadcastLoginChange(this.user.username);
 
-        this.router.navigateByUrl("");
+        this.router.navigateByUrl('');
       }
     }, error => {
-      this.message = "Sai email hoặc password";
-    })
+      this.message = 'Sai email hoặc password';
+    });
   }
 }
