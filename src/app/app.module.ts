@@ -38,16 +38,6 @@ import { EditUserComponent } from './components/edit-user/edit-user.component';
     DetailUserComponent, EditUserComponent,
     InputTicketSellComponent, DeleteTicketComponent, EditTicketComponent, PrintTicketComponent, ListTicketComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    MaterialModule,
-    HttpClientModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    ReactiveFormsModule,
-    FormsModule
-  ],
   imports: [BrowserModule, AppRoutingModule, MaterialModule, HttpClientModule, FormsModule, MatDialogModule, ReactiveFormsModule],
   providers: [{
     provide: HTTP_INTERCEPTORS,

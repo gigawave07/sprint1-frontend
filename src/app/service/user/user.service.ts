@@ -7,7 +7,7 @@ import {Observable} from 'rxjs';
   providedIn: 'root'
 })
 export class UserService {
-  public readonly API: string = 'http://localhost:8080/user/detail-user';
+  public readonly API: string = 'http://localhost:8080/user/detail';
 
   constructor(
     private http: HttpClient

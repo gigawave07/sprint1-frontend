@@ -5,16 +5,15 @@ import {LoginComponent} from './components/login/login.component';
 import {RegisterComponent} from './components/register/register.component';
 import {DeleteTicketComponent} from './components/delete-ticket/delete-ticket.component';
 import {ListTicketComponent} from './components/list-ticket/list-ticket.component';
-import {VerificationEmailComponent} from './components/verification-email/verification-email.component';
 import {ListPendingTicketComponent} from './components/list-pending-ticket/list-pending-ticket/list-pending-ticket.component';
 import {SearchPendingTicketComponent} from './components/search-pending-ticket/search-pending-ticket/search-pending-ticket.component';
 import {DetailUserComponent} from './components/detail-user/detail-user.component';
 import {EditUserComponent} from './components/edit-user/edit-user.component';
-
-
-
-
 import {VerificationEmailComponent} from './components/verification-email/verification-email.component';
+
+
+
+
 
 
 const routes: Routes = [
@@ -29,6 +28,7 @@ const routes: Routes = [
     // Đăng:
   {path: 'list-pending-ticket', component: ListPendingTicketComponent},
   {path: 'search-pending-ticket', component: SearchPendingTicketComponent},
+  {path: 'detail-user', component: DetailUserComponent},
 ];
 
 @NgModule({

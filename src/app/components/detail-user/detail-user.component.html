@@ -1,13 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" charset="UTF-8">
-  <title></title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
 
-</head>
-<body>
 
 <div class="row px-0 mx-0">
   <div class="col-2 px-0 mt-5">
@@ -20,7 +11,7 @@
   </div>
   <div class="col-10 p-3">
     <div class="container-fluid p-5 d-flex justify-content-center ">
-      <form class="mt-2 form-inline w-75" [formGroup]="infoForm">
+      <form class="mt-2 form-inline w-75" [formGroup]="infoForm" (ngSubmit)="submit()">
         <div class="container-fluid row col-lg-12 col-md-12">
           <div class="col-lg-8 col-md-8">
             <h3 class="text-center">Xem Thông Tin Cá Nhân</h3>
@@ -30,7 +21,7 @@
             </div>
             <div class=" form-group mt-4">
               <label class="col-lg-3 col-md-3 d-flex justify-content-start">Ngày sinh <span style="color: red" >(*)</span>:</label>
-              <input type="text" class="col-lg-9 col-md-9 form-control form-control-sm " readonly>
+              <input type="text" class="col-lg-9 col-md-9 form-control form-control-sm " formControlName="birthday" readonly>
             </div>
             <div class=" form-group mt-4">
               <label class="col-lg-3 col-md-3 d-flex justify-content-start">Địa chỉ <span style="color: red" >(*)</span>:</label>
@@ -42,7 +33,8 @@
             </div>
             <div class=" form-group mt-4">
               <label class="col-lg-3 col-md-3 justify-content-start">Giới tính <span style="color: red" >(*)</span>:</label>
-              <input type="text" class="col-lg-9 col-md-9 form-control form-control-sm" readonly>
+              <input *ngIf="infoForm.controls.gender.value" type="text" class="col-lg-9 col-md-9 form-control form-control-sm" readonly value="Nam" formControlName="gender">
+              <input *ngIf="!infoForm.controls.gender.value" type="text" class="col-lg-9 col-md-9 form-control form-control-sm" readonly value="Nữ" formControlName="gender">
             </div>
             <div class=" form-group mt-4">
               <label class="col-lg-3 col-md-3  justify-content-start">Điện thoại <span style="color: red" >(*)</span>:</label>
@@ -65,77 +57,73 @@
     </div>
   </div>
 </div>
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-     aria-hidden="true">
-  <div class="modal-dialog modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Sửa Thông Tin</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <div class="container-fluid col-lg-12 col-md-12 ">
-          <h3 class="text-center">Chỉnh Sửa Thông Tin</h3>
-          <div class="d-flex form-group mt-4">
-            <label class="col-lg-3 col-md-3 ">Tên <span style="color: red" >(*)</span>:</label>
-            <input type="text" class="col-lg-9 col-md-9 form-control form-control-sm">
-          </div>
-          <div class="d-flex form-group mt-4">
-            <label class="col-lg-3 col-md-3">Ngày sinh <span style="color: red" >(*)</span>:</label>
-            <input type="date" class="col-lg-9 col-md-9 form-control form-control-sm">
-          </div>
-          <div class=" d-flex form-group mt-4">
-            <label class="col-lg-3 col-md-3">Địa chỉ <span style="color: red" >(*)</span>:</label>
-            <textarea type="text" class="col-lg-9 col-md-9 form-control form-control-sm "
-                      value="295 Nguyễn Tất Thành, Hải Châu, Đà Nẵng"></textarea>
-          </div>
-          <div class="d-flex form-group mt-4">
-            <label class="col-lg-3 col-md-3">Email <span style="color: red" >(*)</span>:</label>
-            <input type="text" class="col-lg-9 col-md-9 form-control form-control-sm"
-            >
-          </div>
-          <div class="d-flex form-group mt-4">
-            <label class="col-lg-3 col-md-3 ">Giới tính <span style="color: red" >(*)</span>:</label>
-            <div class="col-lg-9 col-md-9 d-flex justify-content-start"  >
-              <div class="radio 4">
-                <input id="radio-1" name="radio" type="radio">
-                <label for="radio-1" class="radio-label">Nam</label>
-              </div>
-              <div class="radio ml-4 ">
-                <input id="radio-2" name="radio" type="radio">
-                <label for="radio-2" class="radio-label">Nữ</label>
-              </div>
-              <div class="radio ml-4">
-                <input id="radio-3" name="radio" type="radio">
-                <label for="radio-3" class="radio-label">Khác</label>
-              </div>
-            </div>
-          </div>
-          <div class="d-flex form-group mt-4">
-            <label class="col-lg-3 col-md-3 ">Điện thoại <span style="color: red" >(*)</span>:</label>
-            <input type="text" class="col-lg-9 col-md-9 form-control form-control-sm ">
-          </div>
-          <div class="d-flex form-group mt-4">
-            <label class="col-lg-3 col-md-3 ">Ảnh đại diện</label>
-            <input type="file" class="col-lg-9 col-md-9 form-control-sm mr-3">
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary btn-sm" style="" data-dismiss="modal">Hủy</button>
-          <button type="button" class="btn btn-warning btn-sm">Sửa Thông Tin</button>
-        </div>
-      </div>
+<!--<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"-->
+<!--     aria-hidden="true">-->
+<!--  <div class="modal-dialog modal-lg" role="document">-->
+<!--    <div class="modal-content">-->
+<!--      <div class="modal-header">-->
+<!--        <h5 class="modal-title" id="exampleModalLabel">Sửa Thông Tin</h5>-->
+<!--        <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
+<!--          <span aria-hidden="true">&times;</span>-->
+<!--        </button>-->
+<!--      </div>-->
+<!--      <div class="modal-body">-->
+<!--        <div class="container-fluid col-lg-12 col-md-12 ">-->
+<!--          <h3 class="text-center">Chỉnh Sửa Thông Tin</h3>-->
+<!--          <div class="d-flex form-group mt-4">-->
+<!--            <label class="col-lg-3 col-md-3 ">Tên <span style="color: red" >(*)</span>:</label>-->
+<!--            <input type="text" class="col-lg-9 col-md-9 form-control form-control-sm">-->
+<!--          </div>-->
+<!--          <div class="d-flex form-group mt-4">-->
+<!--            <label class="col-lg-3 col-md-3">Ngày sinh <span style="color: red" >(*)</span>:</label>-->
+<!--            <input type="date" class="col-lg-9 col-md-9 form-control form-control-sm">-->
+<!--          </div>-->
+<!--          <div class=" d-flex form-group mt-4">-->
+<!--            <label class="col-lg-3 col-md-3">Địa chỉ <span style="color: red" >(*)</span>:</label>-->
+<!--            <textarea type="text" class="col-lg-9 col-md-9 form-control form-control-sm "-->
+<!--                      value="295 Nguyễn Tất Thành, Hải Châu, Đà Nẵng"></textarea>-->
+<!--          </div>-->
+<!--          <div class="d-flex form-group mt-4">-->
+<!--            <label class="col-lg-3 col-md-3">Email <span style="color: red" >(*)</span>:</label>-->
+<!--            <input type="text" class="col-lg-9 col-md-9 form-control form-control-sm"-->
+<!--            >-->
+<!--          </div>-->
+<!--          <div class="d-flex form-group mt-4">-->
+<!--            <label class="col-lg-3 col-md-3 ">Giới tính <span style="color: red" >(*)</span>:</label>-->
+<!--            <div class="col-lg-9 col-md-9 d-flex justify-content-start"  >-->
+<!--              <div class="radio 4">-->
+<!--                <input id="radio-1" name="radio" type="radio">-->
+<!--                <label for="radio-1" class="radio-label">Nam</label>-->
+<!--              </div>-->
+<!--              <div class="radio ml-4 ">-->
+<!--                <input id="radio-2" name="radio" type="radio">-->
+<!--                <label for="radio-2" class="radio-label">Nữ</label>-->
+<!--              </div>-->
+<!--              <div class="radio ml-4">-->
+<!--                <input id="radio-3" name="radio" type="radio">-->
+<!--                <label for="radio-3" class="radio-label">Khác</label>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div class="d-flex form-group mt-4">-->
+<!--            <label class="col-lg-3 col-md-3 ">Điện thoại <span style="color: red" >(*)</span>:</label>-->
+<!--            <input type="text" class="col-lg-9 col-md-9 form-control form-control-sm ">-->
+<!--          </div>-->
+<!--          <div class="d-flex form-group mt-4">-->
+<!--            <label class="col-lg-3 col-md-3 ">Ảnh đại diện</label>-->
+<!--            <input type="file" class="col-lg-9 col-md-9 form-control-sm mr-3">-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        <div class="modal-footer">-->
+<!--          <button type="button" class="btn btn-secondary btn-sm" style="" data-dismiss="modal">Hủy</button>-->
+<!--          <button type="button" class="btn btn-warning btn-sm">Sửa Thông Tin</button>-->
+<!--        </div>-->
+<!--      </div>-->
 
-    </div>
+<!--    </div>-->
 
-  </div>
+<!--  </div>-->
 
-</div>
-</body>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</html>
+<!--</div>-->
+
 

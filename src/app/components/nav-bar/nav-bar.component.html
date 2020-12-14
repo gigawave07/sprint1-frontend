@@ -24,7 +24,7 @@
                aria-labelledby="dropdownMenuLink">
             <a class="dropdown-item" href="#" id="changePassword" data-toggle="modal"
                data-target="#changePasswordModal">Đổi mật khẩu</a>
-            <a class="dropdown-item" href="#" id="accountDetails" routerLink="/list-pending-ticket">Thông tin tài khoản</a>
+            <a class="dropdown-item" href="#" id="accountDetails" [routerLink]="['/detail-user']">Thông tin tài khoản</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#" (click)="logout()">Đăng xuất</a>
           </div>
