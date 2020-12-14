@@ -30,7 +30,7 @@ export class NavBarComponent implements OnInit {
 
   hello() {
     this.loginService.hello().subscribe(data => {
-      alert(data.message);
+      alert(this.loginService.currentUserValue.id);
     });
   }
 }
