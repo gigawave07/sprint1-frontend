@@ -15,19 +15,25 @@ import {EditTicketComponent} from './components/edit-ticket/edit-ticket.componen
 import {PrintTicketComponent} from './components/print-ticket/print-ticket.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {ListTicketComponent} from './components/list-ticket/list-ticket.component';
+import {ListPendingTicketComponent} from './components/list-pending-ticket/list-pending-ticket/list-pending-ticket.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {CancelPendingTicketComponent} from './components/list-pending-ticket/cancel-pending-ticket/cancel-pending-ticket.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import { SearchPendingTicketComponent } from './components/search-pending-ticket/search-pending-ticket/search-pending-ticket.component';
+import {VerificationEmailComponent} from './components/verification-email/verification-email.component';
+import { AuthInterceptor } from './service/AuthInterceptor';
 import { DetailUserComponent } from './components/detail-user/detail-user.component';
 import { EditUserComponent } from './components/edit-user/edit-user.component';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {AuthInterceptor} from './service/AuthInterceptor';
-import { VerificationEmailComponent } from './components/verification-email/verification-email.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     // Quân
-    HomeComponent, LoginComponent, RegisterComponent, NavBarComponent, FooterComponent,
+    HomeComponent, LoginComponent, RegisterComponent, NavBarComponent, FooterComponent, VerificationEmailComponent,
     // Châu
     InputTicketSellComponent, DeleteTicketComponent, EditTicketComponent, PrintTicketComponent, ListTicketComponent,
+      // Đăng
+    ListPendingTicketComponent, CancelPendingTicketComponent, SearchPendingTicketComponent,
     // Đạt
     DetailUserComponent, EditUserComponent,
     InputTicketSellComponent, DeleteTicketComponent, EditTicketComponent, PrintTicketComponent, ListTicketComponent,
@@ -42,9 +48,12 @@ import { VerificationEmailComponent } from './components/verification-email/veri
     ReactiveFormsModule,
     FormsModule
   ],
-  providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
-  ],
+  imports: [BrowserModule, AppRoutingModule, MaterialModule, HttpClientModule, FormsModule, MatDialogModule, ReactiveFormsModule],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule {

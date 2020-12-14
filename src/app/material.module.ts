@@ -6,8 +6,9 @@ import {MatInputModule} from '@angular/material/input';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
 import {MatSelectModule} from '@angular/material/select';
-import {MatDividerModule} from "@angular/material/divider";
-import {MatButtonModule} from "@angular/material/button";
+import {MatDividerModule} from '@angular/material/divider';
+import {MatButtonModule} from '@angular/material/button';
+import {CancelPendingTicketComponent} from "./components/list-pending-ticket/cancel-pending-ticket/cancel-pending-ticket.component";
 
 
 
@@ -39,6 +40,7 @@ import {MatButtonModule} from "@angular/material/button";
   ],
   providers: [
     MatDatepickerModule,
-  ]
+  ],
+  entryComponents: [CancelPendingTicketComponent]
 })
 export class MaterialModule { }

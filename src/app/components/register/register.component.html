@@ -1,11 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Title</title>
-</head>
-<body>
-<div class="container-fluid">
+<div class="container-fluid bg-white">
   <div class="row border" style="border-radius: 20px;">
     <div class="col-6"><img
       src="https://64.media.tumblr.com/844af3b050fc6c5705f648c8d3580049/tumblr_n567qpN1841qg20eyo1_500.jpg"
@@ -56,7 +49,7 @@
             <div class="col-8">
               <mat-form-field class="example-full-width">
                 <mat-label>Điện thoại</mat-label>
-                <input matInput>
+                <input matInput formControlName="phone">
               </mat-form-field>
             </div>
             <div class="col-2"></div>
@@ -66,7 +59,7 @@
             <div class="col-8">
               <mat-form-field class="example-full-width">
                 <mat-label>Họ và tên</mat-label>
-                <input matInput>
+                <input matInput formControlName="name">
               </mat-form-field>
             </div>
             <div class="col-2"></div>
@@ -76,7 +69,7 @@
             <div class="col-8">
               <mat-form-field>
                 <mat-label>Ngày sinh</mat-label>
-                <input matInput [matDatepicker]="picker">
+                <input matInput [matDatepicker]="picker" formControlName="birthday">
                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
               </mat-form-field>
@@ -88,7 +81,7 @@
             <div class="col-8">
               <mat-form-field class="example-full-width">
                 <mat-label>Địa chỉ</mat-label>
-                <textarea matInput cdkTextareaAutosize></textarea>
+                <textarea matInput cdkTextareaAutosize formControlName="address"></textarea>
               </mat-form-field>
             </div>
             <div class="col-2"></div>
@@ -98,9 +91,9 @@
             <div class="col-8">
               <mat-form-field>
                 <mat-label>Giới tính</mat-label>
-                <mat-select>
-                  <mat-option value="1">Nam</mat-option>
-                  <mat-option value="0">Nữ</mat-option>
+                <mat-select formControlName="gender">
+                  <mat-option value=true>Nam</mat-option>
+                  <mat-option value=false>Nữ</mat-option>
                 </mat-select>
               </mat-form-field>
               <div class="col-2"></div>
@@ -122,7 +115,4 @@
       </div>
     </div>
   </div>
-
 </div>
-</body>
-</html>
