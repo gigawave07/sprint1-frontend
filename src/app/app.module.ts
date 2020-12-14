@@ -12,6 +12,9 @@ import {FooterComponent} from './components/footer/footer.component';
 import { SendFeedbackComponent } from './components/send-feedback/send-feedback.component';
 import { MessUserComponent } from './components/mess-user/mess-user.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {MessageService} from './service/message.service';
+import {HttpClientModule} from '@angular/common/http';
+import { ConsultantComponent } from './components/consultant/consultant.component';
 
 
 @NgModule({
@@ -23,16 +26,18 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     NavBarComponent,
     FooterComponent,
     SendFeedbackComponent,
-    MessUserComponent
+    MessUserComponent,
+    ConsultantComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     MaterialModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -150,7 +150,8 @@ div .content-box {
 }
 
 div #icon-box{
-  margin-top: 160px;
+  z-index: 10;
+  bottom: 100px;
 }
 
 div #file-space{
@@ -176,4 +177,12 @@ div #file-space{
   border-left: 10px solid transparent;
   border-right: 2px solid transparent;
   border-top: 10px solid #62CFC1;
+}
+
+.chat-body {
+  z-index: 1;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  height: 275px;
+  width: 100%;
 }

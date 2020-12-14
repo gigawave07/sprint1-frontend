@@ -5,6 +5,7 @@ import {LoginComponent} from './components/login/login.component';
 import {RegisterComponent} from './components/register/register.component';
 import {MessUserComponent} from './components/mess-user/mess-user.component';
 import {SendFeedbackComponent} from './components/send-feedback/send-feedback.component';
+import {ConsultantComponent} from './components/consultant/consultant.component';
 
 
 const routes: Routes = [
@@ -13,6 +14,7 @@ const routes: Routes = [
   {path: 'register', component: RegisterComponent},
   {path: 'message', component: MessUserComponent},
   {path: 'sendFeedback', component: SendFeedbackComponent},
+  {path: 'consultant', component: ConsultantComponent},
 ];
 
 @NgModule({

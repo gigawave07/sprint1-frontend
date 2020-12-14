@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {ConsultantService} from '../../service/consultant.service';
 
 @Component({
   selector: 'app-login',
@@ -6,10 +7,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  private consultantStatus = false;
 
-  constructor() { }
+  constructor(private consultantService: ConsultantService) {
+  }
 
   ngOnInit() {
   }
 
+  setConsultant() {
+    console.log("đã nhấn");
+    this.consultantService.setConsultantStatus();
+  }
 }

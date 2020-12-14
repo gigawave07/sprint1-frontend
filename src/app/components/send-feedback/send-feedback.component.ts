@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {FeedbackService} from '../../service/feedback.service';
+
+declare var $: any;
 
 @Component({
   selector: 'app-send-feedback',
@@ -7,9 +11,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SendFeedbackComponent implements OnInit {
 
-  constructor() { }
+  formFeedBack: FormGroup;
 
-  ngOnInit(): void {
+  constructor(private fb: FormBuilder, private feedbackService: FeedbackService) {
   }
 
+  ngOnInit(): void {
+    this.formFeedBack = this.fb.group({
+      senderName: ['', Validators.required],
+      senderEmail: ['', [Validators.required, Validators.email]],
+      title: ['', Validators.required],
+      content: ['', Validators.required]
+    });
+
+    // tslint:disable-next-line:only-arrow-functions
+    $(document).ready(function() {
+      // tslint:disable-next-line:only-arrow-functions
+      $('#btn-submit-feedback-form').click(function() {
+        $('.content-textbox').val('');
+      });
+    });
+  }
+
+  public sendFeedBack() {
+    this.feedbackService.sendFeedBack(this.formFeedBack.value).subscribe(data => {
+    });
+  }
 }

@@ -24,3 +24,7 @@ div .focus-input:focus.focus-style {
   top: -20px;
   font-size: 14px;
 }
+
+.error-feedback-required{
+  color: red;
+}
