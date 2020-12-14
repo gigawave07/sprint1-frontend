@@ -25,7 +25,7 @@ export class MessUserComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private messageService: MessageService, private consultantService: ConsultantService) {
     // @ts-ignore
-    this.socket = io.Socket(this.uri);
+
   }
 
   ngOnInit() {
