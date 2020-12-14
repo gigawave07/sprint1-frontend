@@ -6,6 +6,7 @@ import {RegisterComponent} from './components/register/register.component';
 import {DeleteTicketComponent} from './components/delete-ticket/delete-ticket.component';
 import {ListTicketComponent} from './components/list-ticket/list-ticket.component';
 import {ListPendingTicketComponent} from './components/list-pending-ticket/list-pending-ticket/list-pending-ticket.component';
+import {SearchPendingTicketComponent} from './components/search-pending-ticket/search-pending-ticket/search-pending-ticket.component';
 
 
 const routes: Routes = [
@@ -17,7 +18,8 @@ const routes: Routes = [
   {path: 'deleteTicket', component: DeleteTicketComponent},
   {path: 'listTicket', component: ListTicketComponent},
     // Đăng:
-  {path: 'listPendingTicket', component: ListPendingTicketComponent},
+  {path: 'list-pending-ticket', component: ListPendingTicketComponent},
+  {path: 'search-pending-ticket', component: SearchPendingTicketComponent},
 ];
 
 @NgModule({
