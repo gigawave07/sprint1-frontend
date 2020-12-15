@@ -22,6 +22,8 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { SearchPendingTicketComponent } from './components/search-pending-ticket/search-pending-ticket/search-pending-ticket.component';
 import {VerificationEmailComponent} from './components/verification-email/verification-email.component';
 import { AuthInterceptor } from './service/AuthInterceptor';
+import { SpinnerComponent } from './components/spinner/spinner.component';
+import { SpinnerOverlayComponent } from './components/spinner-overlay/spinner-overlay.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,7 @@ import { AuthInterceptor } from './service/AuthInterceptor';
     // Châu
     InputTicketSellComponent, DeleteTicketComponent, EditTicketComponent, PrintTicketComponent, ListTicketComponent,
       // Đăng
-    ListPendingTicketComponent, CancelPendingTicketComponent, SearchPendingTicketComponent,
+    ListPendingTicketComponent, CancelPendingTicketComponent, SearchPendingTicketComponent, SpinnerComponent, SpinnerOverlayComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, MaterialModule, HttpClientModule, FormsModule, MatDialogModule, ReactiveFormsModule],
   providers: [{
@@ -39,7 +41,8 @@ import { AuthInterceptor } from './service/AuthInterceptor';
     useClass: AuthInterceptor,
     multi: true
   }],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [SpinnerOverlayComponent]
 })
 export class AppModule {
 }
