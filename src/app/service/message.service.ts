@@ -7,6 +7,11 @@ import {Observable} from 'rxjs';
 })
 export class MessageService {
 
+  private consultantSend = false;
+  private userSend = false;
+  private listUser = false;
+
+
   private baseUrl = 'http://localhost:8080/';
 
   constructor(private http: HttpClient) {
@@ -22,5 +27,29 @@ export class MessageService {
 
   public getMess(room: string): Observable<any> {
     return this.http.get(this.baseUrl + 'mess-user/' + room);
+  }
+
+  public setConsultantSend(status: boolean) {
+    this.consultantSend = status;
+  }
+
+  public getConsultantSend() {
+    return this.consultantSend;
+  }
+
+  public setUserSend(status: boolean) {
+    this.userSend = status;
+  }
+
+  public getUserSend() {
+    return this.userSend;
+  }
+
+  public setListUserStatus(status: boolean) {
+    this.listUser = status;
+  }
+
+  public getListUserStatus() {
+    return this.listUser;
   }
 }

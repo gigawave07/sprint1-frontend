@@ -25,17 +25,12 @@ div #content-mess-body {
   height: 300px
 }
 
-div #chat-option {
-  height: 53px;
-}
+
 
 .content-mess:focus {
   border: none;
 }
 
-#content-chat-cons {
-  width: 90vh;
-}
 
 #mess-user {
   height: 70px;

@@ -9,15 +9,17 @@ import {RegisterComponent} from './components/register/register.component';
 import {MaterialModule} from './material.module';
 import {NavBarComponent} from './components/nav-bar/nav-bar.component';
 import {FooterComponent} from './components/footer/footer.component';
-import { SendFeedbackComponent } from './components/send-feedback/send-feedback.component';
-import { MessUserComponent } from './components/mess-user/mess-user.component';
+import {SendFeedbackComponent} from './components/send-feedback/send-feedback.component';
+import {MessUserComponent} from './components/mess-user/mess-user.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MessageService} from './service/message.service';
 import {HttpClientModule} from '@angular/common/http';
-import { ConsultantComponent } from './components/consultant/consultant.component';
+import {ConsultantComponent} from './components/consultant/consultant.component';
 import {FeedbackService} from './service/feedback.service';
 import {UserMessService} from './service/user-mess.service';
-import { MessageConsultantComponent } from './components/consultant/message-consultant/message-consultant.component';
+import {MessageConsultantComponent} from './components/consultant/message-consultant/message-consultant.component';
+
+
 
 
 @NgModule({

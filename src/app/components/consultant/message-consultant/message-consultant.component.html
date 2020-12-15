@@ -1,9 +1,33 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="col-lg-12" id="body-chat-consultant">
+    <div class="col-lg-9" id="body-chat-consultant">
       <div *ngFor="let mess of listMessage">
         <div *ngIf="!mess.isUser" align="right"><span class="mess-consultant">{{mess.content}}</span></div>
         <div *ngIf="mess.isUser" align="left"><span class="mess-from-user">{{mess.content}}</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-9">
+      <div id="chat-option">
+        <form (ngSubmit)="sendMess()" [formGroup]="formSendMess">
+          <div class="input-group form-inline" id="input-inline">
+            <input formControlName="content" class="form-control form-control-lg" type="text"
+                   placeholder="Type message ..." id="content-chat-cons">
+            <span class="input-group-btn ml-1 mt-1">
+              <i class="fas fa-paperclip"></i>
+            </span>
+            <span class="input-group-btn ml-1 mt-1">
+              <i class="fas fa-kiss-wink-heart"></i>
+            </span>
+
+            <button [disabled]="formSendMess.controls.content.errors?.required" type="submit"
+                    class="input-group-btn ml-1 mt-1" id="submit-consultant">
+              <i class="fas fa-paper-plane icon-option"></i>
+            </button>
+
+          </div>
+        </form>
       </div>
     </div>
   </div>

@@ -12,3 +12,17 @@
 .mess-from-user{
   color: red;
 }
+
+div #chat-option {
+  height: 53px;
+}
+
+div #input-inline {
+  margin-left: 0px;
+  margin-top: 23px;
+}
+
+
+#content-chat-cons {
+  width: 90vh;
+}

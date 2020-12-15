@@ -1,8 +1,8 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {MessageService} from '../../service/message.service';
 import {ConsultantService} from '../../service/consultant.service';
-import * as io from 'socket.io-client';
+
 declare var $: any;
 
 @Component({
@@ -12,32 +12,31 @@ declare var $: any;
 })
 export class MessUserComponent implements OnInit {
 
-  socket: any;
-
-  readonly uri: string = 'http://localhost:8080';
 
   public isRequest = false;
   public listMess = [];
   public room: string;
-
   formSend: FormGroup;
   formSendRequest: FormGroup;
 
   constructor(private fb: FormBuilder, private messageService: MessageService, private consultantService: ConsultantService) {
-    // @ts-ignore
 
   }
 
   ngOnInit() {
-
     this.loadMess();
+    setInterval(() => {
+      if (this.messageService.getConsultantSend()) {
+        this.loadMess();
+        this.messageService.setConsultantSend(false);
+      }
+    }, 500);
 
     this.formSendRequest = this.fb.group({
       name: '',
       email: '',
       phone: ''
     });
-
     this.formSend = this.fb.group({
       id: '',
       content: ['', Validators.required],
@@ -46,10 +45,8 @@ export class MessUserComponent implements OnInit {
       sendDate: '',
       status: '0',
     });
-
     // tslint:disable-next-line:only-arrow-functions
     $(document).ready(function() {
-
       if ($('#is-request').val() !== 'true') {
         // tslint:disable-next-line:only-arrow-functions
         $('.openChatBtn').click(function() {
@@ -59,7 +56,6 @@ export class MessUserComponent implements OnInit {
       } else {
         $('.openChatBtn').show();
       }
-
       // tslint:disable-next-line:only-arrow-functions
       $('.close').click(function() {
         $('.openChat').hide();
@@ -78,7 +74,6 @@ export class MessUserComponent implements OnInit {
         $('#icon').click(function() {
           $('#icon-box').toggle('500');
         }),
-
         // tslint:disable-next-line:only-arrow-functions
         $('#icon-upload-file').click(function() {
           $('#file-upload')[0].click();
@@ -91,10 +86,12 @@ export class MessUserComponent implements OnInit {
   }
 
   sendMessage() {
+
     if (this.formSend.value.content !== '') {
       this.formSend.value.roomId = this.room;
       this.messageService.sendMess(this.formSend.value).subscribe(data => {
         this.formSend.value.content = '';
+        this.messageService.setUserSend(true);
         this.loadMess();
       });
     }
@@ -104,6 +101,7 @@ export class MessUserComponent implements OnInit {
     this.messageService.sendRequestChat(this.formSendRequest.value).subscribe(data => {
       this.isRequest = true;
       this.room = data;
+      this.messageService.setListUserStatus(true);
     });
   }
 
@@ -113,7 +111,5 @@ export class MessUserComponent implements OnInit {
         this.listMess = data;
       });
     }
-
   }
-
 }
