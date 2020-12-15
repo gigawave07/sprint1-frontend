@@ -1,22 +1,18 @@
 form {
-  margin-left: 16%;
+  margin-left: 15%;
+  width: 95%;
 }
 
-h3 {
-  text-align: center;
-}
-
-hr {
-  border: 1px solid;
+p {
+  margin: 0 0 0 0;
+  padding: 0 0 0 0;
 }
 
 span {
   color: blue;
-  font-weight: bold;
 }
 
 .back {
-  margin-left: 25%;
   margin-top: 3%;
   background-color: grey;
   color: white;
@@ -43,4 +39,16 @@ span {
 
 .accept:hover {
   background-color: black;
+}
+
+.bookingCode {
+  margin-left: 5%;
+}
+
+.flight {
+  margin-left: 4.5%;
+}
+
+.departureDate {
+  margin-left: 9.5%;
 }

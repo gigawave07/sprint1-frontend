@@ -1,6 +1,6 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
-import {TicketService} from "../../service/ticket/ticket.service";
+import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
+import {TicketService} from '../../service/ticket/ticket.service';
 
 @Component({
   selector: 'app-delete-ticket',
@@ -8,21 +8,23 @@ import {TicketService} from "../../service/ticket/ticket.service";
   styleUrls: ['./delete-ticket.component.css']
 })
 export class DeleteTicketComponent implements OnInit {
-  private idDelete: any;
+  protected ticket;
+  protected idDelete: any;
 
   constructor(
-    // public dialogRef: MatDialogRef<DeleteTicketComponent>,
-    // @Inject(MAT_DIALOG_DATA) public data: any,
+    protected dialogRef: MatDialogRef<DeleteTicketComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any,
     private ticketService: TicketService
   ) { }
 
   ngOnInit() {
-    this.idDelete = 3;
+    this.ticket = this.data.dataTicket;
+    this.idDelete = this.data.dataTicket.id;
   }
 
   delete() {
     this.ticketService.deleteTicketService(this.idDelete).subscribe(data => {
-      // this.dialogRef.close();
+      this.dialogRef.close();
     });
   }
 }
