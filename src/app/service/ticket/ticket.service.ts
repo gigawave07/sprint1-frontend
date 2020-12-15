@@ -26,7 +26,7 @@ export class TicketService {
 
   // Đăng
   findAllPendingTicket(): Observable<any> {
-    return this.http.get(this.API + '/list/pending');
+    return this.http.get(this.API + '/list-pending');
   }
 
   cancelPendingTicket(id, ticket): Observable<any> {

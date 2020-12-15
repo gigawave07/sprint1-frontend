@@ -17,14 +17,14 @@
         <li class="list-inline-item dropdown show">
           <a class="dropdown-toggle nav-link p-0" href="#"
              id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <span>{{username}}</span>
+            <span><i class="fa fa-user p-1"></i>{{username}}</span>
           </a>
 
           <div class="dropdown-menu dropdown-menu-right"
                aria-labelledby="dropdownMenuLink">
             <a class="dropdown-item" href="#" id="changePassword" data-toggle="modal"
                data-target="#changePasswordModal">Đổi mật khẩu</a>
-            <a class="dropdown-item" href="#" id="accountDetails">Thông tin tài khoản</a>
+            <a class="dropdown-item" href="#" id="accountDetails" routerLink="/list-pending-ticket">Thông tin tài khoản</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#" (click)="logout()">Đăng xuất</a>
           </div>
@@ -40,10 +40,10 @@
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav ml-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="#">TRANG CHỦ <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="#" routerLink="/">TRANG CHỦ <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item border-left">
-        <a class="nav-link" href="#">TIN KHUYẾN MÃI</a>
+        <a class="nav-link" href="#" (click)="hello()">TIN KHUYẾN MÃI</a>
       </li>
       <li class="nav-item border-left">
         <a class="nav-link" href="#">GIỚI THIỆU</a>
