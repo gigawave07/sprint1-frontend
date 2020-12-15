@@ -1,17 +1,15 @@
-
-
 <div class="row px-0 mx-0">
   <div class="col-2 px-0 mt-5">
     <ul class="list-group border border-primary rounded h-100">
       <li class="list-group-item active">Thông tin cá nhân </li>
       <li class="list-group-item">Thanh toán</li>
       <li class="list-group-item">Lịch sử giao dịch</li>
-      <li class="list-group-item">Đổi mật khẩu</li>
+      <li class="list-group-item" >Đổi mật khẩu</li>
     </ul>
   </div>
   <div class="col-10 p-3">
     <div class="container-fluid p-5 d-flex justify-content-center ">
-      <form class="mt-2 form-inline w-75" [formGroup]="infoForm" (ngSubmit)="submit()">
+      <form class="mt-2 form-inline w-75" [formGroup]="infoForm">
         <div class="container-fluid row col-lg-12 col-md-12">
           <div class="col-lg-8 col-md-8">
             <h3 class="text-center">Xem Thông Tin Cá Nhân</h3>
@@ -25,28 +23,27 @@
             </div>
             <div class=" form-group mt-4">
               <label class="col-lg-3 col-md-3 d-flex justify-content-start">Địa chỉ <span style="color: red" >(*)</span>:</label>
-              <textarea type="text" class="col-lg-9 col-md-9 form-control form-control-sm" readonly></textarea>
+              <textarea type="text" class="col-lg-9 col-md-9 form-control form-control-sm" formControlName="address" readonly></textarea>
             </div>
             <div class=" form-group mt-4">
               <label class="col-lg-3 col-md-3 d-flex justify-content-start">Email <span style="color: red" >(*)</span>:</label>
-              <input type="text" class="col-lg-9 col-md-9 form-control form-control-sm" readonly>
+              <input type="text" class="col-lg-9 col-md-9 form-control form-control-sm" formControlName="email" readonly>
             </div>
             <div class=" form-group mt-4">
               <label class="col-lg-3 col-md-3 justify-content-start">Giới tính <span style="color: red" >(*)</span>:</label>
-              <input *ngIf="infoForm.controls.gender.value" type="text" class="col-lg-9 col-md-9 form-control form-control-sm" readonly value="Nam" formControlName="gender">
-              <input *ngIf="!infoForm.controls.gender.value" type="text" class="col-lg-9 col-md-9 form-control form-control-sm" readonly value="Nữ" formControlName="gender">
+              <input *ngIf="infoForm.value.gender==true" type="text" class="col-lg-9 col-md-9 form-control form-control-sm" readonly [value]="'Nam'" formControlName="gender">
+              <input *ngIf="infoForm.value.gender==false" type="text" class="col-lg-9 col-md-9 form-control form-control-sm" readonly [value]="'Nữ'" formControlName="gender">
             </div>
             <div class=" form-group mt-4">
               <label class="col-lg-3 col-md-3  justify-content-start">Điện thoại <span style="color: red" >(*)</span>:</label>
-              <input type="text" class="col-lg-9 col-md-9 form-control form-control-sm" readonly>
+              <input type="text" class="col-lg-9 col-md-9 form-control form-control-sm" formControlName="phoneNumber" readonly>
             </div>
             <div class=" form-group mt-4">
               <label class="col-lg-3 col-md-3  justify-content-start">Xếp hạng :</label>
-              <input type="text" class="col-lg-9 col-md-9 form-control form-control-sm" readonly>
+              <input type="text" class="col-lg-9 col-md-9 form-control form-control-sm" formControlName="userRank" readonly>
             </div>
             <div class="mt-4 d-flex justify-content-end">
-              <button type="button" role="button" class="btn btn-warning btn-sm" style="width: 80px"
-                      data-toggle="modal" data-target="#exampleModal">Chỉnh sửa</button>
+              <button type="button" role="button" class="btn btn-warning btn-sm" style="width: 80px" (click)="openDialogEdit()">Chỉnh sửa</button>
             </div>
           </div>
           <div class="col-lg-4 col-md-4 mt-5">

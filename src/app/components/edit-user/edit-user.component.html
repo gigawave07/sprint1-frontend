@@ -1,0 +1,56 @@
+<div class="modal-body">
+  <form class="container-fluid col-lg-12 col-md-12 " [formGroup]="formEdit">
+    <h3 class="text-center">Chỉnh Sửa Thông Tin</h3>
+    <div class="d-flex form-group mt-4">
+      <label class="col-lg-3 col-md-3 ">Tên <span style="color: red" >(*)</span>:</label>
+      <input type="text" class="col-lg-9 col-md-9 form-control form-control-sm" formControlName="fullName">
+<!--      <p  *ngIf="formEdit.get('fullName').invalid && formEdit.get('fullName').touched"></p>-->
+    </div>
+    <div class="d-flex form-group mt-4">
+      <label class="col-lg-3 col-md-3">Ngày sinh <span style="color: red" >(*)</span>:</label>
+      <input type="date" class="col-lg-9 col-md-9 form-control form-control-sm" formControlName="birthday">
+<!--      <p  *ngIf="formEdit.get('birthday').invalid && formEdit.get('birthday').touched"></p>-->
+    </div>
+    <div class=" d-flex form-group mt-4">
+      <label class="col-lg-3 col-md-3">Địa chỉ <span style="color: red" >(*)</span>:</label>
+      <textarea type="text" class="col-lg-9 col-md-9 form-control form-control-sm "
+                formControlName="address"></textarea>
+<!--      <p  *ngIf="formEdit.get('address').invalid && formEdit.get('address').touched"></p>-->
+    </div>
+    <div class="d-flex form-group mt-4">
+      <label class="col-lg-3 col-md-3">Email <span style="color: red" >(*)</span>:</label>
+      <input type="text" class="col-lg-9 col-md-9 form-control form-control-sm" formControlName="email">
+<!--      <p  *ngIf="formEdit.get('email').invalid && formEdit.get('email').touched"></p>-->
+    </div>
+    <div class="d-flex form-group mt-4">
+      <label class="col-lg-3 col-md-3 ">Giới tính <span style="color: red" >(*)</span>:</label>
+      <div class="col-lg-9 col-md-9 d-flex justify-content-start">
+        <div class="radio 4">
+          <input id="radio-1" name="radio" type="radio">
+          <label for="radio-1" class="radio-label">Nam</label>
+        </div>
+        <div class="radio ml-4 ">
+          <input id="radio-2" name="radio" type="radio">
+          <label for="radio-2" class="radio-label">Nữ</label>
+        </div>
+        <div class="radio ml-4">
+          <input id="radio-3" name="radio" type="radio">
+          <label for="radio-3" class="radio-label">Khác</label>
+        </div>
+      </div>
+    </div>
+    <div class="d-flex form-group mt-4">
+      <label class="col-lg-3 col-md-3 ">Điện thoại <span style="color: red" >(*)</span>:</label>
+      <input type="text" class="col-lg-9 col-md-9 form-control form-control-sm " formControlName="phoneNumber">
+<!--      <p  *ngIf="formEdit.get('phoneNumber').invalid && formEdit.get('phoneNumber').touched"></p>-->
+    </div>
+    <div class="d-flex form-group mt-4">
+      <label class="col-lg-3 col-md-3 ">Ảnh đại diện</label>
+      <input type="file" class="col-lg-9 col-md-9 form-control-sm mr-3">
+    </div>
+  </form>
+  <div class="modal-footer">
+    <button class="btn btn-secondary btn-sm" mat-dialog-close="/">Hủy</button>
+    <button class="btn btn-warning btn-sm" (click)="editUser()">Sửa Thông Tin</button>
+  </div>
+</div>

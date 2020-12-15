@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 
@@ -7,18 +7,27 @@ import {Observable} from 'rxjs';
   providedIn: 'root'
 })
 export class UserService {
-  public readonly API: string = 'http://localhost:8080/user/detail';
+  public readonly API: string = 'http://localhost:8080/user';
+  public readonly API_USER: string = 'http://localhost:8080/change';
 
   constructor(
-    private http: HttpClient
-  ) {}
+    private http: HttpClient,
+  ) {
+  }
+
   getAllUser(): Observable<any> {
     return this.http.get(this.API);
   }
+
   getUserById(userId): Observable<any> {
-    return this.http.get(this.API + '/' + userId);
+    return this.http.get(this.API + '/detail/' + userId);
   }
-  editUser(user, userId) {
-    return this.http.put(this.API + '/' + userId, user);
+
+  editUser(idUser, user): Observable<any> {
+    return this.http.put(this.API + '/edit/' + idUser, user);
+  }
+
+  changePassword(idUser, password): Observable<any> {
+    return this.http.put(this.API_USER + '/' + idUser + '/password', password);
   }
 }

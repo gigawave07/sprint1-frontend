@@ -24,6 +24,7 @@ import {VerificationEmailComponent} from './components/verification-email/verifi
 import { AuthInterceptor } from './service/AuthInterceptor';
 import { DetailUserComponent } from './components/detail-user/detail-user.component';
 import { EditUserComponent } from './components/edit-user/edit-user.component';
+import { ChangePasswordUserComponent } from './components/change-password-user/change-password-user.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,7 @@ import { EditUserComponent } from './components/edit-user/edit-user.component';
     ListPendingTicketComponent, CancelPendingTicketComponent, SearchPendingTicketComponent,
     // Đạt
     DetailUserComponent, EditUserComponent,
-    InputTicketSellComponent, DeleteTicketComponent, EditTicketComponent, PrintTicketComponent, ListTicketComponent,
+    InputTicketSellComponent, DeleteTicketComponent, EditTicketComponent, PrintTicketComponent, ListTicketComponent, ChangePasswordUserComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, MaterialModule, HttpClientModule, FormsModule, MatDialogModule, ReactiveFormsModule],
   providers: [{

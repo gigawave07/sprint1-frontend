@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {JwtStorageService} from '../../service/jwt-storage.service';
 import {LoginService} from '../../service/login.service';
+import {ChangePasswordUserComponent} from '../change-password-user/change-password-user.component';
+import {MatDialog} from '@angular/material';
 
 @Component({
   selector: 'app-nav-bar',
@@ -11,7 +13,8 @@ export class NavBarComponent implements OnInit {
   username;
 
   constructor(public loginService: LoginService,
-              public jwtStorageService: JwtStorageService) {
+              public jwtStorageService: JwtStorageService,
+              public dialog: MatDialog) {
   }
 
   ngOnInit() {
@@ -31,6 +34,17 @@ export class NavBarComponent implements OnInit {
   hello() {
     this.loginService.hello().subscribe(data => {
       alert(this.loginService.currentUserValue.id);
+    });
+  }
+
+  openDialogChangePassword() {
+    const dialogRef = this.dialog.open(ChangePasswordUserComponent, {
+      width: '740px',
+      height: '320px',
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.ngOnInit();
     });
   }
 }
