@@ -8,16 +8,16 @@
       </ul>
     </div>
     <div class="col-6 d-flex align-items-center" style="padding-right: 100px">
-      <ul class="list-inline ml-auto" *ngIf="!username">
+      <ul class="list-inline ml-auto" *ngIf="!currentUser">
         <li class="list-inline-item pr-2"><i class="fa fa-lock p-1"></i><a routerLink="/login">Đăng nhập</a> </li>
         <li class="list-inline-item"><i class="fa fa-plus p-1"></i><a routerLink="/register"> Đăng kí</a></li>
       </ul>
 
-      <ul class="list-inline ml-auto" *ngIf="username">
+      <ul class="list-inline ml-auto" *ngIf="currentUser">
         <li class="list-inline-item dropdown show">
           <a class="dropdown-toggle nav-link p-0" href="#"
              id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <span><i class="fa fa-user p-1"></i>{{username}}</span>
+            <span><i class="fa fa-user p-1"></i>{{currentUser.username}}</span>
           </a>
 
           <div class="dropdown-menu dropdown-menu-right"

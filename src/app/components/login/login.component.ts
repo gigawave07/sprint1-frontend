@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {LoginService} from '../../service/login.service';
-import {JwtStorageService} from '../../service/jwt-storage.service';
 import {Router} from '@angular/router';
 
 @Component({
@@ -16,7 +15,6 @@ export class LoginComponent implements OnInit {
 
   constructor(public formBuilder: FormBuilder,
               public loginService: LoginService,
-              public jwtStorageService: JwtStorageService,
               public router: Router,
   ) {
   }
@@ -37,11 +35,7 @@ export class LoginComponent implements OnInit {
       if (data.message) {
         this.message = data.message;
       } else {
-        this.jwtStorageService.user = this.user;
-        this.jwtStorageService.token = data.token;
-        this.jwtStorageService.isAuthenticated = true;
-        this.loginService.broadcastLoginChange(this.user.username);
-
+        this.loginService.broadcastLoginChange(this.user);
         this.router.navigateByUrl('');
       }
     }, error => {
