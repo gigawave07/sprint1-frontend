@@ -8,6 +8,7 @@ import {ListTicketComponent} from './components/list-ticket/list-ticket.componen
 import {VerificationEmailComponent} from './components/verification-email/verification-email.component';
 import {ListPendingTicketComponent} from './components/list-pending-ticket/list-pending-ticket/list-pending-ticket.component';
 import {SearchPendingTicketComponent} from './components/search-pending-ticket/search-pending-ticket/search-pending-ticket.component';
+import {BaoCaoComponentComponent} from "./components/report-statistic/bao-cao-thong-ke/bao-cao/bao-cao-component/bao-cao-component.component";
 
 
 const routes: Routes = [
@@ -22,6 +23,8 @@ const routes: Routes = [
     // Đăng:
   {path: 'list-pending-ticket', component: ListPendingTicketComponent},
   {path: 'search-pending-ticket', component: SearchPendingTicketComponent},
+  // Nhật
+  {path: 'report', component: BaoCaoComponentComponent},
 ];
 
 @NgModule({

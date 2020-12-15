@@ -22,7 +22,19 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { SearchPendingTicketComponent } from './components/search-pending-ticket/search-pending-ticket/search-pending-ticket.component';
 import {VerificationEmailComponent} from './components/verification-email/verification-email.component';
 import { AuthInterceptor } from './service/AuthInterceptor';
+import {TrangChinhComponent} from './components/report-statistic/bao-cao-thong-ke/trang-chinh/trang-chinh.component';
+// tslint:disable-next-line:max-line-length
+import {BaoCaoComponentComponent} from './components/report-statistic/bao-cao-thong-ke/bao-cao/bao-cao-component/bao-cao-component.component';
+import {TrangChuThongKeComponent} from './components/report-statistic/bao-cao-thong-ke/thong-ke/demo/trang-chu-thong-ke.component';
+import {KetQuaComponent} from './components/report-statistic/bao-cao-thong-ke/thong-ke/ket-qua/ket-qua/ket-qua.component';
+import {KetQuaTableComponent} from './components/report-statistic/bao-cao-thong-ke/thong-ke/ket-qua/ket-qua-table/ket-qua-table.component';
+// tslint:disable-next-line:max-line-length
+import {KetQuaSaiLogicComponent} from './components/report-statistic/bao-cao-thong-ke/thong-ke/ket-qua/ket-qua-sai-logic/ket-qua-sai-logic.component';
+import {ChartsModule} from 'ng2-charts';
+import {ExcelService} from './components/report-statistic/service/excel.service';
 
+// @ts-ignore
+// @ts-ignore
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,13 +44,22 @@ import { AuthInterceptor } from './service/AuthInterceptor';
     InputTicketSellComponent, DeleteTicketComponent, EditTicketComponent, PrintTicketComponent, ListTicketComponent,
       // Đăng
     ListPendingTicketComponent, CancelPendingTicketComponent, SearchPendingTicketComponent,
+    // Nhật
+    TrangChinhComponent, BaoCaoComponentComponent, TrangChuThongKeComponent,
+    KetQuaComponent, KetQuaTableComponent, KetQuaSaiLogicComponent
   ],
-  imports: [BrowserModule, AppRoutingModule, MaterialModule, HttpClientModule, FormsModule, MatDialogModule, ReactiveFormsModule],
+  // tslint:disable-next-line:max-line-length
+  imports: [BrowserModule, AppRoutingModule, MaterialModule, HttpClientModule, FormsModule, MatDialogModule, ReactiveFormsModule,
+    ReactiveFormsModule, ChartsModule
+  ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptor,
     multi: true
-  }],
+  }, ExcelService
+  ],
+  entryComponents: [TrangChinhComponent, BaoCaoComponentComponent, TrangChuThongKeComponent,
+    KetQuaComponent, KetQuaTableComponent, KetQuaSaiLogicComponent ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
