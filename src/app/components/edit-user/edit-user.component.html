@@ -6,9 +6,14 @@
       <input type="text" class="col-lg-9 col-md-9 form-control form-control-sm" formControlName="fullName">
 <!--      <p  *ngIf="formEdit.get('fullName').invalid && formEdit.get('fullName').touched"></p>-->
     </div>
-    <div class="d-flex form-group mt-4">
+    <div class=" form-group">
       <label class="col-lg-3 col-md-3">Ngày sinh <span style="color: red" >(*)</span>:</label>
-      <input type="date" class="col-lg-9 col-md-9 form-control form-control-sm" formControlName="birthday">
+      <mat-form-field>
+        <input class="col-lg-9 col-md-9 form-control form-control-sm" type="text" formControlName="birthday" matInput [matDatepicker]="myDatepicker">
+        <mat-datepicker-toggle matSuffix [for]="myDatepicker"></mat-datepicker-toggle>
+        <mat-datepicker #myDatepicker></mat-datepicker>
+      </mat-form-field>
+<!--      <input type="date" class="col-lg-9 col-md-9 form-control form-control-sm" formControlName="birthday">-->
 <!--      <p  *ngIf="formEdit.get('birthday').invalid && formEdit.get('birthday').touched"></p>-->
     </div>
     <div class=" d-flex form-group mt-4">
