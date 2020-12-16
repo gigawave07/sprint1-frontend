@@ -139,8 +139,9 @@ div .content-box {
 }
 
 #icon-message {
-  color: blue;
-  font-size: 60px;
+width: 60px;
+  height: 60px;
+  border-radius: 30px;
 }
 
 .begin-chat {
@@ -185,4 +186,9 @@ div #file-space{
   overflow-y: scroll;
   height: 275px;
   width: 100%;
+}
+
+.input-request{
+  float: left;
+  color: red;
 }

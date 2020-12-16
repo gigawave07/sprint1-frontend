@@ -1,5 +1,6 @@
-<div class="openChatBtn" id="icon-message"><img
-  src="https://d1l7z5ofrj6ab8.cloudfront.net/v2/visitor/widget-ea426517c505ff543b6fe04b9be6ffbd.html"></div>
+<div class="openChatBtn"><img id="icon-message"
+                              src="https://scontent.fdad3-1.fna.fbcdn.net/v/t1.0-9/131144583_844630892994262_8101579904925843981_n.jpg?_nc_cat=103&ccb=2&_nc_sid=730e14&_nc_ohc=s-3GXUOQTrkAX_uL2aR&_nc_ht=scontent.fdad3-1.fna&oh=13c188f963280008e1767d81125eeecf&oe=5FFD83A7">
+</div>
 <div class="requiredChat container-fluid">
   <div class="row">
     <div class="col-lg-12 header-openChat">
@@ -12,10 +13,26 @@
         <form (ngSubmit)="sendRequest()" [formGroup]="formSendRequest">
           <input id="content-name" class="form-control mt-3" type="text" placeholder="*Tên" formControlName="name"
                  required>
+          <small class="input-request"
+            *ngIf="formSendRequest.controls.name?.touched && formSendRequest.controls.name?.errors?.required">
+            Hãy nhập tên của bạn vào
+          </small>
           <input id="content-email" class="form-control mt-3" type="email" placeholder="*Email" formControlName="email"
                  required>
+          <small class="input-request"
+            *ngIf="formSendRequest.controls.email?.touched && formSendRequest.controls.email?.errors?.required">
+            Hãy nhập email của bạn vào
+          </small>
+          <small class="input-request"
+            *ngIf="formSendRequest.controls.email?.touched && formSendRequest.controls.email?.errors?.email">
+            Hãy nhập đúng định dạng email
+          </small>
           <input id="content-phone" class="form-control mt-3" type="text" placeholder="*Số điện thoại"
-                 formControlName="phone" required><br>
+                 formControlName="phone" required>
+          <small class="input-request"
+            *ngIf="formSendRequest.controls.phone?.touched && formSendRequest.controls.phone?.errors?.required">
+            Hãy nhập số điện thoại của bạn vào
+          </small><br>
           <button [disabled]="formSendRequest.invalid" class=" form-control begin-chat">Bắt đầu trò chuyện</button>
         </form>
       </div>
@@ -36,113 +53,113 @@
             <span>{{mess.content}}</span><br>
           </div>
         </div>
-        <div class="row" id="icon-box">
-          <div class="col-lg-1">
-            <img src="https://static.xx.fbcdn.net/images/emoji.php/v9/taf/1/28/1f600.png"/>
-          </div>
-          <div class="col-lg-1">
-            <img src="https://static.xx.fbcdn.net/images/emoji.php/v9/t32/1/28/1f603.png"/>
-          </div>
-          <div class="col-lg-1">
-            <img src="https://static.xx.fbcdn.net/images/emoji.php/v9/tb3/1/28/1f604.png"/>
-          </div>
-          <div class="col-lg-1">
-            <img src="https://static.xx.fbcdn.net/images/emoji.php/v9/t30/1/28/1f601.png"/>
-          </div>
-          <div class="col-lg-1">
-            <img src="https://static.xx.fbcdn.net/images/emoji.php/v9/tb5/1/28/1f606.png"/>
-          </div>
-          <div class="col-lg-1">
-            <img src="https://static.xx.fbcdn.net/images/emoji.php/v9/t34/1/28/1f605.png"/>
-          </div>
-          <div class="col-lg-1">
-            <img src="https://static.xx.fbcdn.net/images/emoji.php/v9/tb1/1/28/1f602.png"/>
-          </div>
-          <div class="col-lg-1">
-            <img src="https://static.xx.fbcdn.net/images/emoji.php/v9/t33/1/28/1f923.png"/>
-          </div>
-          <div class="col-lg-1">
-            <img src="https://static.xx.fbcdn.net/images/emoji.php/v9/tfa/1/28/263a.png"/>
-          </div>
-          <div class="col-lg-1">
-            <img src="https://static.xx.fbcdn.net/images/emoji.php/v9/t60/1/28/1f60a.png"/>
-          </div>
-          <div class="col-lg-1">
-            <img src="https://static.xx.fbcdn.net/images/emoji.php/v9/t36/1/28/1f607.png"/>
-          </div>
-          <div class="col-lg-1">
-            <img src="https://static.xx.fbcdn.net/images/emoji.php/v9/t2d/1/28/1f642.png"/>
-          </div>
-          <div class="col-lg-1">
-            <img src="https://static.xx.fbcdn.net/images/emoji.php/v9/tae/1/28/1f643.png"/>
-          </div>
-          <div class="col-lg-1">
-            <img src="https://static.xx.fbcdn.net/images/emoji.php/v9/t38/1/28/1f609.png"/>
-          </div>
-          <div class="col-lg-1">
-            <img src="https://static.xx.fbcdn.net/images/emoji.php/v9/t62/1/28/1f60c.png"/>
-          </div>
-          <div class="col-lg-1">
-            <img src="https://static.xx.fbcdn.net/images/emoji.php/v9/te3/1/28/1f60d.png"/>
-          </div>
-          <div class="col-lg-1">
-            <img src="https://static.xx.fbcdn.net/images/emoji.php/v9/tcb/1/28/1f970.png"/>
-          </div>
-          <div class="col-lg-1">
-            <img src="https://static.xx.fbcdn.net/images/emoji.php/v9/t56/1/28/1f618.png"/>
-          </div>
-          <div class="col-lg-1">
-            <img src="https://static.xx.fbcdn.net/images/emoji.php/v9/td5/1/28/1f617.png"/>
-          </div>
-          <div class="col-lg-1">
-            <img src="https://static.xx.fbcdn.net/images/emoji.php/v9/td7/1/28/1f619.png"/>
-          </div>
-          <div class="col-lg-1">
-            <img src="https://static.xx.fbcdn.net/images/emoji.php/v9/tff/1/28/1f61a.png"/>
-          </div>
-          <div class="col-lg-1">
-            <img src="https://static.xx.fbcdn.net/images/emoji.php/v9/te1/1/28/1f60b.png"/>
-          </div>
-          <div class="col-lg-1">
-            <img src="https://static.xx.fbcdn.net/images/emoji.php/v9/t80/1/28/1f61b.png"/>
-          </div>
-          <div class="col-lg-1">
-            <img src="https://static.xx.fbcdn.net/images/emoji.php/v9/t82/1/28/1f61d.png"/>
-          </div>
-          <div class="col-lg-1">
-            <img src="https://static.xx.fbcdn.net/images/emoji.php/v9/t1/1/28/1f61c.png"/>
-          </div>
-          <div class="col-lg-1">
-            <img src="https://static.xx.fbcdn.net/images/emoji.php/v9/t61/1/28/1f92a.png"/>
-          </div>
-          <div class="col-lg-1">
-            <img src="https://static.xx.fbcdn.net/images/emoji.php/v9/tb8/1/28/1f928.png"/>
-          </div>
-          <div class="col-lg-1">
-            <img src="https://static.xx.fbcdn.net/images/emoji.php/v9/tbe/1/28/1f9d0.png"/>
-          </div>
-          <div class="col-lg-1">
-            <img src="https://static.xx.fbcdn.net/images/emoji.php/v9/t94/1/28/1f913.png"/>
-          </div>
-          <div class="col-lg-1">
-            <img src="https://static.xx.fbcdn.net/images/emoji.php/v9/t64/1/28/1f60e.png"/>
-          </div>
-          <div class="col-lg-1">
-            <img src="https://static.xx.fbcdn.net/images/emoji.php/v9/t39/1/28/1f929.png"/>
-          </div>
-          <div class="col-lg-1">
-            <img src="https://static.xx.fbcdn.net/images/emoji.php/v9/t4e/1/28/1f973.png"/>
-          </div>
-          <div class="col-lg-1">
-            <img src="https://static.xx.fbcdn.net/images/emoji.php/v9/te5/1/28/1f60f.png"/>
-          </div>
-          <div class="col-lg-1">
-            <img src="https://static.xx.fbcdn.net/images/emoji.php/v9/t50/1/28/1f612.png"/>
-          </div>
-          <div class="col-lg-1">
-            <img src="https://static.xx.fbcdn.net/images/emoji.php/v9/t3/1/28/1f61e.png"/>
-          </div>
-        </div>
+<!--        <div class="row" id="icon-box">-->
+<!--          <div class="col-lg-1">-->
+<!--            <img src="https://static.xx.fbcdn.net/images/emoji.php/v9/taf/1/28/1f600.png"/>-->
+<!--          </div>-->
+<!--          <div class="col-lg-1">-->
+<!--            <img src="https://static.xx.fbcdn.net/images/emoji.php/v9/t32/1/28/1f603.png"/>-->
+<!--          </div>-->
+<!--          <div class="col-lg-1">-->
+<!--            <img src="https://static.xx.fbcdn.net/images/emoji.php/v9/tb3/1/28/1f604.png"/>-->
+<!--          </div>-->
+<!--          <div class="col-lg-1">-->
+<!--            <img src="https://static.xx.fbcdn.net/images/emoji.php/v9/t30/1/28/1f601.png"/>-->
+<!--          </div>-->
+<!--          <div class="col-lg-1">-->
+<!--            <img src="https://static.xx.fbcdn.net/images/emoji.php/v9/tb5/1/28/1f606.png"/>-->
+<!--          </div>-->
+<!--          <div class="col-lg-1">-->
+<!--            <img src="https://static.xx.fbcdn.net/images/emoji.php/v9/t34/1/28/1f605.png"/>-->
+<!--          </div>-->
+<!--          <div class="col-lg-1">-->
+<!--            <img src="https://static.xx.fbcdn.net/images/emoji.php/v9/tb1/1/28/1f602.png"/>-->
+<!--          </div>-->
+<!--          <div class="col-lg-1">-->
+<!--            <img src="https://static.xx.fbcdn.net/images/emoji.php/v9/t33/1/28/1f923.png"/>-->
+<!--          </div>-->
+<!--          <div class="col-lg-1">-->
+<!--            <img src="https://static.xx.fbcdn.net/images/emoji.php/v9/tfa/1/28/263a.png"/>-->
+<!--          </div>-->
+<!--          <div class="col-lg-1">-->
+<!--            <img src="https://static.xx.fbcdn.net/images/emoji.php/v9/t60/1/28/1f60a.png"/>-->
+<!--          </div>-->
+<!--          <div class="col-lg-1">-->
+<!--            <img src="https://static.xx.fbcdn.net/images/emoji.php/v9/t36/1/28/1f607.png"/>-->
+<!--          </div>-->
+<!--          <div class="col-lg-1">-->
+<!--            <img src="https://static.xx.fbcdn.net/images/emoji.php/v9/t2d/1/28/1f642.png"/>-->
+<!--          </div>-->
+<!--          <div class="col-lg-1">-->
+<!--            <img src="https://static.xx.fbcdn.net/images/emoji.php/v9/tae/1/28/1f643.png"/>-->
+<!--          </div>-->
+<!--          <div class="col-lg-1">-->
+<!--            <img src="https://static.xx.fbcdn.net/images/emoji.php/v9/t38/1/28/1f609.png"/>-->
+<!--          </div>-->
+<!--          <div class="col-lg-1">-->
+<!--            <img src="https://static.xx.fbcdn.net/images/emoji.php/v9/t62/1/28/1f60c.png"/>-->
+<!--          </div>-->
+<!--          <div class="col-lg-1">-->
+<!--            <img src="https://static.xx.fbcdn.net/images/emoji.php/v9/te3/1/28/1f60d.png"/>-->
+<!--          </div>-->
+<!--          <div class="col-lg-1">-->
+<!--            <img src="https://static.xx.fbcdn.net/images/emoji.php/v9/tcb/1/28/1f970.png"/>-->
+<!--          </div>-->
+<!--          <div class="col-lg-1">-->
+<!--            <img src="https://static.xx.fbcdn.net/images/emoji.php/v9/t56/1/28/1f618.png"/>-->
+<!--          </div>-->
+<!--          <div class="col-lg-1">-->
+<!--            <img src="https://static.xx.fbcdn.net/images/emoji.php/v9/td5/1/28/1f617.png"/>-->
+<!--          </div>-->
+<!--          <div class="col-lg-1">-->
+<!--            <img src="https://static.xx.fbcdn.net/images/emoji.php/v9/td7/1/28/1f619.png"/>-->
+<!--          </div>-->
+<!--          <div class="col-lg-1">-->
+<!--            <img src="https://static.xx.fbcdn.net/images/emoji.php/v9/tff/1/28/1f61a.png"/>-->
+<!--          </div>-->
+<!--          <div class="col-lg-1">-->
+<!--            <img src="https://static.xx.fbcdn.net/images/emoji.php/v9/te1/1/28/1f60b.png"/>-->
+<!--          </div>-->
+<!--          <div class="col-lg-1">-->
+<!--            <img src="https://static.xx.fbcdn.net/images/emoji.php/v9/t80/1/28/1f61b.png"/>-->
+<!--          </div>-->
+<!--          <div class="col-lg-1">-->
+<!--            <img src="https://static.xx.fbcdn.net/images/emoji.php/v9/t82/1/28/1f61d.png"/>-->
+<!--          </div>-->
+<!--          <div class="col-lg-1">-->
+<!--            <img src="https://static.xx.fbcdn.net/images/emoji.php/v9/t1/1/28/1f61c.png"/>-->
+<!--          </div>-->
+<!--          <div class="col-lg-1">-->
+<!--            <img src="https://static.xx.fbcdn.net/images/emoji.php/v9/t61/1/28/1f92a.png"/>-->
+<!--          </div>-->
+<!--          <div class="col-lg-1">-->
+<!--            <img src="https://static.xx.fbcdn.net/images/emoji.php/v9/tb8/1/28/1f928.png"/>-->
+<!--          </div>-->
+<!--          <div class="col-lg-1">-->
+<!--            <img src="https://static.xx.fbcdn.net/images/emoji.php/v9/tbe/1/28/1f9d0.png"/>-->
+<!--          </div>-->
+<!--          <div class="col-lg-1">-->
+<!--            <img src="https://static.xx.fbcdn.net/images/emoji.php/v9/t94/1/28/1f913.png"/>-->
+<!--          </div>-->
+<!--          <div class="col-lg-1">-->
+<!--            <img src="https://static.xx.fbcdn.net/images/emoji.php/v9/t64/1/28/1f60e.png"/>-->
+<!--          </div>-->
+<!--          <div class="col-lg-1">-->
+<!--            <img src="https://static.xx.fbcdn.net/images/emoji.php/v9/t39/1/28/1f929.png"/>-->
+<!--          </div>-->
+<!--          <div class="col-lg-1">-->
+<!--            <img src="https://static.xx.fbcdn.net/images/emoji.php/v9/t4e/1/28/1f973.png"/>-->
+<!--          </div>-->
+<!--          <div class="col-lg-1">-->
+<!--            <img src="https://static.xx.fbcdn.net/images/emoji.php/v9/te5/1/28/1f60f.png"/>-->
+<!--          </div>-->
+<!--          <div class="col-lg-1">-->
+<!--            <img src="https://static.xx.fbcdn.net/images/emoji.php/v9/t50/1/28/1f612.png"/>-->
+<!--          </div>-->
+<!--          <div class="col-lg-1">-->
+<!--            <img src="https://static.xx.fbcdn.net/images/emoji.php/v9/t3/1/28/1f61e.png"/>-->
+<!--          </div>-->
+<!--        </div>-->
       </div>
       <div class="row row-option">
         <input type="hidden" id="is-request" [ngModel]="isRequest"/>
