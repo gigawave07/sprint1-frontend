@@ -24,6 +24,7 @@ import {VerificationEmailComponent} from './components/verification-email/verifi
 import { AuthInterceptor } from './service/AuthInterceptor';
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import { SpinnerOverlayComponent } from './components/spinner-overlay/spinner-overlay.component';
+import {NgxLoadingModule} from 'ngx-loading';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { SpinnerOverlayComponent } from './components/spinner-overlay/spinner-ov
       // Đăng
     ListPendingTicketComponent, CancelPendingTicketComponent, SearchPendingTicketComponent, SpinnerComponent, SpinnerOverlayComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, MaterialModule, HttpClientModule, FormsModule, MatDialogModule, ReactiveFormsModule],
+  imports: [BrowserModule, AppRoutingModule, MaterialModule, HttpClientModule,
+    FormsModule, MatDialogModule, ReactiveFormsModule, NgxLoadingModule.forRoot({})],
   providers: [{
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptor,

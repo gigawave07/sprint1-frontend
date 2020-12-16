@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {LoginService} from '../../service/login.service';
 import {Router} from '@angular/router';
+import {SpinnerOverlayService} from '../../service/animations/spinner-overlay.service';
 
 @Component({
   selector: 'app-login',
@@ -16,6 +17,7 @@ export class LoginComponent implements OnInit {
   constructor(public formBuilder: FormBuilder,
               public loginService: LoginService,
               public router: Router,
+              public spinnerOverlayService: SpinnerOverlayService
   ) {
   }
 
@@ -32,6 +34,7 @@ export class LoginComponent implements OnInit {
       password: this.loginForm.value.password
     };
     this.loginService.authenticate(this.user).subscribe(data => {
+      this.spinnerOverlayService.show('Xin đợi trong giây lát');
       if (data.message) {
         this.message = data.message;
       } else {
@@ -40,6 +43,8 @@ export class LoginComponent implements OnInit {
       }
     }, error => {
       this.message = 'Sai email hoặc password';
+    }, () => {
+      this.spinnerOverlayService.hide();
     });
   }
 }

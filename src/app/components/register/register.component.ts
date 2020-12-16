@@ -1,8 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup,  Validators} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {RegisterService} from '../../service/register.service';
 import {Router} from '@angular/router';
 import {ErrorStateMatcher} from '@angular/material/core';
+import {SpinnerOverlayService} from '../../service/animations/spinner-overlay.service';
 
 @Component({
   selector: 'app-register',
@@ -19,7 +20,8 @@ export class RegisterComponent implements OnInit {
 
   constructor(public formBuilder: FormBuilder,
               public registerService: RegisterService,
-              public router: Router) {
+              public router: Router,
+              public spinnerOverlayService: SpinnerOverlayService) {
   }
 
   ngOnInit() {
@@ -52,10 +54,17 @@ export class RegisterComponent implements OnInit {
 
     if (this.registerForm.valid) {
       this.registerService.register(this.account).subscribe(data => {
-        if (data.message) {
-          this.message = data.message;
-        } else { this.router.navigateByUrl('/verification-email'); }
-      });
+          this.spinnerOverlayService.show('Xin đợi trong giây lát');
+          if (data.message) {
+            this.message = data.message;
+          } else {
+            this.router.navigateByUrl('/verification-email');
+          }
+        },
+        null,
+        () => {
+          this.spinnerOverlayService.hide();
+        });
     }
   }
 
@@ -67,7 +76,7 @@ export class RegisterComponent implements OnInit {
         return;
       }
       if (control.value !== matchingControl.value) {
-        matchingControl.setErrors({ confirmedValidator: true });
+        matchingControl.setErrors({confirmedValidator: true});
       } else {
         matchingControl.setErrors(null);
       }
