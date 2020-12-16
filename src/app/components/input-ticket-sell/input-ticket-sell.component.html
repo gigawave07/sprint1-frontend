@@ -88,7 +88,7 @@
                        *ngIf="formCreate.get('passengerName').hasError('required')
                                                               && (formCreate.controls.passengerName?.dirty
                                                               || formCreate.controls.passengerName?.touched)">
-                      Vui lòng nhập tên người đi
+                      Vui lòng nhập danh sách người đi!
                     </p>
                     <p class="text-danger" style="margin-top: -2%"
                        *ngIf="formCreate.get('passengerName').hasError('pattern')
@@ -103,7 +103,7 @@
                                                        && !formCreate.get('passengerName').hasError('pattern')
                                                        && (formCreate.controls.passengerName?.dirty
                                                        || formCreate.controls.passengerName?.touched)">
-                      Tên người đi tối đa chỉ được 150 kí tự
+                      Danh sách người đi tối đa chỉ được 150 kí tự.
                     </p>
                   </div>
                 </div>
@@ -121,19 +121,25 @@
                        *ngIf="formCreate.get('adults').hasError('required')
                                   && (formCreate.controls.adults?.dirty
                                   || formCreate.controls.adults?.touched)">
-                      Vui lòng nhập số lượng hành khách là người lớn
+                      Vui lòng nhập số lượng hành khách là người lớn!
+                    </p>
+                    <p class="text-danger" style="margin-top: -7%"
+                       *ngIf="formCreate.get('adults').hasError('pattern')
+                                  && (formCreate.controls.adults?.dirty
+                                  || formCreate.controls.adults?.touched)">
+                      Vui lòng nhập số, không nhập chữ cái và kí tự đặc biệt!
                     </p>
                     <p class="text-danger" style="margin-top: -7%"
                        *ngIf="formCreate.get('adults').hasError('min')
                                   && (formCreate.controls.adults?.dirty
                                   || formCreate.controls.adults?.touched)">
-                      Số lượng hành khách là người lớn phải lớn hơn hoặc bằng 1
+                      Số lượng hành khách là người lớn phải lớn hơn hoặc bằng 1.
                     </p>
                     <p class="text-danger" style="margin-top: -7%"
                        *ngIf="formCreate.get('adults').hasError('max')
                                   && (formCreate.controls.adults?.dirty
                                   || formCreate.controls.adults?.touched)">
-                      Số lượng hành khách là người lớn tối đa là 99
+                      Số lượng hành khách là người lớn tối đa là 99.
                     </p>
                   </div>
                   <div class="col-sm-3 col-xs-3 col-md-3 col-lg-3">
@@ -148,19 +154,25 @@
                        *ngIf="formCreate.get('babies').hasError('required')
                                   && (formCreate.controls.babies?.dirty
                                   || formCreate.controls.babies?.touched)">
-                      Vui lòng nhập số lượng hành khách là trẻ em
+                      Vui lòng nhập số lượng hành khách là trẻ em!
+                    </p>
+                    <p class="text-danger" style="margin-top: -7%"
+                       *ngIf="formCreate.get('babies').hasError('pattern')
+                                  && (formCreate.controls.babies?.dirty
+                                  || formCreate.controls.babies?.touched)">
+                      Vui lòng nhập số, không nhập chữ cái và kí tự đặc biệt!
                     </p>
                     <p class="text-danger" style="margin-top: -7%"
                        *ngIf="formCreate.get('babies').hasError('min')
                                   && (formCreate.controls.babies?.dirty
                                   || formCreate.controls.babies?.touched)">
-                      Số lượng hành khách là trẻ em phải lớn hơn hoặc bằng 0
+                      Số lượng hành khách là trẻ em phải lớn hơn hoặc bằng 0.
                     </p>
                     <p class="text-danger" style="margin-top: -7%"
                        *ngIf="formCreate.get('babies').hasError('max')
                                   && (formCreate.controls.babies?.dirty
                                   || formCreate.controls.babies?.touched)">
-                      Số lượng hành khách là trẻ em tối đa là 99
+                      Số lượng hành khách là trẻ em tối đa là 99.
                     </p>
                   </div>
                 </div>
@@ -234,13 +246,19 @@
                        *ngIf="formCreate.get('priceDeparture').hasError('required')
                                   && (formCreate.controls.priceDeparture?.dirty
                                   || formCreate.controls.priceDeparture?.touched)">
-                      Vui lòng nhập giá bán
+                      Vui lòng nhập giá bán!
                     </p>
                     <p class="text-danger" style="margin-top: -7%"
                        *ngIf="formCreate.get('priceDeparture').hasError('min')
                                   && (formCreate.controls.priceDeparture?.dirty
                                   || formCreate.controls.priceDeparture?.touched)">
-                      Giá bán phải lớn hơn hoặc bằng 0
+                      Giá bán phải lớn hơn hoặc bằng 0.
+                    </p>
+                    <p class="text-danger" style="margin-top: -7%"
+                       *ngIf="formCreate.get('priceDeparture').hasError('pattern')
+                                  && (formCreate.controls.priceDeparture?.dirty
+                                  || formCreate.controls.priceDeparture?.touched)">
+                      Vui lòng nhập số, không nhập chữ cái và kí tự đặc biệt!
                     </p>
                   </div>
                 </div>
@@ -314,13 +332,19 @@
                          *ngIf="formCreate.get('priceArrival').hasError('required')
                                     && (formCreate.controls.priceArrival?.dirty
                                     || formCreate.controls.priceArrival?.touched)">
-                        Vui lòng nhập giá bán
+                        Vui lòng nhập giá bán!
                       </p>
                       <p class="text-danger" style="margin-top: -7%"
                          *ngIf="formCreate.get('priceArrival').hasError('min')
                                     && (formCreate.controls.priceArrival?.dirty
                                     || formCreate.controls.priceArrival?.touched)">
-                        Giá bán phải lớn hơn hoặc bằng 0
+                        Giá bán phải lớn hơn hoặc bằng 0.
+                      </p>
+                      <p class="text-danger" style="margin-top: -7%"
+                         *ngIf="formCreate.get('priceArrival').hasError('pattern')
+                                  && (formCreate.controls.priceArrival?.dirty
+                                  || formCreate.controls.priceArrival?.touched)">
+                        Vui lòng nhập số, không nhập chữ cái và kí tự đặc biệt!
                       </p>
                     </div>
                   </div>
@@ -363,19 +387,19 @@
                        *ngIf="formCreate.get('appUser').hasError('required')
                                     && (formCreate.controls.appUser?.dirty
                                     || formCreate.controls.appUser?.touched)">
-                      Vui lòng nhập email thanh toán
+                      Vui lòng nhập email thanh toán!
                     </p>
                     <p class="text-danger" style="margin-top: -3.5%"
                        *ngIf="formCreate.get('appUser').hasError('emailUserExists')
                                     && (formCreate.controls.appUser?.dirty
                                     || formCreate.controls.appUser?.touched)">
-                      Vui lòng nhập email đã đăng ký trong hệ thống
+                      Vui lòng nhập email đã đăng ký trong hệ thống!
                     </p>
                     <p class="text-danger" style="margin-top: -3.5%"
                        *ngIf="formCreate.get('appUser').hasError('pattern')
                                     && (formCreate.controls.appUser?.dirty
                                     || formCreate.controls.appUser?.touched)">
-                      Email sai định dạng. Email chuẩn có dạng abc@abc.abc
+                      Email sai định dạng. Email chuẩn có dạng abc@abc.abc .
                     </p>
                     <p class="text-danger" style="margin-top: -3.5%"
                        *ngIf="formCreate.controls.passengerName?.invalid
@@ -384,7 +408,7 @@
                                     && !formCreate.get('appUser').hasError('emailUserExists')
                                     && (formCreate.controls.appUser?.dirty
                                     || formCreate.controls.appUser?.touched)">
-                      Độ dài tối đa của email là 40 kí tự
+                      Độ dài tối đa của email là 40 kí tự.
                     </p>
                   </div>
                   <div class="col-sm-3 col-xs-3 col-md-3 col-lg-3">

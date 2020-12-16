@@ -54,14 +54,21 @@
              *ngIf="formEdit.get('passengerName').hasError('required')
                     && (formEdit.controls.passengerName?.dirty
                     || formEdit.controls.passengerName?.touched)">
-            Vui lòng nhập tên người đi
+            Vui lòng nhập tên người đi!
+          </p>
+          <p class="text-danger"
+             *ngIf="formEdit.get('passengerName').hasError('pattern')
+                    && (formEdit.controls.passengerName?.dirty
+                    || formEdit.controls.passengerName?.touched)">
+            Vui lòng viết không dấu và không nhập kí tự đặc biệt!
           </p>
           <p class="text-danger"
              *ngIf="formEdit.controls.passengerName?.invalid
                     && !formEdit.get('passengerName').hasError('required')
+                    && !formEdit.get('passengerName').hasError('pattern')
                     && (formEdit.controls.passengerName?.dirty
                     || formEdit.controls.passengerName?.touched)">
-            Tên người đi ít nhất phải 10 kí tự và tối đa chỉ được 50 kí tự
+            Tên người đi ít nhất phải 10 kí tự và tối đa chỉ được 50 kí tự.
           </p>
         </div>
       </div>
@@ -78,19 +85,19 @@
              *ngIf="formEdit.get('appUser').hasError('required')
                                   && (formEdit.controls.appUser?.dirty
                                   || formEdit.controls.appUser?.touched)">
-            Vui lòng nhập email thanh toán
+            Vui lòng nhập email thanh toán!
           </p>
           <p class="text-danger"
              *ngIf="formEdit.get('appUser').hasError('emailUserExists')
                                   && (formEdit.controls.appUser?.dirty
                                   || formEdit.controls.appUser?.touched)">
-            Vui lòng nhập email đã đăng ký trong hệ thống
+            Vui lòng nhập email đã đăng ký trong hệ thống!
           </p>
           <p class="text-danger"
              *ngIf="formEdit.get('appUser').hasError('pattern')
                                   && (formEdit.controls.appUser?.dirty
                                   || formEdit.controls.appUser?.touched)">
-            Email sai định dạng. Email chuẩn có dạng abc@abc.abc
+            Email sai định dạng. Email chuẩn có dạng abc@abc.abc .
           </p>
         </div>
       </div>

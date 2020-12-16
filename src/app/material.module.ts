@@ -6,10 +6,10 @@ import {MatInputModule} from '@angular/material/input';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
 import {MatSelectModule} from '@angular/material/select';
-import {MatDividerModule} from "@angular/material/divider";
-import {MatButtonModule} from "@angular/material/button";
-import {DeleteTicketComponent} from "./components/delete-ticket/delete-ticket.component";
-import {EditTicketComponent} from "./components/edit-ticket/edit-ticket.component";
+import {MatDividerModule} from '@angular/material/divider';
+import {MatButtonModule} from '@angular/material/button';
+import {DeleteTicketComponent} from './components/delete-ticket/delete-ticket.component';
+import {EditTicketComponent} from './components/edit-ticket/edit-ticket.component';
 
 
 

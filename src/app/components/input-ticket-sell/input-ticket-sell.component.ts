@@ -49,8 +49,9 @@ export class InputTicketSellComponent implements OnInit {
       passengerName: ['',
         [Validators.required, Validators.maxLength(150),
           Validators.pattern('^([a-zA-Z]([ ]?[a-zA-Z])*)([,]([a-zA-Z]([ ]?[a-zA-Z])*)*)*$')]],
-      priceDeparture: ['', [Validators.required, Validators.min(0)]],
-      priceArrival: ['', [Validators.required, Validators.min(0)]],
+      priceDeparture: ['', [Validators.required, Validators.min(0),
+        Validators.pattern('^([+-])*[0-9]+$')]],
+      priceArrival: ['', [Validators.required, Validators.min(0), Validators.pattern('^([+-])*[0-9]+$')]],
       statusCheckin: [''],
       ticketCode: [''],
       booking: [bookingCode],
@@ -66,8 +67,10 @@ export class InputTicketSellComponent implements OnInit {
         asyncValidators: [this.ticketService.validateEmailUser()],
         updateOn: 'blur'
       }],
-      adults: [0, [Validators.required, Validators.min(1), Validators.max(99)]],
-      babies: [0, [Validators.required, Validators.min(0), Validators.max(99)]],
+      adults: ['', [Validators.required,
+        Validators.min(1), Validators.max(99), Validators.pattern('^([+-])*[0-9]+$')]],
+      babies: ['', [Validators.required,
+        Validators.min(0), Validators.max(99), Validators.pattern('^([+-])*[0-9]+$')]],
     });
   }
 
@@ -96,11 +99,8 @@ export class InputTicketSellComponent implements OnInit {
             newWindow.location = 'printTicketTwoWay/' + this.formCreate.value.booking + '/'
               + this.formCreate.value.passengerName + '/' + this.idFlightDeparture + '/'
               + this.idFlightArrival;
-            this.router.navigateByUrl('listTicket').then(r => {});
-            // this.router.navigate(
-            // tslint:disable-next-line:max-line-length
-            //   [`/printTicketTwoWay/${this.formCreate.value.booking}/${this.formCreate.value.passengerName}/${this.idFlightDeparture}/${this.idFlightArrival}`])
-            //   .then(_ => {});
+            this.router.navigateByUrl('listTicket').then(r => {
+            });
           }
         );
     }

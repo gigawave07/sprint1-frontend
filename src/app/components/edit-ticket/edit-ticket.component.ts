@@ -38,7 +38,8 @@ export class EditTicketComponent implements OnInit {
       flightInformation: [this.data.dataTicket.flightInformation],
       invoice: [this.data.dataTicket.invoice],
       passengerName: [this.data.dataTicket.passenger,
-        [Validators.required, Validators.minLength(10), Validators.maxLength(50)]],
+        [Validators.required, Validators.minLength(10), Validators.maxLength(50),
+          Validators.pattern('^([a-zA-Z]([ ]?[a-zA-Z])*)$')]],
       statusPayment: [this.data.dataTicket.statusPayment],
       appUser: ['', {
         validators:
