@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {Routes, RouterModule} from '@angular/router';
 import {HomeComponent} from './components/home/home.component';
 import {LoginComponent} from './components/login/login.component';
 import {RegisterComponent} from './components/register/register.component';
@@ -8,6 +8,9 @@ import {ListTicketComponent} from './components/list-ticket/list-ticket.componen
 import {VerificationEmailComponent} from './components/verification-email/verification-email.component';
 import {ListPendingTicketComponent} from './components/list-pending-ticket/list-pending-ticket/list-pending-ticket.component';
 import {SearchPendingTicketComponent} from './components/search-pending-ticket/search-pending-ticket/search-pending-ticket.component';
+import {InvoiceListComponent} from './components/invoice-list/invoice-list.component';
+import {InvoiceDetailComponent} from './components/invoice-detail/invoice-detail.component';
+
 
 
 const routes: Routes = [
@@ -19,13 +22,17 @@ const routes: Routes = [
   // Châu :
   {path: 'deleteTicket', component: DeleteTicketComponent},
   {path: 'listTicket', component: ListTicketComponent},
-    // Đăng:
+  // Đăng:
   {path: 'list-pending-ticket', component: ListPendingTicketComponent},
   {path: 'search-pending-ticket', component: SearchPendingTicketComponent},
+  // khánh
+  {path: 'invoice-list', component: InvoiceListComponent},
+  {path: 'invoice-detail/:id', component: InvoiceDetailComponent}
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}

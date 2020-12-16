@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 
@@ -8,9 +8,11 @@ import {Observable} from 'rxjs';
 export class TicketService {
   public readonly API: string = 'http://localhost:8080/ticket';
 
+
   constructor(
     public http: HttpClient
-  ) { }
+  ) {
+  }
 
   getAllTicketService(): Observable<any> {
     return this.http.get(this.API + '/list');
@@ -31,6 +33,11 @@ export class TicketService {
 
   cancelPendingTicket(id, ticket): Observable<any> {
     return this.http.put(this.API + '/cancel/pending/' + id, ticket);
+  }
+
+  // khanh
+  findAllTicketByInvoiceId(invoiceId): Observable<any> {
+    return this.http.get(this.API + '/findAllTicketByInvoiceId/' + invoiceId);
   }
 
 }

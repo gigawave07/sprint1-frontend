@@ -1,0 +1,60 @@
+
+#content{
+  width: 80%;
+  height: 100%;
+}
+#brand{
+  font-size: 40px;
+}
+#logo{
+  font-size: 40px;
+}
+#iconLogo{
+  color: orange;
+}
+#dvb{
+  font-style:italic;
+  font-weight: bold;
+}
+#dc{
+  font-style:italic;
+  font-weight: bold;
+}
+#mst{
+  font-style:italic;
+  font-weight: bold;
+}
+#so{
+  color: red;
+}
+#td{
+  font-family: 'Helvetica Neue',serif;
+}
+#kh{
+  font-family: 'Helvetica Neue',serif;
+  font-size: 20px;
+}
+#tenKH{
+  font-style: italic;
+  font-weight: bold;
+}
+#sdt{
+  font-style: italic;
+  font-weight: bold;
+}
+#dckh{
+  font-style: italic;
+  font-weight: bold;
+}
+#tg{
+  font-style: italic;
+  font-weight: bold;
+}
+#ngtg{
+  font-style: italic;
+  font-weight: bold;
+}
+#tmck{
+  font-style: italic;
+  font-weight: bold;
+}

@@ -19,9 +19,12 @@ import {ListPendingTicketComponent} from './components/list-pending-ticket/list-
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {CancelPendingTicketComponent} from './components/list-pending-ticket/cancel-pending-ticket/cancel-pending-ticket.component';
 import {MatDialogModule} from '@angular/material/dialog';
-import { SearchPendingTicketComponent } from './components/search-pending-ticket/search-pending-ticket/search-pending-ticket.component';
+import {SearchPendingTicketComponent} from './components/search-pending-ticket/search-pending-ticket/search-pending-ticket.component';
 import {VerificationEmailComponent} from './components/verification-email/verification-email.component';
-import { AuthInterceptor } from './service/AuthInterceptor';
+import {AuthInterceptor} from './service/AuthInterceptor';
+import {InvoiceListComponent} from './components/invoice-list/invoice-list.component';
+import {InvoiceDetailComponent} from './components/invoice-detail/invoice-detail.component';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -30,10 +33,11 @@ import { AuthInterceptor } from './service/AuthInterceptor';
     HomeComponent, LoginComponent, RegisterComponent, NavBarComponent, FooterComponent, VerificationEmailComponent,
     // Châu
     InputTicketSellComponent, DeleteTicketComponent, EditTicketComponent, PrintTicketComponent, ListTicketComponent,
-      // Đăng
-    ListPendingTicketComponent, CancelPendingTicketComponent, SearchPendingTicketComponent,
+    // Đăng
+    ListPendingTicketComponent, CancelPendingTicketComponent, SearchPendingTicketComponent, InvoiceListComponent, InvoiceDetailComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, MaterialModule, HttpClientModule, FormsModule, MatDialogModule, ReactiveFormsModule],
+  imports: [BrowserModule, AppRoutingModule, MaterialModule, HttpClientModule, FormsModule, MatDialogModule, ReactiveFormsModule,
+    NgxPaginationModule],
   providers: [{
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptor,

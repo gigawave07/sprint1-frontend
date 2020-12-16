@@ -1,0 +1,60 @@
+#td{
+ color: orange; font-family: 'Helvetica Neue',serif;
+  font-weight: bold;
+}
+#nameKH{
+  margin: 0px 0px 0px 25px;
+}
+#khdc{
+margin: 0px 0px 0px 25px;
+}
+#pnb{
+  margin: 0px 0px 0px 25px;
+}
+#khEmail{
+  margin: 0px 0px 0px 25px;
+}
+#pt{
+ position: relative;
+  left: 200px;
+}
+.fontuser {
+  position: relative;
+  margin: 10px;
+  height: 45px;
+}
+
+.fontuser i{
+  position: absolute;
+  left: 15px;
+  top: 10px;
+  color: orange;
+}
+#add{
+  color: white;
+  font-weight: bold;
+  position: relative;
+  width: 170px;
+  text-align: right;
+  left: 25px;
+
+}
+#yes{
+  width: 80px;
+  color: white;
+}
+#no{
+  color: white;
+}
+#iconAdd{
+  position: absolute;
+  left: 20px;
+
+}
+#note{
+  color: red;
+}
+#paging{
+  position: relative;
+  left: 200px;
+}

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {TicketService} from '../../../service/ticket/ticket.service';
 import {MatDialog} from '@angular/material/dialog';
 import {DeleteTicketComponent} from '../../delete-ticket/delete-ticket.component';
-import {CancelPendingTicketComponent} from "../cancel-pending-ticket/cancel-pending-ticket.component";
+import {CancelPendingTicketComponent} from '../cancel-pending-ticket/cancel-pending-ticket.component';
 
 @Component({
   selector: 'app-list-pending-ticket',
