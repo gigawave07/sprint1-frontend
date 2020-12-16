@@ -19,8 +19,9 @@ import {ListPendingTicketComponent} from './components/list-pending-ticket/list-
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {CancelPendingTicketComponent} from './components/list-pending-ticket/cancel-pending-ticket/cancel-pending-ticket.component';
 import {MatDialogModule} from '@angular/material/dialog';
-import { SearchPendingTicketComponent } from './components/search-pending-ticket/search-pending-ticket/search-pending-ticket.component';
+import {SearchPendingTicketComponent} from './components/search-pending-ticket/search-pending-ticket/search-pending-ticket.component';
 import {VerificationEmailComponent} from './components/verification-email/verification-email.component';
+import {InvoiceManagerModule} from './components/invoice-manager/invoice-manager.module';
 
 @NgModule({
   declarations: [
@@ -29,10 +30,10 @@ import {VerificationEmailComponent} from './components/verification-email/verifi
     HomeComponent, LoginComponent, RegisterComponent, NavBarComponent, FooterComponent, VerificationEmailComponent,
     // Châu
     InputTicketSellComponent, DeleteTicketComponent, EditTicketComponent, PrintTicketComponent, ListTicketComponent,
-      // Đăng
+    // Đăng
     ListPendingTicketComponent, CancelPendingTicketComponent, SearchPendingTicketComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, MaterialModule, HttpClientModule, FormsModule, MatDialogModule, ReactiveFormsModule],
+  imports: [InvoiceManagerModule, BrowserModule, AppRoutingModule, MaterialModule, HttpClientModule, FormsModule, MatDialogModule, ReactiveFormsModule],
   providers: [],
   bootstrap: [AppComponent]
 })
