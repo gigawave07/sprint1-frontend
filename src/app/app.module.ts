@@ -22,6 +22,11 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { SearchPendingTicketComponent } from './components/search-pending-ticket/search-pending-ticket/search-pending-ticket.component';
 import {VerificationEmailComponent} from './components/verification-email/verification-email.component';
 import { AuthInterceptor } from './service/AuthInterceptor';
+import { SpinnerComponent } from './components/spinner/spinner.component';
+import { SpinnerOverlayComponent } from './components/spinner-overlay/spinner-overlay.component';
+import {NgxLoadingModule} from 'ngx-loading';
+import {NgxPaginationModule} from 'ngx-pagination';
+import {Ng2SearchPipeModule} from 'ng2-search-filter';
 
 @NgModule({
   declarations: [
@@ -31,15 +36,17 @@ import { AuthInterceptor } from './service/AuthInterceptor';
     // Châu
     InputTicketSellComponent, DeleteTicketComponent, EditTicketComponent, PrintTicketComponent, ListTicketComponent,
       // Đăng
-    ListPendingTicketComponent, CancelPendingTicketComponent, SearchPendingTicketComponent,
+    ListPendingTicketComponent, CancelPendingTicketComponent, SearchPendingTicketComponent, SpinnerComponent, SpinnerOverlayComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, MaterialModule, HttpClientModule, FormsModule, MatDialogModule, ReactiveFormsModule],
+  imports: [BrowserModule, AppRoutingModule, MaterialModule, HttpClientModule, NgxPaginationModule, Ng2SearchPipeModule,
+    FormsModule, MatDialogModule, ReactiveFormsModule, NgxLoadingModule.forRoot({})],
   providers: [{
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptor,
     multi: true
   }],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [SpinnerOverlayComponent]
 })
 export class AppModule {
 }

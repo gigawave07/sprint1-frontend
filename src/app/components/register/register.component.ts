@@ -1,8 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup,  Validators} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {RegisterService} from '../../service/register.service';
 import {Router} from '@angular/router';
 import {ErrorStateMatcher} from '@angular/material/core';
+import {SpinnerOverlayService} from '../../service/animations/spinner-overlay.service';
 
 @Component({
   selector: 'app-register',
@@ -19,23 +20,25 @@ export class RegisterComponent implements OnInit {
 
   constructor(public formBuilder: FormBuilder,
               public registerService: RegisterService,
-              public router: Router) {
+              public router: Router,
+              public spinnerOverlayService: SpinnerOverlayService) {
   }
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.pattern('^[a-z][a-z0-9_\\.]{5,32}@[a-z0-9]{2,}(\\.[a-z0-9]{2,4}){1,2}$')]],
-      password: ['', Validators.required],
+      password: ['', [Validators.required, Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}$')]],
       confirmPassword: ['', [Validators.required]],
-      phone: [''],
-      name: [''],
-      birthday: [''],
+      phone: ['', [Validators.required]],
+      name: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(50)]],
+      birthday: ['', [Validators.required]],
       address: [''],
       gender: [''],
     }, {validator: this.ConfirmedValidator('password', 'confirmPassword')});
   }
 
   onSubmit() {
+    this.spinnerOverlayService.show();
     this.user = {
       phoneNumber: this.registerForm.value.phone,
       fullName: this.registerForm.value.name,
@@ -52,10 +55,16 @@ export class RegisterComponent implements OnInit {
 
     if (this.registerForm.valid) {
       this.registerService.register(this.account).subscribe(data => {
-        if (data.message) {
-          this.message = data.message;
-        } else { this.router.navigateByUrl('/verification-email'); }
-      });
+          if (data.message) {
+            this.message = data.message;
+          } else {
+            this.router.navigateByUrl('/verification-email');
+          }
+        },
+        null,
+        () => {
+          this.spinnerOverlayService.hide();
+        });
     }
   }
 
@@ -67,7 +76,7 @@ export class RegisterComponent implements OnInit {
         return;
       }
       if (control.value !== matchingControl.value) {
-        matchingControl.setErrors({ confirmedValidator: true });
+        matchingControl.setErrors({confirmedValidator: true});
       } else {
         matchingControl.setErrors(null);
       }

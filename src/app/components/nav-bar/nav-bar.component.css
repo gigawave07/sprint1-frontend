@@ -27,16 +27,10 @@ nav {
 .bg-white {
   background: white;
 }
-button {
-  background-color: orange;
-  color: white;
-  width: 200px;
-  height: 40px;
-  border: none;
-}
-button:hover {
-  background-color: black;
-}
+
 #info-bar > div > ul > li > a {
   color: white;
+}
+#navbarNav {
+  z-index: 1;
 }
