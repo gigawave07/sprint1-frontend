@@ -29,8 +29,8 @@
 						</h2>
 					</div>
 				</div>
-				
-				
+
+
 				<div class="card">
 					<div class="card-header" id="headingFour">
 						<h2 class="mb-0">
@@ -64,7 +64,7 @@
 					<table class="table table-striped table-hover">
 						<thead>
 						<tr>
-							
+
 							<th>Mã vé</th>
 							<th>Nơi đi</th>
 							<th>Nơi đến</th>
@@ -84,7 +84,7 @@
 <!--							<td>{{employee.position}}</td>-->
 <!--						<tr *ngFor="let ticket of ticketList| paginate: { itemsPerPage: 2, currentPage: p }">-->
 						<tr *ngFor="let ticket of ticketList">
-							
+
 							<td>{{ticket.ticketCode}}</td>
 							<td>{{ticket.flightInformation.departure}}</td>
 							<td>{{ticket.flightInformation.arrival}}</td>
@@ -102,10 +102,10 @@
 									<input type="checkbox" id="{{ticket.ticketCode}}" (change)="onCheckboxChange($event,ticket)">
 									<label for="{{ticket.ticketCode}}"></label>
 									</span>
-							
+
 							</td>
 						</tr>
-						
+
 						</tbody>
 					</table>
 					<div class="clearfix">
@@ -124,24 +124,3 @@
 	</div>
 </div>
 
-<!-- Delete Modal HTML -->
-<div id="deleteTicketModal" class="modal fade">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<form>
-				<div class="modal-header">
-					<h4 class="modal-title">Huỷ vé</h4>
-					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-				</div>
-				<div class="modal-body">
-					<p>Bạn có chắc chắn muốn huỷ vé này</p>
-					<p class="text-danger"><small>Hành động này KHÔNG THỂ hoàn tác</small></p>
-				</div>
-				<div class="modal-footer">
-					<input type="button" class="btn btn-default" data-dismiss="modal" value="Thoát">
-					<input type="submit" class="btn btn-danger" value="Xác nhận">
-				</div>
-			</form>
-		</div>
-	</div>
-</div>

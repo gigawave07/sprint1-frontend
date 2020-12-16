@@ -25,6 +25,7 @@ import { AuthInterceptor } from './service/AuthInterceptor';
 import { DetailUserComponent } from './components/detail-user/detail-user.component';
 import { EditUserComponent } from './components/edit-user/edit-user.component';
 import { ChangePasswordUserComponent } from './components/change-password-user/change-password-user.component';
+import { UserComponent } from './components/user/user.component';
 
 @NgModule({
   declarations: [
@@ -36,10 +37,17 @@ import { ChangePasswordUserComponent } from './components/change-password-user/c
       // Đăng
     ListPendingTicketComponent, CancelPendingTicketComponent, SearchPendingTicketComponent,
     // Đạt
-    DetailUserComponent, EditUserComponent,
-    InputTicketSellComponent, DeleteTicketComponent, EditTicketComponent, PrintTicketComponent, ListTicketComponent, ChangePasswordUserComponent,
+    DetailUserComponent, EditUserComponent, ChangePasswordUserComponent, UserComponent,
+    InputTicketSellComponent,
+    DeleteTicketComponent, EditTicketComponent, PrintTicketComponent, ListTicketComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, MaterialModule, HttpClientModule, FormsModule, MatDialogModule, ReactiveFormsModule],
+  imports: [BrowserModule,
+    AppRoutingModule,
+    MaterialModule,
+    HttpClientModule,
+    FormsModule,
+    MatDialogModule,
+    ReactiveFormsModule],
   providers: [{
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptor,

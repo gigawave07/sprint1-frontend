@@ -9,8 +9,7 @@ import {ListPendingTicketComponent} from './components/list-pending-ticket/list-
 import {SearchPendingTicketComponent} from './components/search-pending-ticket/search-pending-ticket/search-pending-ticket.component';
 import {DetailUserComponent} from './components/detail-user/detail-user.component';
 import {VerificationEmailComponent} from './components/verification-email/verification-email.component';
-import {EditUserComponent} from './components/edit-user/edit-user.component';
-import {ChangePasswordUserComponent} from './components/change-password-user/change-password-user.component';
+import {UserComponent} from './components/user/user.component';
 
 
 
@@ -31,7 +30,6 @@ const routes: Routes = [
   {path: 'search-pending-ticket', component: SearchPendingTicketComponent},
   // Đạt
   {path: 'detail-user', component: DetailUserComponent},
-  // {path: 'edit-user/:id', component: EditUserComponent},
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

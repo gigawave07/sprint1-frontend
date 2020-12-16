@@ -1,7 +1,7 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material';
 import {UserService} from '../../service/user/user.service';
-import {FormBuilder, FormGroup} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute} from '@angular/router';
 
 @Component({
@@ -12,7 +12,7 @@ import {ActivatedRoute} from '@angular/router';
 export class EditUserComponent implements OnInit {
   public userOfId;
   public dataIdUser;
-  formEdit: FormGroup;
+  formEditUser: FormGroup;
 
   constructor(
     public activatedRoute: ActivatedRoute,
@@ -24,18 +24,18 @@ export class EditUserComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.formEdit = this.formBuilder.group({
-      address: [''],
-      birthday: [''],
-      email: [''],
-      fullName: [''],
-      // gender: [''],
-      phoneNumber: ['']
+    this.formEditUser = this.formBuilder.group({
+      address: ['', [Validators.required]],
+      birthday: ['', [Validators.required]],
+      email: ['', [Validators.required]],
+      fullName: ['', [Validators.required]],
+      gender: ['', [Validators.required]],
+      phoneNumber: ['', [Validators.required]]
     });
     this.dataIdUser = this.data.dataE;
     console.log(this.dataIdUser);
     this.userService.getUserById(this.dataIdUser).subscribe(getData => {
-      this.formEdit.patchValue(getData);
+      this.formEditUser.patchValue(getData);
       console.log('--------edit-----------');
       console.log(getData);
       console.log('--------edit-----------');
@@ -43,9 +43,9 @@ export class EditUserComponent implements OnInit {
   }
 
   editUser() {
-    this.formEdit.markAllAsTouched();
-    console.log(this.formEdit.value);
-    this.userService.editUser(this.dataIdUser, this.formEdit.value).subscribe(data => {
+    this.formEditUser.markAllAsTouched();
+    console.log(this.formEditUser.value);
+    this.userService.editUser(this.dataIdUser, this.formEditUser.value).subscribe(data => {
       this.dialogRef.close();
     });
     // this.activatedRoute.params.subscribe(data => {

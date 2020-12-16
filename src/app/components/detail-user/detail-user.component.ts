@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {UserService} from '../../service/user/user.service';
 import {LoginService} from '../../service/login.service';
-import {FormBuilder, FormGroup} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {EditUserComponent} from '../edit-user/edit-user.component';
 import {MatDialog} from '@angular/material';
 
@@ -17,14 +17,16 @@ import {MatDialog} from '@angular/material';
 export class DetailUserComponent implements OnInit {
   public users;
   public idUser;
-  infoForm: FormGroup;
+  infoFormUser: FormGroup;
   constructor(
     public dialog: MatDialog,
     public userService: UserService,
     public loginService: LoginService,
-    public formBuilder: FormBuilder) { this.idUser = this.loginService.currentUserValue.id; }
+    public formBuilder: FormBuilder) {
+     }
 
   ngOnInit(): void {
+    this.idUser = this.loginService.currentUserValue.id;
     this.userService.getUserById(this.idUser).subscribe(data => {
       console.log(this.idUser);
       console.log(data);
@@ -32,16 +34,16 @@ export class DetailUserComponent implements OnInit {
     }, error => {
       console.log('a');
     }, () => {
-      this.infoForm.patchValue(this.users);
+      this.infoFormUser.patchValue(this.users);
     });
-    this.infoForm = this.formBuilder.group({
-      address: [''],
-      birthday: [''],
-      email: [''],
-      fullName: [''],
-      gender: [''],
-      phoneNumber: [''],
-      userRank: [''],
+    this.infoFormUser = this.formBuilder.group({
+      address: ['', [Validators.required]],
+      birthday: ['', [Validators.required]],
+      email: ['', [Validators.required]],
+      fullName: ['', [Validators.required, Validators.maxLength(30)]],
+      gender: ['', [Validators.required]],
+      phoneNumber: ['', [Validators.required]],
+      userRank: ['', [Validators.required]],
     });
   }
 
