@@ -8,6 +8,7 @@ import {ListTicketComponent} from './components/list-ticket/list-ticket.componen
 import {VerificationEmailComponent} from './components/verification-email/verification-email.component';
 import {ListPendingTicketComponent} from './components/list-pending-ticket/list-pending-ticket/list-pending-ticket.component';
 import {SearchPendingTicketComponent} from './components/search-pending-ticket/search-pending-ticket/search-pending-ticket.component';
+import { FeedbackComponent } from './components/feedback/feedback.component';
 
 
 const routes: Routes = [
@@ -26,6 +27,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  declarations: [FeedbackComponent]
 })
 export class AppRoutingModule { }
