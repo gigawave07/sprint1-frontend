@@ -13,7 +13,7 @@ import {InputTicketSellComponent} from './components/input-ticket-sell/input-tic
 import {DeleteTicketComponent} from './components/delete-ticket/delete-ticket.component';
 import {EditTicketComponent} from './components/edit-ticket/edit-ticket.component';
 import {PrintTicketComponent} from './components/print-ticket/print-ticket.component';
-import {HttpClientModule} from "@angular/common/http";
+import {HttpClientModule} from '@angular/common/http';
 import {ListTicketComponent} from './components/list-ticket/list-ticket.component';
 
 @NgModule({
