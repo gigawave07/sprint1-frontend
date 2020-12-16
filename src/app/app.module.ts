@@ -25,6 +25,8 @@ import { AuthInterceptor } from './service/AuthInterceptor';
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import { SpinnerOverlayComponent } from './components/spinner-overlay/spinner-overlay.component';
 import {NgxLoadingModule} from 'ngx-loading';
+import {NgxPaginationModule} from 'ngx-pagination';
+import {Ng2SearchPipeModule} from 'ng2-search-filter';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,7 @@ import {NgxLoadingModule} from 'ngx-loading';
       // Đăng
     ListPendingTicketComponent, CancelPendingTicketComponent, SearchPendingTicketComponent, SpinnerComponent, SpinnerOverlayComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, MaterialModule, HttpClientModule,
+  imports: [BrowserModule, AppRoutingModule, MaterialModule, HttpClientModule, NgxPaginationModule, Ng2SearchPipeModule,
     FormsModule, MatDialogModule, ReactiveFormsModule, NgxLoadingModule.forRoot({})],
   providers: [{
     provide: HTTP_INTERCEPTORS,
