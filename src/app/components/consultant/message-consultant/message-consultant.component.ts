@@ -25,12 +25,6 @@ export class MessageConsultantComponent implements OnInit {
 
   ngOnInit() {
     this.loadMess();
-    setInterval(() => {
-      if (this.messageService.getUserSend()) {
-        this.loadMess();
-        this.messageService.setUserSend(false);
-      }
-    });
 
     this.formSendMess = this.fb.group({
       id: '',
@@ -66,7 +60,6 @@ export class MessageConsultantComponent implements OnInit {
       this.formSendMess.value.roomId = this.room;
       this.messageService.sendMess(this.formSendMess.value).subscribe(data => {
         this.formSendMess.value.content = '';
-        this.messageService.setConsultantSend(true);
         this.loadMess();
       });
     }

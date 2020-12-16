@@ -7,7 +7,7 @@ import {Observable} from 'rxjs';
 })
 export class UserMessService {
 
-  private baseUrl = 'http://localhost:8080/';
+  private baseUrl = 'http://localhost:8080/message/';
 
   constructor(private http: HttpClient) {
   }

@@ -1,5 +1,6 @@
-<div class="openChatBtn"><img id="icon-message"
-                              src="https://scontent.fdad3-1.fna.fbcdn.net/v/t1.0-9/131144583_844630892994262_8101579904925843981_n.jpg?_nc_cat=103&ccb=2&_nc_sid=730e14&_nc_ohc=s-3GXUOQTrkAX_uL2aR&_nc_ht=scontent.fdad3-1.fna&oh=13c188f963280008e1767d81125eeecf&oe=5FFD83A7">
+<div class="openChatBtn">
+  <img id="icon-message"
+       src="https://scontent.fsgn2-1.fna.fbcdn.net/v/t1.0-9/131426681_844750992982252_5573492330164978289_n.jpg?_nc_cat=105&ccb=2&_nc_sid=730e14&_nc_ohc=kcCsG2i189EAX8OmaTn&_nc_ht=scontent.fsgn2-1.fna&oh=5c32128ce6a38e2ea5daad12680c2dfa&oe=5FFF5DAD">
 </div>
 <div class="requiredChat container-fluid">
   <div class="row">
@@ -14,23 +15,23 @@
           <input id="content-name" class="form-control mt-3" type="text" placeholder="*Tên" formControlName="name"
                  required>
           <small class="input-request"
-            *ngIf="formSendRequest.controls.name?.touched && formSendRequest.controls.name?.errors?.required">
+                 *ngIf="formSendRequest.controls.name?.touched && formSendRequest.controls.name?.errors?.required">
             Hãy nhập tên của bạn vào
           </small>
           <input id="content-email" class="form-control mt-3" type="email" placeholder="*Email" formControlName="email"
                  required>
           <small class="input-request"
-            *ngIf="formSendRequest.controls.email?.touched && formSendRequest.controls.email?.errors?.required">
+                 *ngIf="formSendRequest.controls.email?.touched && formSendRequest.controls.email?.errors?.required">
             Hãy nhập email của bạn vào
           </small>
           <small class="input-request"
-            *ngIf="formSendRequest.controls.email?.touched && formSendRequest.controls.email?.errors?.email">
+                 *ngIf="formSendRequest.controls.email?.touched && formSendRequest.controls.email?.errors?.email">
             Hãy nhập đúng định dạng email
           </small>
           <input id="content-phone" class="form-control mt-3" type="text" placeholder="*Số điện thoại"
                  formControlName="phone" required>
           <small class="input-request"
-            *ngIf="formSendRequest.controls.phone?.touched && formSendRequest.controls.phone?.errors?.required">
+                 *ngIf="formSendRequest.controls.phone?.touched && formSendRequest.controls.phone?.errors?.required">
             Hãy nhập số điện thoại của bạn vào
           </small><br>
           <button [disabled]="formSendRequest.invalid" class=" form-control begin-chat">Bắt đầu trò chuyện</button>

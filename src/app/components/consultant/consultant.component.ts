@@ -18,13 +18,7 @@ export class ConsultantComponent implements OnInit {
   }
 
   ngOnInit() {
-    setInterval(() => {
-      console.log(this.messageService.getListUserStatus());
-      if (this.messageService.getListUserStatus()) {
-        this.getListUser();
-        this.messageService.setListUserStatus(false);
-      }
-    }, 500);
+
     this.getListUser();
   }
 

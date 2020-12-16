@@ -12,8 +12,6 @@ declare var $: any;
 })
 export class MessUserComponent implements OnInit {
 
-  // @ts-ignore
-  socket = io.connect('http://localhost:3000');
 
   public isRequest = false;
   public listMess = [];
@@ -26,18 +24,7 @@ export class MessUserComponent implements OnInit {
   }
 
   ngOnInit() {
-    // tslint:disable-next-line:only-arrow-functions
-    this.socket.on('news', function(data) {
-      console.log(data);
-    });
-
     this.loadMess();
-    // setInterval(() => {
-    //   if (this.messageService.getConsultantSend()) {
-    //     this.loadMess();
-    //     this.messageService.setConsultantSend(false);
-    //   }
-    // }, 500);
 
     this.formSendRequest = this.fb.group({
       name: ['', Validators.required],
@@ -78,10 +65,6 @@ export class MessUserComponent implements OnInit {
           $('#icon-box').hide();
         }),
         // tslint:disable-next-line:only-arrow-functions
-        // $('#icon').click(function() {
-        //   $('#icon-box').toggle('500');
-        // }),
-        // tslint:disable-next-line:only-arrow-functions
         $('#icon-upload-file').click(function() {
           $('#file-upload')[0].click();
         });
@@ -93,13 +76,10 @@ export class MessUserComponent implements OnInit {
   }
 
   sendMessage() {
-    this.socket.emit('news', {hello: 'vinh'});
-
     if (this.formSend.value.content !== '') {
       this.formSend.value.roomId = this.room;
       this.messageService.sendMess(this.formSend.value).subscribe(data => {
         this.formSend.value.content = '';
-        this.messageService.setUserSend(true);
         this.loadMess();
       });
     }
@@ -109,7 +89,6 @@ export class MessUserComponent implements OnInit {
     this.messageService.sendRequestChat(this.formSendRequest.value).subscribe(data => {
       this.isRequest = true;
       this.room = data;
-      this.messageService.setListUserStatus(true);
     });
   }
 
