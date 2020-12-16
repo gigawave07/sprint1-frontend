@@ -29,14 +29,15 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
+    this.spinnerOverlayService.show('Xin đợi trong giây lát');
     this.user = {
       username: this.loginForm.value.email,
       password: this.loginForm.value.password
     };
     this.loginService.authenticate(this.user).subscribe(data => {
-      this.spinnerOverlayService.show('Xin đợi trong giây lát');
       if (data.message) {
         this.message = data.message;
+        this.loginService.logout();
       } else {
         this.loginService.broadcastLoginChange(this.user);
         this.router.navigateByUrl('');

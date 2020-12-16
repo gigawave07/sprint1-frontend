@@ -38,6 +38,7 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit() {
+    this.spinnerOverlayService.show();
     this.user = {
       phoneNumber: this.registerForm.value.phone,
       fullName: this.registerForm.value.name,
@@ -54,7 +55,6 @@ export class RegisterComponent implements OnInit {
 
     if (this.registerForm.valid) {
       this.registerService.register(this.account).subscribe(data => {
-          this.spinnerOverlayService.show('Xin đợi trong giây lát');
           if (data.message) {
             this.message = data.message;
           } else {
