@@ -19,9 +19,12 @@ import {ListPendingTicketComponent} from './components/list-pending-ticket/list-
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {CancelPendingTicketComponent} from './components/list-pending-ticket/cancel-pending-ticket/cancel-pending-ticket.component';
 import {MatDialogModule} from '@angular/material/dialog';
-import { SearchPendingTicketComponent } from './components/search-pending-ticket/search-pending-ticket/search-pending-ticket.component';
+import {SearchPendingTicketComponent} from './components/search-pending-ticket/search-pending-ticket/search-pending-ticket.component';
 import {VerificationEmailComponent} from './components/verification-email/verification-email.component';
-import { AuthInterceptor } from './service/AuthInterceptor';
+import {AuthInterceptor} from './service/AuthInterceptor';
+import {AdminComponent} from './components/admin/admin.component';
+import {InformationAdminComponent} from './components/information-admin/information-admin.component';
+import {ChangePasswordAdminComponent} from './components/change-password-admin/change-password-admin.component';
 
 @NgModule({
   declarations: [
@@ -30,8 +33,10 @@ import { AuthInterceptor } from './service/AuthInterceptor';
     HomeComponent, LoginComponent, RegisterComponent, NavBarComponent, FooterComponent, VerificationEmailComponent,
     // Châu
     InputTicketSellComponent, DeleteTicketComponent, EditTicketComponent, PrintTicketComponent, ListTicketComponent,
-      // Đăng
+    // Đăng
     ListPendingTicketComponent, CancelPendingTicketComponent, SearchPendingTicketComponent,
+    // Danh
+    AdminComponent, InformationAdminComponent, ChangePasswordAdminComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, MaterialModule, HttpClientModule, FormsModule, MatDialogModule, ReactiveFormsModule],
   providers: [{
