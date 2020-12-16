@@ -24,7 +24,7 @@ export class InfoPassengerBookingTicketComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.luggageService.getAll().subscribe( data => {
+    this.luggageService.getAll().subscribe(data => {
       this.listLuggage = data;
     });
     this.flightOne = this.data.flightDetailOne;
@@ -44,9 +44,11 @@ export class InfoPassengerBookingTicketComponent implements OnInit {
     });
     this.passengerList = this.passengerForm.get('passengerList') as FormArray;
   }
+
   cancel() {
     this.dialogRef.close();
   }
+
   createPassengerChildren(): FormGroup {
     return this.formBuilder.group({
       fullName: [''],
@@ -63,6 +65,7 @@ export class InfoPassengerBookingTicketComponent implements OnInit {
   addItem(): void {
     this.passengerList.push(this.createPassengerChildren());
   }
+
   deleteItem(index): void {
     this.passengerList.removeAt(index);
   }

@@ -16,117 +16,117 @@
     </div>
     <div class="col-lg-5">
       <div class="p-1 bg-white border search-form">
-      <h1 class="text-center"><i class="fa fa-plane"></i> Tìm kiếm chuyến bay</h1>
-      <form class="form-group" [formGroup]="formSearch">
-        <div class="d-flex justify-content-center">
-          <mat-radio-group formControlName="way">
-            <mat-radio-button [ngClass]="way.id === 2 ? 'return': null" *ngFor="let way of ways"
-                              value="{{way.id}}">{{way.name}}</mat-radio-button>
-          </mat-radio-group>
-        </div>
-        <fieldset class="border">
-          <legend class="ml-3 d-flex justify-content-center">
-            Sắp xếp
-          </legend>
-          <mat-radio-group aria-label="Select an option" formControlName="sort">
-            <mat-radio-button class="search" *ngFor="let search of find"
-                              value="{{search.id}}">{{search.name}}</mat-radio-button>
-          </mat-radio-group>
-        </fieldset>
-        <fieldset class="border">
-          <legend style="width: auto" class="ml-3 d-flex justify-content-center">Đặt vé</legend>
-          <div class="row">
-            <div class="col-5 pl-4 p-0">
-              <mat-form-field>
-                <mat-label>Điểm đi</mat-label>
-                <input matInput placeholder="Sài Gòn" formControlName="departure">
-              </mat-form-field>
-            </div>
-            <div class="col-2 d-flex justify-content-start align-items-center">
-              <h1>⇄</h1>
-            </div>
-            <div class="col-5 pl-4 p-0">
-              <mat-form-field>
-                <mat-label>Điểm đến</mat-label>
-                <input matInput placeholder="Đà Nẵng" formControlName="arrival">
-              </mat-form-field>
-            </div>
+        <h1 class="text-center"><i class="fa fa-plane"></i> Tìm kiếm chuyến bay</h1>
+        <form class="form-group" [formGroup]="formSearch">
+          <div class="d-flex justify-content-center">
+            <mat-radio-group formControlName="way">
+              <mat-radio-button [ngClass]="way.id === 2 ? 'return': null" *ngFor="let way of ways"
+                                value="{{way.id}}">{{way.name}}</mat-radio-button>
+            </mat-radio-group>
           </div>
-          <div class="row">
-            <div class="col-5 pl-4 p-0">
-              <mat-form-field>
-                <mat-label>Ngày đi</mat-label>
-                <input matInput [matDatepicker]="picker" formControlName="departureDate">
-                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                <mat-datepicker #picker></mat-datepicker>
-              </mat-form-field>
+          <fieldset class="border">
+            <legend class="ml-3 d-flex justify-content-center">
+              Sắp xếp
+            </legend>
+            <mat-radio-group aria-label="Select an option" formControlName="sort">
+              <mat-radio-button class="search" *ngFor="let search of find"
+                                value="{{search.id}}">{{search.name}}</mat-radio-button>
+            </mat-radio-group>
+          </fieldset>
+          <fieldset class="border">
+            <legend style="width: auto" class="ml-3 d-flex justify-content-center">Đặt vé</legend>
+            <div class="row">
+              <div class="col-5 pl-4 p-0">
+                <mat-form-field>
+                  <mat-label>Điểm đi</mat-label>
+                  <input matInput placeholder="Sài Gòn" formControlName="departure">
+                </mat-form-field>
+              </div>
+              <div class="col-2 d-flex justify-content-start align-items-center">
+                <h1>⇄</h1>
+              </div>
+              <div class="col-5 pl-4 p-0">
+                <mat-form-field>
+                  <mat-label>Điểm đến</mat-label>
+                  <input matInput placeholder="Đà Nẵng" formControlName="arrival">
+                </mat-form-field>
+              </div>
             </div>
-            <div class="col-2 d-flex justify-content-start align-items-center">
-              <h1 [hidden]="formSearch.controls.way.value == 1">⇄</h1>
+            <div class="row">
+              <div class="col-5 pl-4 p-0">
+                <mat-form-field>
+                  <mat-label>Ngày đi</mat-label>
+                  <input matInput [matDatepicker]="picker" formControlName="departureDate">
+                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+              </div>
+              <div class="col-2 d-flex justify-content-start align-items-center">
+                <h1 [hidden]="formSearch.controls.way.value == 1">⇄</h1>
+              </div>
+              <div class="col-5 pl-4 p-0" [hidden]="formSearch.controls.way.value == 1">
+                <mat-form-field>
+                  <mat-label>Ngày về</mat-label>
+                  <input matInput [matDatepicker]="picker2" formControlName="arrivalDate">
+                  <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                  <mat-datepicker #picker2></mat-datepicker>
+                </mat-form-field>
+              </div>
             </div>
-            <div class="col-5 pl-4 p-0" [hidden]="formSearch.controls.way.value == 1">
-              <mat-form-field>
-                <mat-label>Ngày về</mat-label>
-                <input matInput [matDatepicker]="picker2" formControlName="arrivalDate">
-                <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-                <mat-datepicker #picker2></mat-datepicker>
-              </mat-form-field>
+            <mat-divider></mat-divider>
+            <div class="row">
+              <div class="col-3 pl-5 d-flex align-items-center">Người lớn</div>
+              <div class="col-4">
+                <mat-form-field>
+                  <mat-label>Số lượng</mat-label>
+                  <mat-select formControlName="quantity">
+                    <mat-option value="1">0</mat-option>
+                    <mat-option value="1">1</mat-option>
+                    <mat-option value="2">2</mat-option>
+                    <mat-option value="3">3</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="col-5 d-flex align-items-center">(Từ 12 tuổi trở lên)</div>
             </div>
-          </div>
-          <mat-divider></mat-divider>
-          <div class="row">
-            <div class="col-3 pl-5 d-flex align-items-center">Người lớn</div>
-            <div class="col-4">
-              <mat-form-field>
-                <mat-label>Số lượng</mat-label>
-                <mat-select formControlName="quantity">
-                  <mat-option value="1">0</mat-option>
-                  <mat-option value="1">1</mat-option>
-                  <mat-option value="2">2</mat-option>
-                  <mat-option value="3">3</mat-option>
-                </mat-select>
-              </mat-form-field>
+            <div class="row">
+              <div class="col-3 pl-5 d-flex align-items-center">Trẻ em</div>
+              <div class="col-4">
+                <mat-form-field>
+                  <mat-label>Số lượng</mat-label>
+                  <mat-select>
+                    <mat-option value="1">0</mat-option>
+                    <mat-option value="1">1</mat-option>
+                    <mat-option value="2">2</mat-option>
+                    <mat-option value="3">3</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="col-5 d-flex align-items-center">(Từ 2 đến dưới 12 tuổi)</div>
             </div>
-            <div class="col-5 d-flex align-items-center">(Từ 12 tuổi trở lên)</div>
-          </div>
-          <div class="row">
-            <div class="col-3 pl-5 d-flex align-items-center">Trẻ em</div>
-            <div class="col-4">
-              <mat-form-field>
-                <mat-label>Số lượng</mat-label>
-                <mat-select>
-                  <mat-option value="1">0</mat-option>
-                  <mat-option value="1">1</mat-option>
-                  <mat-option value="2">2</mat-option>
-                  <mat-option value="3">3</mat-option>
-                </mat-select>
-              </mat-form-field>
+            <div class="row">
+              <div class="col-3 pl-5 d-flex align-items-center">Em bé</div>
+              <div class="col-4">
+                <mat-form-field>
+                  <mat-label>Số lượng</mat-label>
+                  <mat-select>
+                    <mat-option value="1">0</mat-option>
+                    <mat-option value="1">1</mat-option>
+                    <mat-option value="2">2</mat-option>
+                    <mat-option value="3">3</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="col-5 d-flex align-items-center">(Dưới 2 tuổi)</div>
             </div>
-            <div class="col-5 d-flex align-items-center">(Từ 2 đến dưới 12 tuổi)</div>
-          </div>
-          <div class="row">
-            <div class="col-3 pl-5 d-flex align-items-center">Em bé</div>
-            <div class="col-4">
-              <mat-form-field>
-                <mat-label>Số lượng</mat-label>
-                <mat-select>
-                  <mat-option value="1">0</mat-option>
-                  <mat-option value="1">1</mat-option>
-                  <mat-option value="2">2</mat-option>
-                  <mat-option value="3">3</mat-option>
-                </mat-select>
-              </mat-form-field>
+            <div class="row">
+              <div class="col-7"></div>
+              <div class="col-5">
+                <button type="button" (click)="search(flightTableComponent)">Tìm vé</button>
+              </div>
             </div>
-            <div class="col-5 d-flex align-items-center">(Dưới 2 tuổi)</div>
-          </div>
-          <div class="row">
-            <div class="col-7"></div>
-            <div class="col-5">
-              <button type="button" (click)="search(flightTableComponent)">Tìm vé</button>
-            </div>
-          </div>
-        </fieldset>
-      </form>
+          </fieldset>
+        </form>
       </div>
     </div>
   </div>

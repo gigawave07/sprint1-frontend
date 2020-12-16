@@ -16,7 +16,8 @@
 table {
   width: 100vh;
 }
-th{
+
+th {
   text-align: left;
   padding-top: 0px;
 }
@@ -27,7 +28,6 @@ th{
   color: white;
 }
 
-.border-flight{
-  border-radius: 0.75rem
-;
+.border-flight {
+  border-radius: 0.75rem;
 }

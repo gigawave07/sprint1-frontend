@@ -1,4 +1,4 @@
-import { WeekdaysPipe } from './weekdays.pipe';
+import {WeekdaysPipe} from './weekdays.pipe';
 
 describe('WeekdaysPipe', () => {
   it('create an instance', () => {

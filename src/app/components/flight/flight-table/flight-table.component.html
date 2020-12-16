@@ -9,7 +9,7 @@
   <div class="d-flex pl-5" *ngIf="listOneWayTable !== undefined">
     <button mat-button class="date-button"
             *ngFor="let index of arraysOneWay" (click)="searchOneWayPage(index)">{{index | date: "EEEE"| weekdays}}<br>
-    {{index | date: "dd/MM/yyyy"}}</button>
+      {{index | date: "dd/MM/yyyy"}}</button>
   </div>
   <div *ngIf="listOneWayTable !== undefined">
     <table class="table" id="table1">
@@ -35,7 +35,7 @@
           <button mat-button style="background-color: orange" (click)="dialogFlight(oneWay.id)">Chi tiết</button>
         </td>
         <td>
-            <mat-radio-button name="flightOne" (click)="flightOne(oneWay.id)"></mat-radio-button>
+          <mat-radio-button name="flightOne" (click)="flightOne(oneWay.id)"></mat-radio-button>
         </td>
       </tr>
       </tbody>
@@ -54,7 +54,8 @@
   </div>
   <div class="d-flex pl-5" *ngIf="listReturnTable !== undefined">
     <button mat-button class="date-button"
-            *ngFor="let arrivalReturen of arraysReturn" (click)="searchReturnPage(arrivalReturen)">{{arrivalReturen | date: "EEEE"| weekdays}}<br>
+            *ngFor="let arrivalReturen of arraysReturn"
+            (click)="searchReturnPage(arrivalReturen)">{{arrivalReturen | date: "EEEE"| weekdays}}<br>
       {{arrivalReturen | date: "dd/MM/yyyy"}}</button>
   </div>
   <div *ngIf="listReturnTable !== undefined">
@@ -80,7 +81,9 @@
         <td>
           <button mat-button style="background-color: orange" (click)="dialogFlight(return.id)">Chi tiết</button>
         </td>
-        <td><mat-radio-button name="flightTwo" (click)="flightTwo(return.id)"></mat-radio-button></td>
+        <td>
+          <mat-radio-button name="flightTwo" (click)="flightTwo(return.id)"></mat-radio-button>
+        </td>
       </tr>
       </tbody>
     </table>

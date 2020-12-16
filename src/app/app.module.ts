@@ -15,6 +15,13 @@ import {EditTicketComponent} from './components/edit-ticket/edit-ticket.componen
 import {PrintTicketComponent} from './components/print-ticket/print-ticket.component';
 import {HttpClientModule} from "@angular/common/http";
 import {ListTicketComponent} from './components/list-ticket/list-ticket.component';
+import {SearchFlightInformationComponent} from './components/flight/search-flight-information/search-flight-information.component';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { FlightTableComponent } from './components/flight/flight-table/flight-table.component';
+import { WeekdaysPipe } from './components/flight/flight-table/weekdays.pipe';
+import { FlightDetailComponent } from './components/flight/flight-detail/flight-detail.component';
+import { FlightTicketComponent } from './components/flight/flight-ticket/flight-ticket.component';
+import { InfoPassengerBookingTicketComponent } from './components/flight/info-passenger-booking-ticket/info-passenger-booking-ticket.component';
 
 @NgModule({
   declarations: [
@@ -22,13 +29,22 @@ import {ListTicketComponent} from './components/list-ticket/list-ticket.componen
     // Quân
     HomeComponent, LoginComponent, RegisterComponent, NavBarComponent, FooterComponent,
     // Châu
-    InputTicketSellComponent, DeleteTicketComponent, EditTicketComponent, PrintTicketComponent, ListTicketComponent
+    InputTicketSellComponent, DeleteTicketComponent, EditTicketComponent, PrintTicketComponent, ListTicketComponent,
+    // Đin
+    SearchFlightInformationComponent,
+    FlightTableComponent,
+    WeekdaysPipe,
+    FlightDetailComponent,
+    FlightTicketComponent,
+    InfoPassengerBookingTicketComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     MaterialModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

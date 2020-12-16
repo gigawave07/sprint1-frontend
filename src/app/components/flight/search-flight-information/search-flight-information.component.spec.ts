@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { SearchFlightInformationComponent } from './search-flight-information.component';
+import {SearchFlightInformationComponent} from './search-flight-information.component';
 
 describe('SearchFlightInformationComponent', () => {
   let component: SearchFlightInformationComponent;
@@ -8,9 +8,9 @@ describe('SearchFlightInformationComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SearchFlightInformationComponent ]
+      declarations: [SearchFlightInformationComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

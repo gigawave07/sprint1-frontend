@@ -1,7 +1,8 @@
 * {
   box-sizing: border-box;
 }
-legend{
+
+legend {
   width: auto;
 }
 
@@ -9,13 +10,15 @@ legend{
   width: 100%;
   margin-left: 10px;
 }
+
 .return {
   margin-left: 5em;
 }
-/*.mat-radio-button ~ .mat-radio-button */
+
 .bg-white {
   background: white;
 }
+
 button {
   background-color: orange;
   color: white;
@@ -23,9 +26,11 @@ button {
   height: 40px;
   border: none;
 }
+
 button:hover {
   background-color: black;
 }
-.search-form{
+
+.search-form {
   border-radius: 0.75rem;
 }

@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { FlightDetailComponent } from './flight-detail.component';
+import {FlightDetailComponent} from './flight-detail.component';
 
 describe('FlightDetailComponent', () => {
   let component: FlightDetailComponent;
@@ -8,9 +8,9 @@ describe('FlightDetailComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FlightDetailComponent ]
+      declarations: [FlightDetailComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
