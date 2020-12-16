@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {LoginService} from '../../service/login.service';
 
 @Component({
   selector: 'app-nav-bar',
@@ -6,10 +7,27 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./nav-bar.component.css']
 })
 export class NavBarComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
+  // username;
+  currentUser;
+  constructor(public loginService: LoginService) {
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
   }
 
+  ngOnInit() {
+    this.loginService.name.subscribe(val => {
+      this.currentUser = val;
+    });
+  }
+
+  logout() {
+    this.loginService.logout();
+    this.currentUser = null;
+    this.loginService.broadcastLoginChange(this.currentUser);
+  }
+
+  hello() {
+    this.loginService.hello().subscribe(data => {
+      alert(this.loginService.currentUserValue.id);
+    });
+  }
 }
