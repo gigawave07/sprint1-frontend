@@ -4,8 +4,8 @@
     <div class="d-flex form-group mt-4">
       <label class="col-lg-3 col-md-3">Họ và tên <span style="color: red" >(*)</span>:</label>
       <input type="text" class="col-lg-9 col-md-9 form-control form-control-sm" formControlName="fullName" placeholder="Vui lòng nhập họ và tên.">
-      <span  *ngIf="formEditUser.get('fullName').invalid && formEditUser.get('fullName').touched" style="color: red" class="col-lg-9 col-md-9" >
-        Họ và tên không được để trống.</span>
+      <p  *ngIf="formEditUser.get('fullName').invalid && formEditUser.get('fullName').touched" style="color: red" class="col-lg-9 col-md-9" >
+        Họ và tên không được để trống.</p>
 <!--     <p  *ngIf="formEdit.get('fullName').invalid && formEdit.get('fullName').touched"></p>-->
     </div>
 
