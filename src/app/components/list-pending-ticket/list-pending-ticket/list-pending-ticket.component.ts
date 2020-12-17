@@ -65,6 +65,7 @@ export class ListPendingTicketComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       this.ngOnInit();
+    //  scdsfcs
     });
   }
 

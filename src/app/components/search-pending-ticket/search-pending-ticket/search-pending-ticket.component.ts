@@ -85,7 +85,7 @@ export class SearchPendingTicketComponent implements OnInit {
 
 	searchTicket() {
 		console.log(this.formTicketSearchDTO.value);
-		// this.ticketSearchDTO = this.formTicketSearchDTO.value;
+		// this.ticketSearchDTO = this.formTicketSearchDTO.value;fvwefwe
 		// console.log('this.ticketSearchDTO abc');
 		// console.log(this.ticketSearchDTO);
 		this.ticketService.searchTicket(this.formTicketSearchDTO.value).subscribe(data => {
@@ -96,4 +96,5 @@ export class SearchPendingTicketComponent implements OnInit {
 			console.log('error searchTicket');
 		});
 	}
+
 }
