@@ -43,7 +43,8 @@ export class EditTicketComponent implements OnInit {
       statusPayment: [this.data.dataTicket.statusPayment],
       appUser: ['', {
         validators:
-          [Validators.required, Validators.pattern('^[a-zA-Z0-9]+[@]([a-zA-Z]{3,7})[.]([a-z]{2,3})$')],
+          [Validators.required, Validators.maxLength(50),
+            Validators.pattern('^[a-zA-Z0-9]+[@]([a-zA-Z]{3,7})[.]([a-z]{2,3})$')],
         asyncValidators: [this.ticketService.validateEmailUser()],
         updateOn: 'blur'
       }],

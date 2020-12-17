@@ -99,6 +99,15 @@
                                   || formEdit.controls.appUser?.touched)">
             Email sai định dạng. Email chuẩn có dạng abc@abc.abc .
           </p>
+          <p class="text-danger"
+             *ngIf="formEdit.controls.appUser?.invalid
+                    && !formEdit.get('appUser').hasError('required')
+                    && !formEdit.get('appUser').hasError('pattern')
+                    && !formEdit.get('appUser').hasError('emailUserExists')
+                    && (formEdit.controls.appUser?.dirty
+                    || formEdit.controls.appUser?.touched)">
+            Độ dài tối đa của email chỉ được 50 kí tự.
+          </p>
         </div>
       </div>
     </form>

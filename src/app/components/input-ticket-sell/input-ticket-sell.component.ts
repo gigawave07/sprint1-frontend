@@ -55,7 +55,7 @@ export class InputTicketSellComponent implements OnInit {
       statusCheckin: [''],
       ticketCode: [''],
       booking: [bookingCode],
-      employee: [''],
+      employee: [1],
       flightInformation: [''],
       invoice: [''],
       statusPayment: [''],
