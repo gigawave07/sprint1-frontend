@@ -10,6 +10,8 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatButtonModule} from '@angular/material/button';
 import {CancelPendingTicketComponent} from './components/list-pending-ticket/cancel-pending-ticket/cancel-pending-ticket.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {CancelPendingTicketComponent} from "./components/list-pending-ticket/cancel-pending-ticket/cancel-pending-ticket.component";
+import {ChangePasswordAdminComponent} from './components/change-password-admin/change-password-admin.component';
 
 
 
@@ -42,6 +44,6 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
   providers: [
     MatDatepickerModule,
   ],
-  entryComponents: [CancelPendingTicketComponent]
+  entryComponents: [ChangePasswordAdminComponent, CancelPendingTicketComponent]
 })
 export class MaterialModule { }
