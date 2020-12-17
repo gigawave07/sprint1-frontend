@@ -6,6 +6,9 @@ import {RegisterComponent} from './components/register/register.component';
 import {VerificationEmailComponent} from './components/verification-email/verification-email.component';
 import {InformationAdminComponent} from './components/information-admin/information-admin.component';
 import {AdminComponent} from './components/admin/admin.component';
+import {EditUserComponent} from './components/edit-user/edit-user.component';
+import {ChangePasswordUserComponent} from './components/change-password-user/change-password-user.component';
+import {InformationUserComponent} from './components/information-user/information-user.component';
 
 
 const routes: Routes = [
@@ -23,11 +26,21 @@ const routes: Routes = [
       }
     ]
   },
+  // Đạt
+  {path: 'detail-user', component: DetailUserComponent},
+  {path: 'informationUser', component: InformationUserComponent,
+    children: [
+      {
+        path: 'detailUser', component: DetailUserComponent
+      },
+      { path: 'editUser', component: EditUserComponent},
+      { path: 'changPassword', component: ChangePasswordUserComponent}
+    ]
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule {
-}
+export class AppRoutingModule {}

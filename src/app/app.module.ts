@@ -22,6 +22,11 @@ import {Ng2SearchPipeModule} from 'ng2-search-filter';
 import {AdminComponent} from './components/admin/admin.component';
 import {InformationAdminComponent} from './components/information-admin/information-admin.component';
 import {ChangePasswordAdminComponent} from './components/change-password-admin/change-password-admin.component';
+import { DetailUserComponent } from './components/detail-user/detail-user.component';
+import { EditUserComponent } from './components/edit-user/edit-user.component';
+import { ChangePasswordUserComponent } from './components/change-password-user/change-password-user.component';
+import { InformationUserComponent } from './components/information-user/information-user.component';
+
 
 @NgModule({
   declarations: [
@@ -31,6 +36,10 @@ import {ChangePasswordAdminComponent} from './components/change-password-admin/c
     SpinnerComponent, SpinnerOverlayComponent,
     // Danh
     AdminComponent, InformationAdminComponent, ChangePasswordAdminComponent,
+    // Đạt
+    DetailUserComponent, EditUserComponent, ChangePasswordUserComponent,
+    InputTicketSellComponent,
+    DeleteTicketComponent, EditTicketComponent, PrintTicketComponent, ListTicketComponent, InformationUserComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, MaterialModule, HttpClientModule, NgxPaginationModule, Ng2SearchPipeModule,
     FormsModule, MatDialogModule, ReactiveFormsModule, NgxLoadingModule.forRoot({})],

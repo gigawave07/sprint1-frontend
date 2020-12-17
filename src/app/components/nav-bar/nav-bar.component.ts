@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {LoginService} from '../../service/login.service';
+import {ChangePasswordUserComponent} from '../change-password-user/change-password-user.component';
 
 @Component({
   selector: 'app-nav-bar',
@@ -20,7 +21,7 @@ export class NavBarComponent implements OnInit {
   }
 
   logout() {
-    this.loginService.logout();
+       this.loginService.logout();
     this.currentUser = null;
     this.loginService.broadcastLoginChange(this.currentUser);
   }
