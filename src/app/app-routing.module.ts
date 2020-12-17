@@ -10,8 +10,8 @@ import {EditUserComponent} from './components/edit-user/edit-user.component';
 import {ChangePasswordUserComponent} from './components/change-password-user/change-password-user.component';
 import {InformationUserComponent} from './components/information-user/information-user.component';
 import {DetailUserComponent} from "./components/detail-user/detail-user.component";
-import {ListPendingTicketComponent} from './components/list-pending-ticket/list-pending-ticket/list-pending-ticket.component';
 import {SearchPendingTicketComponent} from './components/search-pending-ticket/search-pending-ticket/search-pending-ticket.component';
+import {ListPendingTicketComponent} from "./components/list-pending-ticket/list-pending-ticket/list-pending-ticket.component";
 
 
 const routes: Routes = [
