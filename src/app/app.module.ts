@@ -26,10 +26,9 @@ import { DetailUserComponent } from './components/detail-user/detail-user.compon
 import { EditUserComponent } from './components/edit-user/edit-user.component';
 import { ChangePasswordUserComponent } from './components/change-password-user/change-password-user.component';
 import { InformationUserComponent } from './components/information-user/information-user.component';
-import {ListPendingTicketComponent} from "./components/list-pending-ticket/list-pending-ticket/list-pending-ticket.component";
-import {CancelPendingTicketComponent} from "./components/list-pending-ticket/cancel-pending-ticket/cancel-pending-ticket.component";
-import {SearchPendingTicketComponent} from "./components/search-pending-ticket/search-pending-ticket/search-pending-ticket.component";
-import { EmployeeComponent } from './components/employee/employee.component';
+import {ListPendingTicketComponent} from './components/list-pending-ticket/list-pending-ticket/list-pending-ticket.component';
+import {CancelPendingTicketComponent} from './components/list-pending-ticket/cancel-pending-ticket/cancel-pending-ticket.component';
+import {SearchPendingTicketComponent} from './components/search-pending-ticket/search-pending-ticket/search-pending-ticket.component';
 
 @NgModule({
   declarations: [
@@ -43,8 +42,6 @@ import { EmployeeComponent } from './components/employee/employee.component';
     AdminComponent, InformationAdminComponent, ChangePasswordAdminComponent,
     // Đạt
     DetailUserComponent, EditUserComponent, ChangePasswordUserComponent, InformationUserComponent,
-    // Mai
-    EmployeeComponent
   ],
   imports: [BrowserModule, AppRoutingModule, MaterialModule, HttpClientModule, NgxPaginationModule, Ng2SearchPipeModule,
     FormsModule, MatDialogModule, ReactiveFormsModule, NgxLoadingModule.forRoot({})],
