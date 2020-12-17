@@ -40,3 +40,6 @@ button:hover {
 #info-bar > div > ul > li > a {
   color: white;
 }
+legend {
+  width: auto;
+}
