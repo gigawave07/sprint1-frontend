@@ -9,6 +9,7 @@ import {AdminComponent} from './components/admin/admin.component';
 import {EditUserComponent} from './components/edit-user/edit-user.component';
 import {ChangePasswordUserComponent} from './components/change-password-user/change-password-user.component';
 import {InformationUserComponent} from './components/information-user/information-user.component';
+import {DetailUserComponent} from "./components/detail-user/detail-user.component";
 
 
 const routes: Routes = [

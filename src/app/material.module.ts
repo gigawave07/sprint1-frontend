@@ -28,7 +28,7 @@ import {ChangePasswordUserComponent} from './components/change-password-user/cha
     MatSelectModule,
     MatDividerModule,
     MatButtonModule,
-    MatDialogModule
+    MatDialogModule,
     MatProgressSpinnerModule
   ],
   exports: [
@@ -41,7 +41,7 @@ import {ChangePasswordUserComponent} from './components/change-password-user/cha
     MatSelectModule,
     MatDividerModule,
     MatButtonModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
     MatDialogModule
 
   ],
@@ -49,7 +49,7 @@ import {ChangePasswordUserComponent} from './components/change-password-user/cha
     MatDatepickerModule,
   ],
   entryComponents: [
-    ChangePasswordAdminComponent
+    ChangePasswordAdminComponent,
     EditUserComponent, ChangePasswordUserComponent
   ]
 })

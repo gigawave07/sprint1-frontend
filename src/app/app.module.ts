@@ -37,9 +37,7 @@ import { InformationUserComponent } from './components/information-user/informat
     // Danh
     AdminComponent, InformationAdminComponent, ChangePasswordAdminComponent,
     // Đạt
-    DetailUserComponent, EditUserComponent, ChangePasswordUserComponent,
-    InputTicketSellComponent,
-    DeleteTicketComponent, EditTicketComponent, PrintTicketComponent, ListTicketComponent, InformationUserComponent,
+    DetailUserComponent, EditUserComponent, ChangePasswordUserComponent, InformationUserComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, MaterialModule, HttpClientModule, NgxPaginationModule, Ng2SearchPipeModule,
     FormsModule, MatDialogModule, ReactiveFormsModule, NgxLoadingModule.forRoot({})],
