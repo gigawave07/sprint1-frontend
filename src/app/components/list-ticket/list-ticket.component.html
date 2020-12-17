@@ -3,7 +3,9 @@
   <div class="col-3"></div>
 </div>
 <div class="row">
-  <div class="col-7"><a class="btn btn-warning text-white ml-3" [routerLink]="'/search-ticket-empty'">Tìm vé trống</a></div>
+  <div class="col-7"><a class="btn ml-3"
+                        [routerLink]="'/search-ticket-empty'"
+                        style="background-color: orange; color: white">Tìm vé trống</a></div>
   <div class="col-2">
     <div class="row">
       <div class="col-3"></div>
@@ -18,7 +20,8 @@
   <div class="col-3">
     <form class="form-inline row">
       <input class="form-control mr-2 col-7" type="search" placeholder="Search" aria-label="Search" #inputSearch>
-      <button class="btn bg-warning text-white bt my-2 my-sm-0 col-3" type="submit">Tìm</button>
+      <button class="btn" type="submit"
+              style="background-color: orange; color: white">Tìm</button>
     </form>
   </div>
 </div>
@@ -47,9 +50,12 @@
           <td>{{element.flightInformation.departureDate | date : "dd/MM/yyyy"}}</td>
           <td>{{element.priceDeparture}}</td>
           <td>
-            <button (click)="openDialogEdit(element.id)" type="button" class="btn btn-warning mr-1">Sửa</button>
-            <button (click)="openDialogDelete(element.id)" type="button" class="btn btn-dark mr-1">Xóa</button>
-            <button (click)="openWindowPrint(element.id)" type="button" class="btn btn-primary">In vé</button>
+            <button (click)="openDialogEdit(element.id)" type="button" class="btn btn-warning mr-1"
+                    style="background-color: orange; color: white">Sửa</button>
+            <button (click)="openDialogDelete(element.id)" type="button" class="btn btn-dark mr-1"
+                    style="background-color: grey; color: white">Xóa</button>
+            <button (click)="openWindowPrint(element.id)" type="button" class="btn btn-primary"
+                    style="background-color: blue; color: white">In vé</button>
           </td>
         </tr>
         </tbody>

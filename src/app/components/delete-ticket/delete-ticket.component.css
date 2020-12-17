@@ -52,3 +52,7 @@ span {
 .departureDate {
   margin-left: 9.5%;
 }
+
+.warning {
+  color: red;
+}

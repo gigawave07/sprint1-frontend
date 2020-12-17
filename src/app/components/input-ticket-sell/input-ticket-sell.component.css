@@ -70,3 +70,63 @@ div.col-sm-2 h5 {
 div.form-row {
   margin-top: 2%;
 }
+
+.message {
+  margin: -1.5% 0 1% 0;
+}
+
+.testEmail {
+  margin: -5% 0 0 0;
+  background-color: orange;
+  color: white;
+  width: 57%;
+  height: 75%;
+  border: none;
+  border-radius: 7%;
+}
+
+.testEmail:hover {
+  background-color: black;
+}
+
+.back {
+  margin: 0 0 0 29%;
+  background-color: grey;
+  color: white;
+  width: 12.7%;
+  height: 36px;
+  border: none;
+  border-radius: 7%;
+}
+
+.back:hover {
+  background-color: blue;
+}
+
+.save {
+  margin: 0 2%;
+  background-color: orange;
+  color: white;
+  width: 12.7%;
+  height: 36px;
+  border: none;
+  border-radius: 7%;
+}
+
+.save:hover {
+  background-color: black;
+}
+
+.print {
+  margin: 0 0 0 0;
+  background-color: blue;
+  color: white;
+  width: 12.7%;
+  height: 36px;
+  border: none;
+  border-radius: 7%;
+}
+
+.print:hover {
+  background-color: grey;
+}

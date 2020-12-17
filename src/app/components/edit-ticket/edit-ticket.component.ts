@@ -58,14 +58,14 @@ export class EditTicketComponent implements OnInit {
     this.formEdit.markAllAsTouched();
     if (this.formEdit.valid) {
       this.passengerEdit = this.formEdit.value.passengerName;
-      for (const element of this.appUserList) {
-        if (element.email === this.formEdit.value.appUser) {
-          this.appUserEdit = element.id;
+      for (const ELEMENT of this.appUserList) {
+        if (ELEMENT.email === this.formEdit.value.appUser) {
+          this.appUserEdit = ELEMENT.id;
           break;
         }
       }
-      const idEdit = this.data.dataTicket.id;
-      this.ticketService.editTicketService(idEdit, this.passengerEdit, this.appUserEdit, this.formEdit.value)
+      const ID_EDIT = this.data.dataTicket.id;
+      this.ticketService.editTicketService(ID_EDIT, this.passengerEdit, this.appUserEdit, this.formEdit.value)
         .subscribe(data => {
           this.dialogRef.close();
         });

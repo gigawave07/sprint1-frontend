@@ -10,10 +10,10 @@ const API = 'http://localhost:8080/ticket';
   providedIn: 'root'
 })
 export class TicketService {
-  public readonly API: string = 'http://localhost:8080/ticket';
+  protected readonly API: string = 'http://localhost:8080/ticket';
 
   constructor(
-    public http: HttpClient
+    protected http: HttpClient
   ) {
   }
 

@@ -11,10 +11,11 @@ export class PrintTicketTwoWayComponent implements OnInit {
   protected passengerArray = [];
   protected passengerList: string;
   protected bookingCode;
-  protected flightDeparture;
-  protected flightArrival;
+  protected flightDeparture = 'Nothing';
+  protected flightArrival = 'Nothing';
   protected flightInformationDeparture = [];
   protected flightInformationArrival = [];
+  protected check = 'true';
 
   constructor(
     private activedRouter: ActivatedRoute,
@@ -27,15 +28,20 @@ export class PrintTicketTwoWayComponent implements OnInit {
       this.bookingCode = data.bookingCode;
       this.passengerList = data.passengerList;
       this.flightDeparture = data.flightDeparture;
-      this.flightArrival = data.flightArrival;
+      if (data.flightArrival !== '0') {
+        this.flightArrival = data.flightArrival;
+      } else {
+        this.check = 'false';
+        this.flightArrival = this.flightDeparture;
+      }
     });
+    this.passengerArray = this.passengerList.split(',', this.passengerList.length);
     this.ticketService.findFlightInformationByIDService(this.flightDeparture).subscribe(data => {
       this.flightInformationDeparture = data;
     });
     this.ticketService.findFlightInformationByIDService(this.flightArrival).subscribe(data => {
       this.flightInformationArrival = data;
     });
-    this.passengerArray = this.passengerList.split(',', this.passengerList.length);
   }
 
 }

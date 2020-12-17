@@ -3,6 +3,7 @@ import {MatDialog} from '@angular/material/dialog';
 import {TicketService} from '../../service/ticket/ticket.service';
 import {DeleteTicketComponent} from '../delete-ticket/delete-ticket.component';
 import {EditTicketComponent} from '../edit-ticket/edit-ticket.component';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-list-ticket',
@@ -15,27 +16,35 @@ export class ListTicketComponent implements OnInit {
 
   constructor(
     protected ticketService: TicketService,
-    protected dialog: MatDialog
+    protected dialog: MatDialog,
+    protected router: Router
   ) {
     this.nativeWindow = ticketService.openNewWindow();
   }
 
   ngOnInit() {
-    this.ticketService.getAllTicketService().subscribe(data => {
-      this.ticketList = data;
-    });
+    this.ticketService.getAllTicketService().subscribe(
+      (data) => {
+        this.ticketList = data;
+      },
+      () => {
+        const NOTICE = 'Không tìm thấy trang';
+        this.router.navigate(['notice-page', {message: NOTICE}]).then(r => {});
+       },
+      () => {
+      });
   }
 
   openDialogDelete(id: any): void {
     this.ticketService.findTicketByIDService(id).subscribe(ticket => {
-      const dialogRef = this.dialog.open(DeleteTicketComponent, {
+      const DIALOG_REF = this.dialog.open(DeleteTicketComponent, {
         width: '650px',
         height: '330px',
         data: {dataTicket: ticket},
         disableClose: true
       });
 
-      dialogRef.afterClosed().subscribe(result => {
+      DIALOG_REF.afterClosed().subscribe(result => {
         this.ngOnInit();
       });
     });
@@ -43,21 +52,21 @@ export class ListTicketComponent implements OnInit {
 
   openDialogEdit(id: any): void {
     this.ticketService.findTicketByIDService(id).subscribe(ticket => {
-      const dialogRefEdit = this.dialog.open(EditTicketComponent, {
+      const DIALOG_REF = this.dialog.open(EditTicketComponent, {
         width: '750px',
         height: '450px',
         data: {dataTicket: ticket},
         disableClose: true
       });
 
-      dialogRefEdit.afterClosed().subscribe(result => {
+      DIALOG_REF.afterClosed().subscribe(result => {
         this.ngOnInit();
       });
     });
   }
 
   openWindowPrint(idTicket: number): void {
-    const newWindow = this.nativeWindow.open('printTicket');
-    newWindow.location = 'printTicket/' + idTicket;
+    const NEW_WINDOW = this.nativeWindow.open('print-ticket');
+    NEW_WINDOW.location = 'print-ticket/' + idTicket;
   }
 }

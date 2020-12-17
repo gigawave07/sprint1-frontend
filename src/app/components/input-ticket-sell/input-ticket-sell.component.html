@@ -99,10 +99,10 @@
                     </p>
                     <p class="text-danger" style="margin-top: -2%"
                        *ngIf="formCreate.controls.passengerName?.invalid
-                                                       && !formCreate.get('passengerName').hasError('required')
-                                                       && !formCreate.get('passengerName').hasError('pattern')
-                                                       && (formCreate.controls.passengerName?.dirty
-                                                       || formCreate.controls.passengerName?.touched)">
+                                                  && !formCreate.get('passengerName').hasError('required')
+                                                  && !formCreate.get('passengerName').hasError('pattern')
+                                                  && (formCreate.controls.passengerName?.dirty
+                                                  || formCreate.controls.passengerName?.touched)">
                       Danh sách người đi tối đa chỉ được 150 kí tự.
                     </p>
                   </div>
@@ -115,7 +115,7 @@
                   <div class="col-sm-3 col-xs-3 col-md-3 col-lg-3">
                     <mat-form-field class="matInputMaterial">
                       <mat-label></mat-label>
-                      <input matInput formControlName="adults" type="number" min="0">
+                      <input matInput formControlName="adults" type="text">
                     </mat-form-field>
                     <p class="text-danger" style="margin-top: -7%"
                        *ngIf="formCreate.get('adults').hasError('required')
@@ -127,16 +127,18 @@
                        *ngIf="formCreate.get('adults').hasError('pattern')
                                   && (formCreate.controls.adults?.dirty
                                   || formCreate.controls.adults?.touched)">
-                      Vui lòng nhập số, không nhập chữ cái và kí tự đặc biệt!
+                      Vui lòng chỉ nhập số, không nhập chữ cái và kí tự đặc biệt!
                     </p>
                     <p class="text-danger" style="margin-top: -7%"
                        *ngIf="formCreate.get('adults').hasError('min')
+                                  && !formCreate.get('adults').hasError('pattern')
                                   && (formCreate.controls.adults?.dirty
                                   || formCreate.controls.adults?.touched)">
                       Số lượng hành khách là người lớn phải lớn hơn hoặc bằng 1.
                     </p>
                     <p class="text-danger" style="margin-top: -7%"
                        *ngIf="formCreate.get('adults').hasError('max')
+                                  && !formCreate.get('adults').hasError('pattern')
                                   && (formCreate.controls.adults?.dirty
                                   || formCreate.controls.adults?.touched)">
                       Số lượng hành khách là người lớn tối đa là 99.
@@ -148,7 +150,7 @@
                   <div class="col-sm-3 col-xs-3 col-md-3 col-lg-3">
                     <mat-form-field class="matInputMaterial">
                       <mat-label></mat-label>
-                      <input matInput formControlName="babies" type="number" min="0">
+                      <input matInput formControlName="babies" type="text">
                     </mat-form-field>
                     <p class="text-danger" style="margin-top: -7%"
                        *ngIf="formCreate.get('babies').hasError('required')
@@ -160,16 +162,11 @@
                        *ngIf="formCreate.get('babies').hasError('pattern')
                                   && (formCreate.controls.babies?.dirty
                                   || formCreate.controls.babies?.touched)">
-                      Vui lòng nhập số, không nhập chữ cái và kí tự đặc biệt!
-                    </p>
-                    <p class="text-danger" style="margin-top: -7%"
-                       *ngIf="formCreate.get('babies').hasError('min')
-                                  && (formCreate.controls.babies?.dirty
-                                  || formCreate.controls.babies?.touched)">
-                      Số lượng hành khách là trẻ em phải lớn hơn hoặc bằng 0.
+                      Vui lòng chỉ nhập số, không nhập chữ cái và kí tự đặc biệt!
                     </p>
                     <p class="text-danger" style="margin-top: -7%"
                        *ngIf="formCreate.get('babies').hasError('max')
+                                  && !formCreate.get('babies').hasError('pattern')
                                   && (formCreate.controls.babies?.dirty
                                   || formCreate.controls.babies?.touched)">
                       Số lượng hành khách là trẻ em tối đa là 99.
@@ -239,7 +236,7 @@
                   <div class="col-sm-3 col-xs-3 col-md-3 col-lg-3">
                     <mat-form-field class="matInputMaterial price">
                       <mat-label></mat-label>
-                      <input matInput type="number" formControlName="priceDeparture"
+                      <input matInput type="text" formControlName="priceDeparture"
                              (change)="priceSell(priceDeparture.value, priceArrival.value)" #priceDeparture>
                     </mat-form-field>
                     <p class="text-danger" style="margin-top: -7%"
@@ -249,16 +246,11 @@
                       Vui lòng nhập giá bán!
                     </p>
                     <p class="text-danger" style="margin-top: -7%"
-                       *ngIf="formCreate.get('priceDeparture').hasError('min')
-                                  && (formCreate.controls.priceDeparture?.dirty
-                                  || formCreate.controls.priceDeparture?.touched)">
-                      Giá bán phải lớn hơn hoặc bằng 0.
-                    </p>
-                    <p class="text-danger" style="margin-top: -7%"
                        *ngIf="formCreate.get('priceDeparture').hasError('pattern')
                                   && (formCreate.controls.priceDeparture?.dirty
                                   || formCreate.controls.priceDeparture?.touched)">
-                      Vui lòng nhập số, không nhập chữ cái và kí tự đặc biệt!
+                      Vui lòng chỉ nhập số, không nhập chữ cái và kí tự đặc biệt!
+                      Nếu là số thực thì chỉ chứa 1 dấu chấm và phía sau phải có phần thập phân.
                     </p>
                   </div>
                 </div>
@@ -325,7 +317,7 @@
                     <div class="col-sm-3 col-xs-3 col-md-3 col-lg-3">
                       <mat-form-field class="matInputMaterial">
                         <mat-label></mat-label>
-                        <input matInput type="number" formControlName="priceArrival"
+                        <input matInput type="text" formControlName="priceArrival"
                                (change)="priceSell(priceDeparture.value, priceArrival.value)" #priceArrival>
                       </mat-form-field>
                       <p class="text-danger" style="margin-top: -7%"
@@ -335,16 +327,11 @@
                         Vui lòng nhập giá bán!
                       </p>
                       <p class="text-danger" style="margin-top: -7%"
-                         *ngIf="formCreate.get('priceArrival').hasError('min')
-                                    && (formCreate.controls.priceArrival?.dirty
-                                    || formCreate.controls.priceArrival?.touched)">
-                        Giá bán phải lớn hơn hoặc bằng 0.
-                      </p>
-                      <p class="text-danger" style="margin-top: -7%"
                          *ngIf="formCreate.get('priceArrival').hasError('pattern')
                                   && (formCreate.controls.priceArrival?.dirty
                                   || formCreate.controls.priceArrival?.touched)">
-                        Vui lòng nhập số, không nhập chữ cái và kí tự đặc biệt!
+                        Vui lòng chỉ nhập số, không nhập chữ cái và kí tự đặc biệt!
+                        Nếu là số thực thì chỉ chứa 1 dấu chấm và phía sau phải có phần thập phân.
                       </p>
                     </div>
                   </div>
@@ -358,7 +345,12 @@
                     <p>Tổng giá gốc</p>
                   </div>
                   <div class="col-sm-3 col-xs-3 col-md-3 col-lg-3">
-                    <mat-form-field class="matInputMaterial price">
+                    <mat-form-field [hidden]="idFlightArrival !== 0" class="matInputMaterial price">
+                      <mat-label></mat-label>
+                      <input matInput
+                             value="{{flightInformationDeparture.price}} VNĐ" readonly>
+                    </mat-form-field>
+                    <mat-form-field [hidden]="idFlightArrival === 0" class="matInputMaterial price">
                       <mat-label></mat-label>
                       <input matInput
                              value="{{flightInformationDeparture.price + flightInformationArrival.price}} VNĐ" readonly>
@@ -412,18 +404,19 @@
                     </p>
                   </div>
                   <div class="col-sm-3 col-xs-3 col-md-3 col-lg-3">
-                    <button type="button" class="btn btn-success">Kiểm tra Email</button>
+                    <button class="testEmail">Kiểm tra Email</button>
                   </div>
                 </div>
               </fieldset>
             </form>
           </div>
+          <div class="row justify-content-center message">
+            <h5 [hidden]="message === 'Nothing'">{{message}}</h5>
+          </div>
           <div class="row">
-            <button class="btn btn-secondary" style="margin-left: 33%; width: 9%;" [routerLink]="'/listTicket'">
-              Quay Lại
-            </button>
-            <button (click)="save()" class="btn btn-success" style="margin: 0 5%; width: 9%">Lưu</button>
-            <button (click)="saveAndPrint()" class="btn btn-primary" style="width: 9%">In vé</button>
+            <button class="btn btn-secondary back" [routerLink]="'/listTicket'">Quay Lại</button>
+            <button (click)="save()" class="btn btn-success save">Lưu</button>
+            <button (click)="saveAndPrint()" class="btn btn-primary print">In vé</button>
           </div>
         </div>
         <div class="col-sm-1"></div>
