@@ -24,7 +24,7 @@ export class ChangePasswordUserComponent implements OnInit {
     console.log(this.idUser);
     this.formChangePassword = this.formBuilder.group({
       oldPassword: ['', [Validators.required]],
-      newPassword: ['', [Validators.required, Validators.pattern('^[a-z0-9]{6,30}$')]],
+      newPassword: ['', [Validators.required]],
       confirmPassword: ['', [Validators.required]],
     });
   }

@@ -12,6 +12,7 @@ import {ActivatedRoute} from '@angular/router';
 export class EditUserComponent implements OnInit {
   public userOfId;
   public dataIdUser;
+  public valueGender;
   formEditUser: FormGroup;
 
   constructor(
@@ -35,6 +36,8 @@ export class EditUserComponent implements OnInit {
     this.dataIdUser = this.data.dataE;
     console.log(this.dataIdUser);
     this.userService.getUserById(this.dataIdUser).subscribe(getData => {
+      this.valueGender = getData.gender;
+      console.log(getData);
       this.formEditUser.patchValue(getData);
       console.log('--------edit-----------');
       console.log(getData);
@@ -43,6 +46,7 @@ export class EditUserComponent implements OnInit {
   }
 
   editUser() {
+    this.formEditUser.value.gender = this.valueGender;
     this.formEditUser.markAllAsTouched();
     console.log(this.formEditUser.value);
     this.userService.editUser(this.dataIdUser, this.formEditUser.value).subscribe(data => {
@@ -54,5 +58,9 @@ export class EditUserComponent implements OnInit {
     //     this.formEdit.patchValue(data1);
     //   });
     // });
+  }
+
+  valueGenderClick(value: boolean) {
+    this.valueGender = value;
   }
 }
