@@ -43,6 +43,8 @@ import { EmployeeComponent } from './components/employee/employee.component';
     AdminComponent, InformationAdminComponent, ChangePasswordAdminComponent,
     // Đạt
     DetailUserComponent, EditUserComponent, ChangePasswordUserComponent, InformationUserComponent,
+    // Mai
+    EmployeeComponent
   ],
   imports: [BrowserModule, AppRoutingModule, MaterialModule, HttpClientModule, NgxPaginationModule, Ng2SearchPipeModule,
     FormsModule, MatDialogModule, ReactiveFormsModule, NgxLoadingModule.forRoot({})],
