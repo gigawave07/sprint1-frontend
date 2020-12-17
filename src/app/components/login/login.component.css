@@ -1,9 +1,14 @@
+@import 'https://fonts.googleapis.com/icon?family=Material+Icons';
+.col-6 {
+  padding: 0;
+}
 div.col-6 > input, select, button {
   margin: 5px;
 }
 div.col-6 > button {
   width: 180px;
 }
+
 form {
   margin: 10px;
 }
@@ -29,4 +34,7 @@ button:hover {
 .social-login:hover {
   background-color: white;
   border-color: black;
+}
+mat-form-field {
+  width: 100%;
 }

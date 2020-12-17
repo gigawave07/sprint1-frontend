@@ -1,59 +1,48 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Title</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-</head>
-<body>
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-1"></div>
-    <div class="col-10">
-      <div class="row border" style="border-radius: 20px;">
+<div class="container-fluid bg-white">
+  <div class="row justify-content-center">
+    <div class="col-12">
+      <div class="row border bg-light" style="border-radius: 20px;">
         <div class="col-6">
-          <div class="p-4">
+          <div class="pt-4">
             <div class="d-flex justify-content-center">
               <h1>Đăng nhập</h1>
             </div>
-            <form action="">
+            <form (ngSubmit)="onSubmit()" [formGroup]="loginForm">
               <div class="row">
-                <div class="col-3"></div>
-                <div class="col-6">
+                <div class="col-2"></div>
+                <div class="col-8">
                   <mat-form-field class="example-full-width">
                     <mat-label>Email</mat-label>
-                    <input matInput>
+                    <input matInput formControlName="email">
                   </mat-form-field>
                 </div>
-                <div class="col-3"></div>
+                <div class="col-2"></div>
               </div>
               <div class="row">
-                <div class="col-3"></div>
-                <div class="col-6">
+                <div class="col-2"></div>
+                <div class="col-8">
                   <mat-form-field class="example-full-width">
                     <mat-label>Mật khẩu</mat-label>
-                    <input type="password" matInput>
+                    <input type="password" matInput formControlName="password">
                   </mat-form-field>
                 </div>
-                <div class="col-3"></div>
+                <div class="col-2"></div>
               </div>
-              <div class="row">
-                <div class="col-3"></div>
+              <div class="row pt-3 justify-content-center">
                 <div class="col-6">
-                  <button>Đăng nhập</button>
+                  <button type="submit">Đăng nhập</button>
+                  <mat-error>{{message}}</mat-error>
                 </div>
-                <div class="col-3"></div>
               </div>
             </form>
           </div>
         </div>
         <div class="col-6">
-          <img style="width: 100%" src="https://media.self.com/photos/5f0885ffef7a10ffa6640daa/4:3/w_2560%2Cc_limit/travel_plane_corona.jpeg" alt="">
+          <img style="width: 100%"
+               src="https://media.self.com/photos/5f0885ffef7a10ffa6640daa/4:3/w_2560%2Cc_limit/travel_plane_corona.jpeg"
+               alt="">
         </div>
       </div>
     </div>
-    <div class="col-1"></div>
   </div>
 </div>
-</body>
-</html>
