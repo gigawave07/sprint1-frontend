@@ -3,6 +3,7 @@ import {FormBuilder, FormControl, FormGroup, FormGroupDirective, NgForm, Validat
 import {ErrorStateMatcher} from '@angular/material/core';
 import {AdminService} from '../../service/admin/admin.service';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
+import {Router} from '@angular/router';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -26,18 +27,28 @@ export class ChangePasswordAdminComponent implements OnInit {
 
   constructor(public formBuilder: FormBuilder,
               public adminService: AdminService,
+              public route: Router,
               public dialogRef: MatDialogRef<ChangePasswordAdminComponent>,
               @Inject(MAT_DIALOG_DATA) public data: any) {
     this.changePasswordForm = this.formBuilder.group({
       passwordOld: ['',
         [
           Validators.required,
-          Validators.pattern('^(?=.[a-z])(?=.[A-Z])(?=.\\d)(?=.[$@!%?&])[A-Za-z\\d$@!%?&]{8,20}$')
+          Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$')
         ]
       ],
-      passwordNew: ['', [Validators.required]
+      passwordNew: ['',
+        [
+          Validators.required,
+          Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$')
+        ]
       ],
-      confirmPassword: ['', [Validators.required]]
+      confirmPassword: ['',
+        [
+          Validators.required,
+          Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$')
+        ]
+      ]
     }, {validator: this.checkPasswords});
   }
 
@@ -55,12 +66,12 @@ export class ChangePasswordAdminComponent implements OnInit {
     this.adminService.findAppAccountService(this.username).subscribe(dataAdmin => {
       this.account = {
         passwordOld: this.changePasswordForm.controls.passwordOld.value,
-        password: this.changePasswordForm.controls.password.value
+        passwordNew: this.changePasswordForm.controls.passwordNew.value
       };
       this.adminService.savePasswordAdminService(dataAdmin.username, this.account).subscribe(dataSavePassword => {
-        console.log(dataSavePassword.message);
         this.dialogRef.close();
       });
+      this.route.navigateByUrl('/admin/change-password-successfully');
     });
   }
 }

@@ -6,6 +6,7 @@ import {RegisterComponent} from './components/register/register.component';
 import {VerificationEmailComponent} from './components/verification-email/verification-email.component';
 import {InformationAdminComponent} from './components/information-admin/information-admin.component';
 import {AdminComponent} from './components/admin/admin.component';
+import {ChangePasswordSuccessfullyComponent} from './components/change-password-successfully/change-password-successfully.component';
 
 
 const routes: Routes = [
@@ -20,6 +21,9 @@ const routes: Routes = [
     children: [
       {
         path: 'information', component: InformationAdminComponent
+      },
+      {
+        path: 'change-password-successfully', component: ChangePasswordSuccessfullyComponent
       }
     ]
   },

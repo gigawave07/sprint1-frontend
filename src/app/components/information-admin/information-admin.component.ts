@@ -23,7 +23,6 @@ export class InformationAdminComponent implements OnInit {
   ngOnInit() {
     // get idAdmin
     this.idAdmin = this.loginService.currentUserValue.id;
-    console.log(this.idAdmin);
     // show inf admin
     this.adminService.getAdminByIdService(this.idAdmin).subscribe(data => {
       this.admin = data;
@@ -31,7 +30,6 @@ export class InformationAdminComponent implements OnInit {
   }
 
   openDialog(admin): void {
-    console.log(admin);
     const dialogRef = this.dialog.open(ChangePasswordAdminComponent, {
       width: '650px',
       data: {dataAdmin: admin},

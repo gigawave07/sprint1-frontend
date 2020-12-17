@@ -22,6 +22,7 @@ import {Ng2SearchPipeModule} from 'ng2-search-filter';
 import {AdminComponent} from './components/admin/admin.component';
 import {InformationAdminComponent} from './components/information-admin/information-admin.component';
 import {ChangePasswordAdminComponent} from './components/change-password-admin/change-password-admin.component';
+import {ChangePasswordSuccessfullyComponent} from './components/change-password-successfully/change-password-successfully.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,7 @@ import {ChangePasswordAdminComponent} from './components/change-password-admin/c
     HomeComponent, LoginComponent, RegisterComponent, NavBarComponent, FooterComponent, VerificationEmailComponent,
     SpinnerComponent, SpinnerOverlayComponent,
     // Danh
-    AdminComponent, InformationAdminComponent, ChangePasswordAdminComponent,
+    AdminComponent, InformationAdminComponent, ChangePasswordAdminComponent, ChangePasswordSuccessfullyComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, MaterialModule, HttpClientModule, NgxPaginationModule, Ng2SearchPipeModule,
     FormsModule, MatDialogModule, ReactiveFormsModule, NgxLoadingModule.forRoot({})],
