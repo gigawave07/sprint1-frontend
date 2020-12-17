@@ -47,7 +47,9 @@ const routes: Routes = [
         path: 'detailUser', component: DetailUserComponent
       },
       { path: 'editUser', component: EditUserComponent},
-      { path: 'changPassword', component: ChangePasswordUserComponent}
+      { path: 'changPassword', component: ChangePasswordUserComponent},
+      {path: 'list-pending-ticket', component: ListPendingTicketComponent},
+      {path: 'search-pending-ticket', component: SearchPendingTicketComponent}
     ]
   },
 

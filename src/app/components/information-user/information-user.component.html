@@ -12,7 +12,7 @@
         <div class="card">
           <div class="card-header">
             <h2 class="mb-0">
-              <a [routerLink]="['#']"><span><i class="fa fa-users"></i>Thanh toán</span>
+              <a [routerLink]="['/informationUser/list-pending-ticket']"><span><i class="fa fa-cc-paypal"></i>Thanh toán</span>
               </a>
             </h2>
           </div>
@@ -20,7 +20,7 @@
         <div class="card">
           <div class="card-header">
             <h2 class="mb-0">
-              <a [routerLink]="['#']"><span><i class="fa fa-line-chart"></i>Tìm kiếm đặt vé</span></a>
+              <a [routerLink]="['/informationUser/search-pending-ticket']"><span><i class="fa fa-search"></i>Tìm kiếm đặt chỗ</span></a>
             </h2>
           </div>
         </div>
@@ -41,9 +41,7 @@
       </div>
     </div>
     <div class="col-lg-9 mx-auto">
-      <div class="row">
         <router-outlet></router-outlet>
-      </div>
     </div>
   </div>
 </div>

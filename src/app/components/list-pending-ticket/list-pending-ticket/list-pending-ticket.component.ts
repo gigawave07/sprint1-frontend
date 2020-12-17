@@ -9,7 +9,7 @@ import {CancelPendingTicketComponent} from '../cancel-pending-ticket/cancel-pend
   styleUrls: ['./list-pending-ticket.component.css']
 })
 export class ListPendingTicketComponent implements OnInit {
-  public ticketList;
+  public ticketList =[];
   public payTicketList = [];
   public p = 1;
   private isChecked: boolean;
@@ -25,8 +25,8 @@ export class ListPendingTicketComponent implements OnInit {
   ngOnInit(): void {
     this.ticketService.findAllPendingTicket().subscribe(value => {
       this.ticketList = value;
-      // console.log('this.ticketList');
-      // console.log(this.ticketList);
+      console.log('this.ticketList');
+      console.log(this.ticketList);
     });
 
   }
