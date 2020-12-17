@@ -32,5 +32,6 @@ export class CancelPendingTicketComponent implements OnInit {
     this.ticketService.setTicketStatusPayment(this.ticketStatusPaymentDTO.id, this.ticketStatusPaymentDTO).subscribe(value => {
       this.dialogRef.close();
     });
+  //  csdvsdvsdv
   }
 }
