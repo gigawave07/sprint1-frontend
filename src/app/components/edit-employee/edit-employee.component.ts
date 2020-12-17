@@ -52,7 +52,6 @@ export class EditEmployeeComponent implements OnInit {
     this.activatedRoute.params.subscribe(data => {
       this.idNeed = data.id;
       this.employeeService.findEmployeeByIdService(this.idNeed).subscribe(dataEdit => {
-        // this.formEdit.value.appRole = dataEdit.appAccount.appRole.name;
         this.formEdit.patchValue(dataEdit);
       });
     });

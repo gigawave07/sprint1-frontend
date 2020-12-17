@@ -18,6 +18,7 @@ export class EmployeeService {
   ) {
   }
 
+  // Create by: Mai_HTQ
   getAllEmployeeService(): Observable<any> {
     return this.http.get(this.API + '/list');
   }
@@ -25,10 +26,6 @@ export class EmployeeService {
   getAllRole(): Observable<any> {
     return this.http.get(this.API + '/listRole');
   }
-
-  // getAllGender(): Observable<any> {
-  //   return this.http.get(this.API + '/listGender');
-  // }
 
   findEmployeeByIdService(idFind: any): Observable<any> {
     return this.http.get(this.API + '/findEmployeeById/' + idFind);
@@ -46,7 +43,7 @@ export class EmployeeService {
     return this.http.delete(this.API + '/delete/' + idDelete);
   }
 
-  // -------------------------- Search ----------------------------------
+  // --------------------------- Search ----------------------------------
   searchEmployeeFullNameService(idSearch: any): Observable<any> {
     return this.http.get(this.API + '/searchFullName/' + idSearch);
   }
