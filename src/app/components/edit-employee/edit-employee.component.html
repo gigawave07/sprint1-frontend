@@ -177,8 +177,17 @@
                 Vui lòng chọn giới tính
               </p>
             </div>
-            <div class="col-sm-7 col-xs-7 col-md-7 col-lg-7 p-0 m-0"></div>
-          </div>
+            <div class="col-sm-2 col-xs-2 col-md-2 col-lg-2 p-0 m-0"></div>
+            <div class="col-sm-2 col-xs-2 col-md-2 col-lg-2 p-0 m-0 mt-4">
+              <mat-label>Mật khẩu</mat-label>
+            </div>
+            <div class="col-sm-2 col-xs-2 col-md-2 col-lg-2 p-0 m-0">
+              <mat-form-field style="width: 100%">
+                <input matInput type="password" formControlName="password" readonly/>
+              </mat-form-field>
+            </div>
+            <div class="col-sm-1 col-xs-1 col-md-1 col-lg-1 p-0 m-0"></div>
+            </div>
 
           <div class="form-row mt-5">
             <div class="col-sm-5 col-xs-5 col-md-5 col-lg-5 p-0 m-0"></div>
@@ -187,9 +196,8 @@
                       [routerLink]="['/listEmployee']">Quay Lại
               </button>
               <button type="button" class="btn btn-success ml-2" value="Xóa"
-                      (click)="editEmployee()">Xác Nhận
+                      [disabled]="formEdit.invalid" (click)="editEmployee()">Xác Nhận
               </button>
-<!--              [disabled]="formEdit.invalid"-->
             </div>
             <div class="col-sm-4 col-xs-4 col-md-4 col-lg-4 p-0 m-0"></div>
           </div>
