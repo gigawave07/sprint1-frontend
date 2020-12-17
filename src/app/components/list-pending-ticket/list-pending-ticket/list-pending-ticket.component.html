@@ -14,7 +14,7 @@
 				<div class="card">
 					<div class="card-header" id="headingTwo">
 						<h2 class="mb-0">
-							<a href="#">
+							<a href="#" routerLink="/list-pending-ticket">
 								<span><i class="fa fa-cc-paypal"></i> Thanh toán</span>
 							</a>
 						</h2>
@@ -23,7 +23,7 @@
 				<div class="card">
 					<div class="card-header" id="headingThree">
 						<h2 class="mb-0">
-							<a href="#">
+							<a href="#" routerLink="/search-pending-ticket">
 								<span><i class="fa fa-search"></i>Tìm kiếm đặt chỗ</span>
 							</a>
 						</h2>
@@ -35,7 +35,7 @@
 					<div class="card-header" id="headingFour">
 						<h2 class="mb-0">
 							<a href="#">
-								<span><i class="fa fa-history"></i> History</span>
+								<span><i class="fa fa-history"></i> Lịch sử giao dịch</span>
 							</a>
 						</h2>
 					</div>
@@ -82,8 +82,8 @@
 <!--							<td>{{employee.id}}</td>-->
 <!--							<td>{{employee.name}}</td>-->
 <!--							<td>{{employee.position}}</td>-->
-<!--						<tr *ngFor="let ticket of ticketList| paginate: { itemsPerPage: 2, currentPage: p }">-->
-						<tr *ngFor="let ticket of ticketList">
+						<tr *ngFor="let ticket of ticketList| paginate: { itemsPerPage: 2, currentPage: p }">
+<!--						<tr *ngFor="let ticket of ticketList">-->
 							
 							<td>{{ticket.ticketCode}}</td>
 							<td>{{ticket.flightInformation.departure}}</td>
@@ -102,14 +102,12 @@
 									<input type="checkbox" id="{{ticket.ticketCode}}" (change)="onCheckboxChange($event,ticket)">
 									<label for="{{ticket.ticketCode}}"></label>
 									</span>
-							
 							</td>
 						</tr>
-						
 						</tbody>
 					</table>
 					<div class="clearfix">
-<!--						<pagination-controls (pageChange)="p = $event"></pagination-controls>-->
+						<pagination-controls (pageChange)="p = $event"></pagination-controls>
 					</div>
 				</div>
 			</div>
@@ -124,24 +122,50 @@
 	</div>
 </div>
 
-<!-- Delete Modal HTML -->
-<div id="deleteTicketModal" class="modal fade">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<form>
-				<div class="modal-header">
-					<h4 class="modal-title">Huỷ vé</h4>
-					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-				</div>
-				<div class="modal-body">
-					<p>Bạn có chắc chắn muốn huỷ vé này</p>
-					<p class="text-danger"><small>Hành động này KHÔNG THỂ hoàn tác</small></p>
-				</div>
-				<div class="modal-footer">
-					<input type="button" class="btn btn-default" data-dismiss="modal" value="Thoát">
-					<input type="submit" class="btn btn-danger" value="Xác nhận">
-				</div>
-			</form>
-		</div>
-	</div>
-</div>
+<!-- button paypal-->
+<script
+	src="https://www.paypal.com/sdk/js?client-id=ATm7coVZnCoPxBqf-7kf-Mpyqo5W0GZT9VffkuMBV7lZ6Wt75EJ7XSQv5mRiuQqvqQgZIeM73B3j1KGU&currency=USD"
+	data-sdk-integration-source="button-factory"></script>
+<script>
+	function initPayPalButton() {
+		paypal.Buttons({
+			style: {
+				shape: 'rect',
+				color: 'gold',
+				layout: 'horizontal',
+				label: 'paypal',
+				tagline: true,
+				height: 50
+			},
+			
+			createOrder: function (data, actions) {
+				return actions.order.create({
+					purchase_units: [{
+						"amount": {
+							"currency_code": "USD",
+							"value": 71.5,
+							"breakdown": {
+								"item_total": {"currency_code": "USD", "value": 65},
+								"shipping": {"currency_code": "USD", "value": 0},
+								"tax_total": {"currency_code": "USD", "value": 6.5}
+							}
+						}
+					}]
+				});
+			},
+			
+			onApprove: function (data, actions) {
+				return actions.order.capture().then(function (details) {
+					alert('Transaction completed by ' + details.payer.name.given_name + '!');
+				});
+			},
+			
+			onError: function (err) {
+				console.log(err);
+			}
+		}).render('#paypal-button-container');
+	}
+	
+	initPayPalButton();
+</script>
+
