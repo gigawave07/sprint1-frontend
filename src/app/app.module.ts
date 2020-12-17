@@ -29,7 +29,7 @@ import { InformationUserComponent } from './components/information-user/informat
 import {ListPendingTicketComponent} from "./components/list-pending-ticket/list-pending-ticket/list-pending-ticket.component";
 import {CancelPendingTicketComponent} from "./components/list-pending-ticket/cancel-pending-ticket/cancel-pending-ticket.component";
 import {SearchPendingTicketComponent} from "./components/search-pending-ticket/search-pending-ticket/search-pending-ticket.component";
-
+import { EmployeeComponent } from './components/employee/employee.component';
 
 @NgModule({
   declarations: [

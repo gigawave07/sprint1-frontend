@@ -12,6 +12,16 @@ import {InformationUserComponent} from './components/information-user/informatio
 import {DetailUserComponent} from "./components/detail-user/detail-user.component";
 import {SearchPendingTicketComponent} from './components/search-pending-ticket/search-pending-ticket/search-pending-ticket.component';
 import {ListPendingTicketComponent} from "./components/list-pending-ticket/list-pending-ticket/list-pending-ticket.component";
+import {ListEmployeeComponent} from './components/list-employee/list-employee.component';
+import {CreateEmployeeComponent} from './components/create-employee/create-employee.component';
+import {EditEmployeeComponent} from './components/edit-employee/edit-employee.component';
+import {DeleteEmployeeComponent} from './components/delete-employee/delete-employee.component';
+import {CommonModule} from '@angular/common';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {MaterialModule} from './material.module';
+import {MatDialogModule} from '@angular/material';
+import {NgxPaginationModule} from 'ngx-pagination';
+import {EmployeeComponent} from './components/employee/employee.component';
 
 
 const routes: Routes = [
@@ -44,10 +54,23 @@ const routes: Routes = [
     // Đăng:caca
   {path: 'list-pending-ticket', component: ListPendingTicketComponent},
   {path: 'search-pending-ticket', component: SearchPendingTicketComponent},
+
+  // Mai :
+  {path: 'employee', component: EmployeeComponent,
+    children: [
+      {path: 'listEmployee', component: ListEmployeeComponent},
+      {path: 'createEmployee', component: CreateEmployeeComponent},
+      {path: 'editEmployee/:id', component: EditEmployeeComponent},
+      {path: 'deleteEmployee', component: DeleteEmployeeComponent},
+    ]
+  },
+
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  imports: [RouterModule.forRoot(routes), CommonModule, ReactiveFormsModule, MaterialModule,
+    MatDialogModule, FormsModule, NgxPaginationModule],
+  exports: [RouterModule],
+  declarations: [ListEmployeeComponent, CreateEmployeeComponent, EditEmployeeComponent, DeleteEmployeeComponent]
 })
 export class AppRoutingModule { }
