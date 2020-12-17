@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {MatDialogRef} from '@angular/material';
 import {UserService} from '../../service/user/user.service';
 
@@ -23,9 +23,9 @@ export class ChangePasswordUserComponent implements OnInit {
     this.idUser = this.loginService.currentUserValue.id;
     console.log(this.idUser);
     this.formChangePassword = this.formBuilder.group({
-      oldPassword: [''],
-      newPassword: [''],
-      confirmPassword: [''],
+      oldPassword: ['', [Validators.required]],
+      newPassword: ['', [Validators.required, Validators.pattern('^[a-z0-9]{6,30}$')]],
+      confirmPassword: ['', [Validators.required]],
     });
   }
   changePass() {

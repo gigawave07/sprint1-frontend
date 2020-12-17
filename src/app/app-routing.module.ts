@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {Routes, RouterModule} from '@angular/router';
 import {HomeComponent} from './components/home/home.component';
 import {LoginComponent} from './components/login/login.component';
 import {RegisterComponent} from './components/register/register.component';
@@ -9,11 +9,10 @@ import {ListPendingTicketComponent} from './components/list-pending-ticket/list-
 import {SearchPendingTicketComponent} from './components/search-pending-ticket/search-pending-ticket/search-pending-ticket.component';
 import {DetailUserComponent} from './components/detail-user/detail-user.component';
 import {VerificationEmailComponent} from './components/verification-email/verification-email.component';
-import {UserComponent} from './components/user/user.component';
 
-
-
-
+import {EditUserComponent} from './components/edit-user/edit-user.component';
+import {ChangePasswordUserComponent} from './components/change-password-user/change-password-user.component';
+import {InformationUserComponent} from './components/information-user/information-user.component';
 
 
 const routes: Routes = [
@@ -25,14 +24,25 @@ const routes: Routes = [
   // Châu :
   {path: 'deleteTicket', component: DeleteTicketComponent},
   {path: 'listTicket', component: ListTicketComponent},
-    // Đăng:
+  // Đăng:
   {path: 'list-pending-ticket', component: ListPendingTicketComponent},
   {path: 'search-pending-ticket', component: SearchPendingTicketComponent},
   // Đạt
   {path: 'detail-user', component: DetailUserComponent},
+  {path: 'informationUser', component: InformationUserComponent,
+    children: [
+      {
+        path: 'detailUser', component: DetailUserComponent
+      },
+      { path: 'editUser', component: EditUserComponent},
+      { path: 'changPassword', component: ChangePasswordUserComponent}
+    ]
+  },
 ];
+
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}

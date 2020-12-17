@@ -25,7 +25,8 @@ import { AuthInterceptor } from './service/AuthInterceptor';
 import { DetailUserComponent } from './components/detail-user/detail-user.component';
 import { EditUserComponent } from './components/edit-user/edit-user.component';
 import { ChangePasswordUserComponent } from './components/change-password-user/change-password-user.component';
-import { UserComponent } from './components/user/user.component';
+import { InformationUserComponent } from './components/information-user/information-user.component';
+
 
 @NgModule({
   declarations: [
@@ -37,9 +38,9 @@ import { UserComponent } from './components/user/user.component';
       // Đăng
     ListPendingTicketComponent, CancelPendingTicketComponent, SearchPendingTicketComponent,
     // Đạt
-    DetailUserComponent, EditUserComponent, ChangePasswordUserComponent, UserComponent,
+    DetailUserComponent, EditUserComponent, ChangePasswordUserComponent,
     InputTicketSellComponent,
-    DeleteTicketComponent, EditTicketComponent, PrintTicketComponent, ListTicketComponent,
+    DeleteTicketComponent, EditTicketComponent, PrintTicketComponent, ListTicketComponent, InformationUserComponent,
   ],
   imports: [BrowserModule,
     AppRoutingModule,

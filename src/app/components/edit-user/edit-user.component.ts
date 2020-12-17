@@ -28,7 +28,7 @@ export class EditUserComponent implements OnInit {
       address: ['', [Validators.required]],
       birthday: ['', [Validators.required]],
       email: ['', [Validators.required]],
-      fullName: ['', [Validators.required]],
+      fullName: ['', [Validators.required, Validators.maxLength(30)]],
       gender: ['', [Validators.required]],
       phoneNumber: ['', [Validators.required]]
     });
