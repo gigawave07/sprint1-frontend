@@ -9,9 +9,9 @@ import {AdminComponent} from './components/admin/admin.component';
 import {EditUserComponent} from './components/edit-user/edit-user.component';
 import {ChangePasswordUserComponent} from './components/change-password-user/change-password-user.component';
 import {InformationUserComponent} from './components/information-user/information-user.component';
-import {DetailUserComponent} from "./components/detail-user/detail-user.component";
+import {DetailUserComponent} from './components/detail-user/detail-user.component';
 import {SearchPendingTicketComponent} from './components/search-pending-ticket/search-pending-ticket/search-pending-ticket.component';
-import {ListPendingTicketComponent} from "./components/list-pending-ticket/list-pending-ticket/list-pending-ticket.component";
+import {ListPendingTicketComponent} from './components/list-pending-ticket/list-pending-ticket/list-pending-ticket.component';
 import {ListEmployeeComponent} from './components/list-employee/list-employee.component';
 import {CreateEmployeeComponent} from './components/create-employee/create-employee.component';
 import {EditEmployeeComponent} from './components/edit-employee/edit-employee.component';
@@ -41,28 +41,30 @@ const routes: Routes = [
   },
   // Đạt
   {path: 'detail-user', component: DetailUserComponent},
-  {path: 'informationUser', component: InformationUserComponent,
+  {
+    path: 'informationUser', component: InformationUserComponent,
     children: [
       {
         path: 'detailUser', component: DetailUserComponent
       },
-      { path: 'editUser', component: EditUserComponent},
-      { path: 'changPassword', component: ChangePasswordUserComponent},
+      {path: 'editUser', component: EditUserComponent},
+      {path: 'changPassword', component: ChangePasswordUserComponent},
       {path: 'list-pending-ticket', component: ListPendingTicketComponent},
       {path: 'search-pending-ticket', component: SearchPendingTicketComponent}
     ]
   },
 
-    // Đăng:caca
+  // Đăng:caca
   {path: 'list-pending-ticket', component: ListPendingTicketComponent},
   {path: 'search-pending-ticket', component: SearchPendingTicketComponent},
 
   // Mai :
-  {path: 'employee', component: EmployeeComponent,
+  {
+    path: 'employee', component: EmployeeComponent,
     children: [
       {path: 'listEmployee', component: ListEmployeeComponent},
-      {path: 'createEmployee', component: CreateEmployeeComponent},
-      {path: 'editEmployee/:id', component: EditEmployeeComponent},
+      {path: 'listEmployee/createEmployee', component: CreateEmployeeComponent},
+      {path: 'listEmployee/editEmployee/:id', component: EditEmployeeComponent},
       {path: 'deleteEmployee', component: DeleteEmployeeComponent},
     ]
   },
@@ -73,6 +75,8 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes), CommonModule, ReactiveFormsModule, MaterialModule,
     MatDialogModule, FormsModule, NgxPaginationModule],
   exports: [RouterModule],
-  declarations: [ListEmployeeComponent, CreateEmployeeComponent, EditEmployeeComponent, DeleteEmployeeComponent]
+  declarations: [ListEmployeeComponent, CreateEmployeeComponent, EditEmployeeComponent, DeleteEmployeeComponent,
+    EmployeeComponent]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}

@@ -57,7 +57,7 @@ export class CreateEmployeeComponent implements OnInit {
     this.employee.birthday = this.pipe.transform(this.employee.birthday, 'dd-MM-yyyy');
     this.employeeService.createNewEmployeeService(
       this.employee).subscribe(data => {
-        this.router.navigateByUrl('listEmployee').then(_ => {
+        this.router.navigateByUrl('employee/listEmployee').then(_ => {
         });
     });
   }

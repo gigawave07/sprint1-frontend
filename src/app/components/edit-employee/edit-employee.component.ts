@@ -62,7 +62,7 @@ export class EditEmployeeComponent implements OnInit {
     this.employee.birthday = this.pipe.transform(this.employee.birthday, 'dd-MM-yyyy');
     this.employeeService.editEmployeeService(
       this.employee, this.employee.id).subscribe(data => {
-      this.router.navigateByUrl('listEmployee').then(_ => {
+      this.router.navigateByUrl('employee/listEmployee').then(_ => {
       });
     });
   }

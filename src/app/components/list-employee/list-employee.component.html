@@ -9,10 +9,10 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
-<div class="container-fluid mt-4 table-responsive">
+<div class="container-fluid table-responsive">
   <div class="row col-sm-12 col-xl-12 mt-5 d-flex form-inline">
     <div class="col-sm-3 col-xl-3">
-      <button type="button" class="btn btn-success" [routerLink]="['/createEmployee']">
+      <button type="button" class="btn btn-success" routerLink="createEmployee">
         <i class="fas fa-plus-circle"></i>
         Thêm mới
       </button>
@@ -66,7 +66,7 @@
           <td>{{employee.phoneNumber}}</td>
           <td>{{employee.appAccount.appRole.name}}</td>
           <td *ngIf="employee.appAccount.appRole.name !== 'Quản trị viên'">
-            <i class="fas fa-edit btn btn-warning" [routerLink]="['/editEmployee', employee.id]"></i>
+            <i class="fas fa-edit btn btn-warning" [routerLink]="['editEmployee', employee.id]"></i>
             <i class="fas fa-trash-alt btn btn-dark ml-1" (click)="openDialogDelete(employee.id)"></i>
           </td>
         </tr>
@@ -79,7 +79,7 @@
         <button class="btn btn-primary" (click)="resetFind()">Quay Lại</button>
       </div>
     </div>
-    <div align="center" *ngIf="this.list.length !== 0">
+    <div align="center">
       <pagination-controls (pageChange)="p = $event" previousLabel="Trước" nextLabel="Sau"
                            responsive="true"></pagination-controls>
     </div>
