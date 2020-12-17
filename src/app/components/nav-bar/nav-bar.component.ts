@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {JwtStorageService} from "../../service/jwt-storage.service";
-import {LoginService} from "../../service/login.service";
+import {LoginService} from '../../service/login.service';
 
 @Component({
   selector: 'app-nav-bar',
@@ -8,21 +7,27 @@ import {LoginService} from "../../service/login.service";
   styleUrls: ['./nav-bar.component.css']
 })
 export class NavBarComponent implements OnInit {
-  username;
-
-  constructor(public loginService: LoginService,
-              public jwtStorageService: JwtStorageService) {
+  // username;
+  currentUser;
+  constructor(public loginService: LoginService) {
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
   }
 
   ngOnInit() {
     this.loginService.name.subscribe(val => {
-      this.username = val;
-    })
+      this.currentUser = val;
+    });
   }
 
   logout() {
-    this.username = "";
-    this.jwtStorageService.isAuthenticated = false;
-    this.jwtStorageService.token = "";
+    this.loginService.logout();
+    this.currentUser = null;
+    this.loginService.broadcastLoginChange(this.currentUser);
+  }
+
+  hello() {
+    this.loginService.hello().subscribe(data => {
+      alert(this.loginService.currentUserValue.id);
+    });
   }
 }

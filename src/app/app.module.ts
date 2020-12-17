@@ -13,7 +13,7 @@ import {InputTicketSellComponent} from './components/input-ticket-sell/input-tic
 import {DeleteTicketComponent} from './components/delete-ticket/delete-ticket.component';
 import {EditTicketComponent} from './components/edit-ticket/edit-ticket.component';
 import {PrintTicketComponent} from './components/print-ticket/print-ticket.component';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {ListTicketComponent} from './components/list-ticket/list-ticket.component';
 import {ListPendingTicketComponent} from './components/list-pending-ticket/list-pending-ticket/list-pending-ticket.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -21,6 +21,12 @@ import {CancelPendingTicketComponent} from './components/list-pending-ticket/can
 import {MatDialogModule} from '@angular/material/dialog';
 import { SearchPendingTicketComponent } from './components/search-pending-ticket/search-pending-ticket/search-pending-ticket.component';
 import {VerificationEmailComponent} from './components/verification-email/verification-email.component';
+import { AuthInterceptor } from './service/AuthInterceptor';
+import { SpinnerComponent } from './components/spinner/spinner.component';
+import { SpinnerOverlayComponent } from './components/spinner-overlay/spinner-overlay.component';
+import {NgxLoadingModule} from 'ngx-loading';
+import {NgxPaginationModule} from 'ngx-pagination';
+import {Ng2SearchPipeModule} from 'ng2-search-filter';
 
 @NgModule({
   declarations: [
@@ -30,11 +36,17 @@ import {VerificationEmailComponent} from './components/verification-email/verifi
     // Châu
     InputTicketSellComponent, DeleteTicketComponent, EditTicketComponent, PrintTicketComponent, ListTicketComponent,
       // Đăng
-    ListPendingTicketComponent, CancelPendingTicketComponent, SearchPendingTicketComponent,
+    ListPendingTicketComponent, CancelPendingTicketComponent, SearchPendingTicketComponent, SpinnerComponent, SpinnerOverlayComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, MaterialModule, HttpClientModule, FormsModule, MatDialogModule, ReactiveFormsModule],
-  providers: [],
-  bootstrap: [AppComponent]
+  imports: [BrowserModule, AppRoutingModule, MaterialModule, HttpClientModule, NgxPaginationModule, Ng2SearchPipeModule,
+    FormsModule, MatDialogModule, ReactiveFormsModule, NgxLoadingModule.forRoot({})],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi: true
+  }],
+  bootstrap: [AppComponent],
+  entryComponents: [SpinnerOverlayComponent]
 })
 export class AppModule {
 }
