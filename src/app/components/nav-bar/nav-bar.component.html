@@ -26,6 +26,11 @@
             <a class="dropdown-item" (click)="openDialogChangePassword()">Đổi mật khẩu</a>
             <a class="dropdown-item" href="#" id="accountDetails" [routerLink]="['/informationUser/detailUser']">Thông tin tài khoản</a>
             <a class="dropdown-item" href="#" id="accountDetails" [routerLink]="['/admin/information']">Thông tin tài khoản Admin</a>
+            <a class="dropdown-item" href="#" id="changePassword" data-toggle="modal"
+               data-target="#changePasswordModal">Đổi mật khẩu</a>
+            <a class="dropdown-item" href="#" id="accountDetails" routerLink="/list-pending-ticket">Thông tin tài khoản</a>
+<!--            <a class="dropdown-item" href="#" id="listPendingTicket" routerLink="/list-pending-ticket">Thanh toán</a>-->
+<!--            <a class="dropdown-item" href="#" id="searchPendingTicket" routerLink="/search-pending-ticket">Tìm kiếm đặt chỗ</a>-->
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#" (click)="logout()">Đăng xuất</a>
           </div>
