@@ -26,24 +26,31 @@ export class TicketService {
 		return this.http.get(this.API + '/findTicketByID/' + idFind);
 	}
 
-	// Đăng
+	/*
+	* Đăng start
+	* */
 	findAllPendingTicket(): Observable<any> {
 		return this.http.get(this.API + '/list/Pending');
 	}
 
 	setTicketStatusPayment(id: number, ticketStatusPaymentDTO: TicketStatusPaymentDTO): Observable<any> {
-		console.log(this.API + '/set-status-payment/' + id, ticketStatusPaymentDTO);
+		// console.log(this.API + '/set-status-payment/' + id, ticketStatusPaymentDTO);
 		return this.http.put(this.API + '/set-status-payment/' + id, ticketStatusPaymentDTO);
 	}
 
 	searchTicket(ticketSearchDTO: any): Observable<any> {
 		// console.log('ticketSearchDTO');
 		// console.log(ticketSearchDTO);
-		console.log('URL');
-		console.log(this.API + '/search?' + 'statusPaymentName=' + ticketSearchDTO.statusPaymentName +
-			'&searchBy=' + ticketSearchDTO.searchBy + '&searchValue=' + ticketSearchDTO.searchValue);
+		// console.log('URL');
+		// console.log(this.API + '/search?' + 'statusPaymentName=' + ticketSearchDTO.statusPaymentName +
+		// 	'&searchBy=' + ticketSearchDTO.searchBy + '&searchValue=' + ticketSearchDTO.searchValue);
 		// return this.http.get(this.API + '/list/Pending');
-		return this.http.get(this.API + '/search?' + 'statusPaymentName=' + ticketSearchDTO.statusPaymentName +
-			'&searchBy=' + ticketSearchDTO.searchBy + '&searchValue=' + ticketSearchDTO.searchValue);
+		return this.http.get(this.API + '/search?' +
+			'statusPaymentName=' + ticketSearchDTO.statusPaymentName +
+			'&searchBy=' + ticketSearchDTO.searchBy +
+			'&searchValue=' + ticketSearchDTO.searchValue);
 	}
+	/*
+	* Đăng end
+	* */
 }
