@@ -68,10 +68,9 @@
             </td>
           </tr>
         </table>
-        <div class="checkbox custom-check" >
-        <span><i>Bạn có muốn đối chiếu kết quả thống kê trong một thời gian khác?</i>
-          <input name="checkbox" id="checkbox" type="checkbox" (click)="showCompareReportForm()"/>
-        </span>
+        <div class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" id="defaultUnchecked" (click)="showCompareReportForm()"/>
+          <label class="custom-control-label" for="defaultUnchecked">Bạn có muốn đối chiếu kết quả thống kê trong một thời gian khác?</label>
         </div>
         <br>
 
