@@ -14,6 +14,7 @@ import {ChangePasswordAdminComponent} from './components/change-password-admin/c
 import {MatDialogModule} from '@angular/material';
 import {EditUserComponent} from './components/edit-user/edit-user.component';
 import {ChangePasswordUserComponent} from './components/change-password-user/change-password-user.component';
+import {CancelPendingTicketComponent} from "./components/list-pending-ticket/cancel-pending-ticket/cancel-pending-ticket.component";
 
 
 @NgModule({
@@ -50,7 +51,8 @@ import {ChangePasswordUserComponent} from './components/change-password-user/cha
   ],
   entryComponents: [
     ChangePasswordAdminComponent,
-    EditUserComponent, ChangePasswordUserComponent
+    EditUserComponent, ChangePasswordUserComponent,
+    CancelPendingTicketComponent
   ]
 })
 export class MaterialModule { }
