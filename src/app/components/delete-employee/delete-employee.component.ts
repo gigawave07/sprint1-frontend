@@ -1,6 +1,7 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
+import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material';
 import {EmployeeService} from '../../service/employee/employee.service';
+import {MessageNotificationComponent} from '../message-notification/message-notification.component';
 
 @Component({
   selector: 'app-delete-employee',
@@ -8,13 +9,13 @@ import {EmployeeService} from '../../service/employee/employee.service';
   styleUrls: ['./delete-employee.component.css']
 })
 export class DeleteEmployeeComponent implements OnInit {
-  public employee;
+  private employee;
   private idDelete: any;
 
   constructor(
     public dialogRef: MatDialogRef<DeleteEmployeeComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any,
-    private employeeService: EmployeeService
+    private employeeService: EmployeeService,
+    @Inject(MAT_DIALOG_DATA) public data: any
   ) { }
 
   ngOnInit() {
@@ -24,7 +25,9 @@ export class DeleteEmployeeComponent implements OnInit {
 
   deleteEmployee() {
     this.employeeService.deleteEmployeeService(this.idDelete).subscribe(data => {
-      this.dialogRef.close();
+      if (data == null) {
+        this.dialogRef.close();
+      }
     });
   }
 }

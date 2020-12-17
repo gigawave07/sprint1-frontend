@@ -22,8 +22,7 @@ import {ListTicketComponent} from './components/list-ticket/list-ticket.componen
     // Quân
     HomeComponent, LoginComponent, RegisterComponent, NavBarComponent, FooterComponent,
     // Châu
-    InputTicketSellComponent, DeleteTicketComponent, EditTicketComponent, PrintTicketComponent, ListTicketComponent
-  ],
+    InputTicketSellComponent, DeleteTicketComponent, EditTicketComponent, PrintTicketComponent, ListTicketComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

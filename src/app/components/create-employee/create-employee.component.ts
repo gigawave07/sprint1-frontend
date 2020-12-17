@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {EmployeeService} from '../../service/employee/employee.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
@@ -15,13 +15,13 @@ export class CreateEmployeeComponent implements OnInit {
   private pipe: DatePipe;
   private employee: Employee;
   private listRole: [];
-  private maxDate = new Date(2012,11,16);
-  private minDate = new Date (1920,0,1);
+  private maxDate = new Date(2012, 11, 16);
+  private minDate = new Date (1920, 0, 1);
 
   constructor(
     private employeeService: EmployeeService,
     protected formBuilder: FormBuilder,
-    protected router: Router
+    protected router: Router,
   ) {
   }
 
@@ -45,7 +45,8 @@ export class CreateEmployeeComponent implements OnInit {
         Validators.pattern('^[a-z][a-z0-9_.]{2,32}@[a-z0-9]{2,}(.[a-z0-9]{2,}){1,2}$'),
         Validators.maxLength(40)], [this.employeeService.validateEmployeeEmail()], {updateOn: 'blur'}
         ],
-      password: ['', [Validators.required, Validators.maxLength(20)]],
+      password: ['', [Validators.required, Validators.maxLength(20),
+        this.employeeService.validateWhiteSpace]],
       phoneNumber: ['', [Validators.required, Validators.pattern('^((\\d+){10})$'),
         Validators.maxLength(12)]],
       role: ['', [Validators.required]]
@@ -57,7 +58,7 @@ export class CreateEmployeeComponent implements OnInit {
     this.employeeService.createNewEmployeeService(
       this.employee).subscribe(data => {
         this.router.navigateByUrl('listEmployee').then(_ => {
-      });
+        });
     });
   }
 

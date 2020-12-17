@@ -148,9 +148,17 @@
                 Vui lòng nhập mật khẩu
               </p>
 
+              <p class="text-danger" style=" margin-left: -111%;"
+                 *ngIf="formCreateNew.get('password').hasError('whiteSpace')
+                                      && (formCreateNew.controls.password?.dirty
+                                      || formCreateNew.controls.password?.touched)">
+                Mật khẩu không được chỉ chứa khoảng trắng
+              </p>
+
               <p class="text-danger" style=" margin-left: -38%;"
                  *ngIf="formCreateNew.controls.password?.invalid
                                       && !formCreateNew.get('password').hasError('required')
+                                      && !formCreateNew.get('password').hasError('whiteSpace')
                                       && (formCreateNew.controls.password?.dirty
                                       || formCreateNew.controls.password?.touched)">
                 Mật khẩu không quá 20 ký tự
