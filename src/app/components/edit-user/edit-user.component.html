@@ -2,10 +2,10 @@
   <form class="container-fluid col-lg-12 col-md-12 " [formGroup]="formEditUser">
     <h3 class="text-center">Chỉnh Sửa Thông Tin</h3>
     <div class="d-flex form-group mt-4">
-      <label class="col-lg-3 col-md-3 ">Họ và tên <span style="color: red" >(*)</span>:</label>
+      <label class="col-lg-3 col-md-3">Họ và tên <span style="color: red" >(*)</span>:</label>
       <input type="text" class="col-lg-9 col-md-9 form-control form-control-sm" formControlName="fullName" placeholder="Vui lòng nhập họ và tên.">
-      <a  *ngIf="formEditUser.get('fullName').invalid && formEditUser.get('fullName').touched" style="color: red" class="col-lg-9 col-md-9" >
-        Họ và tên không được để trống.</a>
+      <span  *ngIf="formEditUser.get('fullName').invalid && formEditUser.get('fullName').touched" style="color: red" class="col-lg-9 col-md-9" >
+        Họ và tên không được để trống.</span>
 <!--     <p  *ngIf="formEdit.get('fullName').invalid && formEdit.get('fullName').touched"></p>-->
     </div>
 
