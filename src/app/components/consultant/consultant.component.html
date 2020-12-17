@@ -3,8 +3,8 @@
     <div class="col-lg-3" id="user-list">
       <div *ngFor="let user of listUser" class="user-box">
         <input type="hidden"/>
-        <a [routerLink]="['mess', user.id]">
-          <div id="mess-user">{{user.name}}</div>
+        <a [routerLink]="['mess', user.id]" style="text-decoration: none">
+          <div id="mess-user">{{user.name}} <span id="delete-user">X</span></div>
         </a>
       </div>
       <br>

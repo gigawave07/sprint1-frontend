@@ -139,9 +139,9 @@ div .content-box {
 }
 
 #icon-message {
-  width: 60px;
-  height: 60px;
-  border-radius: 30px;
+  width: 7vh;
+  height: 7vh;
+  border-radius: 140px;
 }
 
 .begin-chat {

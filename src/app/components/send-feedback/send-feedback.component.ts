@@ -26,6 +26,10 @@ export class SendFeedbackComponent implements OnInit {
 
     // tslint:disable-next-line:only-arrow-functions
     $(document).ready(function() {
+
+      $('#feedback-form').css('opacity', 0).animate({opacity: 1}, 4000);
+      $('#direct-map').css('opacity', 0).animate({opacity: 1}, 4000);
+
       // tslint:disable-next-line:only-arrow-functions
       $('#btn-submit-feedback-form').click(function() {
         $('.content-textbox').val('');

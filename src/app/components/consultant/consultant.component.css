@@ -1,6 +1,6 @@
 div .user-box {
   border-radius: 5px;
-  background: linear-gradient(white, #efe0c2, #aaa8a8);
+  background: linear-gradient(#fff, #f1f1f1);
   height: 70px;
   width: 100%;
   margin-top: 1px;
@@ -26,7 +26,6 @@ div #content-mess-body {
 }
 
 
-
 .content-mess:focus {
   border: none;
 }
@@ -35,4 +34,9 @@ div #content-mess-body {
 #mess-user {
   height: 70px;
   width: 100%;
+}
+
+#delete-user {
+  float: right;
+  margin-right: 2px;
 }
