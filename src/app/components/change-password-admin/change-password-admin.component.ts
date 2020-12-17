@@ -29,8 +29,14 @@ export class ChangePasswordAdminComponent implements OnInit {
               public dialogRef: MatDialogRef<ChangePasswordAdminComponent>,
               @Inject(MAT_DIALOG_DATA) public data: any) {
     this.changePasswordForm = this.formBuilder.group({
-      passwordOld: ['', [Validators.required]],
-      passwordNew: ['', [Validators.required]],
+      passwordOld: ['',
+        [
+          Validators.required,
+          Validators.pattern('^(?=.[a-z])(?=.[A-Z])(?=.\\d)(?=.[$@!%?&])[A-Za-z\\d$@!%?&]{8,20}$')
+        ]
+      ],
+      passwordNew: ['', [Validators.required]
+      ],
       confirmPassword: ['', [Validators.required]]
     }, {validator: this.checkPasswords});
   }
