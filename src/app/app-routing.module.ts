@@ -43,7 +43,7 @@ const routes: Routes = [
     ]
   },
 
-    // Đăng:caca
+    // Đăng:cacacdscsv
   {path: 'list-pending-ticket', component: ListPendingTicketComponent},
   {path: 'search-pending-ticket', component: SearchPendingTicketComponent},
 ];
