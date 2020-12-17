@@ -1,9 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {AbstractControl, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {MatDialogRef} from '@angular/material';
 import {UserService} from '../../service/user/user.service';
 
 import {LoginService} from '../../service/login.service';
+function comparePassword(c: AbstractControl) {
+  const v = c.value;
+  const isNotEmpty = v.confirmPassword !== '';
+  if (isNotEmpty) {
+    return (v.newPassword === v.confirmPassword) ? null : {
+      passwordNotMatch: true
+    };
+  }
+}
 
 @Component({
   selector: 'app-change-password-user',
@@ -26,7 +35,7 @@ export class ChangePasswordUserComponent implements OnInit {
       oldPassword: ['', [Validators.required]],
       newPassword: ['', [Validators.required]],
       confirmPassword: ['', [Validators.required]],
-    });
+    }, { validator: comparePassword});
   }
   changePass() {
     this.formChangePassword.markAllAsTouched();
