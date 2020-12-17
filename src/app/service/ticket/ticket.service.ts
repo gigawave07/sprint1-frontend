@@ -12,8 +12,8 @@ export class TicketService {
     public http: HttpClient
   ) { }
 
-  getAllTicketService(): Observable<any> {
-    return this.http.get(this.API + '/list');
+  getAllTicketService(pageIndex): Observable<any> {
+    return this.http.get(this.API + '/list' + '?page=' + pageIndex);
   }
 
   deleteTicketService(idDelete: any): Observable<any> {
@@ -32,5 +32,10 @@ export class TicketService {
   cancelPendingTicket(id, ticket): Observable<any> {
     return this.http.put(this.API + '/cancel/pending/' + id, ticket);
   }
-
+  searchTicketService(key, inputSearch): Observable<any> {
+    return this.http.get(this.API + '/search/' + inputSearch + '/' + key);
+  }
+  searchTicketEmptyService(departure, arrival, departureDate, arrivalDate, airline): Observable<any> {
+    return this.http.get(this.API + '/searchTicketEmpty/' + departure + '/' + arrival + '/' + departureDate + '/' + arrivalDate + '/' + airline);
+  }
 }

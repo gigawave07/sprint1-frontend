@@ -6,6 +6,8 @@ import {RegisterComponent} from './components/register/register.component';
 import {VerificationEmailComponent} from './components/verification-email/verification-email.component';
 import {InformationAdminComponent} from './components/information-admin/information-admin.component';
 import {AdminComponent} from './components/admin/admin.component';
+import {ListTicketComponent} from './components/list-ticket/list-ticket.component';
+import {SearchTicketEmptyComponent} from './components/search-ticket-empty/search-ticket-empty.component';
 
 
 const routes: Routes = [
@@ -23,6 +25,9 @@ const routes: Routes = [
       }
     ]
   },
+  // Hoạt
+  {path: 'list-ticket', component: ListTicketComponent},
+  {path: 'search-ticket-empty', component: SearchTicketEmptyComponent}
 ];
 
 @NgModule({
