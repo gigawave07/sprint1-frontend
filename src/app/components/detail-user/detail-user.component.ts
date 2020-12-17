@@ -40,13 +40,13 @@ export class DetailUserComponent implements OnInit {
       this.infoFormUser.patchValue(this.users);
     });
     this.infoFormUser = this.formBuilder.group({
-      address: ['', [Validators.required]],
-      birthday: ['', [Validators.required]],
-      email: ['', [Validators.required]],
-      fullName: ['', [Validators.required, Validators.maxLength(30)]],
-      gender: ['', [Validators.required]],
-      phoneNumber: ['', [Validators.required]],
-      userRank: ['', [Validators.required]],
+      address: [''],
+      birthday: [''],
+      email: [''],
+      fullName: [''],
+      gender: [''],
+      phoneNumber: [''],
+      userRank: [''],
     });
   }
 

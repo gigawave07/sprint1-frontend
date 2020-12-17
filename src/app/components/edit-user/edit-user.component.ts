@@ -11,7 +11,6 @@ function validateSpecialCharacters(c: AbstractControl) {
     containSpecialCharacters: true
   } : null;
 }
-
 // validate khoảng trắng
 function validateWhitespace(c: AbstractControl) {
   if (c.value !== '') {
@@ -22,8 +21,6 @@ function validateWhitespace(c: AbstractControl) {
     }
   }
 }
-
-
 @Component({
   selector: 'app-edit-user',
   templateUrl: './edit-user.component.html',
@@ -43,14 +40,14 @@ export class EditUserComponent implements OnInit {
     public dialog: MatDialog,
     @Inject(MAT_DIALOG_DATA) public data: any) {
   }
-
   ngOnInit() {
     this.formEditUser = this.formBuilder.group({
       fullName: ['', [Validators.required, validateSpecialCharacters, validateWhitespace,
         Validators.maxLength(30), Validators.minLength(10)]],
-      birthday: ['', [Validators.required, Validators.pattern(/^([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/),
-        this.userService.validateBirthday, this.userService.checkAge]],
-      address: ['', [Validators.required]],
+      birthday: ['', [Validators.required, Validators.pattern(/^([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/)
+        , this.userService.validateBirthday
+        , this.userService.checkAge]],
+      address: ['', [Validators.required, Validators.maxLength (255)]],
       email: ['', [Validators.required]],
       phoneNumber: ['', [Validators.required, this.userService.validPhoneNumber]],
       gender: ['', [Validators.required]]
@@ -59,14 +56,9 @@ export class EditUserComponent implements OnInit {
     console.log(this.dataIdUser);
     this.userService.getUserById(this.dataIdUser).subscribe(getData => {
       this.valueGender = getData.gender;
-      console.log(getData);
       this.formEditUser.patchValue(getData);
-      console.log('--------edit-----------');
-      console.log(getData);
-      console.log('--------edit-----------');
     });
   }
-
   editUser() {
     this.formEditUser.value.gender = this.valueGender;
     this.formEditUser.markAllAsTouched();
@@ -75,7 +67,6 @@ export class EditUserComponent implements OnInit {
       this.dialogRef.close();
     });
   }
-
   valueGenderClick(value: boolean) {
     this.valueGender = value;
   }

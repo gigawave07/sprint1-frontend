@@ -55,7 +55,7 @@ export class UserService {
       return null;
     }
     if (characterRegex.test(_phoneNumber)) {
-      return {alphabel: true};
+      return {phoneAlpha: true};
     }
     if (!phoneRegex.test(_phoneNumber)) {
       return {format: true};
