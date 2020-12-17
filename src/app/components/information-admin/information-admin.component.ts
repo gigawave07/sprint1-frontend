@@ -31,7 +31,7 @@ export class InformationAdminComponent implements OnInit {
 
   openDialog(admin): void {
     const dialogRef = this.dialog.open(ChangePasswordAdminComponent, {
-      width: '650px',
+      width: '800px',
       data: {dataAdmin: admin},
       disableClose: true
     });
