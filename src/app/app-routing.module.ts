@@ -14,6 +14,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MaterialModule} from './material.module';
 import {MatDialogModule} from '@angular/material';
 import {NgxPaginationModule} from 'ngx-pagination';
+import {EmployeeComponent} from './components/employee/employee.component';
 
 
 const routes: Routes = [
@@ -25,10 +26,15 @@ const routes: Routes = [
   {path: 'deleteTicket', component: DeleteTicketComponent},
   {path: 'listTicket', component: ListTicketComponent},
   // Mai :
-  {path: 'listEmployee', component: ListEmployeeComponent},
-  {path: 'createEmployee', component: CreateEmployeeComponent},
-  {path: 'editEmployee/:id', component: EditEmployeeComponent},
-  {path: 'deleteEmployee', component: DeleteEmployeeComponent},
+  {path: 'employee', component: EmployeeComponent,
+    children: [
+      {path: 'listEmployee', component: ListEmployeeComponent},
+      {path: 'createEmployee', component: CreateEmployeeComponent},
+      {path: 'editEmployee/:id', component: EditEmployeeComponent},
+      {path: 'deleteEmployee', component: DeleteEmployeeComponent},
+    ]
+  },
+
 ];
 
 @NgModule({

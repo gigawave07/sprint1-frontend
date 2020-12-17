@@ -16,8 +16,8 @@ export class EditEmployeeComponent implements OnInit {
   private employee: Employee;
   private idNeed;
   private listRole: [];
-  private maxDate = new Date(2012,11,16);
-  private minDate = new Date (1920,0,1);
+  private maxDate = new Date(2012, 11, 16);
+  private minDate = new Date (1920, 0, 1);
 
   constructor(
     public formBuilder: FormBuilder,
@@ -42,7 +42,7 @@ export class EditEmployeeComponent implements OnInit {
       birthday: ['', [Validators.required]],
       gender: ['', [Validators.required]],
       email: [''],
-      password: ['', [Validators.required, Validators.maxLength(20)]],
+      password: ['123'],
       phoneNumber: ['', [Validators.required, Validators.pattern('^((\\d+){10})$'),
         Validators.maxLength(12)]],
       appAccount: [''],

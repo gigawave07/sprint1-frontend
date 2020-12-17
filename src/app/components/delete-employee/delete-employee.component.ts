@@ -1,7 +1,6 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material';
 import {EmployeeService} from '../../service/employee/employee.service';
-import {MessageNotificationComponent} from '../message-notification/message-notification.component';
 
 @Component({
   selector: 'app-delete-employee',

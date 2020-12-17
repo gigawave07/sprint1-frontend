@@ -15,6 +15,7 @@ import {EditTicketComponent} from './components/edit-ticket/edit-ticket.componen
 import {PrintTicketComponent} from './components/print-ticket/print-ticket.component';
 import {HttpClientModule} from '@angular/common/http';
 import {ListTicketComponent} from './components/list-ticket/list-ticket.component';
+import { EmployeeComponent } from './components/employee/employee.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,7 @@ import {ListTicketComponent} from './components/list-ticket/list-ticket.componen
     // Quân
     HomeComponent, LoginComponent, RegisterComponent, NavBarComponent, FooterComponent,
     // Châu
-    InputTicketSellComponent, DeleteTicketComponent, EditTicketComponent, PrintTicketComponent, ListTicketComponent],
+    InputTicketSellComponent, DeleteTicketComponent, EditTicketComponent, PrintTicketComponent, ListTicketComponent, EmployeeComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
