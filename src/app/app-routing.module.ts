@@ -19,11 +19,11 @@ const routes: Routes = [
   // Châu :
   {path: 'deleteTicket', component: DeleteTicketComponent},
   {path: 'listTicket', component: ListTicketComponent},
-    // Đăng:
+    // Đăng:caca
   {path: 'list-pending-ticket', component: ListPendingTicketComponent},
   {path: 'search-pending-ticket', component: SearchPendingTicketComponent},
 ];
-//
+
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
