@@ -56,7 +56,7 @@ form {
   width: 95%
 }
 
-div.col-sm-3 p {
+.properties {
   text-align: right;
   margin: 2.5% 0 0 0;
   padding: 0 10% 0 0;
@@ -129,4 +129,16 @@ div.form-row {
 
 .print:hover {
   background-color: grey;
+}
+
+.passengerList {
+  margin: -2% 0 0 0;
+}
+
+.passengerAndPrice {
+  margin: -7% 0 0 0;
+}
+
+.email {
+  margin: -3.5% 0 0 0;
 }

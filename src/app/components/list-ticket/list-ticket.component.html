@@ -12,8 +12,8 @@
       <div class="col-9">
         <select class="custom-select" #key>
           <option [selected]="key" value="price">Price</option>
-          <option  value="full name passenger">Full name passenger</option>
-          <option  value="booking code">Booking code</option>
+          <option value="full name passenger">Full name passenger</option>
+          <option value="booking code">Booking code</option>
         </select></div>
     </div>
   </div>
@@ -21,7 +21,8 @@
     <form class="form-inline row">
       <input class="form-control mr-2 col-7" type="search" placeholder="Search" aria-label="Search" #inputSearch>
       <button class="btn" type="submit"
-              style="background-color: orange; color: white">Tìm</button>
+              style="background-color: orange; color: white">Tìm
+      </button>
     </form>
   </div>
 </div>
@@ -51,11 +52,14 @@
           <td>{{element.priceDeparture}}</td>
           <td>
             <button (click)="openDialogEdit(element.id)" type="button" class="btn btn-warning mr-1"
-                    style="background-color: orange; color: white">Sửa</button>
+                    style="background-color: orange; color: white">Sửa
+            </button>
             <button (click)="openDialogDelete(element.id)" type="button" class="btn btn-dark mr-1"
-                    style="background-color: grey; color: white">Xóa</button>
+                    style="background-color: grey; color: white">Xóa
+            </button>
             <button (click)="openWindowPrint(element.id)" type="button" class="btn btn-primary"
-                    style="background-color: blue; color: white">In vé</button>
+                    style="background-color: blue; color: white">In vé
+            </button>
           </td>
         </tr>
         </tbody>
