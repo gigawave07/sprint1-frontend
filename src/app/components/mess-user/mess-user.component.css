@@ -78,7 +78,7 @@ form .close {
   border-radius: 10px;
 }
 
-.openChatBtn{
+.openChatBtn {
 
   webkit-animation: widgetPulse infinite 1.5s;
   animation: widgetPulse infinite 1.5s;
@@ -139,7 +139,7 @@ div .content-box {
 }
 
 #icon-message {
-width: 60px;
+  width: 60px;
   height: 60px;
   border-radius: 30px;
 }
@@ -150,16 +150,21 @@ width: 60px;
   border-radius: 10px;
 }
 
-.begin-chat:hover{
+.begin-chat:hover {
   background-color: black;
 }
 
-div #icon-box{
-  z-index: 10;
-  bottom: 100px;
+div #icon-box {
+  z-index: 100;
+  width: 100%;
+  margin-top: -110px;
+  margin-left: -13px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  height: 112px;
 }
 
-div #file-space{
+div #file-space {
   z-index: 100;
 }
 
@@ -192,7 +197,7 @@ div #file-space{
   width: 100%;
 }
 
-.input-request{
+.input-request {
   float: left;
   color: red;
 }

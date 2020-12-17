@@ -29,4 +29,8 @@ export class MessageService {
   public getMess(room: string): Observable<any> {
     return this.http.get(this.baseUrl + 'mess-user/' + room);
   }
+
+  public getIcon(): Observable<any> {
+    return this.http.get(this.baseUrl + 'icon');
+  }
 }
