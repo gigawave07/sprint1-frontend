@@ -33,6 +33,8 @@ import { InformationUserComponent } from './components/information-user/informat
     AppComponent,
     // Quân
     HomeComponent, LoginComponent, RegisterComponent, NavBarComponent, FooterComponent, VerificationEmailComponent,
+      // Đăngdcvsdacdasc
+    ListPendingTicketComponent, CancelPendingTicketComponent, SearchPendingTicketComponent, SpinnerComponent, SpinnerOverlayComponent,
     SpinnerComponent, SpinnerOverlayComponent,
     // Danh
     AdminComponent, InformationAdminComponent, ChangePasswordAdminComponent,
