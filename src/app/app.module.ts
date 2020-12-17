@@ -1,6 +1,5 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {HomeComponent} from './components/home/home.component';
@@ -21,6 +20,8 @@ import {CancelPendingTicketComponent} from './components/list-pending-ticket/can
 import {MatDialogModule} from '@angular/material/dialog';
 import { SearchPendingTicketComponent } from './components/search-pending-ticket/search-pending-ticket/search-pending-ticket.component';
 import {VerificationEmailComponent} from './components/verification-email/verification-email.component';
+import {PromotionModule} from './components/promotion/promotion.module';
+
 
 @NgModule({
   declarations: [
@@ -31,8 +32,10 @@ import {VerificationEmailComponent} from './components/verification-email/verifi
     InputTicketSellComponent, DeleteTicketComponent, EditTicketComponent, PrintTicketComponent, ListTicketComponent,
       // Đăng
     ListPendingTicketComponent, CancelPendingTicketComponent, SearchPendingTicketComponent,
+
   ],
-  imports: [BrowserModule, AppRoutingModule, MaterialModule, HttpClientModule, FormsModule, MatDialogModule, ReactiveFormsModule],
+  imports: [BrowserModule, AppRoutingModule, MaterialModule, HttpClientModule, FormsModule, MatDialogModule, ReactiveFormsModule,
+    PromotionModule],
   providers: [],
   bootstrap: [AppComponent]
 })

@@ -1,0 +1,70 @@
+<div class="container">
+  <h2 class="text-center">Thêm mới chuyến bay khuyến mãi</h2>
+  <div class="col-6 justify-content-center">
+    <form [formGroup]="formAddNew" class="form-group">
+      <div class="form-group" style="align-content: center">
+        <div class="form-group">
+          <label for="flight">Tên chuyến bay</label>
+          <input type="text" class="form-control" id="flight" name="flight" formControlName="flight">
+          <p *ngIf="formAddNew.get('flight').invalid && formAddNew.get('flight').touched"
+             class="text-danger">Tên chuyến bay không được để trống</p>
+        </div>
+        <label for="type">Hãng hàng không</label>
+        <select class="form-control" id="type" formControlName="airline">
+          <option name="type" disabled>Select a branch</option>
+          <option name="type" value="VietJet Air">VietJet Air</option>
+          <option name="type" value="Vietnam Airline">Vietnam Airline</option>
+          <option name="type" value="Bamboo Airway">Bamboo Airway</option>
+          <option name="type" value="Korean Air">Korean Air</option>
+          <option name="type" value="Cathay Airline">Cathay Airline</option>
+        </select>
+        <p *ngIf="formAddNew.get('airline').invalid && formAddNew.get('airline').touched"
+           class="text-danger">Hãng hàng không được để trống</p>
+      </div>
+      <div class="form-group">
+        <label for="flightNumber">Số hiệu chuyến bay</label>
+        <input type="text" class="form-control" id="flightNumber" name="flightNumber" formControlName="flightNumber">
+        <p *ngIf="formAddNew.get('flightNumber').invalid && formAddNew.get('flightNumber').touched"
+           class="text-danger">Số hiệu chuyến bay không được để trống</p>
+      </div>
+      <div class="form-group">
+        <label for="departureTime">Ngày khởi hành</label>
+        <input type="date" class="form-control" id="departureTime" name="departureTime" formControlName="departureDate">
+        <p *ngIf="formAddNew.get('departureDate').invalid && formAddNew.get('departureDate').touched"
+           class="text-danger">Ngày khởi hành không được để trống</p>
+      </div>
+      <div class="form-group">
+        <label for="departure_place">Ga đi</label>
+        <input type="text" class="form-control" id="departure_place" name="flightNumber"
+               formControlName="departurePlace">
+        <p *ngIf="formAddNew.get('departurePlace').invalid && formAddNew.get('departurePlace').touched"
+           class="text-danger">Ga đi không được để trống</p>
+      </div>
+      <div class="form-group">
+        <label for="arrivalTime">Giờ khởi hành</label>
+        <input type="time" class="form-control" id="arrivalTime" name="arrivalTime" formControlName="departureTime">
+        <p *ngIf="formAddNew.get('departureTime').invalid && formAddNew.get('departureTime').touched"
+           class="text-danger">Giờ khởi hành không được để trống</p>
+      </div>
+      <div class="form-group">
+        <label for="departure_place">Ga đến</label>
+        <input type="text" class="form-control" id="arrival_place" name="arrival_place" formControlName="arrivalPlace">
+        <p *ngIf="formAddNew.get('arrivalPlace').invalid && formAddNew.get('arrivalPlace').touched"
+           class="text-danger">Ga đến không được để trống</p>
+      </div>
+      <div class="form-group">
+        <label for="arrivalTime">Giờ đến</label>
+        <input type="time" class="form-control" id="arrival_time" name="arrival_time" formControlName="arrivalTime">
+        <p *ngIf="formAddNew.get('arrivalTime').invalid && formAddNew.get('arrivalTime').touched"
+           class="text-danger">Giờ đến không được để trống</p>
+      </div>
+      <div class="form-group">
+        <label for="price">Giá vé</label>
+        <input type="text" class="form-control" id="price" name="price" formControlName="price">
+        <p *ngIf="formAddNew.get('price').invalid && formAddNew.get('price').touched"
+           class="text-danger">Giá không được để trống</p>
+      </div>
+      <button type="submit" [disabled]="formAddNew.invalid" class="btn btn-primary" (click)="addNewPromo()">Submit</button>
+    </form>
+  </div>
+</div>
