@@ -3,6 +3,7 @@ import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material';
 import {UserService} from '../../service/user/user.service';
 import {AbstractControl, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute} from '@angular/router';
+import {MessageUserComponent} from '../message-user/message-user.component';
 
 // Kí tự đặt biệt
 function validateSpecialCharacters(c: AbstractControl) {
@@ -31,6 +32,7 @@ export class EditUserComponent implements OnInit {
   public dataIdUser;
   public valueGender;
   formEditUser: FormGroup;
+  public idMessage = 2;
 
   constructor(
 
@@ -64,10 +66,29 @@ export class EditUserComponent implements OnInit {
     this.formEditUser.markAllAsTouched();
     console.log(this.formEditUser.value);
     this.userService.editUser(this.dataIdUser, this.formEditUser.value).subscribe(data => {
+      if (data == null) {
       this.dialogRef.close();
+      this.openDialogMessage();
+      }
     });
   }
   valueGenderClick(value: boolean) {
     this.valueGender = value;
+  }
+
+
+  openDialogMessage() {
+    const timeout = 3000;
+    const dialogRef = this.dialog.open(MessageUserComponent, {
+      width: '500px',
+      height: '300px',
+      data: {dataMessage: this.idMessage},
+      disableClose: true
+    });
+    dialogRef.afterOpened().subscribe(_ => {
+      setTimeout(() => {
+        dialogRef.close();
+      }, timeout);
+    });
   }
 }

@@ -12,6 +12,8 @@ import {CancelPendingTicketComponent} from './components/list-pending-ticket/can
 import {MatDialogModule} from '@angular/material';
 import {EditUserComponent} from './components/edit-user/edit-user.component';
 import {ChangePasswordUserComponent} from './components/change-password-user/change-password-user.component';
+import {UserDialogComponent} from './components/user-dialog/user-dialog.component';
+import {MessageUserComponent} from './components/message-user/message-user.component';
 
 
 @NgModule({
@@ -47,7 +49,7 @@ import {ChangePasswordUserComponent} from './components/change-password-user/cha
   ],
   entryComponents: [
     CancelPendingTicketComponent,
-    EditUserComponent, ChangePasswordUserComponent
+    EditUserComponent, ChangePasswordUserComponent, UserDialogComponent, MessageUserComponent
   ]
 })
 export class MaterialModule {

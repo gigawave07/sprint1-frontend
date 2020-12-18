@@ -26,6 +26,8 @@ import { DetailUserComponent } from './components/detail-user/detail-user.compon
 import { EditUserComponent } from './components/edit-user/edit-user.component';
 import { ChangePasswordUserComponent } from './components/change-password-user/change-password-user.component';
 import { InformationUserComponent } from './components/information-user/information-user.component';
+import { UserDialogComponent } from './components/user-dialog/user-dialog.component';
+import { MessageUserComponent } from './components/message-user/message-user.component';
 
 
 @NgModule({
@@ -40,7 +42,7 @@ import { InformationUserComponent } from './components/information-user/informat
     // Đạt
     DetailUserComponent, EditUserComponent, ChangePasswordUserComponent,
     InputTicketSellComponent,
-    DeleteTicketComponent, EditTicketComponent, PrintTicketComponent, ListTicketComponent, InformationUserComponent,
+    DeleteTicketComponent, EditTicketComponent, PrintTicketComponent, ListTicketComponent, InformationUserComponent, UserDialogComponent, MessageUserComponent,
   ],
   imports: [BrowserModule,
     AppRoutingModule,
