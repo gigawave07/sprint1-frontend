@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
-    this.spinnerOverlayService.show('Xin đợi trong giây lát');
+    // this.spinnerOverlayService.show('Xin đợi trong giây lát');
     this.user = {
       username: this.loginForm.value.email,
       password: this.loginForm.value.password
@@ -41,19 +41,32 @@ export class LoginComponent implements OnInit {
         this.message = data.message;
         this.loginService.logout();
       } else {
+        this.user = data;
         this.loginService.broadcastLoginChange(this.user);
         this.router.navigateByUrl('');
       }
     }, error => {
       this.message = 'Sai email hoặc password';
     }, () => {
-      this.spinnerOverlayService.hide();
+      // this.spinnerOverlayService.hide();
     });
   }
 
   loginGoogle() {
     this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID).then(data => {
-      console.log(data);
+      this.user = {
+        username: data.email,
+        password: `${GoogleLoginProvider.PROVIDER_ID}`,
+        fullName: data.name,
+        appUser: {
+          fullName: data.name,
+          email: data.email,
+        }
+      };
+      this.loginService.loginGoogle(this.user).subscribe(data => {
+        this.loginService.broadcastLoginChange(this.user);
+        this.router.navigateByUrl('');
+      })
     });
   }
 }
