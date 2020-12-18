@@ -8,7 +8,7 @@
           <p>Nơi xuất vé : C0620G1</p>
         </div>
         <div class="col-sm-5 logo">
-          <img src="../../../assets/C06Airline.PNG"/>
+          <img src="../../../../assets/C06Airline.PNG"/>
           <p>295 Nguyễn Tất Thành, Đà Nẵng</p>
         </div>
       </div>
@@ -41,21 +41,24 @@
           <p>Dự kiến đến nơi: <span>{{flightInformationDeparture.arrivalTime}}</span></p>
         </div>
         <div class="col-sm-6">
-          <p>Hãng hàng không: <span *ngIf="check === 'true'">{{flightInformationArrival.airline}}</span>
-            <span *ngIf="check === 'false'">Không có</span></p>
-          <p>Mã chuyến bay: <span *ngIf="check === 'true'">{{flightInformationArrival.flightCode}}</span>
-            <span *ngIf="check === 'false'">Không có</span></p>
-          <p>Từ: <span *ngIf="check === 'true'">{{flightInformationArrival.departure}}</span>
-            <span *ngIf="check === 'false'">Không có</span></p>
-          <p>Đến: <span *ngIf="check === 'true'">{{flightInformationArrival.arrival}}</span>
-            <span *ngIf="check === 'false'">Không có</span></p>
-          <p>Ngày đi: <span *ngIf="check === 'true'">
+          <p [hidden]="check === 'true'">Không đăng ký vé khứ hồi</p>
+          <div [hidden]="check === 'false'">
+            <p>Hãng hàng không: <span *ngIf="check === 'true'">{{flightInformationArrival.airline}}</span>
+              <span *ngIf="check === 'false'">Không có</span></p>
+            <p>Mã chuyến bay: <span *ngIf="check === 'true'">{{flightInformationArrival.flightCode}}</span>
+              <span *ngIf="check === 'false'">Không có</span></p>
+            <p>Từ: <span *ngIf="check === 'true'">{{flightInformationArrival.departure}}</span>
+              <span *ngIf="check === 'false'">Không có</span></p>
+            <p>Đến: <span *ngIf="check === 'true'">{{flightInformationArrival.arrival}}</span>
+              <span *ngIf="check === 'false'">Không có</span></p>
+            <p>Ngày đi: <span *ngIf="check === 'true'">
             {{flightInformationArrival.departureDate | date : "dd/MM/yyyy"}}</span>
-            <span *ngIf="check === 'false'">Không có</span></p>
-          <p>Khởi hành: <span *ngIf="check === 'true'">{{flightInformationArrival.departureTime}}</span>
-            <span *ngIf="check === 'false'">Không có</span></p>
-          <p>Dự kiến đến nơi: <span *ngIf="check === 'true'">{{flightInformationArrival.arrivalTime}}</span>
-            <span *ngIf="check === 'false'">Không có</span></p>
+              <span *ngIf="check === 'false'">Không có</span></p>
+            <p>Khởi hành: <span *ngIf="check === 'true'">{{flightInformationArrival.departureTime}}</span>
+              <span *ngIf="check === 'false'">Không có</span></p>
+            <p>Dự kiến đến nơi: <span *ngIf="check === 'true'">{{flightInformationArrival.arrivalTime}}</span>
+              <span *ngIf="check === 'false'">Không có</span></p>
+          </div>
         </div>
       </div>
       <hr class="hrBottom">

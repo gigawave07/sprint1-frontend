@@ -22,10 +22,10 @@ import {Ng2SearchPipeModule} from 'ng2-search-filter';
 import {AdminComponent} from './components/admin/admin.component';
 import {InformationAdminComponent} from './components/information-admin/information-admin.component';
 import {ChangePasswordAdminComponent} from './components/change-password-admin/change-password-admin.component';
-import { DetailUserComponent } from './components/detail-user/detail-user.component';
-import { EditUserComponent } from './components/edit-user/edit-user.component';
-import { ChangePasswordUserComponent } from './components/change-password-user/change-password-user.component';
-import { InformationUserComponent } from './components/information-user/information-user.component';
+import {DetailUserComponent} from './components/detail-user/detail-user.component';
+import {EditUserComponent} from './components/edit-user/edit-user.component';
+import {ChangePasswordUserComponent} from './components/change-password-user/change-password-user.component';
+import {InformationUserComponent} from './components/information-user/information-user.component';
 import {ListPendingTicketComponent} from './components/list-pending-ticket/list-pending-ticket/list-pending-ticket.component';
 import {CancelPendingTicketComponent} from './components/list-pending-ticket/cancel-pending-ticket/cancel-pending-ticket.component';
 import {SearchPendingTicketComponent} from './components/search-pending-ticket/search-pending-ticket/search-pending-ticket.component';
@@ -40,9 +40,8 @@ import {KetQuaSaiLogicComponent} from './components/report-statistic/bao-cao-tho
 import {ChartsModule} from 'ng2-charts';
 import {ExcelService} from './components/report-statistic/service/excel.service';
 
-import {DeleteTicketComponent} from './components/delete-ticket/delete-ticket.component';
-import {PrintTicketComponent} from './components/print-ticket/print-ticket.component';
-import {HttpClientModule} from '@angular/common/http';
+import {DeleteTicketComponent} from './components/ticket/delete-ticket/delete-ticket.component';
+import {PrintTicketComponent} from './components/ticket/print-ticket/print-ticket.component';
 import {ListTicketComponent} from './components/list-ticket/list-ticket.component';
 
 @NgModule({
@@ -50,7 +49,7 @@ import {ListTicketComponent} from './components/list-ticket/list-ticket.componen
     AppComponent,
     // Quân
     HomeComponent, LoginComponent, RegisterComponent, NavBarComponent, FooterComponent, VerificationEmailComponent,
-      // Đăngdcvsdacdasc
+    // Đăngdcvsdacdasc
     ListPendingTicketComponent, CancelPendingTicketComponent, SearchPendingTicketComponent, SpinnerComponent, SpinnerOverlayComponent,
     SpinnerComponent, SpinnerOverlayComponent,
     // Danh
@@ -60,10 +59,10 @@ import {ListTicketComponent} from './components/list-ticket/list-ticket.componen
 
     // Nhật
     TrangChinhComponent, BaoCaoComponentComponent, TrangChuThongKeComponent,
-    KetQuaComponent, KetQuaTableComponent, KetQuaSaiLogicComponent
+    KetQuaComponent, KetQuaTableComponent, KetQuaSaiLogicComponent,
 
     // Châu
-    DeleteTicketComponent, PrintTicketComponent, ListTicketComponent
+    DeleteTicketComponent, PrintTicketComponent, ListTicketComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, MaterialModule, HttpClientModule, NgxPaginationModule, Ng2SearchPipeModule,
     FormsModule, MatDialogModule, ReactiveFormsModule, NgxLoadingModule.forRoot({}),

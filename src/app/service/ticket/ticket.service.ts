@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {Observabletimer} from 'rxjs';
+import {Observable, timer} from 'rxjs';
 import {AbstractControl, AsyncValidatorFn} from '@angular/forms';
 import {map, switchMap} from 'rxjs/operators';
 import {TicketStatusPaymentDTO} from '../../model/TicketStatusPaymentDTO';
@@ -18,40 +18,44 @@ export class TicketService {
   ) {
   }
 
-	getAllTicketService(): Observable<any> {
-		return this.http.get(this.API + '/list');
-	}
+  getAllTicketService(): Observable<any> {
+    return this.http.get(this.API + '/list');
+  }
+
+  /*
+  * Đăng start
+  * */
+  findAllPendingTicket(): Observable<any> {
+    return this.http.get(this.API + '/list/Pending');
+  }
+
+  setTicketStatusPayment(id: number, ticketStatusPaymentDTO: TicketStatusPaymentDTO): Observable<any> {
+    // console.log(this.API + '/set-status-payment/' + id, ticketStatusPaymentDTO);
+    return this.http.put(this.API + '/set-status-payment/' + id, ticketStatusPaymentDTO);
+  }
+
+  searchTicket(ticketSearchDTO: any): Observable<any> {
+    // console.log('ticketSearchDTO');
+    // console.log(ticketSearchDTO);
+    // console.log('URL');
+    // console.log(this.API + '/search?' + 'statusPaymentName=' + ticketSearchDTO.statusPaymentName +
+    // 	'&searchBy=' + ticketSearchDTO.searchBy + '&searchValue=' + ticketSearchDTO.searchValue);
+    // return this.http.get(this.API + '/list/Pending');
+    return this.http.get(this.API + '/search?' +
+      'statusPaymentName=' + ticketSearchDTO.statusPaymentName +
+      '&searchBy=' + ticketSearchDTO.searchBy +
+      '&searchValue=' + ticketSearchDTO.searchValue);
+  }
+
+  /*
+  * Đăng end
+  * */
 
 
 
-	/*
-	* Đăng start
-	* */
-	findAllPendingTicket(): Observable<any> {
-		return this.http.get(this.API + '/list/Pending');
-	}
-
-	setTicketStatusPayment(id: number, ticketStatusPaymentDTO: TicketStatusPaymentDTO): Observable<any> {
-		// console.log(this.API + '/set-status-payment/' + id, ticketStatusPaymentDTO);
-		return this.http.put(this.API + '/set-status-payment/' + id, ticketStatusPaymentDTO);
-	}
-
-	searchTicket(ticketSearchDTO: any): Observable<any> {
-		// console.log('ticketSearchDTO');
-		// console.log(ticketSearchDTO);
-		// console.log('URL');
-		// console.log(this.API + '/search?' + 'statusPaymentName=' + ticketSearchDTO.statusPaymentName +
-		// 	'&searchBy=' + ticketSearchDTO.searchBy + '&searchValue=' + ticketSearchDTO.searchValue);
-		// return this.http.get(this.API + '/list/Pending');
-		return this.http.get(this.API + '/search?' +
-			'statusPaymentName=' + ticketSearchDTO.statusPaymentName +
-			'&searchBy=' + ticketSearchDTO.searchBy +
-			'&searchValue=' + ticketSearchDTO.searchValue);
-	}
-	/*
-	* Đăng end
-	* */
-
+  /**
+   * Chau start
+   */
   getAllAppUserService(): Observable<any> {
     return this.http.get(this.API + '/app-user-list');
   }
@@ -102,4 +106,7 @@ export class TicketService {
   openNewWindow() {
     return window;
   }
+  /**
+   * Chau end
+   */
 }

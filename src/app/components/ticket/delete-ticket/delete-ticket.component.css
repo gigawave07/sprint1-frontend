@@ -42,15 +42,19 @@ span {
 }
 
 .bookingCode {
-  margin-left: 5%;
+  margin-left: 8.3%;
+}
+
+.passengerName {
+  margin-left: 2%;
 }
 
 .flight {
-  margin-left: 4.5%;
+  margin-left: 7.9%;
 }
 
 .departureDate {
-  margin-left: 9.5%;
+  margin-left: 12.8%;
 }
 
 .warning {

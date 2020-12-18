@@ -1,6 +1,7 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
-import {TicketService} from '../../service/ticket/ticket.service';
+import {TicketService} from '../../../service/ticket/ticket.service';
+import {Ticket} from '../../../model/ticket';
 
 @Component({
   selector: 'app-delete-ticket',
@@ -8,8 +9,8 @@ import {TicketService} from '../../service/ticket/ticket.service';
   styleUrls: ['./delete-ticket.component.css']
 })
 export class DeleteTicketComponent implements OnInit {
-  protected ticket;
-  protected idDelete: any;
+  protected ticket: Ticket;
+  protected idDelete: number;
 
   constructor(
     protected dialogRef: MatDialogRef<DeleteTicketComponent>,

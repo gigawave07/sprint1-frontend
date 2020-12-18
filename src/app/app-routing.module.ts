@@ -17,22 +17,20 @@ import {CreateEmployeeComponent} from './components/create-employee/create-emplo
 import {EditEmployeeComponent} from './components/edit-employee/edit-employee.component';
 import {DeleteEmployeeComponent} from './components/delete-employee/delete-employee.component';
 import {CommonModule} from '@angular/common';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {MaterialModule} from './material.module';
-import {MatDialogModule} from '@angular/material';
+import {FormsModule} from '@angular/forms';
 import {NgxPaginationModule} from 'ngx-pagination';
 import {EmployeeComponent} from './components/employee/employee.component';
-import {BaoCaoComponentComponent} from "./components/report-statistic/bao-cao-thong-ke/bao-cao/bao-cao-component/bao-cao-component.component";
+// tslint:disable-next-line:max-line-length
+import {BaoCaoComponentComponent} from './components/report-statistic/bao-cao-thong-ke/bao-cao/bao-cao-component/bao-cao-component.component';
 import {ListTicketComponent} from './components/list-ticket/list-ticket.component';
-import {EditTicketComponent} from './components/edit-ticket/edit-ticket.component';
+import {EditTicketComponent} from './components/ticket/edit-ticket/edit-ticket.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {MatDialogModule} from '@angular/material/dialog';
-import {MatInputModule} from '@angular/material/input';
 import {MaterialModule} from './material.module';
-import {InputTicketSellComponent} from './components/input-ticket-sell/input-ticket-sell.component';
-import {PrintTicketComponent} from './components/print-ticket/print-ticket.component';
-import { PrintTicketTwoWayComponent } from './components/print-ticket-two-way/print-ticket-two-way.component';
-import { NoticePageComponent } from './components/notice-page/notice-page.component';
+import {InputTicketSellComponent} from './components/ticket/input-ticket-sell/input-ticket-sell.component';
+import {PrintTicketComponent} from './components/ticket/print-ticket/print-ticket.component';
+import {PrintTicketTwoWayComponent} from './components/ticket/print-ticket-two-way/print-ticket-two-way.component';
+import {NoticePageComponent} from './components/notice-page/notice-page.component';
 
 const routes: Routes = [
   // Quân :
@@ -84,8 +82,10 @@ const routes: Routes = [
   {path: 'list-ticket', component: ListTicketComponent},
   {path: 'input-ticket-sell', component: InputTicketSellComponent},
   {path: 'print-ticket/:id', component: PrintTicketComponent},
-  {path: 'print-ticket-two-way/:bookingCode/:passengerList/:flightDeparture/:flightArrival',
-    component: PrintTicketTwoWayComponent},
+  {
+    path: 'print-ticket-two-way/:bookingCode/:passengerList/:flightDeparture/:flightArrival',
+    component: PrintTicketTwoWayComponent
+  },
   {path: 'notice-page', component: NoticePageComponent},
 ];
 
@@ -97,4 +97,5 @@ const routes: Routes = [
     EmployeeComponent, EditTicketComponent, InputTicketSellComponent, PrintTicketTwoWayComponent, NoticePageComponent
   ]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}

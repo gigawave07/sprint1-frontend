@@ -1,8 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {TicketService} from '../../service/ticket/ticket.service';
+import {TicketService} from '../../../service/ticket/ticket.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {randomString} from '../../utils/RandomUtils';
+import {randomString} from '../../../utils/RandomUtils';
 import {Router} from '@angular/router';
+import {LoginService} from '../../../service/login.service';
+import {FlightInformation} from '../../../model/flightInformation';
 
 @Component({
   selector: 'app-input-ticket-sell',
@@ -10,10 +12,11 @@ import {Router} from '@angular/router';
   styleUrls: ['./input-ticket-sell.component.css']
 })
 export class InputTicketSellComponent implements OnInit {
-  protected flightInformationDeparture = [];
-  protected flightInformationArrival = [];
-  protected idFlightDeparture = 3;
+  protected flightInformationDeparture = FlightInformation;
+  protected flightInformationArrival = FlightInformation;
+  protected idFlightDeparture = 1;
   protected idFlightArrival = 33;
+  protected idEmployee;
   protected checkArrival = 'false';
   protected formCreate: FormGroup;
   protected totalPriceSell: number;
@@ -22,6 +25,7 @@ export class InputTicketSellComponent implements OnInit {
 
   constructor(
     protected ticketService: TicketService,
+    protected loginService: LoginService,
     protected formBuilder: FormBuilder,
     protected router: Router,
   ) {
@@ -30,6 +34,7 @@ export class InputTicketSellComponent implements OnInit {
 
   ngOnInit() {
     if (this.idFlightDeparture !== 0) {
+      this.idEmployee = this.loginService.currentUserValue.id;
       this.ticketService.findFlightInformationByIDService(this.idFlightDeparture).subscribe(
         (data) => {
           this.flightInformationDeparture = data;
@@ -59,7 +64,7 @@ export class InputTicketSellComponent implements OnInit {
         statusCheckin: [''],
         ticketCode: [''],
         booking: [BOOKING_CODE],
-        employee: [1],
+        employee: [this.idEmployee],
         flightInformation: [''],
         invoice: [''],
         statusPayment: [''],

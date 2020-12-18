@@ -14,9 +14,9 @@ import {ChangePasswordAdminComponent} from './components/change-password-admin/c
 import {MatDialogModule} from '@angular/material';
 import {EditUserComponent} from './components/edit-user/edit-user.component';
 import {ChangePasswordUserComponent} from './components/change-password-user/change-password-user.component';
-import {CancelPendingTicketComponent} from "./components/list-pending-ticket/cancel-pending-ticket/cancel-pending-ticket.component";
-import {DeleteTicketComponent} from './components/delete-ticket/delete-ticket.component';
-import {EditTicketComponent} from './components/edit-ticket/edit-ticket.component';
+import {CancelPendingTicketComponent} from './components/list-pending-ticket/cancel-pending-ticket/cancel-pending-ticket.component';
+import {DeleteTicketComponent} from './components/ticket/delete-ticket/delete-ticket.component';
+import {EditTicketComponent} from './components/ticket/edit-ticket/edit-ticket.component';
 
 
 @NgModule({
@@ -55,7 +55,6 @@ import {EditTicketComponent} from './components/edit-ticket/edit-ticket.componen
     ChangePasswordAdminComponent,
     EditUserComponent, ChangePasswordUserComponent,
     CancelPendingTicketComponent, DeleteTicketComponent, EditTicketComponent
-  ]
   ],
 })
 export class MaterialModule { }

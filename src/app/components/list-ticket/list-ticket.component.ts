@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
 import {TicketService} from '../../service/ticket/ticket.service';
-import {DeleteTicketComponent} from '../delete-ticket/delete-ticket.component';
-import {EditTicketComponent} from '../edit-ticket/edit-ticket.component';
+import {DeleteTicketComponent} from '../ticket/delete-ticket/delete-ticket.component';
+import {EditTicketComponent} from '../ticket/edit-ticket/edit-ticket.component';
 import {Router} from '@angular/router';
 
 @Component({
@@ -28,18 +28,30 @@ export class ListTicketComponent implements OnInit {
         this.ticketList = data;
       },
       () => {
+        /**
+         * Chau start
+         *
+         */
         const NOTICE = 'Không tìm thấy trang ';
         this.router.navigate(['notice-page', {message: NOTICE}]).then(r => {});
+        /**
+         * Chau end
+         *
+         */
        },
       () => {
       });
   }
 
+  /**
+   * Chau start
+   *
+   */
   openDialogDelete(id: any): void {
     this.ticketService.findTicketByIDService(id).subscribe(ticket => {
       const DIALOG_REF = this.dialog.open(DeleteTicketComponent, {
         width: '650px',
-        height: '330px',
+        height: '360px',
         data: {dataTicket: ticket},
         disableClose: true
       });
@@ -69,4 +81,8 @@ export class ListTicketComponent implements OnInit {
     const NEW_WINDOW = this.nativeWindow.open('print-ticket');
     NEW_WINDOW.location = 'print-ticket/' + idTicket;
   }
+  /**
+   * Chau end
+   *
+   */
 }
