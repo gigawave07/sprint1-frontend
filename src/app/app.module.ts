@@ -40,6 +40,11 @@ import {KetQuaSaiLogicComponent} from './components/report-statistic/bao-cao-tho
 import {ChartsModule} from 'ng2-charts';
 import {ExcelService} from './components/report-statistic/service/excel.service';
 
+import {DeleteTicketComponent} from './components/delete-ticket/delete-ticket.component';
+import {PrintTicketComponent} from './components/print-ticket/print-ticket.component';
+import {HttpClientModule} from '@angular/common/http';
+import {ListTicketComponent} from './components/list-ticket/list-ticket.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -56,6 +61,9 @@ import {ExcelService} from './components/report-statistic/service/excel.service'
     // Nhật
     TrangChinhComponent, BaoCaoComponentComponent, TrangChuThongKeComponent,
     KetQuaComponent, KetQuaTableComponent, KetQuaSaiLogicComponent
+
+    // Châu
+    DeleteTicketComponent, PrintTicketComponent, ListTicketComponent
   ],
   imports: [BrowserModule, AppRoutingModule, MaterialModule, HttpClientModule, NgxPaginationModule, Ng2SearchPipeModule,
     FormsModule, MatDialogModule, ReactiveFormsModule, NgxLoadingModule.forRoot({}),
