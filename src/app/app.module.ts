@@ -29,6 +29,16 @@ import { InformationUserComponent } from './components/information-user/informat
 import {ListPendingTicketComponent} from './components/list-pending-ticket/list-pending-ticket/list-pending-ticket.component';
 import {CancelPendingTicketComponent} from './components/list-pending-ticket/cancel-pending-ticket/cancel-pending-ticket.component';
 import {SearchPendingTicketComponent} from './components/search-pending-ticket/search-pending-ticket/search-pending-ticket.component';
+import {TrangChinhComponent} from './components/report-statistic/bao-cao-thong-ke/trang-chinh/trang-chinh.component';
+// tslint:disable-next-line:max-line-length
+import {BaoCaoComponentComponent} from './components/report-statistic/bao-cao-thong-ke/bao-cao/bao-cao-component/bao-cao-component.component';
+import {TrangChuThongKeComponent} from './components/report-statistic/bao-cao-thong-ke/thong-ke/demo/trang-chu-thong-ke.component';
+import {KetQuaComponent} from './components/report-statistic/bao-cao-thong-ke/thong-ke/ket-qua/ket-qua/ket-qua.component';
+import {KetQuaTableComponent} from './components/report-statistic/bao-cao-thong-ke/thong-ke/ket-qua/ket-qua-table/ket-qua-table.component';
+// tslint:disable-next-line:max-line-length
+import {KetQuaSaiLogicComponent} from './components/report-statistic/bao-cao-thong-ke/thong-ke/ket-qua/ket-qua-sai-logic/ket-qua-sai-logic.component';
+import {ChartsModule} from 'ng2-charts';
+import {ExcelService} from './components/report-statistic/service/excel.service';
 
 @NgModule({
   declarations: [
@@ -42,16 +52,24 @@ import {SearchPendingTicketComponent} from './components/search-pending-ticket/s
     AdminComponent, InformationAdminComponent, ChangePasswordAdminComponent,
     // Đạt
     DetailUserComponent, EditUserComponent, ChangePasswordUserComponent, InformationUserComponent,
+
+    // Nhật
+    TrangChinhComponent, BaoCaoComponentComponent, TrangChuThongKeComponent,
+    KetQuaComponent, KetQuaTableComponent, KetQuaSaiLogicComponent
   ],
   imports: [BrowserModule, AppRoutingModule, MaterialModule, HttpClientModule, NgxPaginationModule, Ng2SearchPipeModule,
-    FormsModule, MatDialogModule, ReactiveFormsModule, NgxLoadingModule.forRoot({})],
+    FormsModule, MatDialogModule, ReactiveFormsModule, NgxLoadingModule.forRoot({}),
+    ChartsModule
+  ],
+  // tslint:disable-next-line:max-line-length
   providers: [{
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptor,
     multi: true
-  }],
+  }, ExcelService],
   bootstrap: [AppComponent],
-  entryComponents: [SpinnerOverlayComponent]
+  entryComponents: [SpinnerOverlayComponent, TrangChinhComponent, BaoCaoComponentComponent, TrangChuThongKeComponent,
+    KetQuaComponent, KetQuaTableComponent, KetQuaSaiLogicComponent]
 })
 export class AppModule {
 }
