@@ -3,7 +3,7 @@ import {FormBuilder, FormGroup} from '@angular/forms';
 import {LoginService} from '../../service/login.service';
 import {Router} from '@angular/router';
 import {SpinnerOverlayService} from '../../service/animations/spinner-overlay.service';
-import {AuthService, FacebookLoginProvider, GoogleLoginProvider} from "ngx-angular-social-login";
+import {AuthService, FacebookLoginProvider, GoogleLoginProvider} from 'ngx-angular-social-login';
 
 @Component({
   selector: 'app-login',
@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
               public loginService: LoginService,
               public router: Router,
               public spinnerOverlayService: SpinnerOverlayService,
-              private socialAuthService: AuthService
+              // private socialAuthService: AuthService
   ) {
   }
 
@@ -52,20 +52,20 @@ export class LoginComponent implements OnInit {
   }
 
   socialSignIn(socialPlatform: string) {
-    let socialPlatformProvider;
-    if(socialPlatform == "facebook"){
-      socialPlatformProvider = FacebookLoginProvider.PROVIDER_ID;
-    }else if(socialPlatform == "google"){
-      socialPlatformProvider = GoogleLoginProvider.PROVIDER_ID;
-    }
-
-    this.socialAuthService.signIn(socialPlatformProvider).then(
-      (userData) => {
-        console.log(socialPlatform+" sign in data : " , userData);
-        // Now sign-in with userData
-
-      }
-    );
+    // let socialPlatformProvider;
+    // if (socialPlatform === 'facebook') {
+    //   socialPlatformProvider = FacebookLoginProvider.PROVIDER_ID;
+    // } else if (socialPlatform === 'google') {
+    //   socialPlatformProvider = GoogleLoginProvider.PROVIDER_ID;
+    // }
+    //
+    // this.socialAuthService.signIn(socialPlatformProvider).then(
+    //   (userData) => {
+    //     console.log(socialPlatform + ' sign in data : ' , userData);
+    //     // Now sign-in with userData
+    //
+    //   }
+    // );
 
 
   }
