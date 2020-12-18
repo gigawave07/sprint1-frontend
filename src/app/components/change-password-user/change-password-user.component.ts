@@ -1,11 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {AbstractControl, FormBuilder, FormGroup, ValidationErrors, Validators} from '@angular/forms';
+import {AbstractControl, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {MatDialog, MatDialogRef} from '@angular/material';
 import {UserService} from '../../service/user/user.service';
-
 import {LoginService} from '../../service/login.service';
 import {UserDialogComponent} from '../user-dialog/user-dialog.component';
-import {error} from 'util';
+
 function comparePassword(c: AbstractControl) {
   const v = c.value;
   const isA = v.newPassword === v.confirmPassword;
