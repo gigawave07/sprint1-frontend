@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
-    this.spinnerOverlayService.show('Xin đợi trong giây lát');
+    // this.spinnerOverlayService.show('Xin đợi trong giây lát');
     this.user = {
       username: this.loginForm.value.email,
       password: this.loginForm.value.password
@@ -45,7 +45,7 @@ export class LoginComponent implements OnInit {
     }, error => {
       this.message = 'Sai email hoặc password';
     }, () => {
-      this.spinnerOverlayService.hide();
+      // this.spinnerOverlayService.hide();
     });
   }
 }
