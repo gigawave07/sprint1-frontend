@@ -13,7 +13,7 @@ export class InputTicketSellComponent implements OnInit {
   protected flightInformationDeparture = [];
   protected flightInformationArrival = [];
   protected idFlightDeparture = 3;
-  protected idFlightArrival = 0;
+  protected idFlightArrival = 33;
   protected checkArrival = 'false';
   protected formCreate: FormGroup;
   protected totalPriceSell: number;

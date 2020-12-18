@@ -394,7 +394,7 @@
                       Email sai định dạng. Email chuẩn có dạng abc@abc.abc .
                     </p>
                     <p class="text-danger email"
-                       *ngIf="formCreate.controls.passengerName?.invalid
+                       *ngIf="formCreate.controls.appUser?.invalid
                                     && !formCreate.get('appUser').hasError('required')
                                     && !formCreate.get('appUser').hasError('pattern')
                                     && !formCreate.get('appUser').hasError('emailUserExists')
