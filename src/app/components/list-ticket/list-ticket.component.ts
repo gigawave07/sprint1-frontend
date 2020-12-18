@@ -28,7 +28,7 @@ export class ListTicketComponent implements OnInit {
         this.ticketList = data;
       },
       () => {
-        const NOTICE = 'Không tìm thấy trang';
+        const NOTICE = 'Không tìm thấy trang ';
         this.router.navigate(['notice-page', {message: NOTICE}]).then(r => {});
        },
       () => {
