@@ -4,6 +4,7 @@ import {LoginService} from '../../service/login.service';
 import {Router} from '@angular/router';
 import {SpinnerOverlayService} from '../../service/animations/spinner-overlay.service';
 import {AuthService, GoogleLoginProvider} from 'angularx-social-login';
+import {finalize} from "rxjs/operators";
 
 @Component({
   selector: 'app-login',
@@ -31,12 +32,14 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
-    // this.spinnerOverlayService.show('Xin đợi trong giây lát');
+    this.spinnerOverlayService.show();
     this.user = {
       username: this.loginForm.value.email,
       password: this.loginForm.value.password
     };
-    this.loginService.authenticate(this.user).subscribe(data => {
+    this.loginService.authenticate(this.user)
+      .pipe(finalize(() => this.spinnerOverlayService.hide()))
+      .subscribe(data => {
       if (data.message) {
         this.message = data.message;
         this.loginService.logout();
@@ -47,8 +50,6 @@ export class LoginComponent implements OnInit {
       }
     }, error => {
       this.message = 'Sai email hoặc password';
-    }, () => {
-      // this.spinnerOverlayService.hide();
     });
   }
 

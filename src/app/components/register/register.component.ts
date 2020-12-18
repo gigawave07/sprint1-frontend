@@ -4,6 +4,7 @@ import {RegisterService} from '../../service/register.service';
 import {Router} from '@angular/router';
 import {ErrorStateMatcher} from '@angular/material/core';
 import {SpinnerOverlayService} from '../../service/animations/spinner-overlay.service';
+import {finalize} from "rxjs/operators";
 
 @Component({
   selector: 'app-register',
@@ -38,6 +39,7 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit() {
+    this.spinnerOverlayService.show();
     this.user = {
       phoneNumber: this.registerForm.value.phone,
       fullName: this.registerForm.value.name,
@@ -54,16 +56,14 @@ export class RegisterComponent implements OnInit {
 
     if (this.registerForm.valid) {
       this.spinnerOverlayService.show();
-      this.registerService.register(this.account).subscribe(data => {
+      this.registerService.register(this.account)
+        .pipe(finalize(() => this.spinnerOverlayService.hide()))
+        .subscribe(data => {
           if (data.message) {
             this.message = data.message;
           } else {
             this.router.navigateByUrl('/verification-email');
           }
-        },
-        null,
-        () => {
-          this.spinnerOverlayService.hide();
         });
     }
   }
