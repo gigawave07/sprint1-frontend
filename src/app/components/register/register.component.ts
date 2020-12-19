@@ -39,7 +39,6 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit() {
-    this.spinnerOverlayService.show();
     this.user = {
       phoneNumber: this.registerForm.value.phone,
       fullName: this.registerForm.value.name,

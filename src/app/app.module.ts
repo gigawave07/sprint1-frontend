@@ -39,8 +39,6 @@ import {KetQuaTableComponent} from './components/report-statistic/bao-cao-thong-
 import {KetQuaSaiLogicComponent} from './components/report-statistic/bao-cao-thong-ke/thong-ke/ket-qua/ket-qua-sai-logic/ket-qua-sai-logic.component';
 import {ChartsModule} from 'ng2-charts';
 import {ExcelService} from './components/report-statistic/service/excel.service';
-import { UserDialogComponent } from './components/user-dialog/user-dialog.component';
-import { MessageUserComponent } from './components/message-user/message-user.component';
 
 import {DeleteTicketComponent} from './components/delete-ticket/delete-ticket.component';
 import {PrintTicketComponent} from './components/print-ticket/print-ticket.component';
@@ -58,8 +56,7 @@ import {AuthServiceConfig, GoogleLoginProvider, SocialLoginModule} from 'angular
     // Danh
     AdminComponent, InformationAdminComponent, ChangePasswordAdminComponent,
     // Đạt
-    DetailUserComponent, EditUserComponent, ChangePasswordUserComponent,
-    DeleteTicketComponent, , PrintTicketComponent, ListTicketComponent, InformationUserComponent,
+    DetailUserComponent, EditUserComponent, ChangePasswordUserComponent, InformationUserComponent,
 
 
     // Nhật
