@@ -5,5 +5,5 @@ export interface Feedback {
   title: string;
   content: string;
   sendDate: Date;
-  status: boolean
+  processStatus: boolean;
 }

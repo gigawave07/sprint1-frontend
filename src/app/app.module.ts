@@ -21,6 +21,9 @@ import {CancelPendingTicketComponent} from './components/list-pending-ticket/can
 import {MatDialogModule} from '@angular/material/dialog';
 import { SearchPendingTicketComponent } from './components/search-pending-ticket/search-pending-ticket/search-pending-ticket.component';
 import {VerificationEmailComponent} from './components/verification-email/verification-email.component';
+import {FeedbackListComponent} from './components/feedback-list/feedback-list.component';
+import {FeedbackContentComponent} from './components/feedback-content/feedback-content.component';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -31,8 +34,10 @@ import {VerificationEmailComponent} from './components/verification-email/verifi
     InputTicketSellComponent, DeleteTicketComponent, EditTicketComponent, PrintTicketComponent, ListTicketComponent,
       // Đăng
     ListPendingTicketComponent, CancelPendingTicketComponent, SearchPendingTicketComponent,
+    // Lành
+    FeedbackListComponent, FeedbackContentComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, MaterialModule, HttpClientModule, FormsModule, MatDialogModule, ReactiveFormsModule],
+  imports: [BrowserModule, AppRoutingModule, MaterialModule, HttpClientModule, FormsModule, MatDialogModule, ReactiveFormsModule, NgxPaginationModule],
   providers: [],
   bootstrap: [AppComponent]
 })

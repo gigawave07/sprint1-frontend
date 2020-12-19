@@ -8,7 +8,10 @@ import {ListTicketComponent} from './components/list-ticket/list-ticket.componen
 import {VerificationEmailComponent} from './components/verification-email/verification-email.component';
 import {ListPendingTicketComponent} from './components/list-pending-ticket/list-pending-ticket/list-pending-ticket.component';
 import {SearchPendingTicketComponent} from './components/search-pending-ticket/search-pending-ticket/search-pending-ticket.component';
-import { FeedbackComponent } from './components/feedback/feedback.component';
+import { FeedbackListComponent } from './components/feedback-list/feedback-list.component';
+import {ReactiveFormsModule} from '@angular/forms';
+import {CommonModule} from "@angular/common";
+
 
 
 const routes: Routes = [
@@ -23,11 +26,13 @@ const routes: Routes = [
     // Đăng:
   {path: 'list-pending-ticket', component: ListPendingTicketComponent},
   {path: 'search-pending-ticket', component: SearchPendingTicketComponent},
+  // Lành:
+  {path: 'feedback-list', component: FeedbackListComponent},
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes), ReactiveFormsModule, CommonModule],
   exports: [RouterModule],
-  declarations: [FeedbackComponent]
+  declarations: []
 })
 export class AppRoutingModule { }
