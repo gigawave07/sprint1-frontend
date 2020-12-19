@@ -32,6 +32,7 @@ import {KetQuaTableComponent} from './components/report-statistic/bao-cao-thong-
 import {KetQuaSaiLogicComponent} from './components/report-statistic/bao-cao-thong-ke/thong-ke/ket-qua/ket-qua-sai-logic/ket-qua-sai-logic.component';
 import {ChartsModule} from 'ng2-charts';
 import {ExcelService} from './components/report-statistic/service/excel.service';
+import {AdminComponent} from "./components/admin/admin.component";
 
 // @ts-ignore
 // @ts-ignore
@@ -46,7 +47,7 @@ import {ExcelService} from './components/report-statistic/service/excel.service'
     ListPendingTicketComponent, CancelPendingTicketComponent, SearchPendingTicketComponent,
     // Nhật
     TrangChinhComponent, BaoCaoComponentComponent, TrangChuThongKeComponent,
-    KetQuaComponent, KetQuaTableComponent, KetQuaSaiLogicComponent
+    KetQuaComponent, KetQuaTableComponent, KetQuaSaiLogicComponent, AdminComponent
   ],
   // tslint:disable-next-line:max-line-length
   imports: [BrowserModule, AppRoutingModule, MaterialModule, HttpClientModule, FormsModule, MatDialogModule, ReactiveFormsModule,
