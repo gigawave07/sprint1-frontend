@@ -1,17 +1,9 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, FormGroupDirective, NgForm, Validators} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ErrorStateMatcher} from '@angular/material/core';
 import {AdminService} from '../../service/admin/admin.service';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {Router} from '@angular/router';
-
-export class MyErrorStateMatcher implements ErrorStateMatcher {
-  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
-    const invalid = !!(control && control.invalid && control.parent.touched);
-    const invalidForm = !!(control && control.parent && control.parent.invalid && control.parent.touched);
-    return (invalid || invalidForm);
-  }
-}
 
 @Component({
   selector: 'app-change-password-admin',
@@ -23,7 +15,7 @@ export class ChangePasswordAdminComponent implements OnInit {
   public username;
   public account;
 
-  matcher = new MyErrorStateMatcher();
+  matcher = new ErrorStateMatcher();
 
   constructor(public formBuilder: FormBuilder,
               public adminService: AdminService,
