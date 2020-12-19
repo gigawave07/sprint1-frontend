@@ -1,8 +1,16 @@
 import {Component, OnInit} from '@angular/core';
-import {UserMessService} from '../../service/user-mess.service';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {MessageService} from '../../service/message.service';
+import * as firebase from 'firebase';
 
+export const snapshotToArray = (snapshot: any) => {
+  const returnArr = [];
+
+  snapshot.forEach((childSnapshot: any) => {
+    const item = childSnapshot.val();
+    item.key = childSnapshot.key;
+    returnArr.push(item);
+  });
+  return returnArr;
+};
 
 @Component({
   selector: 'app-consultant',
@@ -13,19 +21,15 @@ export class ConsultantComponent implements OnInit {
 
   listUser = [];
 
-  constructor(private userMessService: UserMessService, private fb: FormBuilder, private messageService: MessageService) {
-
+  constructor() {
+    firebase.database().ref('users/').on('value', (resp) => {
+      this.listUser = snapshotToArray(resp).reverse();
+    });
   }
 
   ngOnInit() {
 
-    this.getListUser();
   }
 
-  getListUser() {
-    this.userMessService.getListUser().subscribe(data => {
-        this.listUser = data.reverse();
-      }
-    );
-  }
+
 }

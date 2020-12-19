@@ -1,9 +1,24 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import * as firebase from 'firebase';
+import {DatePipe} from '@angular/common';
 import {MessageService} from '../../service/message.service';
-import {ConsultantService} from '../../service/consultant.service';
 
 declare var $: any;
+
+
+export const snapshotToArray = (snapshot: any, room: any) => {
+  const returnArr = [];
+
+  snapshot.forEach((childSnapshot: any) => {
+    const item = childSnapshot.val();
+    if (item.roomId === room) {
+      item.key = childSnapshot.key;
+      returnArr.push(item);
+    }
+  });
+  return returnArr;
+};
 
 @Component({
   selector: 'app-mess-user',
@@ -13,117 +28,105 @@ declare var $: any;
 export class MessUserComponent implements OnInit {
 
 
-  public isRequest = false;
   public listMess = [];
   public listIcon = [];
   public room: string;
   formSend: FormGroup;
   formSendRequest: FormGroup;
-  private message: any;
+  // firebase
 
-  constructor(private fb: FormBuilder, private messageService: MessageService, private consultantService: ConsultantService) {
+  refUser = firebase.database().ref('users/');
 
+
+  constructor(private fb: FormBuilder, private datePipe: DatePipe, private messageService: MessageService) {
   }
 
   ngOnInit() {
-    this.loadMess();
-    this.getIcon();
-
+    this.getIcons();
     this.formSendRequest = this.fb.group({
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       phone: ['', Validators.required]
     });
+
     this.formSend = this.fb.group({
-      id: '',
       content: ['', Validators.required],
-      roomId: '',
       isUser: 'true',
-      sendDate: '',
-      status: '0',
     });
-    // tslint:disable-next-line:only-arrow-functions
-    $(document).ready(function() {
-      // @ts-ignore
-      // tslint:disable-next-line:prefer-const
-      let socket = io.connect('http://localhost:3000');
 
-      // Socket nhận data và append vào giao diện
+    $(document).ready(() => {
 
-      // tslint:disable-next-line:only-arrow-functions
-      socket.on('send', function(data) {
-        console.log(data);
-      });
       if ($('#is-request').val() !== 'true') {
-        // tslint:disable-next-line:only-arrow-functions
-        $('.openChatBtn').click(function() {
+        $('.openChatBtn').click(() => {
           $('.requiredChat').show('1000');
           $('.openChatBtn').hide();
         });
       } else {
         $('.openChatBtn').show();
       }
-      // tslint:disable-next-line:only-arrow-functions
-      $('.close').click(function() {
+      $('.close').click(() => {
         $('.openChat').hide();
         $('.requiredChat').hide();
         $('.openChatBtn').show('1000');
         $('#is-request').val('false');
       }),
-        // tslint:disable-next-line:only-arrow-functions
-        $('.begin-chat').click(function() {
+        $('.begin-chat').click(() => {
           $('.openChat').hide();
           $('.requiredChat').hide();
           $('.openChat').show('1000');
           $('#icon-box').hide();
         }),
-
-        // tslint:disable-next-line:only-arrow-functions
-        $('#icon').click(function() {
+        $('#icon').click(() => {
             $('#icon-box').toggle(500);
           }
         );
-      // tslint:disable-next-line:only-arrow-functions
-      $('#icon-upload-file').click(function() {
+      $('#icon-upload-file').click(() => {
         $('#file-upload')[0].click();
       });
-      // tslint:disable-next-line:only-arrow-functions
-      $('#btn-submit-mess').click(function() {
-        this.message = $('#content-mess').val();
-        socket.emit('send', {message: this.message});
+      $('#btn-submit-mess').click(() => {
         $('#content-mess').val('');
       });
     });
   }
 
   sendMessage() {
-    if (this.formSend.value.content !== '') {
-      this.formSend.value.roomId = this.room;
-      this.messageService.sendMess(this.formSend.value).subscribe(data => {
-        this.formSend.value.content = '';
-        this.loadMess();
-      });
-    }
-  }
-
-  sendRequest() {
-    this.messageService.sendRequestChat(this.formSendRequest.value).subscribe(data => {
-      this.isRequest = true;
-      this.room = data;
+    const chat = this.formSend.value;
+    chat.nickName = this.formSendRequest.value.name;
+    chat.roomId = this.room;
+    chat.sendDate = this.datePipe.transform(new Date(), 'đ/MM/yyyy HH:mm:ss');
+    chat.type = 'message';
+    const newMessage = firebase.database().ref('chats/').push();
+    newMessage.set(chat);
+    this.formSend = this.fb.group({
+      content: ['', Validators.required],
+      isUser: 'true',
+    });
+    firebase.database().ref('chats/').on('value', resp => {
+      this.listMess = [];
+      this.listMess = snapshotToArray(resp, this.room);
+      // setTimeout(() => this.scrolltop = this.chatcontent.nativeElement.scrollHeight, 500);
     });
   }
 
-  loadMess() {
-    if (this.isRequest) {
-      this.messageService.getMess(this.room).subscribe(data => {
-        this.listMess = data;
-      });
-    }
+  sendRequest() {
+    const request = this.formSendRequest.value;
+    request.roomId = request.phone + Math.round(Math.random() * 10000);
+    this.room = request.roomId;
+    this.refUser.orderByChild('name').equalTo(request.name).once('value', (snapshot) => {
+      if (snapshot.exists()) {
+        localStorage.setItem('name', request.name);
+      } else {
+        const newUser = firebase.database().ref('users/').push();
+        newUser.set(request);
+        localStorage.setItem('name', request.name);
+      }
+    });
   }
 
-  getIcon() {
+  getIcons() {
     this.messageService.getIcon().subscribe((data) => {
       this.listIcon = data;
     });
   }
+
 }

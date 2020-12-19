@@ -35,6 +35,7 @@ import {FeedbackService} from './service/feedback.service';
 import {UserMessService} from './service/user-mess.service';
 import {MessageConsultantComponent} from './components/consultant/message-consultant/message-consultant.component';
 import {HTTP_INTERCEPTORS} from '@angular/common/http';
+import {DatePipe} from '@angular/common';
 
 
 @NgModule({
@@ -58,7 +59,7 @@ import {HTTP_INTERCEPTORS} from '@angular/common/http';
   ],
   imports: [BrowserModule, AppRoutingModule, MaterialModule, HttpClientModule, NgxPaginationModule, Ng2SearchPipeModule,
     FormsModule, MatDialogModule, ReactiveFormsModule, NgxLoadingModule.forRoot({})],
-  providers: [MessageService, FeedbackService, UserMessService, {
+  providers: [DatePipe, MessageService, FeedbackService, UserMessService, {
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptor,
     multi: true
