@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {Observabletimer} from 'rxjs';
+import {Observable, timer} from 'rxjs';
 import {AbstractControl, AsyncValidatorFn} from '@angular/forms';
 import {map, switchMap} from 'rxjs/operators';
 import {TicketStatusPaymentDTO} from '../../model/TicketStatusPaymentDTO';

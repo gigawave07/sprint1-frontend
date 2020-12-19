@@ -42,7 +42,6 @@ import {ExcelService} from './components/report-statistic/service/excel.service'
 
 import {DeleteTicketComponent} from './components/delete-ticket/delete-ticket.component';
 import {PrintTicketComponent} from './components/print-ticket/print-ticket.component';
-import {HttpClientModule} from '@angular/common/http';
 import {ListTicketComponent} from './components/list-ticket/list-ticket.component';
 
 @NgModule({
@@ -60,10 +59,10 @@ import {ListTicketComponent} from './components/list-ticket/list-ticket.componen
 
     // Nhật
     TrangChinhComponent, BaoCaoComponentComponent, TrangChuThongKeComponent,
-    KetQuaComponent, KetQuaTableComponent, KetQuaSaiLogicComponent
+    KetQuaComponent, KetQuaTableComponent, KetQuaSaiLogicComponent,
 
     // Châu
-    DeleteTicketComponent, PrintTicketComponent, ListTicketComponent
+    ListTicketComponent, DeleteTicketComponent, PrintTicketComponent
   ],
   imports: [BrowserModule, AppRoutingModule, MaterialModule, HttpClientModule, NgxPaginationModule, Ng2SearchPipeModule,
     FormsModule, MatDialogModule, ReactiveFormsModule, NgxLoadingModule.forRoot({}),

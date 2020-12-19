@@ -56,6 +56,5 @@ import {EditTicketComponent} from './components/edit-ticket/edit-ticket.componen
     EditUserComponent, ChangePasswordUserComponent,
     CancelPendingTicketComponent, DeleteTicketComponent, EditTicketComponent
   ]
-  ],
 })
 export class MaterialModule { }
