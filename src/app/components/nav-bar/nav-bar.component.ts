@@ -39,7 +39,7 @@ export class NavBarComponent implements OnInit {
 
   openDialogChangePassword() {
     const dialogRef = this.dialog.open(ChangePasswordUserComponent, {
-      width: '900px',
+      width: '1000px',
       height: '600px',
     });
     dialogRef.afterClosed().subscribe(result => {

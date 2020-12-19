@@ -42,7 +42,8 @@ import { MessageUserComponent } from './components/message-user/message-user.com
     // Đạt
     DetailUserComponent, EditUserComponent, ChangePasswordUserComponent,
     InputTicketSellComponent,
-    DeleteTicketComponent, EditTicketComponent, PrintTicketComponent, ListTicketComponent, InformationUserComponent, UserDialogComponent, MessageUserComponent,
+     DeleteTicketComponent, EditTicketComponent, PrintTicketComponent, ListTicketComponent, InformationUserComponent,
+    UserDialogComponent, MessageUserComponent,
   ],
   imports: [BrowserModule,
     AppRoutingModule,
