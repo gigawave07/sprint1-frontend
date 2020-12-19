@@ -43,6 +43,7 @@ import {ExcelService} from './components/report-statistic/service/excel.service'
 import {DeleteTicketComponent} from './components/delete-ticket/delete-ticket.component';
 import {PrintTicketComponent} from './components/print-ticket/print-ticket.component';
 import {ListTicketComponent} from './components/list-ticket/list-ticket.component';
+import {AuthServiceConfig, GoogleLoginProvider, SocialLoginModule} from 'angularx-social-login';
 
 @NgModule({
   declarations: [
@@ -66,17 +67,37 @@ import {ListTicketComponent} from './components/list-ticket/list-ticket.componen
   ],
   imports: [BrowserModule, AppRoutingModule, MaterialModule, HttpClientModule, NgxPaginationModule, Ng2SearchPipeModule,
     FormsModule, MatDialogModule, ReactiveFormsModule, NgxLoadingModule.forRoot({}),
-    ChartsModule
+    ChartsModule, SocialLoginModule
   ],
   // tslint:disable-next-line:max-line-length
   providers: [{
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptor,
     multi: true
-  }, ExcelService],
+  }, {
+    provide: AuthServiceConfig,
+    useFactory: getAuthServiceConfigs
+  },
+    ExcelService],
   bootstrap: [AppComponent],
   entryComponents: [SpinnerOverlayComponent, TrangChinhComponent, BaoCaoComponentComponent, TrangChuThongKeComponent,
     KetQuaComponent, KetQuaTableComponent, KetQuaSaiLogicComponent]
 })
 export class AppModule {
+}
+
+export function getAuthServiceConfigs() {
+  const config = new AuthServiceConfig(
+    [
+      // {
+      //   id: FacebookLoginProvider.PROVIDER_ID,
+      //   provider: new FacebookLoginProvider('927298648089577')
+      // },
+      {
+        id: GoogleLoginProvider.PROVIDER_ID,
+        provider: new GoogleLoginProvider('462543400761-9dlslrfotn225t12crirhc7hpcmdemcu.apps.googleusercontent.com')
+      },
+    ]
+  );
+  return config;
 }
