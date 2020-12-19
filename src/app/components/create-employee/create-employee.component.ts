@@ -1,4 +1,4 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {EmployeeService} from '../../service/employee/employee.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
@@ -15,7 +15,7 @@ export class CreateEmployeeComponent implements OnInit {
   private pipe: DatePipe;
   private employee: Employee;
   private listRole: [];
-  private maxDate = new Date(2012, 11, 16);
+  private maxDate = new Date(2012, 11, 22);
   private minDate = new Date (1920, 0, 1);
 
   constructor(
@@ -52,15 +52,15 @@ export class CreateEmployeeComponent implements OnInit {
       role: ['', [Validators.required]]
     });
   }
+
   createNewEmployee() {
     this.employee = Object.assign({}, this.formCreateNew.value);
     this.employee.birthday = this.pipe.transform(this.employee.birthday, 'dd-MM-yyyy');
-    this.employeeService.createNewEmployeeService(
-      this.employee).subscribe(data => {
-        this.router.navigateByUrl('employee/listEmployee').then(_ => {
+    this.employeeService.createNewEmployeeService(this.employee).subscribe(data => {
+      this.router.navigateByUrl('list-employee').then(_ => {
         });
-    });
-  }
+      }, error => console.log(error.message));
+    }
 
   resetAll() {
     if (this.formCreateNew.valid) {

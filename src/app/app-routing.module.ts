@@ -30,6 +30,7 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'verification-email', component: VerificationEmailComponent},
+
   // Danh
   {
     path: 'admin', component: AdminComponent,
@@ -39,6 +40,13 @@ const routes: Routes = [
       }
     ]
   },
+
+  // Mai :
+  {path: 'list-employee', component: ListEmployeeComponent},
+  {path: 'list-employee/create-employee', component: CreateEmployeeComponent},
+  {path: 'list-employee/edit-employee/:id', component: EditEmployeeComponent},
+  {path: 'delete-employee', component: DeleteEmployeeComponent},
+
   // Đạt
   {path: 'detail-user', component: DetailUserComponent},
   {
@@ -57,18 +65,6 @@ const routes: Routes = [
   // Đăng:caca
   {path: 'list-pending-ticket', component: ListPendingTicketComponent},
   {path: 'search-pending-ticket', component: SearchPendingTicketComponent},
-
-  // Mai :
-  {
-    path: 'employee', component: EmployeeComponent,
-    children: [
-      {path: 'listEmployee', component: ListEmployeeComponent},
-      {path: 'listEmployee/createEmployee', component: CreateEmployeeComponent},
-      {path: 'listEmployee/editEmployee/:id', component: EditEmployeeComponent},
-      {path: 'deleteEmployee', component: DeleteEmployeeComponent},
-    ]
-  },
-
 ];
 
 @NgModule({

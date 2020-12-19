@@ -5,7 +5,8 @@
   <title>Thêm Mới Nhân Viên</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"/>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
-        integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+        integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
+        crossorigin="anonymous">
 </head>
 <body>
 <div class="groove">
@@ -253,7 +254,8 @@
               <mat-form-field style="width: 100%">
                 <mat-label>Chọn quyền</mat-label>
                 <mat-select formControlName="role">
-                  <mat-option *ngFor="let roleName of listRole" [value]="roleName">{{roleName}}</mat-option>
+                  <mat-option value="Admin">Quản trị viên</mat-option>
+                  <mat-option value="Employee">Nhân viên</mat-option>
                 </mat-select>
               </mat-form-field>
 
@@ -271,13 +273,13 @@
           <div class="form-row mt-5 ml-5">
             <div class="col-sm-4 col-xs-4 col-md-4 col-lg-4 p-0 m-0"></div>
             <div class="col-sm-4 col-xs-4 col-md-4 col-lg-4 p-0 m-0">
-              <button type="button" class="btn btn-primary ml-1" value="Quay Lại"
-                      [routerLink]="['/employee/listEmployee']">Quay Lại
+              <button type="button" class="btn btn-primary" value="Quay Lại"
+                      [routerLink]="['/list-employee']">Quay Lại
               </button>
-              <button type="button" class="btn btn-dark ml-1" value="Xóa"
+              <button type="button" class="btn btn-dark ml-2" value="Xóa"
                       (click)="resetAll()">Xóa
               </button>
-              <button type="button" class="btn btn-success ml-1" value="Lưu"
+              <button type="button" class="btn btn-success ml-2" value="Lưu"
                       [disabled]="formCreateNew.invalid" (click)="createNewEmployee()">Lưu
               </button>
             </div>
