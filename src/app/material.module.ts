@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
@@ -17,6 +17,8 @@ import {ChangePasswordUserComponent} from './components/change-password-user/cha
 import {CancelPendingTicketComponent} from "./components/list-pending-ticket/cancel-pending-ticket/cancel-pending-ticket.component";
 import {DeleteTicketComponent} from './components/delete-ticket/delete-ticket.component';
 import {EditTicketComponent} from './components/edit-ticket/edit-ticket.component';
+import {UserDialogComponent} from './components/user-dialog/user-dialog.component';
+import {MessageUserComponent} from './components/message-user/message-user.component';
 
 
 @NgModule({
@@ -54,7 +56,8 @@ import {EditTicketComponent} from './components/edit-ticket/edit-ticket.componen
   entryComponents: [
     ChangePasswordAdminComponent,
     EditUserComponent, ChangePasswordUserComponent,
-    CancelPendingTicketComponent, DeleteTicketComponent, EditTicketComponent
+    CancelPendingTicketComponent, DeleteTicketComponent, EditTicketComponent,
+    UserDialogComponent, MessageUserComponent
   ]
 })
 export class MaterialModule { }

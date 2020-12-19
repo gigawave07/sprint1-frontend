@@ -4,8 +4,8 @@
       <div class="accordion mb-2">
         <div class="card">
           <div class="card-header">
-            <h2 class="mb-0 active">
-              <a [routerLink]="['/informationUser/detailUser']"><span><i class="fa fa-user"></i> Thông tin cá nhân</span></a>
+            <h2 class="mb-0">
+              <a [routerLink]="['informationUser/detailUser']"><span><i class="fa fa-user"></i> Thông tin cá nhân</span></a>
             </h2>
           </div>
         </div>
@@ -21,20 +21,21 @@
           <div class="card-header">
             <h2 class="mb-0">
               <a [routerLink]="['/informationUser/search-pending-ticket']"><span><i class="fa fa-search"></i>Tìm kiếm đặt chỗ</span></a>
+              <a [routerLink]="['#']"><span><i class="fa fa-search"></i>Tìm kiếm đặt vé</span></a>
             </h2>
           </div>
         </div>
         <div class="card">
           <div class="card-header">
             <h2 class="mb-0">
-              <a [routerLink]="['#']"><span><i class="fa fa-line-chart"></i>Lịch sử giao dịch</span></a>
+              <a [routerLink]="['#']"><span><i class="fa fa-history"></i>Lịch sử giao dịch</span></a>
             </h2>
           </div>
         </div>
         <div class="card">
           <div class="card-header">
             <h2 class="mb-0">
-              <a (click)="openDialogChangePassword()"><span><i class="fa fa-line-chart"></i>Đổi mật khẩu</span></a>
+              <a (click)="openDialogChangePassword()"><span><i class="fa fa-id-card-o"></i>Đổi mật khẩu</span></a>
             </h2>
           </div>
         </div>
