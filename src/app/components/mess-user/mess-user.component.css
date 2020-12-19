@@ -201,3 +201,14 @@ div #file-space {
   float: left;
   color: red;
 }
+
+.mess-consultant{
+  color: blue;
+  float: left;
+}
+
+
+.mess-from-user{
+  color: red;
+  float: right;
+}

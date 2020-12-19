@@ -34,6 +34,10 @@
                  *ngIf="formSendRequest.controls.phone?.touched && formSendRequest.controls.phone?.errors?.required">
             Hãy nhập số điện thoại của bạn vào
           </small><br>
+          <small class="input-request"
+                 *ngIf="formSendRequest.controls.phone?.touched && formSendRequest.controls.phone?.errors?.pattern">
+            Số điện thoại phải có từ 10 số
+          </small><br>
           <button [disabled]="formSendRequest.invalid" class=" form-control begin-chat">Bắt đầu trò chuyện</button>
         </form>
       </div>
@@ -49,9 +53,10 @@
   <div class="row">
     <div class="col-lg-12 content-box">
       <div class="row">
-        <div class="col-lg-12 chat-body">
-          <div *ngFor="let mess of listMess" class="row">
-            <span>{{mess.content}}</span><br>
+        <div class="col-lg-12 chat-body" id="chat-body">
+          <div #chatcontent *ngFor="let mess of listMess" class="row">
+            <div *ngIf="(mess.isUser == 'true')" align="right"><span class="mess-consultant">{{mess.content}}</span></div>
+            <div *ngIf="(mess.isUser == 'false')" align="left"><span class="mess-from-user">{{mess.content}}</span></div>
           </div>
         </div>
       </div>
@@ -61,7 +66,7 @@
         </div>
       </div>
       <div class="row row-option">
-        <input type="hidden" id="is-request" [ngModel]="isRequest"/>
+        <input type="hidden" id="is-request"/>
         <form (ngSubmit)="sendMessage()" [formGroup]="formSend" class="form-inline">
           <div class="input-group form-inline" id="input-inline">
             <input id="content-mess" formControlName="content" class="form-control" type="text"

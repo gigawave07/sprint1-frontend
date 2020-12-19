@@ -21,17 +21,6 @@ export const snapshotToArray = (snapshot: any, room: any) => {
   return returnArr;
 };
 
-export const getIcon = (snapshot: any) => {
-  const returnArr = [];
-
-  snapshot.forEach((childSnapshot: any) => {
-    const item = childSnapshot.val();
-    item.key = childSnapshot.key;
-    returnArr.push(item);
-  });
-  return returnArr;
-};
-
 @Component({
   selector: 'app-message-consultant',
   templateUrl: './message-consultant.component.html',
@@ -39,6 +28,7 @@ export const getIcon = (snapshot: any) => {
 })
 export class MessageConsultantComponent implements OnInit {
 
+  lastMessage: string;
   room: string;
   formSendMess: FormGroup;
   listMessage = [];
@@ -56,15 +46,17 @@ export class MessageConsultantComponent implements OnInit {
     this.getIcons();
     this.formSendMess = this.fb.group({
       content: ['', Validators.required],
-      isUser: 'false',
+      isUser: ''
 
     });
     $(document).ready(() => {
+      $('#icon-box-consultant').hide();
       $('#submit-consultant').click(() => {
         $('#content-chat-cons').val('');
       });
       $('#consultant-icon').click(() => {
-          $('#icon-box').toggle(500);
+          console.log('đã nhấn icon');
+          $('#icon-box-consultant').toggle(500);
         }
       );
     });
@@ -82,13 +74,14 @@ export class MessageConsultantComponent implements OnInit {
     const chat = this.formSendMess.value;
     chat.nickName = 'admin';
     chat.roomId = this.room;
-    chat.sendDate = this.datePipe.transform(new Date(), 'đ/MM/yyyy HH:mm:ss');
+    chat.isUser = 'false';
+    chat.sendDate = this.datePipe.transform(new Date(), 'dd/MM/yyyy HH:mm:ss');
     chat.type = 'message';
     const newMessage = firebase.database().ref('chats/').push();
     newMessage.set(chat);
     this.formSendMess = this.fb.group({
       content: ['', Validators.required],
-      isUser: 'false',
+      isUser: '',
     });
   }
 

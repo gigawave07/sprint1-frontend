@@ -20,7 +20,7 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'message', component: MessUserComponent},
-  {path: 'sendFeedback', component: SendFeedbackComponent},
+  {path: 'send-feedback', component: SendFeedbackComponent},
   {path: 'consultant', component: ConsultantComponent,
     children: [
       {path: 'mess/:id', component: MessageConsultantComponent}
