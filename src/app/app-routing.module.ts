@@ -22,7 +22,8 @@ import {MaterialModule} from './material.module';
 import {MatDialogModule} from '@angular/material';
 import {NgxPaginationModule} from 'ngx-pagination';
 import {EmployeeComponent} from './components/employee/employee.component';
-import {BaoCaoComponentComponent} from "./components/report-statistic/bao-cao-thong-ke/bao-cao/bao-cao-component/bao-cao-component.component";
+// tslint:disable-next-line:max-line-length
+import {BaoCaoComponentComponent} from './components/report-statistic/bao-cao-thong-ke/bao-cao/bao-cao-component/bao-cao-component.component';
 import {ListTicketComponent} from './components/list-ticket/list-ticket.component';
 import {EditTicketComponent} from './components/edit-ticket/edit-ticket.component';
 import {MatInputModule} from '@angular/material/input';
@@ -86,6 +87,7 @@ const routes: Routes = [
   {path: 'notice-page', component: NoticePageComponent},
 ];
 
+// @ts-ignore
 @NgModule({
   imports: [RouterModule.forRoot(routes), CommonModule, ReactiveFormsModule, MaterialModule,
     MatDialogModule, FormsModule, NgxPaginationModule],

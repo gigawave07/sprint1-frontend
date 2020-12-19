@@ -1,4 +1,5 @@
 import {BrowserModule} from '@angular/platform-browser';
+// @ts-ignore
 import {NgModule} from '@angular/core';
 
 import {AppRoutingModule} from './app-routing.module';
@@ -11,6 +12,7 @@ import {NavBarComponent} from './components/nav-bar/nav-bar.component';
 import {FooterComponent} from './components/footer/footer.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+// @ts-ignore
 import {MatDialogModule} from '@angular/material/dialog';
 import {VerificationEmailComponent} from './components/verification-email/verification-email.component';
 import {AuthInterceptor} from './service/AuthInterceptor';
@@ -22,10 +24,10 @@ import {Ng2SearchPipeModule} from 'ng2-search-filter';
 import {AdminComponent} from './components/admin/admin.component';
 import {InformationAdminComponent} from './components/information-admin/information-admin.component';
 import {ChangePasswordAdminComponent} from './components/change-password-admin/change-password-admin.component';
-import { DetailUserComponent } from './components/detail-user/detail-user.component';
-import { EditUserComponent } from './components/edit-user/edit-user.component';
-import { ChangePasswordUserComponent } from './components/change-password-user/change-password-user.component';
-import { InformationUserComponent } from './components/information-user/information-user.component';
+import {DetailUserComponent} from './components/detail-user/detail-user.component';
+import {EditUserComponent} from './components/edit-user/edit-user.component';
+import {ChangePasswordUserComponent} from './components/change-password-user/change-password-user.component';
+import {InformationUserComponent} from './components/information-user/information-user.component';
 import {ListPendingTicketComponent} from './components/list-pending-ticket/list-pending-ticket/list-pending-ticket.component';
 import {CancelPendingTicketComponent} from './components/list-pending-ticket/cancel-pending-ticket/cancel-pending-ticket.component';
 import {SearchPendingTicketComponent} from './components/search-pending-ticket/search-pending-ticket/search-pending-ticket.component';
@@ -44,19 +46,23 @@ import {DeleteTicketComponent} from './components/delete-ticket/delete-ticket.co
 import {PrintTicketComponent} from './components/print-ticket/print-ticket.component';
 import {ListTicketComponent} from './components/list-ticket/list-ticket.component';
 import {AuthServiceConfig, GoogleLoginProvider, SocialLoginModule} from 'angularx-social-login';
+import {UserDialogComponent} from './components/user-dialog/user-dialog.component';
+import {MessageUserComponent} from './components/message-user/message-user.component';
 
+// @ts-ignore
 @NgModule({
   declarations: [
     AppComponent,
     // Quân
     HomeComponent, LoginComponent, RegisterComponent, NavBarComponent, FooterComponent, VerificationEmailComponent,
-      // Đăngdcvsdacdasc
+    // Đăngdcvsdacdasc
     ListPendingTicketComponent, CancelPendingTicketComponent, SearchPendingTicketComponent, SpinnerComponent, SpinnerOverlayComponent,
     SpinnerComponent, SpinnerOverlayComponent,
     // Danh
     AdminComponent, InformationAdminComponent, ChangePasswordAdminComponent,
     // Đạt
-    DetailUserComponent, EditUserComponent, ChangePasswordUserComponent, InformationUserComponent,
+    // tslint:disable-next-line:max-line-length
+    DetailUserComponent, EditUserComponent, ChangePasswordUserComponent, InformationUserComponent, UserDialogComponent, MessageUserComponent,
 
 
     // Nhật

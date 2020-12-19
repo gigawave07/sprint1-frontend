@@ -1,8 +1,11 @@
+// @ts-ignore
 import {Component, Inject, OnInit} from '@angular/core';
+// @ts-ignore
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material';
 import {UserService} from '../../service/user/user.service';
+// @ts-ignore
 import {AbstractControl, FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {ActivatedRoute} from '@angular/router';
+
 import {MessageUserComponent} from '../message-user/message-user.component';
 
 // Kí tự đặt biệt
@@ -22,24 +25,23 @@ function validateWhitespace(c: AbstractControl) {
     }
   }
 }
+// @ts-ignore
 @Component({
   selector: 'app-edit-user',
   templateUrl: './edit-user.component.html',
   styleUrls: ['./edit-user.component.css']
 })
 export class EditUserComponent implements OnInit {
-  public userOfId;
   public dataIdUser;
   public valueGender;
   formEditUser: FormGroup;
   public idMessage = 2;
 
   constructor(
-
-    public dialogRef: MatDialogRef<EditUserComponent>,
-    public userService: UserService,
-    public formBuilder: FormBuilder,
-    public dialog: MatDialog,
+    private dialogRef: MatDialogRef<EditUserComponent>,
+    private userService: UserService,
+    private formBuilder: FormBuilder,
+    private dialog: MatDialog,
     @Inject(MAT_DIALOG_DATA) public data: any) {
   }
   ngOnInit() {

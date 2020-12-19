@@ -1,11 +1,15 @@
+// @ts-ignore
 import {Component, OnInit} from '@angular/core';
 import {UserService} from '../../service/user/user.service';
 import {LoginService} from '../../service/login.service';
+// @ts-ignore
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {EditUserComponent} from '../edit-user/edit-user.component';
+// @ts-ignore
 import {MatDialog} from '@angular/material';
 
 
+// @ts-ignore
 @Component({
   selector: 'app-detail-user',
   templateUrl: './detail-user.component.html',
@@ -17,10 +21,10 @@ export class DetailUserComponent implements OnInit {
   infoFormUser: FormGroup;
 
   constructor(
-    public dialog: MatDialog,
-    public userService: UserService,
-    public loginService: LoginService,
-    public formBuilder: FormBuilder) {
+    private dialog: MatDialog,
+    private userService: UserService,
+    private loginService: LoginService,
+    private formBuilder: FormBuilder) {
   }
 
   ngOnInit(): void {

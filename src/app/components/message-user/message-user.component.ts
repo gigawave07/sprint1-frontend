@@ -1,6 +1,9 @@
+// @ts-ignore
 import {Component, Inject, OnInit} from '@angular/core';
+// @ts-ignore
 import {MAT_DIALOG_DATA, MatDialog, MatDialogConfig, MatDialogRef} from '@angular/material';
 
+// @ts-ignore
 @Component({
   selector: 'app-message-user',
   templateUrl: './message-user.component.html',
@@ -9,9 +12,10 @@ import {MAT_DIALOG_DATA, MatDialog, MatDialogConfig, MatDialogRef} from '@angula
 export class MessageUserComponent implements OnInit {
   public messageUser;
 
-  constructor(public dialog: MatDialog,
-              public dialogRef: MatDialogRef<MessageUserComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: any) {
+  constructor(
+    private dialog: MatDialog,
+    private dialogRef: MatDialogRef<MessageUserComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any) {
   }
 
   ngOnInit() {

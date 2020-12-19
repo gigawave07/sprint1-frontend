@@ -1,7 +1,10 @@
+// @ts-ignore
 import { Component, OnInit } from '@angular/core';
 import {ChangePasswordUserComponent} from '../change-password-user/change-password-user.component';
+// @ts-ignore
 import {MatDialog} from '@angular/material';
 
+// @ts-ignore
 @Component({
   selector: 'app-information-user',
   templateUrl: './information-user.component.html',
@@ -10,15 +13,14 @@ import {MatDialog} from '@angular/material';
 export class InformationUserComponent implements OnInit {
 
   constructor(
-    public dialog: MatDialog
+    private dialog: MatDialog
   ) { }
 
   ngOnInit() {
   }
   openDialogChangePassword() {
     const dialogRef = this.dialog.open(ChangePasswordUserComponent, {
-      width: '900px',
-      height: '600px',
+      width: '750px',
     });
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
