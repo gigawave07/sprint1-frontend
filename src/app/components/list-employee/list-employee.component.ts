@@ -11,7 +11,7 @@ import {DeleteEmployeeComponent} from '../delete-employee/delete-employee.compon
   styleUrls: ['./list-employee.component.css']
 })
 export class ListEmployeeComponent implements OnInit {
-  private list: [];
+  private list;
   private checkList = 'true';
   key: string;
   p: number;
