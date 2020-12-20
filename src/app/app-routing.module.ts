@@ -33,12 +33,24 @@ import {MessageNoticeEmployeeComponent} from './components/message-notice-employ
 import {PrintTicketTwoWayComponent} from './components/print-ticket-two-way/print-ticket-two-way.component';
 import {NoticePageComponent} from './components/notice-page/notice-page.component';
 
+import {MessUserComponent} from './components/mess-user/mess-user.component';
+import {SendFeedbackComponent} from './components/send-feedback/send-feedback.component';
+import {ConsultantComponent} from './components/consultant/consultant.component';
+import {MessageConsultantComponent} from './components/consultant/message-consultant/message-consultant.component';
 const routes: Routes = [
   // Quân :
   {path: '', component: HomeComponent},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'verification-email', component: VerificationEmailComponent},
+  // Vinh
+  {path: 'message', component: MessUserComponent},
+  {path: 'send-feedback', component: SendFeedbackComponent},
+  {path: 'consultant', component: ConsultantComponent,
+    children: [
+      {path: 'mess/:id', component: MessageConsultantComponent}
+    ]
+  },
   // Danh
   {
     path: 'admin', component: AdminComponent,

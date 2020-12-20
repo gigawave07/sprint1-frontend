@@ -47,6 +47,14 @@ import {AuthServiceConfig, FacebookLoginProvider, GoogleLoginProvider, SocialLog
 import {UserDialogComponent} from "./components/user-dialog/user-dialog.component";
 import {MessageUserComponent} from "./components/message-user/message-user.component";
 
+import {SendFeedbackComponent} from './components/send-feedback/send-feedback.component';
+import {ConsultantComponent} from './components/consultant/consultant.component';
+import {MessageConsultantComponent} from './components/consultant/message-consultant/message-consultant.component';
+import {FeedbackService} from './service/feedback.service';
+import {MessUserComponent} from './components/mess-user/mess-user.component';
+import {MessageService} from './service/message.service';
+import {DatePipe} from '@angular/common';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -68,13 +76,19 @@ import {MessageUserComponent} from "./components/message-user/message-user.compo
 
     // Châu
     DeleteTicketComponent, PrintTicketComponent, ListTicketComponent,
+    // Vinh
+    SendFeedbackComponent,
+    MessUserComponent,
+    ConsultantComponent,
+    MessageConsultantComponent
   ],
   imports: [BrowserModule, AppRoutingModule, MaterialModule, HttpClientModule, NgxPaginationModule, Ng2SearchPipeModule,
     FormsModule, MatDialogModule, ReactiveFormsModule, NgxLoadingModule.forRoot({}),
     ChartsModule, SocialLoginModule
   ],
   // tslint:disable-next-line:max-line-length
-  providers: [{
+  providers: [DatePipe, MessageService, FeedbackService
+    ,{
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptor,
     multi: true
