@@ -2,7 +2,7 @@
   <div class="row justify-content-between">
     <div class="col-12">
       <div class ="row" style="margin-bottom: 20px">
-        <h2 style="margin-left: 30px">Promotion list</h2>
+        <h2 style="margin-left: 30px">Danh sách khuyến mãi</h2>
         <button type="button" class="btn btn-success" style="height: 40px; margin-left: 20px" [routerLink]="['/add-new']">Thêm mới</button>
         <div class="d-flex" style="margin-left: 1050px; margin-top: -40px">
           <input class="form-control mr-2" type="text" width="400px;" placeholder="Tìm kiếm" [(ngModel)]="term">
@@ -41,7 +41,7 @@
         <th scope="col">Đặt vé</th>
       </tr>
       </thead>
-      <tbody *ngFor="let promotion of listPromotion|filter:term|paginate: { itemsPerPage: 2, currentPage: p}">
+      <tbody *ngFor="let promotion of listPromotion|filter:term|paginate: { itemsPerPage: 2, currentPage: p}" style="color: white">
       <tr>
         <td>{{promotion.flight}}</td>
         <td>{{promotion.airline}}</td>
@@ -60,7 +60,7 @@
     </table>
       </div>
     </div>
-    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    <pagination-controls style="color: white" (pageChange)="p = $event"></pagination-controls>
   </div>
 </div>
 

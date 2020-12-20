@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PromotionListComponent } from './promotion-list/promotion-list.component';
 import {Routes, RouterModule} from '@angular/router';
-import { HomeComponent } from './home/home.component';
 import { AddNewComponent } from './promotion-list/add-new/add-new.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import { EditComponent } from './promotion-list/edit/edit.component';
@@ -28,7 +27,6 @@ import { DadSgnComponent } from './flights/dad-sgn/dad-sgn.component';
 
 const routes: Routes = [
   {path: 'promotion', component: PromotionListForCustomerComponent},
-  {path: 'home', component: HomeComponent},
   {path: 'promotion-list', component: PromotionListComponent},
   {path: 'add-new', component: AddNewComponent},
   {path: 'edit/:id', component: EditComponent},
@@ -44,7 +42,7 @@ const routes: Routes = [
 
 @NgModule({
   // tslint:disable-next-line:max-line-length
-  declarations: [PromotionListComponent, HomeComponent, AddNewComponent, EditComponent, DeleteComponent, PromotionListForCustomerComponent,
+  declarations: [PromotionListComponent, AddNewComponent, EditComponent, DeleteComponent, PromotionListForCustomerComponent,
     MonComponent, TuesComponent, WedsComponent, ThursComponent, FriComponent, SatComponent, SunComponent, DadSgnComponent, ],
     imports: [
         CommonModule,
