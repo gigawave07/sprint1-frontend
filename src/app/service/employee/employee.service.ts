@@ -55,7 +55,6 @@ export class EmployeeService {
   searchEmployeeEmailService(idSearch: any): Observable<any> {
     return this.http.get(this.API + '/searchEmail/' + idSearch);
   }
-
   // ------------------------------- Validate ----------------------------
   validateEmployeeCode(): AsyncValidatorFn {
     return (control: AbstractControl): Observable<{ [key: string]: any } | null> => {

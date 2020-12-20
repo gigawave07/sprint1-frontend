@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {EmployeeService} from '../../service/employee/employee.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {DatePipe} from '@angular/common';
+import {EmployeeService} from '../../service/employee/employee.service';
 import {Employee} from '../../model/employee/employee.class';
 
 @Component({
@@ -16,13 +16,13 @@ export class EditEmployeeComponent implements OnInit {
   private employee: Employee;
   private idNeed;
   private listRole: [];
-  private maxDate = new Date(2012, 11, 16);
-  private minDate = new Date (1920, 0, 1);
+  private maxDate = new Date(2012, 11, 23);
+  private minDate = new Date(1920, 0, 1);
 
   constructor(
-    public formBuilder: FormBuilder,
-    public employeeService: EmployeeService,
-    public router: Router,
+    private formBuilder: FormBuilder,
+    private employeeService: EmployeeService,
+    private router: Router,
     private activatedRoute: ActivatedRoute
   ) {
   }
@@ -42,10 +42,8 @@ export class EditEmployeeComponent implements OnInit {
       birthday: ['', [Validators.required]],
       gender: ['', [Validators.required]],
       email: [''],
-      password: ['123'],
       phoneNumber: ['', [Validators.required, Validators.pattern('^((\\d+){10})$'),
         Validators.maxLength(12)]],
-      appAccount: [''],
       role: ['', [Validators.required]]
     });
 
@@ -58,12 +56,27 @@ export class EditEmployeeComponent implements OnInit {
   }
 
   editEmployee() {
+    this.formEdit.markAllAsTouched();
+    if (this.formEdit.valid) {
     this.employee = Object.assign({}, this.formEdit.value);
     this.employee.birthday = this.pipe.transform(this.employee.birthday, 'dd-MM-yyyy');
-    this.employeeService.editEmployeeService(
-      this.employee, this.employee.id).subscribe(data => {
-      this.router.navigateByUrl('employee/listEmployee').then(_ => {
-      });
-    });
+    this.employeeService.editEmployeeService(this.employee, this.employee.id).subscribe(data => {
+          this.router.navigateByUrl('list-employee').then(_ => {
+          });
+        },
+        () => {
+          const NOTICE = 'Sửa không thành công';
+          this.router.navigate(['message-notice-employee', {message: NOTICE}]).then(r => {
+          });
+        }, () => {
+          const NOTICE = 'Sửa thành công';
+          this.router.navigate(['message-notice-employee', {message: NOTICE}]).then(r => {
+            setTimeout(() => {
+                this.router.navigateByUrl('list-employee');
+              }, 2000
+            );
+          });
+        });
+    }
   }
 }

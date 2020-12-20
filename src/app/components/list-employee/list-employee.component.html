@@ -5,14 +5,15 @@
   <title>Quản Lý Nhân Viên</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"/>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
-        integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+        integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
+        crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
 <div class="container-fluid table-responsive">
   <div class="row col-sm-12 col-xl-12 mt-5 d-flex form-inline">
     <div class="col-sm-3 col-xl-3">
-      <button type="button" class="btn btn-success" routerLink="createEmployee">
+      <button type="button" class="btn btn-success" routerLink="create-employee">
         <i class="fas fa-plus-circle"></i>
         Thêm mới
       </button>
@@ -28,7 +29,7 @@
           <option value="phoneNumber">Số Điện Thoại</option>
         </select>
       </div>
-      <div class="col-sm-6 col-xl-6 d-flex justify-content-center form-inline mx-2 m-0 p-0">
+      <div class="col-sm-6 col-xl-6 ml-4 d-flex justify-content-center form-inline mx-2 m-0 p-0">
         <input type="text" class="form-control form-control-sm rounded mx-2 "
                #key placeholder="Nhập từ khóa tìm kiếm">
         <button type="button" class="search btn btn-success btn-sm mx-2"
@@ -59,15 +60,18 @@
           <td>{{employee.fullName}}</td>
           <td>{{employee.birthday | date:'dd/MM/yyyy'}}</td>
           <td>
-            <span *ngIf="employee.gender == false">Nữ</span>
-            <span *ngIf="employee.gender == true">Nam</span>
+            <span *ngIf="employee.gender == 0">Nữ</span>
+            <span *ngIf="employee.gender == 1">Nam</span>
           </td>
           <td>{{employee.email}}</td>
           <td>{{employee.phoneNumber}}</td>
-          <td>{{employee.appAccount.appRole.name}}</td>
-          <td *ngIf="employee.appAccount.appRole.name !== 'Quản trị viên'">
-            <i class="fas fa-edit btn btn-warning" [routerLink]="['editEmployee', employee.id]"></i>
+          <td [hidden]="employee.appAccount.appRole.name !== 'Employee'">Nhân viên</td>
+          <td [hidden]="employee.appAccount.appRole.name !== 'Admin'">Quản trị viên</td>
+          <td>
+            <span [hidden]="employee.appAccount.appRole.name == 'Admin'">
+            <i class="fas fa-edit btn btn-warning" [routerLink]="['edit-employee', employee.id]"></i>
             <i class="fas fa-trash-alt btn btn-dark ml-1" (click)="openDialogDelete(employee.id)"></i>
+          </span>
           </td>
         </tr>
         </tbody>
@@ -79,7 +83,7 @@
         <button class="btn btn-primary" (click)="resetFind()">Quay Lại</button>
       </div>
     </div>
-    <div align="center">
+    <div align="center" *ngIf="this.list.length !== 0">
       <pagination-controls (pageChange)="p = $event" previousLabel="Trước" nextLabel="Sau"
                            responsive="true"></pagination-controls>
     </div>

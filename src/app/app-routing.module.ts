@@ -1,5 +1,5 @@
 import {NgModule} from '@angular/core';
-import {Routes, RouterModule} from '@angular/router';
+import {RouterModule, Routes} from '@angular/router';
 import {HomeComponent} from './components/home/home.component';
 import {LoginComponent} from './components/login/login.component';
 import {RegisterComponent} from './components/register/register.component';
@@ -30,6 +30,7 @@ import {InputTicketSellComponent} from './components/input-ticket-sell/input-tic
 import {PrintTicketComponent} from './components/print-ticket/print-ticket.component';
 import { PrintTicketTwoWayComponent } from './components/print-ticket-two-way/print-ticket-two-way.component';
 import { NoticePageComponent } from './components/notice-page/notice-page.component';
+import {MessageNoticeEmployeeComponent} from './components/message-notice-employee/message-notice-employee.component';
 
 const routes: Routes = [
   // Quân :
@@ -68,15 +69,12 @@ const routes: Routes = [
   {path: 'report', component: BaoCaoComponentComponent},
 
   // Mai :
-  {
-    path: 'employee', component: EmployeeComponent,
-    children: [
-      {path: 'listEmployee', component: ListEmployeeComponent},
-      {path: 'listEmployee/createEmployee', component: CreateEmployeeComponent},
-      {path: 'listEmployee/editEmployee/:id', component: EditEmployeeComponent},
-      {path: 'deleteEmployee', component: DeleteEmployeeComponent},
-    ]
-  },
+  {path: 'list-employee', component: ListEmployeeComponent},
+  {path: 'list-employee/create-employee', component: CreateEmployeeComponent},
+  {path: 'list-employee/edit-employee/:id', component: EditEmployeeComponent},
+  {path: 'delete-employee', component: DeleteEmployeeComponent},
+  {path: 'message-notice-employee', component: MessageNoticeEmployeeComponent},
+
   // Châu :
   {path: 'list-ticket', component: ListTicketComponent},
   {path: 'input-ticket-sell', component: InputTicketSellComponent},
@@ -91,7 +89,8 @@ const routes: Routes = [
     MatDialogModule, FormsModule, NgxPaginationModule],
   exports: [RouterModule],
   declarations: [ListEmployeeComponent, CreateEmployeeComponent, EditEmployeeComponent, DeleteEmployeeComponent,
-    EmployeeComponent, EditTicketComponent, InputTicketSellComponent, PrintTicketTwoWayComponent, NoticePageComponent
+    EmployeeComponent, EditTicketComponent, InputTicketSellComponent, PrintTicketTwoWayComponent, NoticePageComponent,
+    MessageNoticeEmployeeComponent
   ]
 })
 export class AppRoutingModule { }
