@@ -65,6 +65,7 @@ export class LoginComponent implements OnInit {
         }
       };
       this.loginService.loginGoogle(this.user).subscribe(data => {
+        this.user.role = "User";
         this.loginService.broadcastLoginChange(this.user);
         this.router.navigateByUrl('');
       })
