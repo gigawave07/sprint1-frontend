@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {TicketService} from '../../../service/ticket/ticket.service';
 
 @Component({
@@ -16,6 +16,7 @@ export class PrintTicketComponent implements OnInit {
   constructor(
     private activedRouter: ActivatedRoute,
     protected ticketService: TicketService,
+    protected router: Router
   ) {
   }
 
@@ -23,10 +24,24 @@ export class PrintTicketComponent implements OnInit {
     this.activedRouter.params.subscribe(data => {
       this.idNeed = data.id;
     });
-    this.ticketService.findTicketByIDService(this.idNeed).subscribe(data => {
-      this.bookingCode = data.booking.bookingCode;
-      this.flightInformationDisplay = data.flightInformation;
-      this.ticket = data;
-    });
+    this.ticketService.findTicketByIDService(this.idNeed).subscribe(
+      ticket => {
+      if (ticket != null) {
+        this.bookingCode = ticket.booking.bookingCode;
+        this.flightInformationDisplay = ticket.flightInformation;
+        this.ticket = ticket;
+      } else {
+        const NOTICE = 'Không tìm thấy vé.';
+        const URL = 'http://localhost:4200/list-ticket';
+        this.router.navigate(['notice-page', {message: NOTICE, path: URL}]).then(r => {
+        });
+      }
+    },
+      () => {
+        const NOTICE = 'Lỗi hệ thống';
+        this.router.navigate(['notice-page', {message: NOTICE}]).then(r => {
+        });
+      }
+    );
   }
 }

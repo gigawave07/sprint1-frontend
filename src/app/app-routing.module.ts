@@ -30,7 +30,7 @@ import {MaterialModule} from './material.module';
 import {InputTicketSellComponent} from './components/ticket/input-ticket-sell/input-ticket-sell.component';
 import {PrintTicketComponent} from './components/ticket/print-ticket/print-ticket.component';
 import {PrintTicketTwoWayComponent} from './components/ticket/print-ticket-two-way/print-ticket-two-way.component';
-import {NoticePageComponent} from './components/notice-page/notice-page.component';
+import {NoticePageComponent} from './components/ticket/notice-page/notice-page.component';
 
 const routes: Routes = [
   // Quân :
@@ -80,7 +80,7 @@ const routes: Routes = [
   },
   // Châu :
   {path: 'list-ticket', component: ListTicketComponent},
-  {path: 'input-ticket-sell', component: InputTicketSellComponent},
+  {path: 'input-ticket-sell/:idFlightDeparture/:idFlightArrival', component: InputTicketSellComponent},
   {path: 'print-ticket/:id', component: PrintTicketComponent},
   {
     path: 'print-ticket-two-way/:bookingCode/:passengerList/:flightDeparture/:flightArrival',

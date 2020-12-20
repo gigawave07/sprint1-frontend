@@ -2,6 +2,7 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {TicketService} from '../../../service/ticket/ticket.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-edit-ticket',
@@ -13,14 +14,14 @@ export class EditTicketComponent implements OnInit {
   protected bookingCodeDisplay;
   protected passengerEdit;
   protected appUserEdit;
-  protected appUserList;
   protected flightInformationDisplay;
 
   constructor(
     protected dialogRef: MatDialogRef<EditTicketComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     protected formBuilder: FormBuilder,
-    private ticketService: TicketService
+    private ticketService: TicketService,
+    protected router: Router
   ) {
   }
 
@@ -49,26 +50,33 @@ export class EditTicketComponent implements OnInit {
         updateOn: 'blur'
       }],
     });
-    this.ticketService.getAllAppUserService().subscribe(data => {
-      this.appUserList = data;
-    });
   }
 
   edit() {
     this.formEdit.markAllAsTouched();
     if (this.formEdit.valid) {
       this.passengerEdit = this.formEdit.value.passengerName;
-      for (const ELEMENT of this.appUserList) {
-        if (ELEMENT.email === this.formEdit.value.appUser) {
-          this.appUserEdit = ELEMENT.id;
-          break;
-        }
-      }
+      this.appUserEdit = this.formEdit.value.appUser;
       const ID_EDIT = this.data.dataTicket.id;
       this.ticketService.editTicketService(ID_EDIT, this.passengerEdit, this.appUserEdit, this.formEdit.value)
-        .subscribe(data => {
-          this.dialogRef.close();
-        });
+        .subscribe(
+          data => {
+          if (data.message === 'Succeed') {
+            this.dialogRef.close();
+          } else {
+            this.dialogRef.close();
+            const NOTICE = 'Sửa vé không thành công';
+            const URL = 'http://localhost:4200/list-ticket';
+            this.router.navigate(['notice-page', {message: NOTICE, path: URL}]).then(r => {
+            });
+          }
+        },
+          () => {
+            const NOTICE = 'Lỗi hệ thống';
+            this.router.navigate(['notice-page', {message: NOTICE}]).then(r => {
+            });
+          }
+        );
     }
   }
 }

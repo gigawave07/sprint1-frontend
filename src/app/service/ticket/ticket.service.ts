@@ -56,19 +56,15 @@ export class TicketService {
   /**
    * Chau start
    */
-  getAllAppUserService(): Observable<any> {
-    return this.http.get(this.API + '/app-user-list');
-  }
-
-  findTicketByIDService(idFind: any): Observable<any> {
+  findTicketByIDService(idFind): Observable<any> {
     return this.http.get(this.API + '/find-by-id/' + idFind);
   }
 
-  findFlightInformationByIDService(idFind: any): Observable<any> {
+  findFlightInformationByIDService(idFind): Observable<any> {
     return this.http.get(this.API + '/find-flight-information-by-id/' + idFind);
   }
 
-  deleteTicketService(idDelete: any): Observable<any> {
+  deleteTicketService(idDelete): Observable<any> {
     return this.http.delete(this.API + '/delete/' + idDelete);
   }
 

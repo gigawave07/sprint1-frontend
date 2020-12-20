@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {TicketService} from '../../../service/ticket/ticket.service';
 
 @Component({
@@ -20,6 +20,7 @@ export class PrintTicketTwoWayComponent implements OnInit {
   constructor(
     private activedRouter: ActivatedRoute,
     protected ticketService: TicketService,
+    protected router: Router
   ) {
   }
 
@@ -36,12 +37,38 @@ export class PrintTicketTwoWayComponent implements OnInit {
       }
     });
     this.passengerArray = this.passengerList.split(',', this.passengerList.length);
-    this.ticketService.findFlightInformationByIDService(this.flightDeparture).subscribe(data => {
-      this.flightInformationDeparture = data;
-    });
-    this.ticketService.findFlightInformationByIDService(this.flightArrival).subscribe(data => {
-      this.flightInformationArrival = data;
-    });
+    this.ticketService.findFlightInformationByIDService(this.flightDeparture).subscribe(
+      data => {
+        if (data != null) {
+          this.flightInformationDeparture = data;
+        } else {
+          this.error();
+        }
+      },
+      () => {
+        this.error();
+      },
+      () => {
+        this.ticketService.findFlightInformationByIDService(this.flightArrival).subscribe(
+          data => {
+            if (data != null) {
+              this.flightInformationArrival = data;
+            } else {
+              this.error();
+            }
+          },
+          () => {
+            this.error();
+          }
+        );
+      }
+    );
   }
 
+  private error() {
+    const NOTICE = 'Lỗi hệ thống.';
+    const URL = 'http://localhost:4200/list-ticket';
+    this.router.navigate(['notice-page', {message: NOTICE, path: URL}]).then(r => {
+    });
+  }
 }

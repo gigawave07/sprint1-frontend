@@ -1,11 +1,12 @@
-.container-fluid {
-  background-color: white;
-}
-
 * {
   margin: 0 0;
   padding: 0 0;
   font-size: 15px;
+}
+
+.ticket {
+  background-color: white;
+  border: 1px solid;
 }
 
 .matInputMaterial {
@@ -96,7 +97,7 @@ div.form-row {
 }
 
 .back {
-  margin: 0 0 0 29%;
+  margin: 0 0 2% 29%;
   background-color: grey;
   color: white;
   width: 115px;
@@ -110,7 +111,7 @@ div.form-row {
 }
 
 .save {
-  margin: 0 2%;
+  margin: 0 2% 2% 2%;
   background-color: orange;
   color: white;
   width: 115px;
@@ -124,7 +125,7 @@ div.form-row {
 }
 
 .print {
-  margin: 0 0 0 0;
+  margin: 0 0 2% 0;
   background-color: blue;
   color: white;
   width: 115px;

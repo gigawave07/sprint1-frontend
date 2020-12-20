@@ -1,9 +1,6 @@
-.container-fluid {
-  background-color: white;
-}
-
 .ticket {
   border: 2px solid;
+  background-color: white;
 }
 
 .logo {
