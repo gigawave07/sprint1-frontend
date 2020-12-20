@@ -28,7 +28,7 @@
                 <mat-label>Mật khẩu</mat-label>
                 <input type="password" matInput formControlName="password">
                 <mat-error *ngIf="registerForm.controls.password.errors?.required">Mật khẩu không được để trống</mat-error>
-                <mat-error *ngIf="registerForm.controls.password.errors?.pattern">Mật khẩu phải có ít nhất 1 kí tự, 1 kí tự in hoa và 1 chữ số</mat-error>
+                <mat-error *ngIf="registerForm.controls.password.errors?.pattern">Mật khẩu tổi thiểu 8 kí tự, 1 chữ thườmg, 1 chữ in hoa và 1 số</mat-error>
               </mat-form-field>
             </div>
             <div class="col-2"></div>
@@ -76,6 +76,7 @@
                 <mat-label>Ngày sinh</mat-label>
                 <input matInput [matDatepicker]="picker" formControlName="birthday">
                 <mat-error *ngIf="registerForm.controls.birthday.errors?.required">Ngày sinh không đươc để trống</mat-error>
+                <mat-error *ngIf="registerForm.controls.birthday.errors?.ageError">Tuổi phải lớn hơn 18 và nhỏ hơn 150</mat-error>
                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
               </mat-form-field>
