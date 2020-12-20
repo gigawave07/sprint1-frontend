@@ -43,7 +43,7 @@ import {ExcelService} from './components/report-statistic/service/excel.service'
 import {DeleteTicketComponent} from './components/delete-ticket/delete-ticket.component';
 import {PrintTicketComponent} from './components/print-ticket/print-ticket.component';
 import {ListTicketComponent} from './components/list-ticket/list-ticket.component';
-import {AuthServiceConfig, GoogleLoginProvider, SocialLoginModule} from 'angularx-social-login';
+import {AuthServiceConfig, FacebookLoginProvider, GoogleLoginProvider, SocialLoginModule} from 'angularx-social-login';
 import {UserDialogComponent} from "./components/user-dialog/user-dialog.component";
 import {MessageUserComponent} from "./components/message-user/message-user.component";
 
@@ -93,10 +93,10 @@ export class AppModule {
 export function getAuthServiceConfigs() {
   const config = new AuthServiceConfig(
     [
-      // {
-      //   id: FacebookLoginProvider.PROVIDER_ID,
-      //   provider: new FacebookLoginProvider('927298648089577')
-      // },
+      {
+        id: FacebookLoginProvider.PROVIDER_ID,
+        provider: new FacebookLoginProvider('927298648089577')
+      },
       {
         id: GoogleLoginProvider.PROVIDER_ID,
         provider: new GoogleLoginProvider('462543400761-9dlslrfotn225t12crirhc7hpcmdemcu.apps.googleusercontent.com')

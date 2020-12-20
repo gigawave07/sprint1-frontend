@@ -3,7 +3,7 @@ import {FormBuilder, FormGroup} from '@angular/forms';
 import {LoginService} from '../../service/login.service';
 import {Router} from '@angular/router';
 import {SpinnerOverlayService} from '../../service/animations/spinner-overlay.service';
-import {AuthService, GoogleLoginProvider} from 'angularx-social-login';
+import {AuthService, FacebookLoginProvider, GoogleLoginProvider} from 'angularx-social-login';
 import {finalize} from "rxjs/operators";
 
 @Component({
@@ -69,5 +69,11 @@ export class LoginComponent implements OnInit {
         this.router.navigateByUrl('');
       })
     });
+  }
+
+  loginFacebook() {
+    this.socialAuthService.signIn(FacebookLoginProvider.PROVIDER_ID).then(data => {
+      console.log(data);
+    })
   }
 }
