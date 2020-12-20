@@ -3,7 +3,6 @@ import {Router} from '@angular/router';
 import {MatDialog} from '@angular/material';
 import {EmployeeService} from '../../service/employee/employee.service';
 import {DeleteEmployeeComponent} from '../delete-employee/delete-employee.component';
-import {LoginService} from '../../service/login.service';
 
 
 @Component({
@@ -19,7 +18,6 @@ export class ListEmployeeComponent implements OnInit {
 
   constructor(
     private employeeService: EmployeeService,
-    private loginService: LoginService,
     private dialog: MatDialog,
     private router: Router
   ) {
