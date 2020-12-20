@@ -19,7 +19,7 @@
         integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
         crossorigin="anonymous"/>
   <style>
-    .buyNow:hover{
+    .buyNow:hover {
       color: orange;
     }
   </style>
@@ -44,47 +44,20 @@
                     <th>Giá từ</th>
                     <th>Thời gian bay</th>
                     <th></th>
-
                   </tr>
                   </thead>
                   <tbody>
-                  <tr>
-                    <td >
-                      TP Hồ Chí Minh - Phù Cát
-                    </td>
-                    <td><h3 style="color: orange">19000</h3></td>
+                  <tr ng *ngFor="let promotion of promotionCodeResult">
                     <td>
-                      12/12/2020
+                      {{promotion.airline}}, {{promotion.flightNumber}},
+                      {{promotion.departurePlace}}-{{promotion.arrivalPlace}}
                     </td>
-
-                    <td>
-                      <a href="#" class="buyNow">
-                        <h5 style="color: orange">Mua Ngay</h5>
-                        <!--                            <img src="https://getcoupon.vn/wp-content/uploads/2018/10/mua-ngay.png" height="30" width="100"/>-->
-
-                      </a>
-                    </td>
-
-
-                  </tr>
-                  <tr>
-
-                    <td>
-                      TP Hồ Chí Minh - Phù Cát
-                    </td>
-                    <td>
-                      <h3 style="color: orange">19000</h3>
-                    </td>
-
-
-                    <td>
-                      12/12/2020
-                    </td>
-
+                    <td>{{promotion.price}}</td>
+                    <td>{{promotion.departureTime }}, {{promotion.departureDate | date:'MM-dd-yyyy'}}
+                      {{promotion.arrivalTime }}, {{promotion.arrivalDate | date:'MM-dd-yyyy'}}</td>
                     <td>
                       <a href="#" class="buyNow">
                         <h5 style="color: orange">Mua Ngay</h5>
-                        <!--                            <img src="https://getcoupon.vn/wp-content/uploads/2018/10/mua-ngay.png" height="30" width="100"/>-->
 
                       </a>
                     </td>
@@ -94,44 +67,14 @@
                   </tbody>
                 </table>
 
-                <p style="font-size: 10px"><span style="color: red">*</span> Chưa bao gồm: Thuế + phí, hành lý ký gửi, các yêu cầu đặc biệt trong chuyến bay và có áp dụng các điều kiện.</p>
+                <p style="font-size: 10px"><span style="color: red">*</span> Chưa bao gồm: Thuế + phí, hành lý ký gửi,
+                  các yêu cầu đặc
+                  biệt trong chuyến bay và có áp dụng các điều kiện.</p>
 
               </div>
 
             </div>
             <br>
-            <!--            <a href="https://www.vietjetair.com/Sites/Web/vi-VN/NewsDetail/chuong-trinh-khuyen-mai-->
-            <!--        /4627/black-friday-sale&#45;&#45;0-dong-sieu-chat&#45;&#45;vietjet-thoi">-->
-            <!--              BLACK FRIDAY SALE - 0 ĐỒNG SIÊU CHẤT - VIETJET THÔI!-->
-            <!--              <img src="https://www.vietjetair.com/UserFiles/image/the-le-sale/2020/11/25/black_friday_vn.png"-->
-            <!--                   height="250"-->
-            <!--                   width="100%"/>-->
-
-            <!--            </a>-->
-
-            <!--            <br>-->
-            <!--            <a href="https://www.vietjetair.com/Sites/Web/vi-VN/NewsDetail-->
-            <!--        /chuong-trinh-khuyen-mai/4608/ngay-hoi-doc-than&#45;&#45;gia-ve-0d&#45;&#45;vietjet-thoi">-->
-            <!--              NGÀY HỘI ĐỘC THÂN – GIÁ VÉ 0Đ – VIETJET THÔI!-->
-            <!--              <img src="https://www.vietjetair.com/UserFiles/image/the-le-sale/2020/11/10/Banner-sale-1111-VN.jpg"-->
-            <!--                   height="250" width="100%"/>-->
-            <!--            </a>-->
-
-            <!--            <br>-->
-            <!--            <a href="https://www.vietjetair.com/Sites/Web/vi-VN/NewsDetail/chuong-trinh-khuyen-mai/4615/-->
-            <!--        tri-an-nha-giao-kien-tao-tuong-lai">-->
-            <!--              <br>-->
-            <!--              TRI ÂN NHÀ GIÁO KIẾN TẠO TƯƠNG LAI-->
-            <!--              <img src="https://www.vietjetair.com/UserFiles/image/the-le-sale/2020/11/11/kv_vn.jpg" height="300"-->
-            <!--                   width="100%"/>-->
-            <!--            </a>-->
-            <!--            <a href="https://www.vietjetair.com/Sites/Web/vi-VN/NewsDetail/chuong-trinh-khuyen-mai/4479/-->
-            <!--        da-dang-hang-ve-thoa-thich-trai-nghiem">-->
-            <!--              <br>-->
-            <!--              ĐA DẠNG HẠNG VÉ THỎA THÍCH TRẢI NGHIỆM-->
-            <!--              <img src="https://www.vietjetair.com/UserFiles/image/the-le-sale/2020/09/22/deluxe-1-vi.jpg" height="250"-->
-            <!--                   width="100%"/></a>-->
-
 
           </div>
 
@@ -141,40 +84,52 @@
               <div class="col-12 d-flex justify-content-center">
                 <div class="row box "
                      style="border: 1px ;margin: 20px; font-size: 20px">
-                  <div style="margin: 20px; font-size: 20px">
 
-                    <h3>Tổng đài đặt vé và hỗ trợ khách hàng</h3>
-                    <br>
-                    <h2>Gọi ngay: <span style="color: red;">1900 1886</span></h2>
-                    <br>
-                    <H4>Đăng ký email để nhận thông tin khuyến mãi tại đây.</H4>
-                    <input placeholder="Email của bạn: " class="mr-3 rounded">
-                    <button type="button" class="btn btn-success">Đăng ký</button>
+                    <div style="margin: 20px; font-size: 20px">
 
-
-                    <br>
-                    <div>
+                      <h3>Tổng đài đặt vé và hỗ trợ khách hàng</h3>
                       <br>
-                      <h5>Vietjet trên mạng xã hội:</h5>
-
-                      <a href="#">
-                        <i class="fab fa-twitter"></i>
-                        <span>Vietjet trên Twitter</span>
-                      </a>
+                      <h2>Gọi ngay: <span style="color: red;">1900 1886</span></h2>
                       <br>
-                      <a href="#">
-                        <i class="fab fa-youtube"></i>
-                        <span>Xem Vietjet trên Youtuber</span>
+                      <form [formGroup]="formSendEmail">
+                      <H4>Đăng ký email để nhận thông tin khuyến mãi tại đây.</H4>
+                      <input placeholder="Email của bạn: " class="mr-3 rounded" formControlName="emailPassgenger">
+                        <p *ngIf="formSendEmail.controls.emailPassgenger.errors?.required &&
+              formSendEmail.controls.emailPassgenger.touched"
+                           class="text-danger">
+                          Vui lòng nhập email
+                        </p>
+                        <p *ngIf="formSendEmail.controls.emailPassgenger.errors?.email &&
+              formSendEmail.controls.emailPassgenger.touched"
+                           class="text-danger">
+                          Vui lòng nhập đúng định dạng email
+                        </p>
+                      <button type="button" class="btn btn-success" (click)="sendEmail()">Đăng ký</button>
+                      </form>
 
-                      </a>
                       <br>
+                      <div>
+                        <br>
+                        <h5> C06Ariline trên mạng xã hội:</h5>
 
-                      <a href="#">
-                        <i class="fab fa-facebook"></i>
-                        <span>Vietjet trên Facebook</span>
-                      </a>
+                        <a href="#">
+                          <i class="fab fa-twitter"></i>
+                          <span> C06Ariline trên Twitter</span>
+                        </a>
+                        <br>
+                        <a href="#">
+                          <i class="fab fa-youtube"></i>
+                          <span> Xem C06Ariline trên Youtuber</span>
+
+                        </a>
+                        <br>
+
+                        <a href="#">
+                          <i class="fab fa-facebook"></i>
+                          <span> C06Ariline trên Facebook</span>
+                        </a>
+                      </div>
                     </div>
-                  </div>
 
                 </div>
               </div>
