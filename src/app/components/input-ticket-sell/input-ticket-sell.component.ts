@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {TicketService} from '../../../service/ticket/ticket.service';
+import {TicketService} from '../../service/ticket/ticket.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {randomString} from '../../../utils/RandomUtils';
+import {randomString} from '../../utils/RandomUtils';
 import {ActivatedRoute, Router} from '@angular/router';
-import {LoginService} from '../../../service/login.service';
-import {FlightInformation} from '../../../model/flightInformation';
+import {LoginService} from '../../service/login.service';
+import {FlightInformation} from '../../model/flightInformation';
 
 @Component({
   selector: 'app-input-ticket-sell',

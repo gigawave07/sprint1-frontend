@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {TicketService} from '../../../service/ticket/ticket.service';
+import {TicketService} from '../../service/ticket/ticket.service';
 
 @Component({
   selector: 'app-print-ticket',

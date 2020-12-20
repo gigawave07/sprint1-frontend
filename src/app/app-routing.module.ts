@@ -23,14 +23,14 @@ import {EmployeeComponent} from './components/employee/employee.component';
 // tslint:disable-next-line:max-line-length
 import {BaoCaoComponentComponent} from './components/report-statistic/bao-cao-thong-ke/bao-cao/bao-cao-component/bao-cao-component.component';
 import {ListTicketComponent} from './components/list-ticket/list-ticket.component';
-import {EditTicketComponent} from './components/ticket/edit-ticket/edit-ticket.component';
+import {EditTicketComponent} from './components/edit-ticket/edit-ticket.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MaterialModule} from './material.module';
-import {InputTicketSellComponent} from './components/ticket/input-ticket-sell/input-ticket-sell.component';
-import {PrintTicketComponent} from './components/ticket/print-ticket/print-ticket.component';
-import {PrintTicketTwoWayComponent} from './components/ticket/print-ticket-two-way/print-ticket-two-way.component';
-import {NoticePageComponent} from './components/ticket/notice-page/notice-page.component';
+import {InputTicketSellComponent} from './components/input-ticket-sell/input-ticket-sell.component';
+import {PrintTicketComponent} from './components/print-ticket/print-ticket.component';
+import {PrintTicketTwoWayComponent} from './components/print-ticket-two-way/print-ticket-two-way.component';
+import {NoticePageComponent} from './components/notice-page/notice-page.component';
 
 const routes: Routes = [
   // Quân :

@@ -1,7 +1,7 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
-import {TicketService} from '../../../service/ticket/ticket.service';
-import {Ticket} from '../../../model/ticket';
+import {TicketService} from '../../service/ticket/ticket.service';
+import {Ticket} from '../../model/ticket';
 import {Router} from '@angular/router';
 
 @Component({

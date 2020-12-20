@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
 import {TicketService} from '../../service/ticket/ticket.service';
-import {DeleteTicketComponent} from '../ticket/delete-ticket/delete-ticket.component';
-import {EditTicketComponent} from '../ticket/edit-ticket/edit-ticket.component';
+import {DeleteTicketComponent} from '../delete-ticket/delete-ticket.component';
+import {EditTicketComponent} from '../edit-ticket/edit-ticket.component';
 import {Router} from '@angular/router';
 
 @Component({
