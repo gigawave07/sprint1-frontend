@@ -60,7 +60,7 @@
              *ngIf="formEdit.get('passengerName').hasError('pattern')
                     && (formEdit.controls.passengerName?.dirty
                     || formEdit.controls.passengerName?.touched)">
-            Vui lòng viết không dấu và không nhập kí tự đặc biệt!
+            Vui lòng viết không dấu, không nhập kí tự đặc biệt và không có khoảng trắng thừa!
           </p>
           <p class="text-danger"
              *ngIf="formEdit.controls.passengerName?.invalid

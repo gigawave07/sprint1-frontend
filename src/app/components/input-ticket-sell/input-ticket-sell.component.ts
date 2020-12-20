@@ -2,7 +2,9 @@ import {Component, OnInit} from '@angular/core';
 import {TicketService} from '../../service/ticket/ticket.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {randomString} from '../../utils/RandomUtils';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
+import {LoginService} from '../../service/login.service';
+import {FlightInformation} from '../../model/flightInformation';
 
 @Component({
   selector: 'app-input-ticket-sell',
@@ -10,41 +12,61 @@ import {Router} from '@angular/router';
   styleUrls: ['./input-ticket-sell.component.css']
 })
 export class InputTicketSellComponent implements OnInit {
-  protected flightInformationDeparture = [];
-  protected flightInformationArrival = [];
-  protected idFlightDeparture = 3;
-  protected idFlightArrival = 33;
+  protected flightInformationDeparture = FlightInformation;
+  protected flightInformationArrival = FlightInformation;
+  protected idFlightDeparture = 0;
+  protected idFlightArrival = 0;
+  protected idEmployee;
   protected checkArrival = 'false';
   protected formCreate: FormGroup;
   protected totalPriceSell: number;
   protected nativeWindow;
   protected message = 'Nothing';
+  protected messageSave: string;
 
   constructor(
     protected ticketService: TicketService,
+    protected loginService: LoginService,
     protected formBuilder: FormBuilder,
     protected router: Router,
+    private activedRouter: ActivatedRoute
   ) {
     this.nativeWindow = ticketService.openNewWindow();
   }
 
   ngOnInit() {
+    this.activedRouter.params.subscribe(data => {
+      this.idFlightDeparture = data.idFlightDeparture;
+      this.idFlightArrival = data.idFlightArrival;
+    });
     if (this.idFlightDeparture !== 0) {
+      this.idEmployee = this.loginService.currentUserValue.id;
       this.ticketService.findFlightInformationByIDService(this.idFlightDeparture).subscribe(
         (data) => {
-          this.flightInformationDeparture = data;
+          if (data != null) {
+            this.flightInformationDeparture = data;
+          } else {
+            this.error();
+          }
         },
         () => {
-          const NOTICE = 'Không tìm thấy trang';
-          this.router.navigate(['notice-page', {message: NOTICE}]).then(r => {
-          });
+          this.error();
         },
         () => {
           if (this.idFlightArrival !== 0) {
-            this.ticketService.findFlightInformationByIDService(this.idFlightArrival).subscribe(data => {
-              this.flightInformationArrival = data;
-              this.checkArrival = 'true';
-            });
+            this.ticketService.findFlightInformationByIDService(this.idFlightArrival).subscribe(
+              data => {
+                if (data != null) {
+                  this.flightInformationArrival = data;
+                  this.checkArrival = 'true';
+                } else {
+                  this.error();
+                }
+              },
+              () => {
+                this.error();
+              }
+            );
           }
         }
       );
@@ -59,7 +81,7 @@ export class InputTicketSellComponent implements OnInit {
         statusCheckin: [''],
         ticketCode: [''],
         booking: [BOOKING_CODE],
-        employee: [1],
+        employee: [this.idEmployee],
         flightInformation: [''],
         invoice: [''],
         statusPayment: [''],
@@ -76,9 +98,7 @@ export class InputTicketSellComponent implements OnInit {
         babies: ['', [Validators.required, Validators.pattern('^([0-9]+)$'), Validators.max(99)]],
       });
     } else {
-      const NOTICE = 'Lỗi hệ thống';
-      this.router.navigate(['notice-page', {message: NOTICE}]).then(r => {
-      });
+      this.error();
     }
   }
 
@@ -86,19 +106,30 @@ export class InputTicketSellComponent implements OnInit {
     this.formCreate.markAllAsTouched();
     if (this.formCreate.valid) {
       this.message = 'Đang tiến hành lưu vé. Vui lòng chờ!';
-      this.ticketService.saveTicketService(this.idFlightDeparture, this.idFlightArrival, this.formCreate.value)
+      this.ticketService.saveTicketService(this.idFlightDeparture,
+        this.idFlightArrival, this.formCreate.value)
         .subscribe(
           (data) => {
+            this.messageSave = data.message;
+            if (this.messageSave === 'Save ticket and send mail succeed') {
+              this.router.navigateByUrl('list-ticket').then(_ => {
+              });
+            } else if (this.messageSave === 'Send mail failed') {
+              const NOTICE = 'Lưu vé thành công nhưng gởi mail không thành công. Đề nghị kiểm tra kết nối mạng.';
+              const URL = 'http://localhost:4200/list-ticket';
+              this.router.navigate(['notice-page', {message: NOTICE, path: URL}]).then(r => {
+              });
+            } else if (this.messageSave === 'Save ticket failed') {
+              const NOTICE = 'Lưu vé không thành công. Đề nghị kiểm tra kết nối mạng.';
+              const URL = 'http://localhost:4200/list-ticket';
+              this.router.navigate(['notice-page', {message: NOTICE, path: URL}]).then(r => {
+              });
+            } else {
+              this.error();
+            }
           },
           () => {
-            const NOTICE = 'Lưu vé không thành công';
-            const URL = 'http://localhost:4200/list-ticket';
-            this.router.navigate(['notice-page', {message: NOTICE, path: URL}]).then(r => {
-            });
-          },
-          () => {
-            this.router.navigateByUrl('list-ticket').then(_ => {
-            });
+            this.error();
           }
         );
     }
@@ -111,20 +142,30 @@ export class InputTicketSellComponent implements OnInit {
       this.ticketService.saveTicketService(this.idFlightDeparture, this.idFlightArrival, this.formCreate.value)
         .subscribe(
           (data) => {
+            this.messageSave = data.message;
+            if (this.messageSave === 'Save ticket and send mail succeed') {
+              const NEW_WINDOW = this.nativeWindow.open('print-ticket-two-way');
+              NEW_WINDOW.location = 'print-ticket-two-way/' + this.formCreate.value.booking + '/'
+                + this.formCreate.value.passengerName + '/' + this.idFlightDeparture + '/'
+                + this.idFlightArrival;
+              this.router.navigateByUrl('list-ticket').then(r => {
+              });
+            } else if (this.messageSave === 'Send mail failed') {
+              const NOTICE = 'Lưu vé thành công nhưng gởi mail không thành công. Đề nghị kiểm tra kết nối mạng.';
+              const URL = 'http://localhost:4200/list-ticket';
+              this.router.navigate(['notice-page', {message: NOTICE, path: URL}]).then(r => {
+              });
+            } else if (this.messageSave === 'Save ticket failed') {
+              const NOTICE = 'Lưu vé không thành công. Đề nghị kiểm tra kết nối mạng.';
+              const URL = 'http://localhost:4200/list-ticket';
+              this.router.navigate(['notice-page', {message: NOTICE, path: URL}]).then(r => {
+              });
+            } else {
+              this.error();
+            }
           },
           () => {
-            const NOTICE = 'Lưu vé không thành công';
-            const URL = 'http://localhost:4200/list-ticket';
-            this.router.navigate(['notice-page', {message: NOTICE, path: URL}]).then(r => {
-            });
-          },
-          () => {
-            const NEW_WINDOW = this.nativeWindow.open('print-ticket-two-way');
-            NEW_WINDOW.location = 'print-ticket-two-way/' + this.formCreate.value.booking + '/'
-              + this.formCreate.value.passengerName + '/' + this.idFlightDeparture + '/'
-              + this.idFlightArrival;
-            this.router.navigateByUrl('list-ticket').then(r => {
-            });
+            this.error();
           }
         );
     }
@@ -141,5 +182,12 @@ export class InputTicketSellComponent implements OnInit {
       // tslint:disable-next-line:radix
       this.totalPriceSell = Number.parseInt(priceDeparture) + Number.parseInt(priceArrival);
     }
+  }
+
+  private error() {
+    const NOTICE = 'Lỗi hệ thống.';
+    const URL = 'http://localhost:4200/list-ticket';
+    this.router.navigate(['notice-page', {message: NOTICE, path: URL}]).then(r => {
+    });
   }
 }

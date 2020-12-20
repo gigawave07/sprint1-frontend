@@ -35,38 +35,77 @@ export class ListTicketComponent implements OnInit {
       });
   }
 
+  /**
+   * Chau start
+   *
+   */
   openDialogDelete(id: any): void {
-    this.ticketService.findTicketByIDService(id).subscribe(ticket => {
-      const DIALOG_REF = this.dialog.open(DeleteTicketComponent, {
-        width: '650px',
-        height: '330px',
-        data: {dataTicket: ticket},
-        disableClose: true
-      });
+    this.ticketService.findTicketByIDService(id).subscribe(
+      ticket => {
+      if (ticket != null) {
+        const DIALOG_REF = this.dialog.open(DeleteTicketComponent, {
+          width: '650px',
+          height: '360px',
+          data: {dataTicket: ticket},
+          disableClose: true
+        });
 
-      DIALOG_REF.afterClosed().subscribe(result => {
-        this.ngOnInit();
-      });
-    });
+        DIALOG_REF.afterClosed().subscribe(result => {
+          this.ngOnInit();
+        });
+      } else {
+        const NOTICE = 'Không tìm thấy vé.';
+        const URL = 'http://localhost:4200/list-ticket';
+        this.router.navigate(['notice-page', {message: NOTICE, path: URL}]).then(r => {
+        });
+      }
+    },
+      () => {
+        this.error();
+      }
+    );
   }
 
   openDialogEdit(id: any): void {
-    this.ticketService.findTicketByIDService(id).subscribe(ticket => {
-      const DIALOG_REF = this.dialog.open(EditTicketComponent, {
-        width: '750px',
-        height: '450px',
-        data: {dataTicket: ticket},
-        disableClose: true
-      });
+    this.ticketService.findTicketByIDService(id).subscribe(
+      ticket => {
+      if (ticket != null) {
+        const DIALOG_REF = this.dialog.open(EditTicketComponent, {
+          width: '750px',
+          height: '450px',
+          data: {dataTicket: ticket},
+          disableClose: true
+        });
 
-      DIALOG_REF.afterClosed().subscribe(result => {
-        this.ngOnInit();
-      });
-    });
+        DIALOG_REF.afterClosed().subscribe(result => {
+          this.ngOnInit();
+        });
+      } else {
+        const NOTICE = 'Không tìm thấy vé.';
+        const URL = 'http://localhost:4200/list-ticket';
+        this.router.navigate(['notice-page', {message: NOTICE, path: URL}]).then(r => {
+        });
+      }
+    },
+      () => {
+        this.error();
+      }
+    );
   }
 
   openWindowPrint(idTicket: number): void {
     const NEW_WINDOW = this.nativeWindow.open('print-ticket');
     NEW_WINDOW.location = 'print-ticket/' + idTicket;
   }
+
+  private error() {
+    const NOTICE = 'Lỗi hệ thống.';
+    const URL = 'http://localhost:4200/list-ticket';
+    this.router.navigate(['notice-page', {message: NOTICE, path: URL}]).then(r => {
+    });
+  }
+  /**
+   * Chau end
+   *
+   */
 }

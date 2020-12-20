@@ -18,53 +18,53 @@ export class TicketService {
   ) {
   }
 
-	getAllTicketService(): Observable<any> {
-		return this.http.get(this.API + '/list');
-	}
-
-
-
-	/*
-	* Đăng start
-	* */
-	findAllPendingTicket(): Observable<any> {
-		return this.http.get(this.API + '/list/Pending');
-	}
-
-	setTicketStatusPayment(id: number, ticketStatusPaymentDTO: TicketStatusPaymentDTO): Observable<any> {
-		// console.log(this.API + '/set-status-payment/' + id, ticketStatusPaymentDTO);
-		return this.http.put(this.API + '/set-status-payment/' + id, ticketStatusPaymentDTO);
-	}
-
-	searchTicket(ticketSearchDTO: any): Observable<any> {
-		// console.log('ticketSearchDTO');
-		// console.log(ticketSearchDTO);
-		// console.log('URL');
-		// console.log(this.API + '/search?' + 'statusPaymentName=' + ticketSearchDTO.statusPaymentName +
-		// 	'&searchBy=' + ticketSearchDTO.searchBy + '&searchValue=' + ticketSearchDTO.searchValue);
-		// return this.http.get(this.API + '/list/Pending');
-		return this.http.get(this.API + '/search?' +
-			'statusPaymentName=' + ticketSearchDTO.statusPaymentName +
-			'&searchBy=' + ticketSearchDTO.searchBy +
-			'&searchValue=' + ticketSearchDTO.searchValue);
-	}
-	/*
-	* Đăng end
-	* */
-
-  getAllAppUserService(): Observable<any> {
-    return this.http.get(this.API + '/app-user-list');
+  getAllTicketService(): Observable<any> {
+    return this.http.get(this.API + '/list');
   }
 
-  findTicketByIDService(idFind: any): Observable<any> {
+  /*
+  * Đăng start
+  * */
+  findAllPendingTicket(): Observable<any> {
+    return this.http.get(this.API + '/list/Pending');
+  }
+
+  setTicketStatusPayment(id: number, ticketStatusPaymentDTO: TicketStatusPaymentDTO): Observable<any> {
+    // console.log(this.API + '/set-status-payment/' + id, ticketStatusPaymentDTO);
+    return this.http.put(this.API + '/set-status-payment/' + id, ticketStatusPaymentDTO);
+  }
+
+  searchTicket(ticketSearchDTO: any): Observable<any> {
+    // console.log('ticketSearchDTO');
+    // console.log(ticketSearchDTO);
+    // console.log('URL');
+    // console.log(this.API + '/search?' + 'statusPaymentName=' + ticketSearchDTO.statusPaymentName +
+    // 	'&searchBy=' + ticketSearchDTO.searchBy + '&searchValue=' + ticketSearchDTO.searchValue);
+    // return this.http.get(this.API + '/list/Pending');
+    return this.http.get(this.API + '/search?' +
+      'statusPaymentName=' + ticketSearchDTO.statusPaymentName +
+      '&searchBy=' + ticketSearchDTO.searchBy +
+      '&searchValue=' + ticketSearchDTO.searchValue);
+  }
+
+  /*
+  * Đăng end
+  * */
+
+
+
+  /**
+   * Chau start
+   */
+  findTicketByIDService(idFind): Observable<any> {
     return this.http.get(this.API + '/find-by-id/' + idFind);
   }
 
-  findFlightInformationByIDService(idFind: any): Observable<any> {
+  findFlightInformationByIDService(idFind): Observable<any> {
     return this.http.get(this.API + '/find-flight-information-by-id/' + idFind);
   }
 
-  deleteTicketService(idDelete: any): Observable<any> {
+  deleteTicketService(idDelete): Observable<any> {
     return this.http.delete(this.API + '/delete/' + idDelete);
   }
 
@@ -102,4 +102,7 @@ export class TicketService {
   openNewWindow() {
     return window;
   }
+  /**
+   * Chau end
+   */
 }

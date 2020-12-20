@@ -1,4 +1,9 @@
+.page {
+  background-color: white;
+}
+
 h3 {
+  color: red;
   text-align: center;
   font-weight: bold;
   font-size: 50px

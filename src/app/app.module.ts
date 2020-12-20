@@ -67,7 +67,7 @@ import {MessageUserComponent} from "./components/message-user/message-user.compo
     KetQuaComponent, KetQuaTableComponent, KetQuaSaiLogicComponent,
 
     // Châu
-    ListTicketComponent, DeleteTicketComponent, PrintTicketComponent
+    DeleteTicketComponent, PrintTicketComponent, ListTicketComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, MaterialModule, HttpClientModule, NgxPaginationModule, Ng2SearchPipeModule,
     FormsModule, MatDialogModule, ReactiveFormsModule, NgxLoadingModule.forRoot({}),
