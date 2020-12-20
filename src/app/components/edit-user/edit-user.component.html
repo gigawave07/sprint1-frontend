@@ -2,43 +2,57 @@
   <form class="container-fluid col-lg-12 col-md-12 " [formGroup]="formEditUser">
     <h3 class="text-center">Chỉnh Sửa Thông Tin</h3>
     <div class="d-flex form-group mt-4">
-      <label class="col-lg-3 col-md-3 ">Họ và tên <span style="color: red" >(*)</span>:</label>
-      <input type="text" class="col-lg-9 col-md-9 form-control form-control-sm" formControlName="fullName" placeholder="Vui lòng nhập họ và tên.">
-      <a  *ngIf="formEditUser.get('fullName').invalid && formEditUser.get('fullName').touched" style="color: red" class="col-lg-9 col-md-9" >
-        Họ và tên không được để trống.</a>
-<!--     <p  *ngIf="formEdit.get('fullName').invalid && formEdit.get('fullName').touched"></p>-->
+      <label class="col-lg-3 col-md-3">Họ và tên <span style="color: red">(*)</span>:</label>
+      <input type="text" class="col-lg-9 col-md-9 form-control form-control-sm" formControlName="fullName"
+             placeholder="Vui lòng nhập họ và tên.">
+    </div>
+    <div class="col-md-9 offset-md-3 px-0">
+      <span *ngIf="formEditUser.get('fullName').hasError('required') && formEditUser.get('fullName').touched">Họ và tên không được để trống.</span>
+      <span *ngIf="formEditUser.get('fullName').hasError('containSpecialCharacters') && formEditUser.get('fullName').touched">Họ và tên không có kí tự đặt biệt.</span>
+      <span *ngIf="formEditUser.get('fullName').hasError('minlength') && formEditUser.get('fullName').touched">Họ và tên không phải nhiều hơn 10 ký tự.</span>
+      <span *ngIf="formEditUser.get('fullName').hasError('maxlength') && formEditUser.get('fullName').touched">Họ va tên phải có ít hơn 30 ký tự.</span>
     </div>
 
-    <div class=" form-group">
-      <label class="col-lg-3 col-md-3">Ngày sinh <span style="color: red" >(*)</span>:</label>
-      <mat-form-field>
-        <input class="col-lg-9 col-md-9 form-control form-control-sm" type="date" formControlName="birthday" matInput [matDatepicker]="myDatepicker">
-        <mat-datepicker-toggle matSuffix [for]="myDatepicker"></mat-datepicker-toggle>
-        <mat-datepicker #myDatepicker></mat-datepicker>
-      </mat-form-field>
-<!--      <input type="date" class="col-lg-9 col-md-9 form-control form-control-sm" formControlName="birthday">-->
-<!--      <p  *ngIf="formEdit.get('birthday').invalid && formEdit.get('birthday').touched"></p>-->
+    <div class=" d-flex form-group mt-4">
+      <label class="col-lg-3 col-md-3">Ngày sinh <span style="color: red">(*)</span>:</label>
+      <input type="date" class="col-lg-9 col-md-9 form-control form-control-sm" formControlName="birthday">
+      <!--      <mat-form-field>-->
+      <!--        <input class="col-lg-9 col-md-9 form-control form-control-sm" formControlName="birthday" matInput [matDatepicker]="myDatepicker">-->
+      <!--        <mat-datepicker-toggle matSuffix [for]="myDatepicker"></mat-datepicker-toggle>-->
+      <!--        <mat-datepicker #myDatepicker></mat-datepicker>-->
+      <!--      </mat-form-field>-->
+    </div>
+    <div class="col-md-9 offset-md-3 px-0">
+      <span *ngIf="formEditUser.get('birthday').hasError('required') && formEditUser.get('birthday').touched">Ngày sinh không được để trống.</span>
+      <span *ngIf="formEditUser.get('birthday').hasError('pattern') && formEditUser.get('birthday').touched">Ngày sinh phải là dd/MM/yyyy.</span>
+      <span *ngIf="formEditUser.get('birthday').hasError('checkAge') && formEditUser.get('birthday').touched">Để đăng ký tài khoản thì bạn phải hơn 18 tuổi.</span>
+      <span *ngIf="formEditUser.get('birthday').hasError('chooseDateGreaterThanCurrentDate') && formEditUser.get('birthday').touched">Ngày sinh không được lớn hơn ngày hiện tại,</span>
     </div>
     <div class=" d-flex form-group mt-4">
-      <label class="col-lg-3 col-md-3">Địa chỉ <span style="color: red" >(*)</span>:</label>
+      <label class="col-lg-3 col-md-3">Địa chỉ <span style="color: red">(*)</span>:</label>
       <textarea type="text" class="col-lg-9 col-md-9 form-control form-control-sm "
                 formControlName="address"></textarea>
-<!--      <p  *ngIf="formEdit.get('address').invalid && formEdit.get('address').touched"></p>-->
+    </div>
+    <div class="col-md-9 offset-md-3 px-0">
+      <span *ngIf="formEditUser.get('address').hasError('required') && formEditUser.get('address').touched">Địa chỉ không được để trống</span>
+
     </div>
     <div class="d-flex form-group mt-4">
-      <label class="col-lg-3 col-md-3">Email <span style="color: red" >(*)</span>:</label>
+      <label class="col-lg-3 col-md-3">Email <span style="color: red">(*)</span>:</label>
       <input type="text" class="col-lg-9 col-md-9 form-control form-control-sm" formControlName="email">
-<!--      <p  *ngIf="formEdit.get('email').invalid && formEdit.get('email').touched"></p>-->
+      <!--      <p  *ngIf="formEdit.get('email').invalid && formEdit.get('email').touched"></p>-->
     </div>
     <div class="d-flex form-group mt-4">
-      <label class="col-lg-3 col-md-3 ">Giới tính <span style="color: red" >(*)</span>:</label>
-      <div class="col-lg-9 col-md-9 d-flex justify-content-start">
+      <label class="col-lg-3 col-md-3 ">Giới tính <span style="color: red">(*)</span>:</label>
+      <div class="col-lg-9 col-md-9 d-flex justify-content-start" formControlName="gender">
         <div class="radio 4">
-          <input id="radio-1" name="radio" type="radio">
+          <input id="radio-1" name="radio" type="radio" [checked]="valueGender === true"
+                 (click)="valueGenderClick(true)">
           <label for="radio-1" class="radio-label">Nam</label>
         </div>
         <div class="radio ml-4 ">
-          <input id="radio-2" name="radio" type="radio">
+          <input id="radio-2" name="radio" type="radio" [checked]="valueGender === false"
+                 (click)="valueGenderClick(false)">
           <label for="radio-2" class="radio-label">Nữ</label>
         </div>
         <div class="radio ml-4">
@@ -48,9 +62,13 @@
       </div>
     </div>
     <div class="d-flex form-group mt-4">
-      <label class="col-lg-3 col-md-3 ">Điện thoại <span style="color: red" >(*)</span>:</label>
+      <label class="col-lg-3 col-md-3 ">Điện thoại <span style="color: red">(*)</span>:</label>
       <input type="text" class="col-lg-9 col-md-9 form-control form-control-sm " formControlName="phoneNumber">
-<!--      <p  *ngIf="formEdit.get('phoneNumber').invalid && formEdit.get('phoneNumber').touched"></p>-->
+    </div>
+    <div class="col-md-9 offset-md-3 px-0">
+      <span *ngIf="formEditUser.get('phoneNumber').hasError('required') && formEditUser.get('phoneNumber').touched">Ngày sinh không được để trống.</span>
+      <span *ngIf="formEditUser.get('phoneNumber').hasError('format') && formEditUser.get('phoneNumber').touched">Số điện thoại không đúng định dạng.</span>
+      <span *ngIf="formEditUser.get('phoneNumber').hasError('phoneAlpha') && formEditUser.get('phoneNumber').touched">Số điện thoại phải là số.</span>
     </div>
     <div class="d-flex form-group mt-4">
       <label class="col-lg-3 col-md-3 ">Ảnh đại diện</label>
@@ -59,6 +77,6 @@
   </form>
   <div class="modal-footer">
     <button class="btn btn-secondary btn-sm" mat-dialog-close="/">Hủy</button>
-    <button class="btn btn-warning btn-sm" (click)="editUser()">Sửa Thông Tin</button>
+    <button class="btn btn-warning btn-sm" [disabled]="formEditUser.invalid" (click)="editUser()">Sửa Thông Tin</button>
   </div>
 </div>

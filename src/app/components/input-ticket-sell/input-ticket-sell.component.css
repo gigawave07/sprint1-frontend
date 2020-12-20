@@ -1,0 +1,151 @@
+* {
+  margin: 0 0;
+  padding: 0 0;
+  font-size: 15px;
+}
+
+.ticket {
+  background-color: white;
+  border: 1px solid;
+}
+
+.matInputMaterial {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans",
+  sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  width: 99%;
+  margin: -6% 0 0 0;
+  padding: 0 0 0 0;
+}
+
+h3 {
+  font-size: 25px;
+  font-weight: bold;
+  color: orange;
+}
+
+.header {
+  color: orange;
+}
+
+.inputTicket h5 {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+fieldset.scheduler-border {
+  border: 2px groove black !important;
+  padding: 0 0.4em 1.4em 0.4em !important;
+  margin: 0 0 1.5em 0 !important;
+  -webkit-box-shadow: 0 0 0 0 #000;
+  box-shadow: 0 0 0 0 #000;
+}
+
+legend.scheduler-border {
+  font-size: 1.2em !important;
+  font-weight: bold !important;
+  text-align: left !important;
+  width: auto;
+  padding: 0 10px;
+  border-bottom: none;
+}
+
+.container-fluid {
+  margin-bottom: 25px;
+}
+
+.justify-content-center {
+  margin-top: 15px;
+}
+
+form {
+  width: 95%
+}
+
+.properties {
+  text-align: right;
+  margin: 2.5% 0 0 0;
+  padding: 0 10% 0 0;
+}
+
+div.col-sm-2 h5 {
+  text-align: right;
+  margin-top: 1%;
+}
+
+div.form-row {
+  margin-top: 2%;
+}
+
+.message {
+  margin: -1.5% 0 1% 0;
+  color: red;
+  font-weight: bold;
+}
+
+.testEmail {
+  margin: -5% 0 0 0;
+  background-color: orange;
+  color: white;
+  width: 115px;
+  height: 36px;
+  border: none;
+  border-radius: 7%;
+}
+
+.testEmail:hover {
+  background-color: black;
+}
+
+.back {
+  margin: 0 0 2% 29%;
+  background-color: grey;
+  color: white;
+  width: 115px;
+  height: 36px;
+  border: none;
+  border-radius: 7%;
+}
+
+.back:hover {
+  background-color: blue;
+}
+
+.save {
+  margin: 0 2% 2% 2%;
+  background-color: orange;
+  color: white;
+  width: 115px;
+  height: 36px;
+  border: none;
+  border-radius: 7%;
+}
+
+.save:hover {
+  background-color: black;
+}
+
+.print {
+  margin: 0 0 2% 0;
+  background-color: blue;
+  color: white;
+  width: 115px;
+  height: 36px;
+  border: none;
+  border-radius: 7%;
+}
+
+.print:hover {
+  background-color: grey;
+}
+
+.passengerList {
+  margin: -2% 0 0 0;
+}
+
+.passengerAndPrice {
+  margin: -7% 0 0 0;
+}
+
+.email {
+  margin: -3.5% 0 0 0;
+}

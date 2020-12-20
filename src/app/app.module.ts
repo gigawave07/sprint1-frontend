@@ -26,10 +26,34 @@ import { DetailUserComponent } from './components/detail-user/detail-user.compon
 import { EditUserComponent } from './components/edit-user/edit-user.component';
 import { ChangePasswordUserComponent } from './components/change-password-user/change-password-user.component';
 import { InformationUserComponent } from './components/information-user/information-user.component';
-import {ListPendingTicketComponent} from "./components/list-pending-ticket/list-pending-ticket/list-pending-ticket.component";
-import {CancelPendingTicketComponent} from "./components/list-pending-ticket/cancel-pending-ticket/cancel-pending-ticket.component";
-import {SearchPendingTicketComponent} from "./components/search-pending-ticket/search-pending-ticket/search-pending-ticket.component";
-import { EmployeeComponent } from './components/employee/employee.component';
+import {ListPendingTicketComponent} from './components/list-pending-ticket/list-pending-ticket/list-pending-ticket.component';
+import {CancelPendingTicketComponent} from './components/list-pending-ticket/cancel-pending-ticket/cancel-pending-ticket.component';
+import {SearchPendingTicketComponent} from './components/search-pending-ticket/search-pending-ticket/search-pending-ticket.component';
+import {TrangChinhComponent} from './components/report-statistic/bao-cao-thong-ke/trang-chinh/trang-chinh.component';
+// tslint:disable-next-line:max-line-length
+import {BaoCaoComponentComponent} from './components/report-statistic/bao-cao-thong-ke/bao-cao/bao-cao-component/bao-cao-component.component';
+import {TrangChuThongKeComponent} from './components/report-statistic/bao-cao-thong-ke/thong-ke/demo/trang-chu-thong-ke.component';
+import {KetQuaComponent} from './components/report-statistic/bao-cao-thong-ke/thong-ke/ket-qua/ket-qua/ket-qua.component';
+import {KetQuaTableComponent} from './components/report-statistic/bao-cao-thong-ke/thong-ke/ket-qua/ket-qua-table/ket-qua-table.component';
+// tslint:disable-next-line:max-line-length
+import {KetQuaSaiLogicComponent} from './components/report-statistic/bao-cao-thong-ke/thong-ke/ket-qua/ket-qua-sai-logic/ket-qua-sai-logic.component';
+import {ChartsModule} from 'ng2-charts';
+import {ExcelService} from './components/report-statistic/service/excel.service';
+
+import {DeleteTicketComponent} from './components/delete-ticket/delete-ticket.component';
+import {PrintTicketComponent} from './components/print-ticket/print-ticket.component';
+import {ListTicketComponent} from './components/list-ticket/list-ticket.component';
+import {AuthServiceConfig, FacebookLoginProvider, GoogleLoginProvider, SocialLoginModule} from 'angularx-social-login';
+import {UserDialogComponent} from './components/user-dialog/user-dialog.component';
+import {MessageUserComponent} from './components/message-user/message-user.component';
+
+import {SendFeedbackComponent} from './components/send-feedback/send-feedback.component';
+import {ConsultantComponent} from './components/consultant/consultant.component';
+import {MessageConsultantComponent} from './components/consultant/message-consultant/message-consultant.component';
+import {FeedbackService} from './service/feedback.service';
+import {MessUserComponent} from './components/mess-user/mess-user.component';
+import {MessageService} from './service/message.service';
+import {DatePipe} from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -42,19 +66,56 @@ import { EmployeeComponent } from './components/employee/employee.component';
     // Danh
     AdminComponent, InformationAdminComponent, ChangePasswordAdminComponent,
     // Đạt
-    DetailUserComponent, EditUserComponent, ChangePasswordUserComponent, InformationUserComponent,
-    // Mai
-    EmployeeComponent
+    DetailUserComponent, EditUserComponent, ChangePasswordUserComponent, InformationUserComponent, UserDialogComponent,
+    MessageUserComponent,
+
+
+    // Nhật mới
+    TrangChinhComponent, BaoCaoComponentComponent, TrangChuThongKeComponent,
+    KetQuaComponent, KetQuaTableComponent, KetQuaSaiLogicComponent,
+
+    // Châu
+    DeleteTicketComponent, PrintTicketComponent, ListTicketComponent,
+    // Vinh
+    SendFeedbackComponent,
+    MessUserComponent,
+    ConsultantComponent,
+    MessageConsultantComponent
   ],
   imports: [BrowserModule, AppRoutingModule, MaterialModule, HttpClientModule, NgxPaginationModule, Ng2SearchPipeModule,
-    FormsModule, MatDialogModule, ReactiveFormsModule, NgxLoadingModule.forRoot({})],
-  providers: [{
+    FormsModule, MatDialogModule, ReactiveFormsModule, NgxLoadingModule.forRoot({}),
+    ChartsModule, SocialLoginModule
+  ],
+  // tslint:disable-next-line:max-line-length
+  providers: [DatePipe, MessageService, FeedbackService
+    , {
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptor,
     multi: true
-  }],
+  }, {
+    provide: AuthServiceConfig,
+    useFactory: getAuthServiceConfigs
+  },
+    ExcelService],
   bootstrap: [AppComponent],
-  entryComponents: [SpinnerOverlayComponent]
+  entryComponents: [SpinnerOverlayComponent, TrangChinhComponent, BaoCaoComponentComponent, TrangChuThongKeComponent,
+    KetQuaComponent, KetQuaTableComponent, KetQuaSaiLogicComponent]
 })
 export class AppModule {
+}
+
+export function getAuthServiceConfigs() {
+  const config = new AuthServiceConfig(
+    [
+      {
+        id: FacebookLoginProvider.PROVIDER_ID,
+        provider: new FacebookLoginProvider('927298648089577')
+      },
+      {
+        id: GoogleLoginProvider.PROVIDER_ID,
+        provider: new GoogleLoginProvider('462543400761-9dlslrfotn225t12crirhc7hpcmdemcu.apps.googleusercontent.com')
+      },
+    ]
+  );
+  return config;
 }

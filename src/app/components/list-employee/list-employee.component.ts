@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {EmployeeService} from '../../service/employee/employee.service';
+import {Router} from '@angular/router';
 import {MatDialog} from '@angular/material';
+import {EmployeeService} from '../../service/employee/employee.service';
 import {DeleteEmployeeComponent} from '../delete-employee/delete-employee.component';
+
 
 @Component({
   selector: 'app-list-employee',
@@ -15,15 +17,21 @@ export class ListEmployeeComponent implements OnInit {
   p: number;
 
   constructor(
-    public employeeService: EmployeeService,
-    public dialog: MatDialog
+    private employeeService: EmployeeService,
+    private dialog: MatDialog,
+    private router: Router
   ) {
   }
 
   ngOnInit() {
     this.employeeService.getAllEmployeeService().subscribe(data => {
       this.list = data;
-    });
+    }, () => {
+        const NOTICE = 'Không tìm thấy trang ';
+        this.router.navigate(['message-notice-employee', {message: NOTICE}]).then(r => {});
+      },
+      () => {
+      });
   }
 
   openDialogDelete(id: any): void {

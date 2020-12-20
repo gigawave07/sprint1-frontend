@@ -1,56 +1,108 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {Observable} from 'rxjs';
+import {Observable, timer} from 'rxjs';
+import {AbstractControl, AsyncValidatorFn} from '@angular/forms';
+import {map, switchMap} from 'rxjs/operators';
 import {TicketStatusPaymentDTO} from '../../model/TicketStatusPaymentDTO';
 
+const API = 'http://localhost:8080/ticket';
+
 @Injectable({
-	providedIn: 'root'
+  providedIn: 'root'
 })
 export class TicketService {
-	public readonly API: string = 'http://localhost:8080/ticket';
+  protected readonly API: string = 'http://localhost:8080/ticket';
 
-	constructor(
-		public http: HttpClient
-	) {
-	}
+  constructor(
+    protected http: HttpClient
+  ) {
+  }
 
-	getAllTicketService(): Observable<any> {
-		return this.http.get(this.API + '/list');
-	}
+  getAllTicketService(): Observable<any> {
+    return this.http.get(this.API + '/list');
+  }
 
-	deleteTicketService(idDelete: any): Observable<any> {
-		return this.http.delete(this.API + '/delete/' + idDelete);
-	}
+  /*
+  * Đăng start
+  * */
+  findAllPendingTicket(): Observable<any> {
+    return this.http.get(this.API + '/list/Pending');
+  }
 
-	findTicketByIDService(idFind: any): Observable<any> {
-		return this.http.get(this.API + '/findTicketByID/' + idFind);
-	}
+  setTicketStatusPayment(id: number, ticketStatusPaymentDTO: TicketStatusPaymentDTO): Observable<any> {
+    // console.log(this.API + '/set-status-payment/' + id, ticketStatusPaymentDTO);
+    return this.http.put(this.API + '/set-status-payment/' + id, ticketStatusPaymentDTO);
+  }
 
-	/*
-	* Đăng start
-	* */
-	findAllPendingTicket(): Observable<any> {
-		return this.http.get(this.API + '/list/Pending');
-	}
+  searchTicket(ticketSearchDTO: any): Observable<any> {
+    // console.log('ticketSearchDTO');
+    // console.log(ticketSearchDTO);
+    // console.log('URL');
+    // console.log(this.API + '/search?' + 'statusPaymentName=' + ticketSearchDTO.statusPaymentName +
+    // 	'&searchBy=' + ticketSearchDTO.searchBy + '&searchValue=' + ticketSearchDTO.searchValue);
+    // return this.http.get(this.API + '/list/Pending');
+    return this.http.get(this.API + '/search?' +
+      'statusPaymentName=' + ticketSearchDTO.statusPaymentName +
+      '&searchBy=' + ticketSearchDTO.searchBy +
+      '&searchValue=' + ticketSearchDTO.searchValue);
+  }
 
-	setTicketStatusPayment(id: number, ticketStatusPaymentDTO: TicketStatusPaymentDTO): Observable<any> {
-		// console.log(this.API + '/set-status-payment/' + id, ticketStatusPaymentDTO);
-		return this.http.put(this.API + '/set-status-payment/' + id, ticketStatusPaymentDTO);
-	}
+  /*
+  * Đăng end
+  * */
 
-	searchTicket(ticketSearchDTO: any): Observable<any> {
-		// console.log('ticketSearchDTO');
-		// console.log(ticketSearchDTO);
-		// console.log('URL');
-		// console.log(this.API + '/search?' + 'statusPaymentName=' + ticketSearchDTO.statusPaymentName +
-		// 	'&searchBy=' + ticketSearchDTO.searchBy + '&searchValue=' + ticketSearchDTO.searchValue);
-		// return this.http.get(this.API + '/list/Pending');
-		return this.http.get(this.API + '/search?' +
-			'statusPaymentName=' + ticketSearchDTO.statusPaymentName +
-			'&searchBy=' + ticketSearchDTO.searchBy +
-			'&searchValue=' + ticketSearchDTO.searchValue);
-	}
-	/*
-	* Đăng end
-	* */
+
+
+  /**
+   * Chau start
+   */
+  findTicketByIDService(idFind): Observable<any> {
+    return this.http.get(this.API + '/find-by-id/' + idFind);
+  }
+
+  findFlightInformationByIDService(idFind): Observable<any> {
+    return this.http.get(this.API + '/find-flight-information-by-id/' + idFind);
+  }
+
+  deleteTicketService(idDelete): Observable<any> {
+    return this.http.delete(this.API + '/delete/' + idDelete);
+  }
+
+  editTicketService(idEdit, passengerEdit, appUserEdit, ticketEdit): Observable<any> {
+    return this.http.put(this.API + '/edit/' + idEdit + '/' + passengerEdit + '/' + appUserEdit, ticketEdit);
+  }
+
+  saveTicketService(idFlightInformationDeparture, idFlightInformationArrival, ticket): Observable<any> {
+    return this.http.post(this.API + '/save/' + idFlightInformationDeparture + '/' +
+      idFlightInformationArrival, ticket);
+  }
+
+  validateEmailUser(): AsyncValidatorFn {
+    return (control: AbstractControl): Observable<{ [key: string]: any } | null> => {
+      return this.searchEmailUser(control.value)
+        .pipe(
+          map(res => {
+            if (!res.length) {
+              return {emailUserExists: true};
+            }
+          })
+        );
+    };
+  }
+
+  searchEmailUser(emailUser) {
+    return timer(50)
+      .pipe(
+        switchMap(() => {
+          return this.http.get<any>(API + '/app-user/' + emailUser);
+        })
+      );
+  }
+
+  openNewWindow() {
+    return window;
+  }
+  /**
+   * Chau end
+   */
 }
