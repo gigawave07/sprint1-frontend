@@ -11,7 +11,7 @@
 <body>
 <div class="groove">
   <div class="container-fluid table-responsive">
-    <h4 class="text-center text-success">Thêm Mới Nhân Viên</h4>
+    <h4 class="text-center text-success mt-3">Thêm Mới Nhân Viên</h4>
     <form [formGroup]="formCreateNew">
       <div class="row mt-5">
         <div class="col-sm-1 col-xs-1 col-md-1 col-lg-1"></div>
@@ -280,7 +280,7 @@
                       (click)="resetAll()">Xóa
               </button>
               <button type="button" class="btn btn-success ml-2" value="Lưu"
-                      [disabled]="formCreateNew.invalid" (click)="createNewEmployee()">Lưu
+                      (click)="createNewEmployee()">Lưu
               </button>
             </div>
             <div class="col-sm-4 col-xs-4 col-md-4 col-lg-4 p-0 m-0"></div>

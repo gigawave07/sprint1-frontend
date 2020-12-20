@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {LoginService} from '../../service/login.service';
-import {ChangePasswordUserComponent} from '../change-password-user/change-password-user.component';
+import {finalize} from "rxjs/operators";
+import {SpinnerOverlayService} from "../../service/animations/spinner-overlay.service";
 
 @Component({
   selector: 'app-nav-bar',
@@ -8,9 +9,9 @@ import {ChangePasswordUserComponent} from '../change-password-user/change-passwo
   styleUrls: ['./nav-bar.component.css']
 })
 export class NavBarComponent implements OnInit {
-  // username;
   currentUser;
-  constructor(public loginService: LoginService) {
+  constructor(public loginService: LoginService,
+              public spinnerOverlayService: SpinnerOverlayService) {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
   }
 
@@ -21,13 +22,16 @@ export class NavBarComponent implements OnInit {
   }
 
   logout() {
-       this.loginService.logout();
+    this.loginService.logout();
     this.currentUser = null;
     this.loginService.broadcastLoginChange(this.currentUser);
   }
 
   hello() {
-    this.loginService.hello().subscribe(data => {
+    this.spinnerOverlayService.show();
+    this.loginService.hello()
+      .pipe(finalize(() => this.spinnerOverlayService.hide()))
+      .subscribe(data => {
       alert(this.loginService.currentUserValue.id);
     });
   }

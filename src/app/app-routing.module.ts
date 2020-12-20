@@ -1,5 +1,5 @@
 import {NgModule} from '@angular/core';
-import {RouterModule, Routes} from '@angular/router';
+import {Routes, RouterModule} from '@angular/router';
 import {HomeComponent} from './components/home/home.component';
 import {LoginComponent} from './components/login/login.component';
 import {RegisterComponent} from './components/register/register.component';
@@ -22,7 +22,16 @@ import {MaterialModule} from './material.module';
 import {MatDialogModule} from '@angular/material';
 import {NgxPaginationModule} from 'ngx-pagination';
 import {EmployeeComponent} from './components/employee/employee.component';
-
+// tslint:disable-next-line:max-line-length
+import {BaoCaoComponentComponent} from './components/report-statistic/bao-cao-thong-ke/bao-cao/bao-cao-component/bao-cao-component.component';
+import {ListTicketComponent} from './components/list-ticket/list-ticket.component';
+import {EditTicketComponent} from './components/edit-ticket/edit-ticket.component';
+import {MatInputModule} from '@angular/material/input';
+import {InputTicketSellComponent} from './components/input-ticket-sell/input-ticket-sell.component';
+import {PrintTicketComponent} from './components/print-ticket/print-ticket.component';
+import {PrintTicketTwoWayComponent} from './components/print-ticket-two-way/print-ticket-two-way.component';
+import {NoticePageComponent} from './components/notice-page/notice-page.component';
+import {MessageNoticeEmployeeComponent} from './components/message-notice-employee/message-notice-employee.component';
 
 const routes: Routes = [
   // Quân :
@@ -30,7 +39,6 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'verification-email', component: VerificationEmailComponent},
-
   // Danh
   {
     path: 'admin', component: AdminComponent,
@@ -40,13 +48,6 @@ const routes: Routes = [
       }
     ]
   },
-
-  // Mai :
-  {path: 'list-employee', component: ListEmployeeComponent},
-  {path: 'list-employee/create-employee', component: CreateEmployeeComponent},
-  {path: 'list-employee/edit-employee/:id', component: EditEmployeeComponent},
-  {path: 'delete-employee', component: DeleteEmployeeComponent},
-
   // Đạt
   {path: 'detail-user', component: DetailUserComponent},
   {
@@ -65,6 +66,25 @@ const routes: Routes = [
   // Đăng:caca
   {path: 'list-pending-ticket', component: ListPendingTicketComponent},
   {path: 'search-pending-ticket', component: SearchPendingTicketComponent},
+  // Nhật
+  {path: 'report', component: BaoCaoComponentComponent},
+
+  // Mai :
+  {path: 'list-employee', component: ListEmployeeComponent},
+  {path: 'list-employee/create-employee', component: CreateEmployeeComponent},
+  {path: 'list-employee/edit-employee/:id', component: EditEmployeeComponent},
+  {path: 'delete-employee', component: DeleteEmployeeComponent},
+  {path: 'message-notice-employee', component: MessageNoticeEmployeeComponent},
+
+  // Châu :
+  {path: 'list-ticket', component: ListTicketComponent},
+  {path: 'input-ticket-sell', component: InputTicketSellComponent},
+  {path: 'print-ticket/:id', component: PrintTicketComponent},
+  {
+    path: 'print-ticket-two-way/:bookingCode/:passengerList/:flightDeparture/:flightArrival',
+    component: PrintTicketTwoWayComponent
+  },
+  {path: 'notice-page', component: NoticePageComponent},
 ];
 
 @NgModule({
@@ -72,7 +92,9 @@ const routes: Routes = [
     MatDialogModule, FormsModule, NgxPaginationModule],
   exports: [RouterModule],
   declarations: [ListEmployeeComponent, CreateEmployeeComponent, EditEmployeeComponent, DeleteEmployeeComponent,
-    EmployeeComponent]
+    EmployeeComponent, EditTicketComponent, InputTicketSellComponent, PrintTicketTwoWayComponent,
+    NoticePageComponent, MessageNoticeEmployeeComponent
+  ]
 })
 export class AppRoutingModule {
 }

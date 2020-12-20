@@ -1,10 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {EmployeeService} from '../../service/employee/employee.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {DatePipe} from '@angular/common';
+import {EmployeeService} from '../../service/employee/employee.service';
 import {Employee} from '../../model/employee/employee.class';
-import {error} from 'util';
 
 @Component({
   selector: 'app-edit-employee',
@@ -19,12 +18,11 @@ export class EditEmployeeComponent implements OnInit {
   private listRole: [];
   private maxDate = new Date(2012, 11, 22);
   private minDate = new Date(1920, 0, 1);
-  private message;
 
   constructor(
-    public formBuilder: FormBuilder,
-    public employeeService: EmployeeService,
-    public router: Router,
+    private formBuilder: FormBuilder,
+    private employeeService: EmployeeService,
+    private router: Router,
     private activatedRoute: ActivatedRoute
   ) {
   }
@@ -58,11 +56,27 @@ export class EditEmployeeComponent implements OnInit {
   }
 
   editEmployee() {
+    this.formEdit.markAllAsTouched();
+    if (this.formEdit.valid) {
     this.employee = Object.assign({}, this.formEdit.value);
     this.employee.birthday = this.pipe.transform(this.employee.birthday, 'dd-MM-yyyy');
     this.employeeService.editEmployeeService(this.employee, this.employee.id).subscribe(data => {
-      this.router.navigateByUrl('list-employee').then(_ => {
-      });
-    });
+          this.router.navigateByUrl('list-employee').then(_ => {
+          });
+        },
+        () => {
+          const NOTICE = 'Sửa không thành công';
+          this.router.navigate(['message-notice-employee', {message: NOTICE}]).then(r => {
+          });
+        }, () => {
+          const NOTICE = 'Sửa thành công';
+          this.router.navigate(['message-notice-employee', {message: NOTICE}]).then(r => {
+            setTimeout(() => {
+                this.router.navigateByUrl('list-employee');
+              }, 2000
+            );
+          });
+        });
+    }
   }
 }

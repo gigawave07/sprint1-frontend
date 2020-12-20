@@ -11,7 +11,7 @@
 <body>
 <div class="groove">
   <div class="container-fluid table-responsive">
-    <h4 class="text-center text-success">Sửa Thông Tin Nhân Viên</h4>
+    <h4 class="text-center text-success mt-3">Sửa Thông Tin Nhân Viên</h4>
     <form [formGroup]="formEdit">
       <div class="row mt-5">
         <div class="col-sm-1 col-xs-1 col-md-1 col-lg-1"></div>
@@ -23,7 +23,7 @@
               <mat-label>Mã nhân viên</mat-label>
             </div>
             <div class="col-sm-2 col-xs-2 col-md-2 col-lg-2 p-0 m-0">
-              <p style="border-bottom: 1px solid #00000059" class="mt-4">
+              <p style="border-bottom: 1px solid #00000070" class="mt-4">
                 {{formEdit.get('employeeCode').value}}</p>
             </div>
             <div class="col-sm-2 col-xs-2 col-md-2 col-lg-2 p-0 m-0"></div>
@@ -31,7 +31,7 @@
               <mat-label>Tài khoản</mat-label>
             </div>
             <div class="col-sm-2 col-xs-2 col-md-2 col-lg-2 p-0 m-0">
-              <p style="border-bottom: 1px solid #00000059" class="mt-4">
+              <p style="border-bottom: 1px solid #00000070" class="mt-4">
                 {{formEdit.get('email').value}}</p>
             </div>
             <div class="col-sm-1 col-xs-1 col-md-1 col-lg-1 p-0 m-0"></div>
@@ -165,15 +165,15 @@
               <mat-form-field style="width: 100%">
                 <mat-label>Chọn giới tính</mat-label>
                 <mat-select formControlName="gender">
-                  <mat-option [value]="0">Nữ</mat-option>
-                  <mat-option [value]="1">Nam</mat-option>
+                  <mat-option [value] = "1">Nam</mat-option>
+                  <mat-option [value] = "0">Nữ</mat-option>
                 </mat-select>
               </mat-form-field>
 
-              <p class="text-danger" style=" margin-left: -10%;"
+              <p class="text-danger" style=" margin-left: -5%;"
                  *ngIf="formEdit.get('gender').hasError('required')
-                                      && (formEdit.controls.gender?.dirty
-                                      || formEdit.controls.gender?.touched)">
+                                 && (formEdit.controls.gender?.dirty
+                                 || formEdit.controls.gender?.touched)">
                 Vui lòng chọn giới tính
               </p>
             </div>
@@ -187,7 +187,7 @@
                       [routerLink]="['/list-employee']">Quay Lại
               </button>
               <button type="button" class="btn btn-success ml-2" value="Xóa"
-                      [disabled]="formEdit.invalid" (click)="editEmployee()">Xác Nhận
+                     (click)="editEmployee()">Xác Nhận
               </button>
             </div>
             <div class="col-sm-4 col-xs-4 col-md-4 col-lg-4 p-0 m-0"></div>

@@ -10,6 +10,8 @@ import {AppAccount} from '../model/AppAccount';
 export class LoginService {
   readonly API = 'http://localhost:8080/authenticate';
   readonly API2 = 'http://localhost:8080/hello';
+  readonly API_GOOGLE = 'http://localhost:8080/login/google';
+
   name: Subject<string> = new Subject();
   private currentUserSubject: BehaviorSubject<AppAccount>;
   public currentUser: Observable<AppAccount>;
@@ -45,6 +47,17 @@ export class LoginService {
     localStorage.removeItem('currentUser');
     localStorage.removeItem('token');
     this.currentUserSubject.next(null);
+  }
+
+  loginGoogle(account): Observable<any> {
+    return this.http.post<any>(this.API_GOOGLE, account)
+      .pipe(map(user => {
+        // store user details and jwt token in local storage to keep user logged in between page refreshes
+        localStorage.setItem('currentUser', JSON.stringify(user));
+        localStorage.setItem('token', user.token);
+        this.currentUserSubject.next(user);
+        return user;
+      }));
   }
 
   hello(): Observable<any> {

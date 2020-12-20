@@ -1,5 +1,6 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material';
+import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
+import {Router} from '@angular/router';
 import {EmployeeService} from '../../service/employee/employee.service';
 
 @Component({
@@ -8,12 +9,13 @@ import {EmployeeService} from '../../service/employee/employee.service';
   styleUrls: ['./delete-employee.component.css']
 })
 export class DeleteEmployeeComponent implements OnInit {
-  private employee;
-  private idDelete: any;
+  protected employee;
+  protected idDelete: any;
 
   constructor(
-    public dialogRef: MatDialogRef<DeleteEmployeeComponent>,
-    private employeeService: EmployeeService,
+    protected dialogRef: MatDialogRef<DeleteEmployeeComponent>,
+    protected router: Router,
+    protected employeeService: EmployeeService,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) { }
 
@@ -27,6 +29,19 @@ export class DeleteEmployeeComponent implements OnInit {
       if (data == null) {
         this.dialogRef.close();
       }
-    });
+    },
+      () => {
+        const NOTICE = 'Xóa không thành công';
+        this.router.navigate(['message-notice-employee', {message: NOTICE}]).then(r => {
+        });
+      }, () => {
+        const NOTICE = 'Xóa thành công';
+        this.router.navigate(['message-notice-employee', {message: NOTICE}]).then(r => {
+          setTimeout(() => {
+              this.router.navigateByUrl('list-employee');
+            }, 2000
+          );
+        });
+      });
   }
 }

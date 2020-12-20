@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {EmployeeService} from '../../service/employee/employee.service';
+import {Router} from '@angular/router';
 import {MatDialog} from '@angular/material';
+import {EmployeeService} from '../../service/employee/employee.service';
 import {DeleteEmployeeComponent} from '../delete-employee/delete-employee.component';
+import {LoginService} from '../../service/login.service';
+
 
 @Component({
   selector: 'app-list-employee',
@@ -9,21 +12,28 @@ import {DeleteEmployeeComponent} from '../delete-employee/delete-employee.compon
   styleUrls: ['./list-employee.component.css']
 })
 export class ListEmployeeComponent implements OnInit {
-  private list;
+  private list: [];
   private checkList = 'true';
   key: string;
   p: number;
 
   constructor(
-    public employeeService: EmployeeService,
-    public dialog: MatDialog
+    private employeeService: EmployeeService,
+    private loginService: LoginService,
+    private dialog: MatDialog,
+    private router: Router
   ) {
   }
 
   ngOnInit() {
     this.employeeService.getAllEmployeeService().subscribe(data => {
       this.list = data;
-    });
+    }, () => {
+        const NOTICE = 'Không tìm thấy trang ';
+        this.router.navigate(['message-notice-employee', {message: NOTICE}]).then(r => {});
+      },
+      () => {
+      });
   }
 
   openDialogDelete(id: any): void {
