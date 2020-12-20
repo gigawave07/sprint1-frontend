@@ -44,6 +44,8 @@ import {DeleteTicketComponent} from './components/delete-ticket/delete-ticket.co
 import {PrintTicketComponent} from './components/print-ticket/print-ticket.component';
 import {ListTicketComponent} from './components/list-ticket/list-ticket.component';
 import {AuthServiceConfig, GoogleLoginProvider, SocialLoginModule} from 'angularx-social-login';
+import {UserDialogComponent} from "./components/user-dialog/user-dialog.component";
+import {MessageUserComponent} from "./components/message-user/message-user.component";
 
 @NgModule({
   declarations: [
@@ -56,7 +58,8 @@ import {AuthServiceConfig, GoogleLoginProvider, SocialLoginModule} from 'angular
     // Danh
     AdminComponent, InformationAdminComponent, ChangePasswordAdminComponent,
     // Đạt
-    DetailUserComponent, EditUserComponent, ChangePasswordUserComponent, InformationUserComponent,
+    DetailUserComponent, EditUserComponent, ChangePasswordUserComponent, InformationUserComponent, UserDialogComponent,
+    MessageUserComponent,
 
 
     // Nhật
