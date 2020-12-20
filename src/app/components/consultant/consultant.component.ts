@@ -28,10 +28,12 @@ export class ConsultantComponent implements OnInit {
       if (this.listUser.length === 0) {
         this.router.navigate(['/consultant']);
       }
+      this.router.navigate(['/consultant/mess/' + this.listUser[0].roomId]);
     });
   }
 
   ngOnInit() {
+
     setInterval(() => {
       firebase.database().ref('chats/').remove().then(() => {
       });
