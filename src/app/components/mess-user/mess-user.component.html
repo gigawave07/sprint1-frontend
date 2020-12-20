@@ -33,7 +33,7 @@
           <small class="input-request"
                  *ngIf="formSendRequest.controls.phone?.touched && formSendRequest.controls.phone?.errors?.required">
             Hãy nhập số điện thoại của bạn vào
-          </small><br>
+          </small>
           <small class="input-request"
                  *ngIf="formSendRequest.controls.phone?.touched && formSendRequest.controls.phone?.errors?.pattern">
             Số điện thoại phải có từ 10 số
@@ -54,9 +54,24 @@
     <div class="col-lg-12 content-box">
       <div class="row">
         <div class="col-lg-12 chat-body" id="chat-body">
-          <div #chatcontent *ngFor="let mess of listMess" class="row">
-            <div *ngIf="(mess.isUser == 'true')" align="right"><span class="mess-consultant">{{mess.content}}</span></div>
-            <div *ngIf="(mess.isUser == 'false')" align="left"><span class="mess-from-user">{{mess.content}}</span></div>
+          <div *ngFor="let mess of listMess">
+            <div *ngIf="(mess.isUser == 'false')">
+              <div class="row" style="margin-bottom: 2px">
+                <div class="col-lg-9 mess-consultant">
+                <span><span
+                  style="margin-left: 2px"></span>{{mess.content}}<span style="margin-right: 2px"></span></span>
+                  <div class="col-lg-3"></div>
+                </div>
+              </div>
+            </div>
+            <div *ngIf="(mess.isUser == 'true')">
+              <div class="row">
+                <div class="col-lg-3"></div>
+                <div class="col-lg-9 mess-from-user"><span><span
+                  style="margin-left: 2px"></span>{{mess.content}}<span style="margin-right: 2px"></span></span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

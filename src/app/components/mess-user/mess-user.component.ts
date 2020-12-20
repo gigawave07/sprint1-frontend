@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import * as firebase from 'firebase';
 import {DatePipe} from '@angular/common';
 import {MessageService} from '../../service/message.service';
+import {timer} from 'rxjs';
 
 declare var $: any;
 
@@ -25,9 +26,6 @@ export const snapshotToArray = (snapshot: any, room: any) => {
 })
 export class MessUserComponent implements OnInit {
 
-  // @ts-ignore
-  @ViewChild('chatcontent') chatcontent: ElementRef;
-
   public listMess = [];
   public listIcon = [];
   public room = '';
@@ -43,6 +41,7 @@ export class MessUserComponent implements OnInit {
     firebase.database().ref('chats/').on('value', resp => {
       this.listMess = [];
       this.listMess = snapshotToArray(resp, this.room);
+      $('.chat-body').scrollTop($('.chat-body')[0].scrollHeight);
     });
   }
 
@@ -51,7 +50,7 @@ export class MessUserComponent implements OnInit {
     this.formSendRequest = this.fb.group({
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      phone: ['', Validators.required, Validators.pattern('^\\d{10,12}$')]
+      phone: ['', [Validators.required, Validators.pattern('^\\d{10,12}$')]]
     });
 
     this.formSend = this.fb.group({
@@ -111,7 +110,6 @@ export class MessUserComponent implements OnInit {
       this.listMess = [];
       this.listMess = snapshotToArray(resp, this.room);
     });
-    console.log(this.room);
     firebase.database().ref('users/').orderByChild('roomId').equalTo(this.room).once('value', (snapShot) => {
       if (!snapShot.exists()) {
         const newUser = firebase.database().ref('users/').push();
@@ -156,3 +154,5 @@ export class MessUserComponent implements OnInit {
   }
 
 }
+
+

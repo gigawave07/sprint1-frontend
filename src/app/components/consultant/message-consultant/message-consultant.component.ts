@@ -43,6 +43,12 @@ export class MessageConsultantComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.sub = this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
+      this.room = paramMap.get('id');
+      firebase.database().ref('chats/').on('value', (resp) => {
+        this.listMessage = snapshotToArray(resp, this.room);
+      });
+    });
     this.getIcons();
     this.formSendMess = this.fb.group({
       content: ['', Validators.required],
@@ -60,14 +66,6 @@ export class MessageConsultantComponent implements OnInit {
         }
       );
     });
-
-    this.sub = this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
-      this.room = paramMap.get('id');
-      firebase.database().ref('chats/').on('value', (resp) => {
-        this.listMessage = snapshotToArray(resp, this.room);
-      });
-    });
-
   }
 
   sendMess() {

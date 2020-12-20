@@ -2,7 +2,7 @@
   <div class="row" id="consultant-chat-box">
     <div class="col-lg-3" id="user-list">
       <div *ngFor="let user of listUser" class="user-box">
-        <a [routerLink]="['mess', user.roomId]" style="text-decoration: none">
+        <a [routerLink]="['mess/', user.roomId]" style="text-decoration: none">
           <div class="mess-user">{{user.name}}</div>
         </a>
         <button class="delete-user" (click)="deleteUser(user.key)"><i class="fas fa-times"></i></button>
@@ -15,7 +15,6 @@
       </div>
     </div>
     <div class="col-lg-3">
-
     </div>
   </div>
 </div>

@@ -1,18 +1,27 @@
-#body-chat-consultant{
+#body-chat-consultant {
   height: 290px;
   overflow-x: hidden;
-  overflow-y: scroll;
+  overflow-y: auto;
   background-color: white;
-
 }
 
-.mess-consultant{
-  color: blue;
+.mess-consultant {
+  color: white;
+  border-radius: 10px;
+  border: blue solid 1px;
+  background-color: #4545ff;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
 
-.mess-from-user{
-  color: red;
+.mess-from-user {
+  color: black;
+  border-radius: 10px;
+  border: #d1d1d5 solid 1px;
+  background-color: #e4e6eb;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
 div #chat-option {
@@ -32,13 +41,13 @@ div #input-inline {
   width: 90vh;
 }
 
-.option-icon{
+.option-icon {
   font-size: 25px;
   color: orange;
   margin-top: 8px;
 }
 
-#submit-consultant{
+#submit-consultant {
   border: none;
 }
 
