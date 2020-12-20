@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {AbstractControl, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {RegisterService} from '../../service/register.service';
 import {Router} from '@angular/router';
 import {ErrorStateMatcher} from '@angular/material/core';
@@ -32,7 +32,7 @@ export class RegisterComponent implements OnInit {
       confirmPassword: ['', [Validators.required]],
       phone: ['', [Validators.required]],
       name: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(50)]],
-      birthday: ['', [Validators.required]],
+      birthday: ['', [Validators.required, this.checkAge]],
       address: [''],
       gender: [''],
     }, {validator: this.ConfirmedValidator('password', 'confirmPassword')});
@@ -80,6 +80,13 @@ export class RegisterComponent implements OnInit {
         matchingControl.setErrors(null);
       }
     };
+  }
+
+  checkAge(control: AbstractControl) {
+    let birthday = new Date(control.value);
+    let current = new Date();
+    let diffTime = (current.getTime() - birthday.getTime()) / (1000 * 60 * 60 * 24 * 365);
+    return (diffTime > 18 && diffTime < 150) ? true : {ageError: true};
   }
 }
 
