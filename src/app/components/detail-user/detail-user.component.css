@@ -27,7 +27,7 @@
   font-family: 'Lato', sans-serif;
   font-size: 30px;
   font-weight: bolder;
-  text-transform: uppercase;
+  text-transform: initial;
   margin-bottom: 10px;
 }
 .form-control {
@@ -37,11 +37,11 @@
   flex: auto;
 }
 img {
-  border-radius: 50%;
+  border-radius: 0%;
   margin-right: auto;
   margin-left: auto;
   display: block;
-  width: 310px;
+  width: 250px;
   height: 100%;
 }
 .btn-orange {
@@ -151,4 +151,7 @@ img {
 
 .accordion .rotate {
   transform: rotate(180deg);
+}
+.container-fluid{
+  background-image: url("https://dm0qx8t0i9gc9.cloudfront.net/watermarks/image/rDtN98Qoishumwih/clouds-vector-background_f1FZW-Dd_SB_PM.jpg");
 }

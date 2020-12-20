@@ -1,21 +1,19 @@
-// @ts-ignore
+
 import {Component, Inject, OnInit} from '@angular/core';
-// @ts-ignore
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material';
 import {UserService} from '../../service/user/user.service';
-// @ts-ignore
 import {AbstractControl, FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 import {MessageUserComponent} from '../message-user/message-user.component';
 
-// Kí tự đặt biệt
+// Trần  Đạt -  Kí tự đặt biệt
 function validateSpecialCharacters(c: AbstractControl) {
   const pattern = /[$&+,:;=?@#|'<>.^*()%!-]+/;
   return (c.value.match(pattern)) ? {
     containSpecialCharacters: true
   } : null;
 }
-// validate khoảng trắng
+// Trần  Đạt - validate khoảng trắng
 function validateWhitespace(c: AbstractControl) {
   if (c.value !== '') {
     const isWhitespace = c.value.trim().length === 0;
@@ -32,6 +30,8 @@ function validateWhitespace(c: AbstractControl) {
   styleUrls: ['./edit-user.component.css']
 })
 export class EditUserComponent implements OnInit {
+  public maxDate = new Date();
+  public minDate = new Date(1940, 0, 1);
   public dataIdUser;
   public valueGender;
   formEditUser: FormGroup;
@@ -45,10 +45,11 @@ export class EditUserComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any) {
   }
   ngOnInit() {
+    // Trần  Đạt -  form thông tin khách hàng.
     this.formEditUser = this.formBuilder.group({
       fullName: ['', [Validators.required, validateSpecialCharacters, validateWhitespace,
         Validators.maxLength(30), Validators.minLength(10)]],
-      birthday: ['', [Validators.required, Validators.pattern(/^([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/)
+      birthday: ['', [Validators.required,
         , this.userService.validateBirthday
         , this.userService.checkAge]],
       address: ['', [Validators.required, Validators.maxLength (255)]],
@@ -56,13 +57,15 @@ export class EditUserComponent implements OnInit {
       phoneNumber: ['', [Validators.required, this.userService.validPhoneNumber]],
       gender: ['', [Validators.required]]
     });
+    // Trần  Đạt - Lấy dữ liệu đưa vào Dialog chỉnh sửa thông khách hàng.
     this.dataIdUser = this.data.dataE;
     console.log(this.dataIdUser);
     this.userService.getUserById(this.dataIdUser).subscribe(getData => {
       this.valueGender = getData.gender;
       this.formEditUser.patchValue(getData);
     });
-  }
+  }// Trần  Đạt - Chỉnh sửa thông tin cá nhân.
+  // Validators.pattern(/^([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/)
   editUser() {
     this.formEditUser.value.gender = this.valueGender;
     this.formEditUser.markAllAsTouched();
@@ -74,11 +77,11 @@ export class EditUserComponent implements OnInit {
       }
     });
   }
+  // Trần  Đạt - Chỉnh sửa thông tin Nam/Nữ
   valueGenderClick(value: boolean) {
     this.valueGender = value;
   }
-
-
+  // Trần  Đạt - Dialog thông báo chỉnh sửa thông tin khách hàng thành công.
   openDialogMessage() {
     const timeout = 3000;
     const dialogRef = this.dialog.open(MessageUserComponent, {

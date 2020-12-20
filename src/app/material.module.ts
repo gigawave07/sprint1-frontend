@@ -1,20 +1,15 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-// @ts-ignore
 import {MatFormFieldModule} from '@angular/material/form-field';
-// @ts-ignore
 import {MatInputModule} from '@angular/material/input';
-// @ts-ignore
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
 import {MatSelectModule} from '@angular/material/select';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatButtonModule} from '@angular/material/button';
-// @ts-ignore
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {ChangePasswordAdminComponent} from './components/change-password-admin/change-password-admin.component';
-// @ts-ignore
 import {MatDialogModule} from '@angular/material';
 import {EditUserComponent} from './components/edit-user/edit-user.component';
 import {ChangePasswordUserComponent} from './components/change-password-user/change-password-user.component';
@@ -25,7 +20,6 @@ import {UserDialogComponent} from './components/user-dialog/user-dialog.componen
 import {MessageUserComponent} from './components/message-user/message-user.component';
 
 
-// @ts-ignore
 @NgModule({
   declarations: [],
   imports: [

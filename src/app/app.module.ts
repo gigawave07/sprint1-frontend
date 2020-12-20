@@ -12,7 +12,6 @@ import {NavBarComponent} from './components/nav-bar/nav-bar.component';
 import {FooterComponent} from './components/footer/footer.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-// @ts-ignore
 import {MatDialogModule} from '@angular/material/dialog';
 import {VerificationEmailComponent} from './components/verification-email/verification-email.component';
 import {AuthInterceptor} from './service/AuthInterceptor';

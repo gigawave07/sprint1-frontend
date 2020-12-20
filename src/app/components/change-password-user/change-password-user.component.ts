@@ -1,17 +1,18 @@
+
 import {Component, OnInit} from '@angular/core';
-import {AbstractControl, FormBuilder, FormGroup, ValidationErrors, Validators} from '@angular/forms';
+import {AbstractControl, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {MatDialog, MatDialogRef} from '@angular/material';
 import {UserService} from '../../service/user/user.service';
 
 import {LoginService} from '../../service/login.service';
 import {UserDialogComponent} from '../user-dialog/user-dialog.component';
-import {error} from 'util';
+// Trần  Đạt - Validate xác nhận mật khẩu.
 function comparePassword(c: AbstractControl) {
   const v = c.value;
   const isA = v.newPassword === v.confirmPassword;
   const isB = v.newPassword !== v.oldPassword;
   return (isB && isA) ? null : {
-      passwordNotMatch: true
+    passwordNotMatch: true
   };
 }
 
@@ -24,27 +25,31 @@ function comparePassword(c: AbstractControl) {
 //   return null;
 // }
 
+
+
 @Component({
   selector: 'app-change-password-user',
   templateUrl: './change-password-user.component.html',
   styleUrls: ['./change-password-user.component.css']
-})
+}
+)
 export class ChangePasswordUserComponent implements OnInit {
   formChangePassword: FormGroup;
   public errorMessage: string;
 
   constructor(
-    public dialogRef: MatDialogRef<ChangePasswordUserComponent>,
-    public formBuilder: FormBuilder,
+    private dialogRef: MatDialogRef<ChangePasswordUserComponent>,
+    private formBuilder: FormBuilder,
     private userService: UserService,
-    public loginService: LoginService,
-    public dialog: MatDialog
+    private loginService: LoginService,
+    private dialog: MatDialog
   ) {
   }
 
   public idUser: number;
 
   ngOnInit() {
+    // Trần Đạt - Form đổi mật khẩu khách hàng.
     this.idUser = this.loginService.currentUserValue.id;
     console.log(this.idUser);
     this.formChangePassword = this.formBuilder.group({
@@ -53,7 +58,7 @@ export class ChangePasswordUserComponent implements OnInit {
       confirmPassword: ['', [Validators.required]],
     }, {validator: comparePassword});
   }
-
+// Trần Đạt -  Đổi mật khẩu khách hàng.
   changePass() {
     this.formChangePassword.markAllAsTouched();
     if (this.formChangePassword.valid) {
@@ -64,13 +69,12 @@ export class ChangePasswordUserComponent implements OnInit {
           this.dialogRef.close();
           this.openDialogConfirm(this.idUser);
         }
-        // tslint:disable-next-line:no-shadowed-variable
       }, error => {
-        console.log(error);
+        this.errorMessage = 'Đổi mật khẩu thành công';
       });
     }
   }
-
+// Trần Đạt - Dialog thông báo đổi mật khẩu thành công.
   openDialogConfirm(idUser: number) {
     const dialogRef = this.dialog.open(UserDialogComponent, {
       width: '500px',

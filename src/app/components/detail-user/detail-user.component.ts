@@ -1,15 +1,12 @@
-// @ts-ignore
 import {Component, OnInit} from '@angular/core';
 import {UserService} from '../../service/user/user.service';
 import {LoginService} from '../../service/login.service';
-// @ts-ignore
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {EditUserComponent} from '../edit-user/edit-user.component';
-// @ts-ignore
 import {MatDialog} from '@angular/material';
 
 
-// @ts-ignore
+
 @Component({
   selector: 'app-detail-user',
   templateUrl: './detail-user.component.html',
@@ -26,7 +23,7 @@ export class DetailUserComponent implements OnInit {
     private loginService: LoginService,
     private formBuilder: FormBuilder) {
   }
-
+  // Trần  Đạt -  Form hiển thị thông tin khách hàng.
   ngOnInit(): void {
     this.idUser = this.loginService.currentUserValue.id;
     this.userService.getUserById(this.idUser).subscribe(data => {
@@ -39,7 +36,6 @@ export class DetailUserComponent implements OnInit {
         this.users.gender = 'Nam';
       }
     }, error => {
-      console.log('a');
     }, () => {
       this.infoFormUser.patchValue(this.users);
     });
@@ -53,7 +49,7 @@ export class DetailUserComponent implements OnInit {
       userRank: [''],
     });
   }
-
+  // Trần  Đạt - Dialog chỉnh sửa thông tin.
   openDialogEdit() {
     this.idUser = this.loginService.currentUserValue.id;
     console.log(this.idUser);

@@ -18,6 +18,7 @@ export class InformationUserComponent implements OnInit {
 
   ngOnInit() {
   }
+  // Trần  Đạt - Hiển thị Dialog đổi mật khẩu.
   openDialogChangePassword() {
     const dialogRef = this.dialog.open(ChangePasswordUserComponent, {
       width: '750px',
