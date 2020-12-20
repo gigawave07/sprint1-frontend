@@ -130,6 +130,7 @@ export class SearchPendingTicketComponent implements OnInit {
 			});
 		}
 		// this.ngOnInit();
+		//
 		window.location.reload();
 	}
 

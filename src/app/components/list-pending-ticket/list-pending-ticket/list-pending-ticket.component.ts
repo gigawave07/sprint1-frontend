@@ -27,6 +27,7 @@ export class ListPendingTicketComponent implements OnInit {
 	ngOnInit(): void {
 		// console.log('this.ticketStatusPaymentDTO');
 		// console.log(this.ticketStatusPaymentDTO);
+		//
 		
 		this.ticketService.findAllPendingTicket().subscribe(value => {
 			this.ticketList = value;
