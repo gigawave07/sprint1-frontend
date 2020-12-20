@@ -99,6 +99,7 @@ export class SearchPendingTicketComponent implements OnInit {
 			this.payTicketList.push(ticket);
 			
 			this.amountMoney += ticket.flightInformation.price;
+			this.amountMoney /= 23000;
 			// this.renderPaypalButton();
 			console.log('this.amountMoney');
 			console.log(this.amountMoney);
