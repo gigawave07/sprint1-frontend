@@ -14,7 +14,6 @@ import {MatDialog} from '@angular/material/dialog';
   styleUrls: ['./bao-cao-component.component.css']
 })
 export class BaoCaoComponentComponent implements OnInit {
-  listReportOnAPI: any;
   maxDate = new Date();
   minDateStart = new Date(2020, 0, 1);
   timesSelection = [
