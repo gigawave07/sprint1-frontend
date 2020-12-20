@@ -155,7 +155,10 @@ div .content-box {
 }
 
 div #icon-box {
-  z-index: 10000;
+  border-radius: 20px;
+  position: relative;
+  background-color: #e6ecf5;
+  z-index: 1000;
   width: 100%;
   margin-top: -110px;
   margin-left: -13px;

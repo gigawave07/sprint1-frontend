@@ -33,9 +33,9 @@ export class ConsultantComponent implements OnInit {
 
   ngOnInit() {
     setInterval(() => {
-      firebase.database().ref('user/').remove().then(() => {
+      firebase.database().ref('chats/').remove().then(() => {
       });
-    }, 300000000);
+    }, 6000000);
   }
 
   deleteUser(key) {

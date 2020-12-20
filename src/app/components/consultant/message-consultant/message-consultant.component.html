@@ -1,4 +1,4 @@
-<div class="container-fluid" id="mess-consultant">
+<div class="container-fluid" id="mess-consultant" style="background-color: #fafafa">
   <div class="row">
     <div class="col-lg-12" id="body-chat-consultant">
       <div *ngFor="let mess of listMessage">
@@ -26,17 +26,17 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-lg-12" style="background-color: white">
+    <div class="col-lg-12">
       <div id="chat-option">
         <form (ngSubmit)="sendMess()" [formGroup]="formSendMess">
           <div class="input-group form-inline" id="input-inline">
             <input formControlName="content" class="form-control form-control-lg" type="text"
                    placeholder="Type message ..." id="content-chat-cons">
             <span class="input-group-btn ml-1 mt-1">
-              <i class="fas fa-paperclip option-icon" id="consultant-icon"></i>
+              <i class="fas fa-paperclip option-icon" ></i>
             </span>
             <span class="input-group-btn ml-1 mt-1">
-              <i class="fas fa-kiss-wink-heart option-icon"></i>
+              <i class="fas fa-kiss-wink-heart option-icon" id="consultant-icon"></i>
             </span>
 
             <button [disabled]="formSendMess.controls.content.errors?.required" type="submit"

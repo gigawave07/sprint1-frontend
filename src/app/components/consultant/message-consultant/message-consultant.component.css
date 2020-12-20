@@ -33,12 +33,13 @@ div #chat-option {
 
 div #input-inline {
   margin-left: 0px;
-  margin-top: 23px;
+  margin-top: 21px;
 }
 
 
 #content-chat-cons {
-  width: 90vh;
+  border-radius: 10px;
+  width: 8%;
 }
 
 .option-icon {
@@ -52,11 +53,18 @@ div #input-inline {
 }
 
 #icon-box-consultant {
+  background-color: #e6ecf5;
   z-index: 100;
-  width: 100%;
+  position: relative;
+  width: 65%;
+  border-radius: 20px;
   margin-top: -110px;
-  margin-left: -13px;
+  margin-bottom: 0px;
   overflow-x: hidden;
   overflow-y: auto;
   height: 112px;
+}
+
+#mess-consultant{
+  background-color: #fafafa;
 }
