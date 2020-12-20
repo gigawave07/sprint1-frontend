@@ -32,7 +32,6 @@ import {PrintTicketComponent} from './components/print-ticket/print-ticket.compo
 import {MessageNoticeEmployeeComponent} from './components/message-notice-employee/message-notice-employee.component';
 import {PrintTicketTwoWayComponent} from './components/print-ticket-two-way/print-ticket-two-way.component';
 import {NoticePageComponent} from './components/notice-page/notice-page.component';
-import {AdminComponent} from "./components/admin/admin.component";
 
 import {MessUserComponent} from './components/mess-user/mess-user.component';
 import {SendFeedbackComponent} from './components/send-feedback/send-feedback.component';
@@ -60,7 +59,7 @@ const routes: Routes = [
         path: 'information', component: InformationAdminComponent
       },
       {
-        // Nhật
+        // Nhật mới
         path: 'report', component: BaoCaoComponentComponent,
       }
     ]

@@ -39,14 +39,13 @@ import {KetQuaTableComponent} from './components/report-statistic/bao-cao-thong-
 import {KetQuaSaiLogicComponent} from './components/report-statistic/bao-cao-thong-ke/thong-ke/ket-qua/ket-qua-sai-logic/ket-qua-sai-logic.component';
 import {ChartsModule} from 'ng2-charts';
 import {ExcelService} from './components/report-statistic/service/excel.service';
-import {AdminComponent} from "./components/admin/admin.component";
 
 import {DeleteTicketComponent} from './components/delete-ticket/delete-ticket.component';
 import {PrintTicketComponent} from './components/print-ticket/print-ticket.component';
 import {ListTicketComponent} from './components/list-ticket/list-ticket.component';
 import {AuthServiceConfig, FacebookLoginProvider, GoogleLoginProvider, SocialLoginModule} from 'angularx-social-login';
-import {UserDialogComponent} from "./components/user-dialog/user-dialog.component";
-import {MessageUserComponent} from "./components/message-user/message-user.component";
+import {UserDialogComponent} from './components/user-dialog/user-dialog.component';
+import {MessageUserComponent} from './components/message-user/message-user.component';
 
 import {SendFeedbackComponent} from './components/send-feedback/send-feedback.component';
 import {ConsultantComponent} from './components/consultant/consultant.component';
@@ -71,7 +70,7 @@ import {DatePipe} from '@angular/common';
     MessageUserComponent,
 
 
-    // Nhật
+    // Nhật mới
     TrangChinhComponent, BaoCaoComponentComponent, TrangChuThongKeComponent,
     KetQuaComponent, KetQuaTableComponent, KetQuaSaiLogicComponent,
 
@@ -89,7 +88,7 @@ import {DatePipe} from '@angular/common';
   ],
   // tslint:disable-next-line:max-line-length
   providers: [DatePipe, MessageService, FeedbackService
-    ,{
+    , {
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptor,
     multi: true
