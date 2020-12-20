@@ -20,7 +20,6 @@ import {EditTicketComponent} from './components/edit-ticket/edit-ticket.componen
 import {UserDialogComponent} from './components/user-dialog/user-dialog.component';
 import {MessageUserComponent} from './components/message-user/message-user.component';
 
-
 @NgModule({
   declarations: [],
   imports: [
