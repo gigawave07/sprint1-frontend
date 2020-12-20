@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import * as firebase from 'firebase';
-import {ActivatedRoute, Router} from '@angular/router';
+import {Router} from '@angular/router';
 
 export const snapshotToArray = (snapshot: any) => {
   const returnArr = [];
