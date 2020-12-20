@@ -43,9 +43,16 @@ export class PromotionService {
   getPromoInSun(): Observable<any> {
     return this.http.get(this.API_GET_BY_DATE + '=2021/01/03');
   }
-  getPromoByFlight(): Observable<any> {
+  getPromoByFlightDAD_SGN(): Observable<any> {
     // @ts-ignore
     return this.http.get(this.API_GET_BY_FLIGHT + '/' + 'DAD-SGN');
+  }
+  getPromoByFlightDAD_HAN(): Observable<any> {   // @ts-ignore
+    return this.http.get(this.API_GET_BY_FLIGHT + '/' + 'DAD-HAN');
+  }
+  getPromoByFlightSGN_DLI(): Observable<any> {
+    // @ts-ignore
+    return this.http.get(this.API_GET_BY_FLIGHT + '/' + 'SGN-DLI');
   }
   getAll(): Observable<any> {
     // console.log(this.http.get(this.API_GET_ALL_INFO));
@@ -64,11 +71,9 @@ export class PromotionService {
   getPromoById(promotionid): Observable<any> {
     return this.http.get(this.API_GET_INFO_BY_ID + '/' + promotionid);
   }
-
   updatePromo(promotion, promotionid): Observable<any> {
     return this.http.put(this.API_UPDATE + '/' + promotionid, promotion);
   }
-
   deletePromo(promotionid): Observable<any> {
     return this.http.delete(this.API_DELETE + '/' + promotionid);
   }

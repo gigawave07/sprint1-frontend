@@ -2,22 +2,24 @@ import { Component, OnInit } from '@angular/core';
 import {DeleteComponent} from '../../promotion-list/delete/delete.component';
 import {PromotionService} from '../../promotion.service';
 import {MatDialog} from '@angular/material/dialog';
+
 @Component({
-  selector: 'app-fri',
-  templateUrl: './fri.component.html',
-  styleUrls: ['./fri.component.css']
+  selector: 'app-dad-sgn',
+  templateUrl: './dad-sgn.component.html',
+  styleUrls: ['./dad-sgn.component.css']
 })
-export class FriComponent implements OnInit {
+export class DadSgnComponent implements OnInit {
   listPromotion: any;
   term: string;
+    p: any;
 
   constructor(
-    public promotionService: PromotionService,
-    public dialog: MatDialog
+      public promotionService: PromotionService,
+      public dialog: MatDialog
   ) { }
 
   ngOnInit() {
-    this.promotionService.getPromoInFri().subscribe(data => {
+    this.promotionService.getPromoByFlightDAD_SGN().subscribe(data => {
       this.listPromotion = data;
       for (const cus of this.listPromotion) {
         cus.arrivalTime = cus.departureDate + ' ' + cus.arrivalTime;

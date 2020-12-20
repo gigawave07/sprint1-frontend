@@ -23,6 +23,7 @@ import { SatComponent } from './days/sat/sat.component';
 import { SunComponent } from './days/sun/sun.component';
 import {Ng2SearchPipeModule} from 'ng2-search-filter';
 import {NgxPaginationModule} from 'ngx-pagination';
+import { DadSgnComponent } from './flights/dad-sgn/dad-sgn.component';
 
 
 const routes: Routes = [
@@ -37,26 +38,27 @@ const routes: Routes = [
   {path: 'thurs', component: ThursComponent},
   {path: 'fri', component: FriComponent},
   {path: 'sat', component: SatComponent},
-  {path: 'sun', component: SunComponent}
+  {path: 'sun', component: SunComponent},
+  {path: 'dad-sgn', component: DadSgnComponent}
 ];
 
 @NgModule({
   // tslint:disable-next-line:max-line-length
   declarations: [PromotionListComponent, HomeComponent, AddNewComponent, EditComponent, DeleteComponent, PromotionListForCustomerComponent,
-    MonComponent, TuesComponent, WedsComponent, ThursComponent, FriComponent, SatComponent, SunComponent],
-  imports: [
-    CommonModule,
-    RouterModule.forRoot(routes),
-    ReactiveFormsModule,
-    MaterialModule,
-    MatDatepickerModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatDialogModule,
-    Ng2SearchPipeModule,
-    FormsModule,
-    NgxPaginationModule
-  ],
+    MonComponent, TuesComponent, WedsComponent, ThursComponent, FriComponent, SatComponent, SunComponent, DadSgnComponent, ],
+    imports: [
+        CommonModule,
+        RouterModule.forRoot(routes),
+        ReactiveFormsModule,
+        MaterialModule,
+        MatDatepickerModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatDialogModule,
+        Ng2SearchPipeModule,
+        FormsModule,
+        NgxPaginationModule
+    ],
   exports: [RouterModule, PromotionListForCustomerComponent]
 })
 export class AppRoutingModule { }

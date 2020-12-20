@@ -22,7 +22,7 @@ export class MonComponent implements OnInit {
       this.listPromotion = data;
       for (const cus of this.listPromotion) {
         cus.arrivalTime = cus.departureDate + ' ' + cus.arrivalTime;
-        cus.departureTime = cus.arrivalDate + ' ' + cus.departureTime;
+        cus.departureTime = cus.departureDate + ' ' + cus.departureTime;
       }
     });
   }

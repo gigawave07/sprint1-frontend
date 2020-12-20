@@ -19,18 +19,16 @@ export class EditComponent implements OnInit {
 
   ngOnInit() {
     this.formEdit = this.formBuilder.group({
-      id:  ['', Validators.required],
-      flight:  ['', Validators.required],
-      airline: ['', Validators.required],
-      flightNumber:  ['', Validators.required],
-      departureDate:  ['', Validators.required],
-      departurePlace:  ['', Validators.required],
-      departureTime:  ['', Validators.required],
-      arrivalDate:  ['', Validators.required],
-      arrivalPlace:  ['', Validators.required],
-      arrivalTime:  ['', Validators.required],
-      information:  ['', Validators.required],
-      price:  ['', Validators.required]
+      id:  ['', [Validators.required]],
+      flight: ['', [Validators.required, Validators.pattern('^\\D{3}-\\D{3}$')]],
+      airline: ['', [Validators.required]],
+      flightNumber: ['', [Validators.required, Validators.pattern('^VJ \\d{3}|QH \\d{3}|VN \\d{3}$')]],
+      departureDate: ['', [Validators.required]],
+      departurePlace: ['', [Validators.required]],
+      departureTime: ['', [Validators.required]],
+      arrivalPlace: ['', [Validators.required]],
+      arrivalTime: ['', [Validators.required]],
+      price: ['', [Validators.required, Validators.pattern('^[1-9]\\d{5,6}$')]]
     });
     this.activatedRoute.params.subscribe(data => {
       this.promotionId = data.id;
