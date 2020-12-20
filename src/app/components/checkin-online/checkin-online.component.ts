@@ -38,11 +38,16 @@ export class CheckinOnlineComponent implements OnInit {
       this.checkinOnlineService.checkinOnline(this.formCheckinOnline.value.fullName,
         this.formCheckinOnline.value.bookingCode).subscribe(data => {
           this.checkinResult = data;
+          console.log(this.checkinResult);
+          if (this.checkinResult === null ) {
+            this.messageSuccess = 'Không tìm thấy thông tin của bạn.';
+            setTimeout(() => {
+              this.messageSuccess = '';
+            }, 2000);
+          }
           // this.router.navigateByUrl('checkin-online');
         }
       );
-    } else {
-      this.messageSuccess = 'Không tìm thấy thông tin của bạn.';
     }
   }
 
@@ -56,18 +61,19 @@ export class CheckinOnlineComponent implements OnInit {
 
   checkInSubmit() {
     // tslint:disable-next-line:prefer-for-of
-    for (let i = 0 ; i < this.selectedItemsList.length; i++) {
+    for (let i = 0; i < this.selectedItemsList.length; i++) {
       this.idCheckin += (this.selectedItemsList[i].id) + '-#-';
     }
-    this.checkinOnlineService.booking(this.idCheckin).subscribe( data => {
+    this.checkinOnlineService.booking(this.idCheckin).subscribe(data => {
       this.messageSuccess = 'checkin online thành công.';
-      setTimeout (() => {
+      setTimeout(() => {
         this.messageSuccess = '';
       }, 2000);
     });
     this.checkinResult = undefined;
     this.router.navigateByUrl('checkin-online');
   }
+
   returnPage() {
     this.checkinResult = undefined;
     this.router.navigateByUrl('checkin-online');
