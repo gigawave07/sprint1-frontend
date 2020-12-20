@@ -5,6 +5,8 @@ import {randomString} from '../../utils/RandomUtils';
 import {ActivatedRoute, Router} from '@angular/router';
 import {LoginService} from '../../service/login.service';
 import {FlightInformation} from '../../model/flightInformation';
+import {SpinnerOverlayService} from '../../service/animations/spinner-overlay.service';
+import {finalize} from 'rxjs/operators';
 
 @Component({
   selector: 'app-input-ticket-sell',
@@ -29,7 +31,8 @@ export class InputTicketSellComponent implements OnInit {
     protected loginService: LoginService,
     protected formBuilder: FormBuilder,
     protected router: Router,
-    private activedRouter: ActivatedRoute
+    private activedRouter: ActivatedRoute,
+    private spinnerOverlayService: SpinnerOverlayService
   ) {
     this.nativeWindow = ticketService.openNewWindow();
   }
@@ -105,9 +108,10 @@ export class InputTicketSellComponent implements OnInit {
   save() {
     this.formCreate.markAllAsTouched();
     if (this.formCreate.valid) {
-      this.message = 'Đang tiến hành lưu vé. Vui lòng chờ!';
+      this.spinnerOverlayService.show();
       this.ticketService.saveTicketService(this.idFlightDeparture,
         this.idFlightArrival, this.formCreate.value)
+        .pipe(finalize(() => this.spinnerOverlayService.hide()))
         .subscribe(
           (data) => {
             this.messageSave = data.message;
@@ -138,8 +142,9 @@ export class InputTicketSellComponent implements OnInit {
   saveAndPrint() {
     this.formCreate.markAllAsTouched();
     if (this.formCreate.valid) {
-      this.message = 'Đang tiến hành lưu và in vé. Vui lòng chờ!';
+      this.spinnerOverlayService.show();
       this.ticketService.saveTicketService(this.idFlightDeparture, this.idFlightArrival, this.formCreate.value)
+        .pipe(finalize(() => this.spinnerOverlayService.hide()))
         .subscribe(
           (data) => {
             this.messageSave = data.message;
