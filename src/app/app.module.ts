@@ -54,6 +54,8 @@ import {FeedbackService} from './service/feedback.service';
 import {MessUserComponent} from './components/mess-user/mess-user.component';
 import {MessageService} from './service/message.service';
 import {DatePipe} from '@angular/common';
+import {PromotionModule} from './components/promotion/promotion.module';
+
 
 @NgModule({
   declarations: [
@@ -84,7 +86,7 @@ import {DatePipe} from '@angular/common';
   ],
   imports: [BrowserModule, AppRoutingModule, MaterialModule, HttpClientModule, NgxPaginationModule, Ng2SearchPipeModule,
     FormsModule, MatDialogModule, ReactiveFormsModule, NgxLoadingModule.forRoot({}),
-    ChartsModule, SocialLoginModule
+    ChartsModule, SocialLoginModule, PromotionModule
   ],
   // tslint:disable-next-line:max-line-length
   providers: [DatePipe, MessageService, FeedbackService
