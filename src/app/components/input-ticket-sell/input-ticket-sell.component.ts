@@ -97,8 +97,10 @@ export class InputTicketSellComponent implements OnInit {
           updateOn: 'blur'
         }],
         adults: ['', [Validators.required, Validators.pattern('^([0-9]+)$'),
-          Validators.min(1), Validators.max(99)]],
-        babies: ['', [Validators.required, Validators.pattern('^([0-9]+)$'), Validators.max(99)]],
+          Validators.min(1), Validators.maxLength(2)]],
+        babies: ['', [Validators.required,
+          Validators.pattern('^([0-9]+)$'),
+          Validators.maxLength(2)]]
       });
     } else {
       this.error();

@@ -1,6 +1,52 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="col-sm-3"></div>
+    <div class="col-sm-3">
+      <div class="accordion mb-2">
+        <div class="card">
+          <div class="card-header">
+            <h2 class="mb-0">
+              <a [routerLink]="['information']"><span><i class="fa fa-user"></i> Thông tin cá nhân</span></a>
+            </h2>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            <h2 class="mb-0">
+              <a [routerLink]="['listEmployee']"><span><i class="fa fa-users"></i>Thông tin nhân viên</span>
+              </a>
+            </h2>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            <h2 class="mb-0">
+              <a [routerLink]="['#']"><span><i class="fa fa-line-chart"></i>Quản lí khách hàng</span></a>
+            </h2>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            <h2 class="mb-0">
+              <a [routerLink]="['#']"><span><i class="fa fa-line-chart"></i>Quản lí bán vé</span></a>
+            </h2>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            <h2 class="mb-0">
+              <a [routerLink]="['#']"><span><i class="fa fa-line-chart"></i>Đặt vé</span></a>
+            </h2>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            <h2 class="mb-0">
+              <a [routerLink]="['#']"><span><i class="fa fa-line-chart"></i>Thống kê</span></a>
+            </h2>
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="col-sm-9">
       <div class="row">
         <div class="col-sm-1"></div>
@@ -28,7 +74,7 @@
                   <div class="col-sm-3 col-xs-3 col-md-3 col-lg-3">
                     <mat-form-field class="matInputMaterial">
                       <mat-label></mat-label>
-                      <input matInput value="{{flightInformationDeparture.airline}}">
+                      <input matInput value="{{flightInformationDeparture.airline}}" readonly>
                     </mat-form-field>
                   </div>
                 </div>
@@ -137,11 +183,13 @@
                       Số lượng hành khách là người lớn phải lớn hơn hoặc bằng 1.
                     </p>
                     <p class="text-danger passengerAndPrice"
-                       *ngIf="formCreate.get('adults').hasError('max')
+                       *ngIf="formCreate.controls.adults?.invalid
+                                  && !formCreate.get('adults').hasError('required')
                                   && !formCreate.get('adults').hasError('pattern')
+                                  && !formCreate.get('adults').hasError('min')
                                   && (formCreate.controls.adults?.dirty
                                   || formCreate.controls.adults?.touched)">
-                      Số lượng hành khách là người lớn tối đa là 99.
+                      Số lượng hành khách là người lớn tối đa có 2 số.
                     </p>
                   </div>
                   <div class="col-sm-3 col-xs-3 col-md-3 col-lg-3">
@@ -165,11 +213,12 @@
                       Vui lòng chỉ nhập số, không nhập chữ cái và kí tự đặc biệt!
                     </p>
                     <p class="text-danger passengerAndPrice"
-                       *ngIf="formCreate.get('babies').hasError('max')
+                       *ngIf="formCreate.controls.babies?.invalid
+                                  && !formCreate.get('babies').hasError('required')
                                   && !formCreate.get('babies').hasError('pattern')
                                   && (formCreate.controls.babies?.dirty
                                   || formCreate.controls.babies?.touched)">
-                      Số lượng hành khách là trẻ em tối đa là 99.
+                      Số lượng hành khách là trẻ em tối đa có 2 số.
                     </p>
                   </div>
                 </div>
