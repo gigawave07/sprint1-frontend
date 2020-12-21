@@ -100,8 +100,5 @@ export class RegisterComponent implements OnInit {
     return (diffTime > 18 && diffTime < 150) ? true : {ageError: true};
   }
 
-  onEnterKeyDown($event: any) {
-    this.onSubmit();
-  }
 }
 

@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, ElementRef, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {LoginService} from '../../service/login.service';
 import {Router} from '@angular/router';
@@ -20,7 +20,8 @@ export class LoginComponent implements OnInit {
               public loginService: LoginService,
               public router: Router,
               public spinnerOverlayService: SpinnerOverlayService,
-              private socialAuthService: AuthService
+              private socialAuthService: AuthService,
+              public el: ElementRef
   ) {
   }
 
@@ -52,6 +53,14 @@ export class LoginComponent implements OnInit {
         }, error => {
           this.message = 'Sai email hoặc password';
         });
+    } else {
+      for (const key of Object.keys(this.loginForm.controls)) {
+        if (this.loginForm.controls[key].invalid) {
+          const invalidControl = this.el.nativeElement.querySelector('[formControlName="' + key + '"]');
+          invalidControl.focus();
+          break;
+        }
+      }
     }
   }
 
