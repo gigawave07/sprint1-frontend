@@ -22,7 +22,8 @@ import {MaterialModule} from './material.module';
 import {MatDialogModule} from '@angular/material';
 import {NgxPaginationModule} from 'ngx-pagination';
 import {EmployeeComponent} from './components/employee/employee.component';
-import {BaoCaoComponentComponent} from "./components/report-statistic/bao-cao-thong-ke/bao-cao/bao-cao-component/bao-cao-component.component";
+// tslint:disable-next-line:max-line-length
+import {BaoCaoComponentComponent} from './components/report-statistic/bao-cao-thong-ke/bao-cao/bao-cao-component/bao-cao-component.component';
 import {ListTicketComponent} from './components/list-ticket/list-ticket.component';
 import {EditTicketComponent} from './components/edit-ticket/edit-ticket.component';
 import {MatInputModule} from '@angular/material/input';
@@ -30,6 +31,17 @@ import {InputTicketSellComponent} from './components/input-ticket-sell/input-tic
 import {PrintTicketComponent} from './components/print-ticket/print-ticket.component';
 import { PrintTicketTwoWayComponent } from './components/print-ticket-two-way/print-ticket-two-way.component';
 import { NoticePageComponent } from './components/notice-page/notice-page.component';
+import { PassengerComponent } from './components/passenger/passenger.component';
+import { CreatePassengerComponent } from './components/create-passenger/create-passenger.component';
+import { DeletePassengerComponent } from './components/delete-passenger/delete-passenger.component';
+import { EditPassengerComponent } from './components/edit-passenger/edit-passenger.component';
+import { ListPassengerComponent } from './components/list-passenger/list-passenger.component';
+import {MatRadioModule} from '@angular/material/radio';
+import { DatePipe } from '@angular/common';
+import { EmployeeInfoComponent } from './components/employee-info/employee-info.component';
+import { EmployeeDetailComponent } from './components/employee-detail/employee-detail.component';
+import {ChangePasswordEmployeeComponent } from './components/change-password-employee/change-password-employee.component';
+import {MatIconModule} from "@angular/material/icon";
 
 const routes: Routes = [
   // Quân :
@@ -60,6 +72,22 @@ const routes: Routes = [
       {path: 'search-pending-ticket', component: SearchPendingTicketComponent}
     ]
   },
+  // Quốc
+  {
+    path: 'passenger', component: PassengerComponent,
+    children: [
+      {path: 'list-Passenger', component: ListPassengerComponent},
+      {path: 'list-Passenger/create-Passenger', component: CreatePassengerComponent},
+      {path: 'list-Passenger/edit-Passenger/:id', component: EditPassengerComponent},
+      {path: 'employee-Detail', component: EmployeeDetailComponent},
+    ]
+  },
+  // {
+  //   path: 'employee-info', component: EmployeeInfoComponent,
+  //   children: [
+  //     {path: 'employee-Detail', component: EmployeeDetailComponent},
+  //   ]
+  // },
 
   // Đăng:caca
   {path: 'list-pending-ticket', component: ListPendingTicketComponent},
@@ -87,11 +115,15 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes), CommonModule, ReactiveFormsModule, MaterialModule,
-    MatDialogModule, FormsModule, NgxPaginationModule],
+    imports: [RouterModule.forRoot(routes), CommonModule, ReactiveFormsModule, MaterialModule,
+        MatDialogModule, FormsModule, NgxPaginationModule, MatRadioModule, MatIconModule],
   exports: [RouterModule],
   declarations: [ListEmployeeComponent, CreateEmployeeComponent, EditEmployeeComponent, DeleteEmployeeComponent,
-    EmployeeComponent, EditTicketComponent, InputTicketSellComponent, PrintTicketTwoWayComponent, NoticePageComponent
+    // tslint:disable-next-line:max-line-length
+    EmployeeComponent, EditTicketComponent, InputTicketSellComponent, PrintTicketTwoWayComponent, NoticePageComponent, PassengerComponent, CreatePassengerComponent, DeletePassengerComponent, EditPassengerComponent, ListPassengerComponent, EmployeeInfoComponent, EmployeeDetailComponent, ChangePasswordEmployeeComponent
+  ],
+  providers: [
+    DatePipe
   ]
 })
 export class AppRoutingModule { }

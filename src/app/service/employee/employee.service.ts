@@ -12,10 +12,31 @@ const URL = 'http://localhost:8080/employee';
 })
 export class EmployeeService {
   public readonly API: string = 'http://localhost:8080/employee';
+  public readonly API_SEND_EMAIL = 'http://localhost:8080/sendEmail';
+  public readonly API_CHANGE_PASSWORD = 'http://localhost:8080/changePassword';
 
   constructor(
     public http: HttpClient
   ) {
+  }
+
+  /*
+     Create by : Quoc_NT
+     function : send Token Code Random to Email Employee when employee change password
+     */
+
+  sendToEmailEmployee(id: number): Observable<any> {
+    console.log(this.API_SEND_EMAIL + '/' + id);
+    return this.http.get(this.API_SEND_EMAIL + '/' + id);
+  }
+
+  /*
+  Create by : Quoc_NT
+  function : change Password for employee
+*/
+  changePasswordEmployee(id: number, newPassword) {
+    console.log(this.API_CHANGE_PASSWORD + '/' + id, newPassword);
+    return this.http.put(this.API_CHANGE_PASSWORD + '/' + id, newPassword);
   }
 
   // Create by: Mai_HTQ
