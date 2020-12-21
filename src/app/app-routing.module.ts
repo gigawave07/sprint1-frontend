@@ -145,6 +145,7 @@ const routes: Routes = [
   ],
   providers: [
     DatePipe
+  //
   ]
 })
 export class AppRoutingModule {

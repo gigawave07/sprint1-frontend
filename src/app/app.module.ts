@@ -82,6 +82,7 @@ import {ChangePasswordEmployeeComponent} from './components/change-password-empl
     MessUserComponent,
     ConsultantComponent,
     MessageConsultantComponent
+  //
   ],
   imports: [BrowserModule, AppRoutingModule, MaterialModule, HttpClientModule, NgxPaginationModule, Ng2SearchPipeModule,
     FormsModule, MatDialogModule, ReactiveFormsModule, NgxLoadingModule.forRoot({}),
