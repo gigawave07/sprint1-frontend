@@ -3,6 +3,7 @@ import {FormBuilder, Validators} from '@angular/forms';
 import {PassengerService} from '../../service/passenger/passenger.service';
 import {Router} from '@angular/router';
 import {DatePipe} from '@angular/common';
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-create-passenger',
@@ -15,7 +16,7 @@ export class CreatePassengerComponent implements OnInit {
   // tslint:disable-next-line:variable-name
   birthday_msg = 'Ngày tháng năm sinh không hợp lệ';
   // tslint:disable-next-line:variable-name
-  idCard_msg = 'Chứng minh nhân dânkhông hợp lệ';
+  idCard_msg = 'Chứng minh nhân dân không hợp lệ';
   // tslint:disable-next-line:variable-name
   phone_msg = 'Số điện thoại không hợp lệ';
   // tslint:disable-next-line:variable-name
@@ -30,6 +31,7 @@ export class CreatePassengerComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,
               private passengerService: PassengerService,
               private router: Router,
+              private toast: ToastrService,
               private datePipe: DatePipe) { }
 
   ngOnInit() {
@@ -50,9 +52,13 @@ export class CreatePassengerComponent implements OnInit {
   }
 
   callApi() {
-    console.log(this.formCreate.value);
     this.passengerService.create(this.formCreate.value).subscribe(value => {
+      if (value === 1) {
         this.router.navigate(['/passenger/list-Passenger'], {queryParams: {create_msg: 'Create successfully!', si: true}});
+        this.toast.success('Thao Tác Thành Công', 'Thông Báo');
+      } else {
+        this.toast.error('Thao Tác Thất Bại', 'Thông Báo');
+      }
       }
     );
   }

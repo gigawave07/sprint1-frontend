@@ -22,7 +22,7 @@ export class EmployeeDetailComponent implements OnInit {
 
   async ngOnInit() {
     // // get Id Employee
-    // this.idEmployee = this.loginService.currentUserValue.id;
+    this.idEmployee = this.loginService.currentUserValue.id;
     // // find Employee By Id
     this.employeeService.findEmployeeByIdService(this.idEmployee).toPromise().then(value => {
       this.employee = value;
@@ -33,7 +33,7 @@ export class EmployeeDetailComponent implements OnInit {
     this.employeeService.sendToEmailEmployee(this.idEmployee).subscribe();
     // @ts-ignore
     const dialogRef = this.dialog.open(ChangePasswordEmployeeComponent, {
-      width: '650px',
+      width: '750px',
       data: {dataEmployee: employee},
       disableClose: true
     });

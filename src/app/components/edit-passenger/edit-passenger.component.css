@@ -13,6 +13,9 @@
   padding: 5px;
   color: white;
 }
+.btn-orange-add:disabled{
+  background: #dd4b39;
+}
 
 .btn-orange-cancel {
   margin-bottom: 30px;

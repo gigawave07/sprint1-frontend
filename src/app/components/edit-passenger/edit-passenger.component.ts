@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {PassengerService} from '../../service/passenger/passenger.service';
 import {ActivatedRoute, Router} from '@angular/router';
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-edit-passenger',
@@ -28,10 +29,13 @@ export class EditPassengerComponent implements OnInit {
   private eleId: number;
   private err: any;
 
-  constructor(private formBuilder: FormBuilder,
-              private passengerService: PassengerService,
-              private router: Router,
-              private route: ActivatedRoute) { }
+  constructor(
+    private toat: ToastrService,
+    private formBuilder: FormBuilder,
+    private passengerService: PassengerService,
+    private router: Router,
+    private route: ActivatedRoute) {
+  }
 
   ngOnInit() {
     // @ts-ignore
@@ -56,12 +60,24 @@ export class EditPassengerComponent implements OnInit {
     this.passengerService.getLuggage()
       .subscribe(data => this.luggageList = data, error => this.luggageList = []);
   }
+
   callAPi() {
     console.log(this.formEdit.value);
     this.passengerService.update(this.eleId, this.formEdit.value).subscribe(data => {
-      this.router.navigate(['/passenger/list-Passenger'], {queryParams: {create_msg: 'update successfully!', si: true}});
+      if (data === 1) {
+        this.router.navigate(['/passenger/list-Passenger'], {
+          queryParams: {
+            create_msg: 'update successfully!',
+            si: true
+          }
+        });
+        this.toat.success('Thao Tác Thành Công' , 'Thông Báo');
+      } else {
+        this.toat.error('Thao Tác Thất Bại', 'Thông Báo');
+      }
     });
   }
+
   cancel() {
     this.router.navigate(['/passenger/list-Passenger']);
   }

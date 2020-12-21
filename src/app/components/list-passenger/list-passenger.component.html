@@ -27,7 +27,7 @@
 
         </div>
         <div class="col-3">
-          <button type = "submit" class="btn btn-orange mr-0 float-right" (click)="findPassenger()">Tìm</button>
+          <button type="submit" class="btn btn-orange mr-0 float-right" (click)="findPassenger()">Tìm</button>
         </div>
       </div>
     </div>
@@ -55,8 +55,8 @@
         <td>{{passenger.phoneNumber}}</td>
         <td>
           <a class="edit" [routerLink]="['edit-Passenger/'+ passenger.id]">
-          <i class="material-icons" data-toggle="tooltip"
-             title="Edit">&#xE254;</i></a>
+            <i class="material-icons" data-toggle="tooltip"
+               title="Edit">&#xE254;</i></a>
           <a class="delete" (click)="openDeleteDialog(passenger.id)">
             <i class="material-icons"
                data-toggle="tooltip"
@@ -70,13 +70,14 @@
   <div class="Pagination-table">
     <ul class="pagination">
       <li class="page-item ">
-        <a (click)="previousClick()" class="page-link">Trước</a></li>
+        <a [hidden]="hasPre" (click)="previousClick()" class="page-link">Trước</a></li>
       <li class="page-item" *ngFor="let p of pages; let i =index">
         <a (click)="getPaginationWithIndex(i)" [ngClass]="{'link': i == currentPage}"
            class="page-link">{{i + 1}}</a>
       </li>
       <li class="page-item">
-        <a (click)="nextClick()" class="page-link">Kế Tiếp</a></li>
+        <a [hidden]="hasNext" (click)="nextClick()" class="page-link">Kế Tiếp</a>
+      </li>
     </ul>
   </div>
 </div>
