@@ -4,7 +4,7 @@ import {LoginService} from '../../service/login.service';
 import {Router} from '@angular/router';
 import {SpinnerOverlayService} from '../../service/animations/spinner-overlay.service';
 import {AuthService, FacebookLoginProvider, GoogleLoginProvider} from 'angularx-social-login';
-import {finalize} from "rxjs/operators";
+import {finalize} from 'rxjs/operators';
 
 @Component({
   selector: 'app-login',
@@ -32,25 +32,27 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
-    this.spinnerOverlayService.show();
-    this.user = {
-      username: this.loginForm.value.email,
-      password: this.loginForm.value.password
-    };
-    this.loginService.authenticate(this.user)
-      .pipe(finalize(() => this.spinnerOverlayService.hide()))
-      .subscribe(data => {
-      if (data.message) {
-        this.message = data.message;
-        this.loginService.logout();
-      } else {
-        this.user = data;
-        this.loginService.broadcastLoginChange(this.user);
-        this.router.navigateByUrl('');
-      }
-    }, error => {
-      this.message = 'Sai email hoặc password';
-    });
+    if (this.loginForm.valid) {
+      this.spinnerOverlayService.show();
+      this.user = {
+        username: this.loginForm.value.email,
+        password: this.loginForm.value.password
+      };
+      this.loginService.authenticate(this.user)
+        .pipe(finalize(() => this.spinnerOverlayService.hide()))
+        .subscribe(data => {
+          if (data.message) {
+            this.message = data.message;
+            this.loginService.logout();
+          } else {
+            this.user = data;
+            this.loginService.broadcastLoginChange(this.user);
+            this.router.navigateByUrl('');
+          }
+        }, error => {
+          this.message = 'Sai email hoặc password';
+        });
+    }
   }
 
   loginGoogle() {
@@ -65,16 +67,16 @@ export class LoginComponent implements OnInit {
         }
       };
       this.loginService.loginGoogle(this.user).subscribe(data => {
-        this.user.role = "User";
+        this.user.role = 'User';
         this.loginService.broadcastLoginChange(this.user);
         this.router.navigateByUrl('');
-      })
+      });
     });
   }
 
   loginFacebook() {
     this.socialAuthService.signIn(FacebookLoginProvider.PROVIDER_ID).then(data => {
       console.log(data);
-    })
+    });
   }
 }
