@@ -8,10 +8,15 @@ import {Observable} from 'rxjs';
 export class TicketService {
   public readonly API: string = 'http://localhost:8080/ticket';
   public apiAdd = 'http://localhost:8080/ticket/add';
+  public apiTicket = 'http://localhost:8080/ticket/find-ticket-app-user';
 
   constructor(
     public http: HttpClient
   ) {
+  }
+
+  getAllTicketByAppAccount(idAccount, page): Observable<any> {
+    return this.http.get(this.apiTicket + '/' + idAccount + '/' + page);
   }
 
   addTicketAndBooking(daoTicket): Observable<any> {

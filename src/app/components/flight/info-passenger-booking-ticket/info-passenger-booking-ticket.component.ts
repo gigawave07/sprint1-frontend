@@ -1,4 +1,4 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import {Component, Inject, OnChanges, OnInit, QueryList, SimpleChanges, ViewChildren} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
 import {FormArray, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {LuggageService} from '../../../service/luggage/luggage.service';
@@ -11,12 +11,14 @@ import {BookingService} from '../../../service/booking/booking.service';
 import {randomString} from '../RandomString';
 import {TicketService} from '../../../service/ticket/ticket.service';
 import {SpinnerOverlayService} from '../../../service/animations/spinner-overlay.service';
+import {MatInput} from '@angular/material';
 
 @Component({
   selector: 'app-info-passenger-booking-ticket',
   templateUrl: './info-passenger-booking-ticket.component.html',
   styleUrls: ['./info-passenger-booking-ticket.component.css']
 })
+
 export class InfoPassengerBookingTicketComponent implements OnInit {
   isLinear = true;
   flightOne;
@@ -207,4 +209,5 @@ export class InfoPassengerBookingTicketComponent implements OnInit {
       this.router.navigateByUrl('/list-pending-ticket/history');
     }
   }
+
 }

@@ -3,6 +3,7 @@ import {TicketService} from '../../../service/ticket/ticket.service';
 import {MatDialog} from '@angular/material/dialog';
 import {DeleteTicketComponent} from '../../delete-ticket/delete-ticket.component';
 import {CancelPendingTicketComponent} from "../cancel-pending-ticket/cancel-pending-ticket.component";
+import {LoginService} from '../../../service/login.service';
 
 @Component({
   selector: 'app-list-pending-ticket',
@@ -19,12 +20,13 @@ export class ListPendingTicketComponent implements OnInit {
 
   constructor(
       private ticketService: TicketService,
-      private dialog: MatDialog
+      private dialog: MatDialog,
+      private loginService: LoginService
   ) {
   }
 
   ngOnInit(): void {
-    this.ticketService.findAllPendingTicket().subscribe(value => {
+    this.ticketService.getAllTicketByAppAccount(this.loginService.currentUserValue.id , 0).subscribe(value => {
       this.ticketList = value;
       // console.log('this.ticketList');
       // console.log(this.ticketList);
@@ -106,4 +108,12 @@ export class ListPendingTicketComponent implements OnInit {
   //   this.p = 1;
   // }
 
+  abc() {
+    this.ticketService.getAllTicketByAppAccount(this.loginService.currentUserValue.id , 0).subscribe(value => {
+      this.ticketList = value;
+      console.log(value);
+      // console.log('this.ticketList');
+      // console.log(this.ticketList);
+    });
+  }
 }
