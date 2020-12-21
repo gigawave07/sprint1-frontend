@@ -88,7 +88,11 @@ import { PDFExportModule } from '@progress/kendo-angular-pdf-export';
     SendFeedbackComponent,
     MessUserComponent,
     ConsultantComponent,
-    MessageConsultantComponent
+    MessageConsultantComponent,
+    // Khánh
+    InvoiceListComponent,
+    InvoiceDetailComponent,
+    InvoiceDownloadComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, MaterialModule, HttpClientModule, NgxPaginationModule, Ng2SearchPipeModule,
     FormsModule, MatDialogModule, ReactiveFormsModule, NgxLoadingModule.forRoot({}),
