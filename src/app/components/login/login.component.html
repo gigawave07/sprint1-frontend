@@ -19,6 +19,8 @@
                             <mat-form-field class="example-full-width">
                               <mat-label>Email</mat-label>
                               <input matInput formControlName="email">
+                              <mat-error *ngIf="loginForm.controls.email.errors?.required">Email không được để trống</mat-error>
+                              <mat-error *ngIf="loginForm.controls.email.errors?.pattern">Sai định dạng email</mat-error>
                             </mat-form-field>
                           </div>
                           <div class="col-2"></div>
@@ -29,13 +31,15 @@
                             <mat-form-field class="example-full-width">
                               <mat-label>Mật khẩu</mat-label>
                               <input type="password" matInput formControlName="password">
+                              <mat-error *ngIf="loginForm.controls.password.errors?.required">Mật khẩu không được để trống</mat-error>
+                              <mat-error *ngIf="loginForm.controls.password.errors?.pattern">Mật khẩu tổi thiểu 8 kí tự, 1 chữ thườmg, 1 chữ in hoa và 1 số</mat-error>
                             </mat-form-field>
                           </div>
                           <div class="col-2"></div>
                         </div>
                         <div class="row pt-3 justify-content-center">
                           <div class="col-6">
-                            <button mat-button type="submit">Đăng nhập</button>
+                            <button mat-button type="submit" id="login-btn">Đăng nhập</button>
                             <mat-error>{{message}}</mat-error>
                           </div>
                         </div>

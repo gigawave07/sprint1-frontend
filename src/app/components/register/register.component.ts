@@ -1,10 +1,10 @@
-import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {Component, ElementRef, OnInit} from '@angular/core';
+import {AbstractControl, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {RegisterService} from '../../service/register.service';
 import {Router} from '@angular/router';
 import {ErrorStateMatcher} from '@angular/material/core';
 import {SpinnerOverlayService} from '../../service/animations/spinner-overlay.service';
-import {finalize} from "rxjs/operators";
+import {finalize} from 'rxjs/operators';
 
 @Component({
   selector: 'app-register',
@@ -22,19 +22,22 @@ export class RegisterComponent implements OnInit {
   constructor(public formBuilder: FormBuilder,
               public registerService: RegisterService,
               public router: Router,
-              public spinnerOverlayService: SpinnerOverlayService) {
+              public spinnerOverlayService: SpinnerOverlayService,
+              public el: ElementRef) {
   }
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
-      email: ['', [Validators.required, Validators.pattern('^[a-z][a-z0-9_\\.]{5,32}@[a-z0-9]{2,}(\\.[a-z0-9]{2,4}){1,2}$')]],
-      password: ['', [Validators.required, Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}$')]],
+      email: ['', [Validators.required, Validators.pattern('^[a-z][a-z0-9_\\.]{3,32}@[a-z0-9]{2,}(\\.[a-z0-9]{2,4}){1,2}$')]],
+      password: ['', [Validators.required, Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,20}$')]],
       confirmPassword: ['', [Validators.required]],
-      phone: ['', [Validators.required]],
-      name: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(50)]],
-      birthday: ['', [Validators.required]],
+      phone: ['', [Validators.required, Validators.pattern('((09|03|07|08|05)+([0-9]{8})\\b)')]],
+      name: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(50),
+        // tslint:disable-next-line:max-line-length
+      Validators.pattern('^([aAàÀảẢãÃáÁạẠăĂằẰẳẲẵẴắẮặẶâÂầẦẩẨẫẪấẤậẬbBcCdDđĐeEèÈẻẺẽẼéÉẹẸêÊềỀểỂễỄếẾệỆfFgGhHiIìÌỉỈĩĨíÍịỊjJkKlLmMnNoOòÒỏỎõÕóÓọỌôÔồỒổỔỗỖốỐộỘơƠờỜởỞỡỠớỚợỢpPqQrRsStTuUùÙủỦũŨúÚụỤưƯừỪửỬữỮứỨựỰvVwWxXyYỳỲỷỶỹỸýÝỵỴzZ]+(\\s[aAàÀảẢãÃáÁạẠăĂằẰẳẲẵẴắẮặẶâÂầẦẩẨẫẪấẤậẬbBcCdDđĐeEèÈẻẺẽẼéÉẹẸêÊềỀểỂễỄếẾệỆ fFgGhHiIìÌỉỈĩĨíÍịỊjJkKlLmMnNoOòÒỏỎõÕóÓọỌôÔồỒổỔỗỖốỐộỘơƠờỜởỞỡỠớỚợỢpPqQrRsStTu UùÙủỦũŨúÚụỤưƯừỪửỬữỮứỨựỰvVwWxXyYỳỲỷỶỹỸýÝỵỴzZ]+)*)$')]],
+      birthday: ['', [Validators.required, this.checkAge]],
       address: [''],
-      gender: [''],
+      gender: ['true'],
     }, {validator: this.ConfirmedValidator('password', 'confirmPassword')});
   }
 
@@ -69,6 +72,14 @@ export class RegisterComponent implements OnInit {
         () => {
           this.spinnerOverlayService.hide();
         });
+    } else {
+      for (const key of Object.keys(this.registerForm.controls)) {
+        if (this.registerForm.controls[key].invalid) {
+          const invalidControl = this.el.nativeElement.querySelector('[formControlName="' + key + '"]');
+          invalidControl.focus();
+          break;
+        }
+      }
     }
   }
 
@@ -86,5 +97,13 @@ export class RegisterComponent implements OnInit {
       }
     };
   }
+
+  checkAge(control: AbstractControl) {
+    const birthday = new Date(control.value);
+    const current = new Date();
+    const diffTime = (current.getTime() - birthday.getTime()) / (1000 * 60 * 60 * 24 * 365);
+    return (diffTime > 18 && diffTime < 150) ? true : {ageError: true};
+  }
+
 }
 

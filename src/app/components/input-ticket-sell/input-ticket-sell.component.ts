@@ -1,10 +1,12 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, ElementRef, OnInit} from '@angular/core';
 import {TicketService} from '../../service/ticket/ticket.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {randomString} from '../../utils/RandomUtils';
 import {ActivatedRoute, Router} from '@angular/router';
 import {LoginService} from '../../service/login.service';
 import {FlightInformation} from '../../model/flightInformation';
+import {SpinnerOverlayService} from '../../service/animations/spinner-overlay.service';
+import {finalize} from 'rxjs/operators';
 
 @Component({
   selector: 'app-input-ticket-sell',
@@ -29,7 +31,9 @@ export class InputTicketSellComponent implements OnInit {
     protected loginService: LoginService,
     protected formBuilder: FormBuilder,
     protected router: Router,
-    private activedRouter: ActivatedRoute
+    private activedRouter: ActivatedRoute,
+    private spinnerOverlayService: SpinnerOverlayService,
+    private el: ElementRef
   ) {
     this.nativeWindow = ticketService.openNewWindow();
   }
@@ -39,7 +43,7 @@ export class InputTicketSellComponent implements OnInit {
       this.idFlightDeparture = data.idFlightDeparture;
       this.idFlightArrival = data.idFlightArrival;
     });
-    if (this.idFlightDeparture !== 0) {
+    if (this.idFlightDeparture != 0) {
       this.idEmployee = this.loginService.currentUserValue.id;
       this.ticketService.findFlightInformationByIDService(this.idFlightDeparture).subscribe(
         (data) => {
@@ -53,7 +57,7 @@ export class InputTicketSellComponent implements OnInit {
           this.error();
         },
         () => {
-          if (this.idFlightArrival !== 0) {
+          if (this.idFlightArrival != 0) {
             this.ticketService.findFlightInformationByIDService(this.idFlightArrival).subscribe(
               data => {
                 if (data != null) {
@@ -76,6 +80,11 @@ export class InputTicketSellComponent implements OnInit {
         passengerName: ['',
           [Validators.required, Validators.maxLength(150),
             Validators.pattern('^([a-zA-Z]([ ]?[a-zA-Z])*)([,]([a-zA-Z]([ ]?[a-zA-Z])*)*)*$')]],
+        adults: ['', [Validators.required, Validators.pattern('^([0-9]+)$'),
+          Validators.min(1), Validators.maxLength(2)]],
+        babies: ['', [Validators.required,
+          Validators.pattern('^([0-9]+)$'),
+          Validators.maxLength(2)]],
         priceDeparture: ['', [Validators.required, Validators.pattern('^([0-9]+([.][0-9]+)?)$')]],
         priceArrival: [0, [Validators.required, Validators.pattern('^([0-9]+([.][0-9]+)?)$')]],
         statusCheckin: [''],
@@ -92,10 +101,7 @@ export class InputTicketSellComponent implements OnInit {
               Validators.pattern('^[a-zA-Z0-9]+[@]([a-zA-Z]{3,7})[.]([a-z]{2,3})$')],
           asyncValidators: [this.ticketService.validateEmailUser()],
           updateOn: 'blur'
-        }],
-        adults: ['', [Validators.required, Validators.pattern('^([0-9]+)$'),
-          Validators.min(1), Validators.max(99)]],
-        babies: ['', [Validators.required, Validators.pattern('^([0-9]+)$'), Validators.max(99)]],
+        }]
       });
     } else {
       this.error();
@@ -105,9 +111,10 @@ export class InputTicketSellComponent implements OnInit {
   save() {
     this.formCreate.markAllAsTouched();
     if (this.formCreate.valid) {
-      this.message = 'Đang tiến hành lưu vé. Vui lòng chờ!';
+      this.spinnerOverlayService.show();
       this.ticketService.saveTicketService(this.idFlightDeparture,
         this.idFlightArrival, this.formCreate.value)
+        .pipe(finalize(() => this.spinnerOverlayService.hide()))
         .subscribe(
           (data) => {
             this.messageSave = data.message;
@@ -132,14 +139,23 @@ export class InputTicketSellComponent implements OnInit {
             this.error();
           }
         );
+    } else {
+      for (const KEY of Object.keys(this.formCreate.controls)) {
+        if (this.formCreate.controls[KEY].invalid) {
+          const INVALID_CONTROL = this.el.nativeElement.querySelector('[formControlName="' + KEY + '"]');
+          INVALID_CONTROL.focus();
+          break;
+        }
+      }
     }
   }
 
   saveAndPrint() {
     this.formCreate.markAllAsTouched();
     if (this.formCreate.valid) {
-      this.message = 'Đang tiến hành lưu và in vé. Vui lòng chờ!';
+      this.spinnerOverlayService.show();
       this.ticketService.saveTicketService(this.idFlightDeparture, this.idFlightArrival, this.formCreate.value)
+        .pipe(finalize(() => this.spinnerOverlayService.hide()))
         .subscribe(
           (data) => {
             this.messageSave = data.message;
@@ -168,6 +184,14 @@ export class InputTicketSellComponent implements OnInit {
             this.error();
           }
         );
+    } else {
+      for (const key of Object.keys(this.formCreate.controls)) {
+        if (this.formCreate.controls[key].invalid) {
+          const invalidControl = this.el.nativeElement.querySelector('[formControlName="' + key + '"]');
+          invalidControl.focus();
+          break;
+        }
+      }
     }
   }
 
@@ -189,5 +213,11 @@ export class InputTicketSellComponent implements OnInit {
     const URL = 'http://localhost:4200/list-ticket';
     this.router.navigate(['notice-page', {message: NOTICE, path: URL}]).then(r => {
     });
+  }
+
+  keyDownFunction(event) {
+    if (event.keyCode === 13) {
+      this.saveAndPrint();
+    }
   }
 }

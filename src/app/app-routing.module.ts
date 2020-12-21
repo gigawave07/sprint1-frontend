@@ -33,14 +33,14 @@ import {MessageNoticeEmployeeComponent} from './components/message-notice-employ
 import {PrintTicketTwoWayComponent} from './components/print-ticket-two-way/print-ticket-two-way.component';
 import {NoticePageComponent} from './components/notice-page/notice-page.component';
 import {PromotionListForCustomerComponent} from './components/promotion/promotion-list-for-customer/promotion-list-for-customer.component';
-import {InvoiceListComponent} from './components/invoice-list/invoice-list.component';
-import {InvoiceDetailComponent} from './components/invoice-detail/invoice-detail.component';
-import {InvoiceDownloadComponent} from './components/invoice-download/invoice-download.component';
 
 import {MessUserComponent} from './components/mess-user/mess-user.component';
 import {SendFeedbackComponent} from './components/send-feedback/send-feedback.component';
 import {ConsultantComponent} from './components/consultant/consultant.component';
 import {MessageConsultantComponent} from './components/consultant/message-consultant/message-consultant.component';
+// KhánhPQ
+import {CheckinOnlineComponent} from './components/checkin-online/checkin-online.component';
+import {PromotionCodeComponent} from './components/promotion-code/promotion-code.component';
 
 const routes: Routes = [
   // Quân :
@@ -51,7 +51,8 @@ const routes: Routes = [
   // Vinh
   {path: 'message', component: MessUserComponent},
   {path: 'send-feedback', component: SendFeedbackComponent},
-  {path: 'consultant', component: ConsultantComponent,
+  {
+    path: 'consultant', component: ConsultantComponent,
     children: [
       {path: 'mess/:id', component: MessageConsultantComponent}
     ]
@@ -98,26 +99,26 @@ const routes: Routes = [
 
   // Châu :
   {path: 'list-ticket', component: ListTicketComponent},
-  {path: 'input-ticket-sell/:idFlightDeparture/:idFlightArrival', component: InputTicketSellComponent},
   {path: 'print-ticket/:id', component: PrintTicketComponent},
+  {path: 'input-ticket-sell/:idFlightDeparture/:idFlightArrival', component: InputTicketSellComponent},
   {
     path: 'print-ticket-two-way/:bookingCode/:passengerList/:flightDeparture/:flightArrival',
     component: PrintTicketTwoWayComponent
   },
   {path: 'notice-page', component: NoticePageComponent},
-  // khánh
-  {path: 'invoice-list', component: InvoiceListComponent},
-  {path: 'invoice-detail/:id', component: InvoiceDetailComponent},
-  {path: 'invoice-download', component: InvoiceDownloadComponent},
+  // PQ Khánh:
+  {path: 'checkin-online', component: CheckinOnlineComponent},
+  {path: 'promotion-code', component: PromotionCodeComponent}
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes), CommonModule, MaterialModule,
+  imports: [RouterModule.forRoot(routes), CommonModule, ReactiveFormsModule, MaterialModule,
     MatDialogModule, FormsModule, NgxPaginationModule],
   exports: [RouterModule],
   declarations: [ListEmployeeComponent, CreateEmployeeComponent, EditEmployeeComponent, DeleteEmployeeComponent,
     EmployeeComponent, EditTicketComponent, InputTicketSellComponent, PrintTicketTwoWayComponent, NoticePageComponent,
-    MessageNoticeEmployeeComponent
+    MessageNoticeEmployeeComponent, CheckinOnlineComponent, PromotionCodeComponent
   ]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}
