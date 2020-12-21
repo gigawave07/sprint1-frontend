@@ -56,6 +56,9 @@ import {MessageService} from './service/message.service';
 import {DatePipe} from '@angular/common';
 import {PromotionModule} from './components/promotion/promotion.module';
 
+import {ChangePasswordSuccessfullyComponent} from './components/change-password-successfully/change-password-successfully.component';
+import {GetTokenEmailAdminComponent} from './components/get-token-email-admin/get-token-email-admin.component';
+import { GetCheckPasswordAdminComponent } from './components/get-check-password-admin/get-check-password-admin.component';
 
 @NgModule({
   declarations: [
@@ -66,7 +69,9 @@ import {PromotionModule} from './components/promotion/promotion.module';
     ListPendingTicketComponent, CancelPendingTicketComponent, SearchPendingTicketComponent, SpinnerComponent, SpinnerOverlayComponent,
     SpinnerComponent, SpinnerOverlayComponent,
     // Danh
-    AdminComponent, InformationAdminComponent, ChangePasswordAdminComponent,
+    AdminComponent, InformationAdminComponent, ChangePasswordAdminComponent, ChangePasswordSuccessfullyComponent,
+    GetTokenEmailAdminComponent, GetCheckPasswordAdminComponent,
+
     // Đạt
     DetailUserComponent, EditUserComponent, ChangePasswordUserComponent, InformationUserComponent, UserDialogComponent,
     MessageUserComponent,

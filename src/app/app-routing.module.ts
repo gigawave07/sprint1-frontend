@@ -41,6 +41,9 @@ import {MessageConsultantComponent} from './components/consultant/message-consul
 import {CheckinOnlineComponent} from './components/checkin-online/checkin-online.component';
 import {PromotionCodeComponent} from './components/promotion-code/promotion-code.component';
 
+import {ChangePasswordSuccessfullyComponent} from './components/change-password-successfully/change-password-successfully.component';
+import {GetTokenEmailAdminComponent} from './components/get-token-email-admin/get-token-email-admin.component';
+import {GetCheckPasswordAdminComponent} from './components/get-check-password-admin/get-check-password-admin.component';
 const routes: Routes = [
   // Quân :
   {path: '', component: HomeComponent},
@@ -62,6 +65,15 @@ const routes: Routes = [
     children: [
       {
         path: 'information', component: InformationAdminComponent
+      },
+      {
+        path: 'change-password-successfully', component: ChangePasswordSuccessfullyComponent
+      },
+      {
+        path: 'get-token-email', component: GetTokenEmailAdminComponent
+      },
+      {
+        path: 'get-check-password', component: GetCheckPasswordAdminComponent
       },
       {
         // Nhật mới
