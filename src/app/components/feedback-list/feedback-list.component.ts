@@ -107,7 +107,6 @@ export class FeedbackListComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
       console.log(this.feedback);
-      // this.sendMail();
       this.ngOnInit();
     });
   }
