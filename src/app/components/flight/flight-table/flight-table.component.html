@@ -28,9 +28,9 @@
       <tr *ngFor="let oneWay of listOneWayTable.content">
         <td>{{oneWay.airline}}</td>
         <td>{{oneWay.flightCode}}</td>
-        <td>{{oneWay.departureTime}} - {{oneWay.arrivalTime}}</td>
+        <td>{{oneWay.departureTime | slice : 0 : 5}} - {{oneWay.arrivalTime | slice : 0 : 5}}</td>
         <td>{{oneWay.type}}</td>
-        <td>{{oneWay.price}}</td>
+        <td class="text-right">{{ oneWay.price | currency:'VND'}}</td>
         <td>
           <button mat-button style="background-color: orange" (click)="dialogFlightInformation(oneWay.id)">Chi tiết</button>
         </td>
@@ -87,9 +87,9 @@
       <tr *ngFor="let return of listReturnTable.content">
         <td>{{return.airline}}</td>
         <td>{{return.flightCode}}</td>
-        <td>{{return.departureTime}} - {{return.arrivalTime}}</td>
+        <td>{{return.departureTime | slice : 0 : 5}} - {{return.arrivalTime | slice : 0 : 5}}</td>
         <td>{{return.type}}</td>
-        <td>{{return.price}}</td>
+        <td class="text-right">{{return.price | currency: "VND"}}</td>
         <td>
           <button mat-button style="background-color: orange" (click)="dialogFlight(return.id)">Chi tiết</button>
         </td>
