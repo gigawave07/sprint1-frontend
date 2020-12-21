@@ -38,7 +38,17 @@ export class SendFeedbackComponent implements OnInit {
   }
 
   public sendFeedBack() {
-    this.feedbackService.sendFeedBack(this.formFeedBack.value).subscribe(data => {
-    });
+    this.formFeedBack.markAllAsTouched();
+    if (this.formFeedBack.valid) {
+      this.feedbackService.sendFeedBack(this.formFeedBack.value).subscribe(data => {
+        console.log(data);
+        alert('Bạn đã gửi phản hồi thành công');
+      });
+    }
+
+  }
+
+  setFocusName(isFocus: boolean) {
+
   }
 }

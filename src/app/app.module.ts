@@ -29,12 +29,10 @@ import {SendFeedbackComponent} from './components/send-feedback/send-feedback.co
 import {MessUserComponent} from './components/mess-user/mess-user.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MessageService} from './service/message.service';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {ConsultantComponent} from './components/consultant/consultant.component';
 import {FeedbackService} from './service/feedback.service';
-import {UserMessService} from './service/user-mess.service';
 import {MessageConsultantComponent} from './components/consultant/message-consultant/message-consultant.component';
-import {HTTP_INTERCEPTORS} from '@angular/common/http';
 import {DatePipe} from '@angular/common';
 
 
@@ -52,6 +50,7 @@ import {DatePipe} from '@angular/common';
     RegisterComponent,
     NavBarComponent,
     FooterComponent,
+    // Vinh
     SendFeedbackComponent,
     MessUserComponent,
     ConsultantComponent,
@@ -59,7 +58,7 @@ import {DatePipe} from '@angular/common';
   ],
   imports: [BrowserModule, AppRoutingModule, MaterialModule, HttpClientModule, NgxPaginationModule, Ng2SearchPipeModule,
     FormsModule, MatDialogModule, ReactiveFormsModule, NgxLoadingModule.forRoot({})],
-  providers: [DatePipe, MessageService, FeedbackService, UserMessService, {
+  providers: [DatePipe, MessageService, FeedbackService, {
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptor,
     multi: true

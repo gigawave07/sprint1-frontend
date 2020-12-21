@@ -1,12 +1,14 @@
-<div class="openChatBtn">
-  <img id="icon-message"
+<div id="animation-border" class="align-self-center"></div>
+<div class="openChatBtn" align="center">
+  <img id="icon-message" class="align-self-center"
        src="https://scontent.fsgn2-1.fna.fbcdn.net/v/t1.0-9/131426681_844750992982252_5573492330164978289_n.jpg?_nc_cat=105&ccb=2&_nc_sid=730e14&_nc_ohc=kcCsG2i189EAX8OmaTn&_nc_ht=scontent.fsgn2-1.fna&oh=5c32128ce6a38e2ea5daad12680c2dfa&oe=5FFF5DAD">
 </div>
 <div class="requiredChat container-fluid">
   <div class="row">
     <div class="col-lg-12 header-openChat">
-      <span style="color: white">Hãy nhập thông tin để được sự tư vấn</span>
       <button class="close" style="color: white">X</button>
+      <br>
+      <span style="color: white; padding-top: 20px">Hãy nhập thông tin để được sự tư vấn</span>
     </div>
   </div>
   <div class="row mt-5">
@@ -18,6 +20,10 @@
           <small class="input-request"
                  *ngIf="formSendRequest.controls.name?.touched && formSendRequest.controls.name?.errors?.required">
             Hãy nhập tên của bạn vào
+          </small>
+          <small class="input-request"
+                 *ngIf="formSendRequest.controls.name?.touched && formSendRequest.controls.name?.errors?.maxlength">
+            Tên không được lớn hơn 25 kí tự
           </small>
           <input id="content-email" class="form-control mt-3" type="email" placeholder="*Email" formControlName="email"
                  required>
@@ -37,9 +43,9 @@
           </small>
           <small class="input-request"
                  *ngIf="formSendRequest.controls.phone?.touched && formSendRequest.controls.phone?.errors?.pattern">
-            Số điện thoại phải có từ 10 số
+            Số điện thoại phải có từ 10 số đến 12 số
           </small><br>
-          <button [disabled]="formSendRequest.invalid" class=" form-control begin-chat">Bắt đầu trò chuyện</button>
+          <button class=" form-control begin-chat">Bắt đầu trò chuyện</button>
         </form>
       </div>
     </div>
@@ -57,9 +63,9 @@
         <div class="col-lg-12 chat-body" id="chat-body">
           <div *ngFor="let mess of listMess">
             <div *ngIf="(mess.isUser == 'false')">
-              <div class="row" style="margin-bottom: 2px; z-index: 1">
-                <div class="col-lg-9 mess-consultant">
-                <span ><span
+              <div class="row" style="margin-bottom: 5px ;margin-top: 5px; z-index: 1">
+                <div class="col-lg-9 mess-consultant d-inline-flex">
+                <span><span
                   style="margin-left: 2px"></span>{{mess.content}}<span style="margin-right: 2px"></span></span>
                   <div class="col-lg-3"></div>
                 </div>
@@ -68,7 +74,7 @@
             <div *ngIf="(mess.isUser == 'true')">
               <div class="row" style="z-index: 1">
                 <div class="col-lg-3"></div>
-                <div class="col-lg-9 mess-from-user"><span ><span
+                <div class="col-lg-9 mess-from-user"><span><span
                   style="margin-left: 2px"></span>{{mess.content}}<span style="margin-right: 2px"></span></span>
                 </div>
               </div>
@@ -87,15 +93,15 @@
           <div class="input-group form-inline" id="input-inline">
             <input id="content-mess" formControlName="content" class="form-control" type="text"
                    placeholder="Type message ...">
-            <span class="input-group-btn ml-1 mt-1">
-              <i class="fas fa-paperclip icon-option " id="icon-upload-file"></i>
+            <span class="input-group-btn ml-1 mt-2">
+              <i class="fa fa-paperclip icon-option " id="icon-upload-file"></i>
             </span>
-            <span class="input-group-btn ml-1 mt-1">
-              <i class="fas fa-kiss-wink-heart icon-option" id="icon"></i>
+            <span class="input-group-btn ml-1 mt-2">
+              <i class="fa fa-smile-o icon-option" id="icon"></i>
             </span>
             <button [disabled]="formSend.controls.content.errors?.required" type="submit"
                     class="input-group-btn ml-1 mt-1" id="btn-submit-mess">
-              <i class="fas fa-paper-plane icon-option"></i>
+              <i class="fa fa-paper-plane icon-option"></i>
             </button>
           </div>
         </form>
