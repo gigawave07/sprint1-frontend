@@ -5,7 +5,7 @@ import {FlightTicketComponent} from './flight-ticket.component';
 describe('FlightTicketComponent', () => {
   let component: FlightTicketComponent;
   let fixture: ComponentFixture<FlightTicketComponent>;
-
+// Khánh
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [FlightTicketComponent]
