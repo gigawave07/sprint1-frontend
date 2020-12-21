@@ -43,7 +43,6 @@ import {MessUserComponent} from './components/mess-user/mess-user.component';
 import {SendFeedbackComponent} from './components/send-feedback/send-feedback.component';
 import {ConsultantComponent} from './components/consultant/consultant.component';
 import {MessageConsultantComponent} from './components/consultant/message-consultant/message-consultant.component';
-import {SearchFlightInformationComponent} from "./components/flight/search-flight-information/search-flight-information.component";
 
 const routes: Routes = [
   // Quân :
@@ -111,13 +110,13 @@ const routes: Routes = [
   // khánh
   {path: 'invoice-list', component: InvoiceListComponent},
   {path: 'invoice-detail/:id', component: InvoiceDetailComponent},
-  {path: 'invoice-download', component: InvoiceDownloadComponent}
+  {path: 'invoice-download', component: InvoiceDownloadComponent},
   // Đin
   {path: 'search', component: SearchFlightInformationComponent}
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes), CommonModule, ReactiveFormsModule, MaterialModule,
+  imports: [RouterModule.forRoot(routes), CommonModule, MaterialModule,
     MatDialogModule, FormsModule, NgxPaginationModule],
   exports: [RouterModule],
   declarations: [ListEmployeeComponent, CreateEmployeeComponent, EditEmployeeComponent, DeleteEmployeeComponent,
