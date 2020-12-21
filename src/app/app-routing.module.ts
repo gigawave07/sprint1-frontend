@@ -32,6 +32,7 @@ import {PrintTicketComponent} from './components/print-ticket/print-ticket.compo
 import {MessageNoticeEmployeeComponent} from './components/message-notice-employee/message-notice-employee.component';
 import {PrintTicketTwoWayComponent} from './components/print-ticket-two-way/print-ticket-two-way.component';
 import {NoticePageComponent} from './components/notice-page/notice-page.component';
+import {PromotionListForCustomerComponent} from './components/promotion/promotion-list-for-customer/promotion-list-for-customer.component';
 
 import {MessUserComponent} from './components/mess-user/mess-user.component';
 import {SendFeedbackComponent} from './components/send-feedback/send-feedback.component';
@@ -82,7 +83,8 @@ const routes: Routes = [
   // Đăng:caca
   {path: 'list-pending-ticket', component: ListPendingTicketComponent},
   {path: 'search-pending-ticket', component: SearchPendingTicketComponent},
-
+  // Ngân
+  {path: 'promotion', component: PromotionListForCustomerComponent},
   // Mai :
   {path: 'list-employee', component: ListEmployeeComponent},
   {path: 'list-employee/create-employee', component: CreateEmployeeComponent},

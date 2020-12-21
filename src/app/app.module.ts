@@ -1,5 +1,5 @@
 import {BrowserModule} from '@angular/platform-browser';
-import {NgModule} from '@angular/core';
+import {LOCALE_ID, NgModule} from '@angular/core';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
@@ -54,7 +54,6 @@ import {FeedbackService} from './service/feedback.service';
 import {MessUserComponent} from './components/mess-user/mess-user.component';
 import {MessageService} from './service/message.service';
 import {DatePipe} from '@angular/common';
-import { SuccessfullyPaidPendingTicketComponent } from './components/list-pending-ticket/successfully-paid-pending-ticket/successfully-paid-pending-ticket.component';
 
 @NgModule({
   declarations: [
@@ -84,11 +83,10 @@ import { SuccessfullyPaidPendingTicketComponent } from './components/list-pendin
     MessUserComponent,
     ConsultantComponent,
     MessageConsultantComponent
-    
   ],
   imports: [BrowserModule, AppRoutingModule, MaterialModule, HttpClientModule, NgxPaginationModule, Ng2SearchPipeModule,
     FormsModule, MatDialogModule, ReactiveFormsModule, NgxLoadingModule.forRoot({}),
-    ChartsModule, SocialLoginModule
+    ChartsModule, SocialLoginModule, PromotionModule
   ],
   // tslint:disable-next-line:max-line-length
   providers: [DatePipe, MessageService, FeedbackService
@@ -99,7 +97,7 @@ import { SuccessfullyPaidPendingTicketComponent } from './components/list-pendin
   }, {
     provide: AuthServiceConfig,
     useFactory: getAuthServiceConfigs
-  },
+  }, { provide: LOCALE_ID, useValue: 'vi-VN' },
     ExcelService],
   bootstrap: [AppComponent],
   entryComponents: [SpinnerOverlayComponent, TrangChinhComponent, BaoCaoComponentComponent, TrangChuThongKeComponent,
