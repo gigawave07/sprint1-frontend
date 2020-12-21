@@ -197,4 +197,10 @@ export class InputTicketSellComponent implements OnInit {
     this.router.navigate(['notice-page', {message: NOTICE, path: URL}]).then(r => {
     });
   }
+
+  keyDownFunction(event) {
+    if (event.keyCode === 13) {
+      this.saveAndPrint();
+    }
+  }
 }

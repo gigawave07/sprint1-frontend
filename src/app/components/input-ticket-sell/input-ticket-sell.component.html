@@ -55,7 +55,7 @@
           <div class="row justify-content-center inputTicket"><h5>NHẬP VÉ BÁN</h5></div>
 
           <div class="row justify-content-center">
-            <form [formGroup]="formCreate">
+            <form [formGroup]="formCreate" (keydown)="keyDownFunction($event)">
               <fieldset class="scheduler-border">
                 <legend class="scheduler-border header">Thông tin chung</legend>
                 <div class="form-row">
