@@ -31,7 +31,7 @@ function validateWhitespace(c: AbstractControl) {
 })
 export class EditUserComponent implements OnInit {
   public maxDate = new Date();
-  public minDate = new Date(1940, 0, 1);
+  public minDate = new Date(1900, 0, 1);
   public dataIdUser;
   public valueGender;
   formEditUser: FormGroup;
@@ -53,7 +53,8 @@ export class EditUserComponent implements OnInit {
         , this.userService.validateBirthday
         , this.userService.checkAge]],
       address: ['', [Validators.required, Validators.maxLength (255)]],
-      email: ['', [Validators.required]],
+      email: ['', [Validators.required, Validators.email,
+        Validators.maxLength(50), Validators.minLength(10)]],
       phoneNumber: ['', [Validators.required, this.userService.validPhoneNumber]],
       gender: ['', [Validators.required]]
     });

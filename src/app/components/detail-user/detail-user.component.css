@@ -153,5 +153,7 @@ img {
   transform: rotate(180deg);
 }
 .container-fluid{
-  background-image: url("https://dm0qx8t0i9gc9.cloudfront.net/watermarks/image/rDtN98Qoishumwih/clouds-vector-background_f1FZW-Dd_SB_PM.jpg");
+  background-image: url("https://images.vexels.com/media/users/3/144709/raw/95b04989b71b9375d9d04c3ee50cfc05-abstract-white-background-or-backdrop.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
 }

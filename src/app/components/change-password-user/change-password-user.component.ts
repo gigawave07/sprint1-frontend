@@ -64,13 +64,15 @@ export class ChangePasswordUserComponent implements OnInit {
     if (this.formChangePassword.valid) {
       this.userService.changePassword(this.idUser, this.formChangePassword.value).subscribe(data => {
         this.errorMessage = data;
-        console.log(data);
+        console.log('------------------------');
+        console.log(this.errorMessage);
+        console.log('------------------------');
         if (this.errorMessage == null) {
           this.dialogRef.close();
           this.openDialogConfirm(this.idUser);
         }
       }, error => {
-        this.errorMessage = 'Đổi mật khẩu thành công';
+       console.log(error);
       });
     }
   }

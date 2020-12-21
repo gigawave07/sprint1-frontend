@@ -7,6 +7,7 @@ import {MatDialog} from '@angular/material';
 
 
 
+
 @Component({
   selector: 'app-detail-user',
   templateUrl: './detail-user.component.html',
