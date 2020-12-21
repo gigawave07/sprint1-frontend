@@ -1,5 +1,5 @@
 <div class="row my-4">
-  <div class="col-9 d-flex justify-content-center" style="font-size: 50px">Quản lý bán vé</div>
+  <div class="col-9 d-flex justify-content-center" style="font-size: 50px; color: white">Quản lý bán vé</div>
   <div class="col-3"></div>
 </div>
 <div class="row">
@@ -12,15 +12,15 @@
       </div>
       <div class="col-9">
         <select class="custom-select" #key>
-          <option [selected]="key" value="price">Price</option>
-          <option value="full name passenger">Full name passenger</option>
-          <option value="booking code">Booking code</option>
+          <option [selected]="key" value="price">Giá</option>
+          <option value="full name passenger">Tên hành khách</option>
+          <option value="booking code">Mã đặt vé</option>
         </select></div>
     </div>
   </div>
   <div class="col-3">
     <form class="form-inline row">
-      <input class="form-control mr-2 col-7" type="search" placeholder="Search" aria-label="Search" #inputSearch>
+      <input class="form-control mr-2 col-7" type="search" placeholder="Tìm vé" aria-label="Search" #inputSearch>
       <button class="btn" type="submit"
               style="background-color: orange; color: white">Tìm
       </button>
@@ -59,7 +59,7 @@
                     style="background-color: grey; color: white">Xóa
             </button>
             <button (click)="openWindowPrint(element.id)" type="button" class="btn btn-primary"
-                    style="background-color: blue; color: white">In vé
+                    style="background-color: green; color: white">In vé
             </button>
           </td>
         </tr>

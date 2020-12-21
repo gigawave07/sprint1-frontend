@@ -94,8 +94,8 @@ const routes: Routes = [
 
   // Châu :
   {path: 'list-ticket', component: ListTicketComponent},
-  {path: 'input-ticket-sell/:idFlightDeparture/:idFlightArrival', component: InputTicketSellComponent},
   {path: 'print-ticket/:id', component: PrintTicketComponent},
+  {path: 'input-ticket-sell/:idFlightDeparture/:idFlightArrival', component: InputTicketSellComponent},
   {
     path: 'print-ticket-two-way/:bookingCode/:passengerList/:flightDeparture/:flightArrival',
     component: PrintTicketTwoWayComponent

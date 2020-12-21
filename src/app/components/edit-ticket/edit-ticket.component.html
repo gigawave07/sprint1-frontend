@@ -4,7 +4,7 @@
   </div>
   <hr>
   <div class="row justify-content-center">
-    <form [formGroup]="formEdit">
+    <form [formGroup]="formEdit" (keydown)="keyDownFunction($event)">
       <div class="row">
         <div class="col-sm-3">
           <p>Mã đặt chỗ</p>
