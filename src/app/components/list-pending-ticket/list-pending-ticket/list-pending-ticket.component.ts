@@ -2,6 +2,7 @@ import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {TicketService} from '../../../service/ticket/ticket.service';
 import {MatDialog} from '@angular/material/dialog';
 import {CancelPendingTicketComponent} from '../cancel-pending-ticket/cancel-pending-ticket.component';
+import {SuccessfullyPaidPendingTicketComponent} from "../successfully-paid-pending-ticket/successfully-paid-pending-ticket.component";
 
 @Component({
 	selector: 'app-list-pending-ticket',
@@ -12,10 +13,14 @@ export class ListPendingTicketComponent implements OnInit {
 	public ticketList = [];
 	public payTicketList = [];
 	public amountMoney = 0;
-	public p = 1;
+	
 	public isChecked: boolean;
 	public ticketStatusPaymentDTO = {id: 1, statusPaymentName: ''};
 	
+	public pageNumber = 1;
+	public pageSize = 2;
+	
+	public checked = [];
 	
 	constructor(
 		private ticketService: TicketService,
@@ -23,18 +28,14 @@ export class ListPendingTicketComponent implements OnInit {
 	) {
 	}
 	
-	@ViewChild('paypalRef', {static : true}) private paypalRef: ElementRef;
+	@ViewChild('paypalRef', {static: true}) private paypalRef: ElementRef;
+	
+	
 	ngOnInit(): void {
 		// console.log('this.ticketStatusPaymentDTO');
 		// console.log(this.ticketStatusPaymentDTO);
-		//
 		
-		this.ticketService.findAllPendingTicket().subscribe(value => {
-			this.ticketList = value;
-			console.log('this.ticketList');
-			console.log(this.ticketList);
-		});
-		// console.log(paypal);
+		this.listPendingTicket();
 		paypal.Buttons(
 			{
 				style: {
@@ -67,7 +68,7 @@ export class ListPendingTicketComponent implements OnInit {
 				onApprove: (data, actions) => {
 					return actions.order.capture().then(details => {
 						console.log('Transaction completed');
-						alert("Transaction completed");
+						// alert("Transaction completed");
 						// @ts-ignore
 						$("#paypalStatusPayment").click();
 					});
@@ -80,23 +81,32 @@ export class ListPendingTicketComponent implements OnInit {
 		).render(this.paypalRef.nativeElement);
 	}
 	
-	onCheckboxChange($event: Event, ticket: any) {
-		// console.log('filter change called. TicketCode: ' + ticketCode);
-		
-		// console.log('$event.target');
+	listPendingTicket() {
+		this.ticketService.findAllPendingTicket().subscribe(value => {
+			this.ticketList = value;
+			console.log('this.ticketList');
+			console.log(this.ticketList);
+		});
+	}
+	
+	onCheckboxChange($event: Event, ticket: any, index: any) {
+		// console.log(' TicketCode: ' + ticketCode);
 		// console.log($event.target.checked);
 		
 		// @ts-ignore
 		this.isChecked = $event.target.checked;
-		console.log(ticket.ticketCode + ' ' + this.isChecked);
-		let ticketCode = ticket.ticketCode;
-		console.log('ticketCode');
-		console.log(ticketCode);
+		this.checked[index]=this.isChecked;
+		console.log(this.checked);
+		// console.log(ticket.ticketCode + ' ' + this.isChecked);
+		// let ticketCode = ticket.ticketCode;
+		// console.log('ticketCode');
+		// console.log(ticketCode);
+		// console.log('i');
+		// console.log(i);
 		if (this.isChecked) {
 			this.payTicketList.push(ticket);
 			
-			this.amountMoney += ticket.flightInformation.price;
-			this.amountMoney /= 23000;
+			this.amountMoney += ticket.flightInformation.price / 23000;
 			console.log('this.amountMoney');
 			console.log(this.amountMoney);
 			console.log(this.payTicketList);
@@ -106,7 +116,7 @@ export class ListPendingTicketComponent implements OnInit {
 			// console.log('ticket.id');
 			// console.log(ticket.id);
 			this.payTicketList = this.payTicketList.filter(value => value !== ticket);
-			this.amountMoney -= ticket.flightInformation.price;
+			this.amountMoney -= ticket.flightInformation.price / 23000;
 			// this.renderPaypalButton();
 			console.log('this.amountMoney');
 			console.log(this.amountMoney);
@@ -114,19 +124,33 @@ export class ListPendingTicketComponent implements OnInit {
 		}
 	}
 	
-	payTicket() {
-		alert('click');
-		
-		for (let i=0; i<this.payTicketList.length;i++){
-			this.ticketStatusPaymentDTO.id =this.payTicketList[i].id;
+	setTicketStatusPaymentToPaid() {
+		for (let i = 0; i < this.payTicketList.length; i++) {
+			this.ticketStatusPaymentDTO.id = this.payTicketList[i].id;
 			this.ticketStatusPaymentDTO.statusPaymentName = 'Paid';
 			console.log('this.ticketStatusPaymentDTO');
 			console.log(this.ticketStatusPaymentDTO);
 			this.ticketService.setTicketStatusPayment(this.ticketStatusPaymentDTO.id, this.ticketStatusPaymentDTO).subscribe(value => {
-				console.log('payTicket ' + i);
+				console.log('setToPaid ' + i);
 			});
 		}
-		window.location.reload();
+		this.openSuccessfullyPaidDialogTicket(this.payTicketList);
+	}
+	
+	openSuccessfullyPaidDialogTicket(payTicketList: any): void {
+		const dialogRef = this.dialog.open(SuccessfullyPaidPendingTicketComponent, {
+			width: '500px',
+			data: {dataSuccessfullyPaid: payTicketList},
+			disableClose: true
+		});
+		
+		dialogRef.afterClosed().subscribe(result => {
+			this.listPendingTicket();
+			this.pageNumber=1;
+			this.payTicketList = [];
+			this.amountMoney = 0;
+			this.checked = [];
+		});
 	}
 	
 	openCancelDialogTicket(ticket: any): void {
@@ -137,8 +161,11 @@ export class ListPendingTicketComponent implements OnInit {
 		});
 		
 		dialogRef.afterClosed().subscribe(result => {
-			// this.ngOnInit();
-			window.location.reload();
+			this.listPendingTicket();
+			this.pageNumber=1;
+			this.payTicketList = [];
+			this.amountMoney = 0;
+			this.checked = [];
 		});
 	}
 	

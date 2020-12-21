@@ -54,15 +54,18 @@ import {FeedbackService} from './service/feedback.service';
 import {MessUserComponent} from './components/mess-user/mess-user.component';
 import {MessageService} from './service/message.service';
 import {DatePipe} from '@angular/common';
+import { SuccessfullyPaidPendingTicketComponent } from './components/list-pending-ticket/successfully-paid-pending-ticket/successfully-paid-pending-ticket.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     // Quân
     HomeComponent, LoginComponent, RegisterComponent, NavBarComponent, FooterComponent, VerificationEmailComponent,
-      // Đăngdcvsdacdasc
+      // Đăng
     ListPendingTicketComponent, CancelPendingTicketComponent, SearchPendingTicketComponent, SpinnerComponent, SpinnerOverlayComponent,
     SpinnerComponent, SpinnerOverlayComponent,
+    //  Đăng update
+    SuccessfullyPaidPendingTicketComponent,
     // Danh
     AdminComponent, InformationAdminComponent, ChangePasswordAdminComponent,
     // Đạt
@@ -81,6 +84,7 @@ import {DatePipe} from '@angular/common';
     MessUserComponent,
     ConsultantComponent,
     MessageConsultantComponent
+    
   ],
   imports: [BrowserModule, AppRoutingModule, MaterialModule, HttpClientModule, NgxPaginationModule, Ng2SearchPipeModule,
     FormsModule, MatDialogModule, ReactiveFormsModule, NgxLoadingModule.forRoot({}),
@@ -99,7 +103,10 @@ import {DatePipe} from '@angular/common';
     ExcelService],
   bootstrap: [AppComponent],
   entryComponents: [SpinnerOverlayComponent, TrangChinhComponent, BaoCaoComponentComponent, TrangChuThongKeComponent,
-    KetQuaComponent, KetQuaTableComponent, KetQuaSaiLogicComponent]
+    KetQuaComponent, KetQuaTableComponent, KetQuaSaiLogicComponent,
+    //  Đăng update
+    SuccessfullyPaidPendingTicketComponent
+  ]
 })
 export class AppModule {
 }

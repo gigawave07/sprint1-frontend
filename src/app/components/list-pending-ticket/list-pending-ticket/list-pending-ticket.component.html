@@ -1,4 +1,4 @@
-<div class="container-fluid row col-12 ml-5 mr-5 px-0 mx-0">
+<div class="container-fluid ml-lg-5 mr-lg-5 px-lg-0 mx-lg-0">
 	<div class="table-responsive">
 		<div class="table-wrapper">
 			<div class="table-title">
@@ -25,58 +25,59 @@
 				</tr>
 				</thead>
 				<tbody *ngIf="ticketList!=null">
-				<!--						<tr *ngFor="let employee of employeeList |filter:term| paginate: { itemsPerPage: 5, currentPage: p }">-->
-				<!--							<td>{{employee.id}}</td>-->
-				<!--							<td>{{employee.name}}</td>-->
-				<!--							<td>{{employee.position}}</td>-->
-				<tr *ngFor="let ticket of ticketList| paginate: { itemsPerPage: 2, currentPage: p }">
-					<!--						<tr *ngFor="let ticket of ticketList">-->
-					
-					<td>{{ticket.ticketCode}}</td>
+				<tr *ngFor="let index = index;let ticket of ticketList | paginate: { itemsPerPage: pageSize, currentPage: pageNumber }">
+<!--					<td *ngIf="p==1">{{ticket.ticketCode}}</td>-->
+					<td *ngIf="pageNumber==1">{{ticket.ticketCode}} {{index}}</td>
+					<td *ngIf="pageNumber>1">{{ticket.ticketCode}} {{(pageNumber-1)*pageSize+index}}</td>
 					<td>{{ticket.flightInformation.departure}}</td>
 					<td>{{ticket.flightInformation.arrival}}</td>
 					<td>{{ticket.booking.bookingDate}}</td>
 					<td>{{ticket.flightInformation.departureDate}}</td>
 					<td id="flightInformationPrice">{{ticket.flightInformation.price}}</td>
-					<!--							<td><a href="#deleteTicketModal">Huỷ</a></td>-->
 					<td>
 						<button (click)="openCancelDialogTicket(ticket)" class="btn btn-danger">
 							Huỷ
 						</button>
 					</td>
 					<td>
-									<span class="custom-checkbox">
-									<input type="checkbox" id="{{ticket.ticketCode}}"
-									       (change)="onCheckboxChange($event,ticket)">
-									<label for="{{ticket.ticketCode}}"></label>
-									</span>
+						<span class="custom-checkbox">
+							<input *ngIf="pageNumber==1" type="checkbox"
+						       (change)="onCheckboxChange($event,ticket,index)"
+						       [checked]="checked[index]"
+						       [ngModel]="checked[index]"
+							>
+							<input *ngIf="pageNumber>1" type="checkbox"
+						       (change)="onCheckboxChange($event,ticket,(pageNumber-1)*pageSize+index)"
+						       [checked]="checked[(pageNumber-1)*pageSize+index]"
+						       [ngModel]="checked[(pageNumber-1)*pageSize+index]"
+							>
+							<label></label>
+						</span>
 					</td>
 				</tr>
 				</tbody>
 			</table>
 			
 			<div class="clearfix">
-				<pagination-controls (pageChange)="p = $event"></pagination-controls>
+				<pagination-controls (pageChange)="pageNumber = $event"></pagination-controls>
 			</div>
 		
 		
 		</div>
 	</div>
-	<!--button paypal	-->
-	<div class="col-10 "></div>
-	<div class="col-2 mt-3">
-		<div class="paypal" style="width: 100px" #paypalRef></div>
-	</div>
-	<!--	</div>-->
 	
+	<div class="row mt-3" >
+		<div class="paypal ml-lg-5 ml-md-5" style="width: 100px" #paypalRef></div>
+	</div>
 	
 	<!--pay ticket-->
-	<div class="col-12">
-		<div id="paypalStatusPayment" (click)="payTicket()"></div>
+	<div class="row col-12">
+		<div id="paypalStatusPayment" (click)="setTicketStatusPaymentToPaid()"></div>
 	</div>
-<!--	-->
-<!--	-->
-
 
 </div>
+
+<!--button paypal	-->
+
+<!--	</div>-->
 
