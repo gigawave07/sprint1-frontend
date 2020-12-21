@@ -14,7 +14,7 @@
   <div class="row mt-5">
     <div class="col-lg-12 mb-1 content-box">
       <div align="center">
-        <form (ngSubmit)="sendRequest()" [formGroup]="formSendRequest">
+        <form focusInvalidInput (ngSubmit)="sendRequest()" [formGroup]="formSendRequest">
           <input id="content-name" class="form-control mt-3" type="text" placeholder="*Tên" formControlName="name"
                  required>
           <small class="input-request"

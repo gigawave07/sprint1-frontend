@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ElementRef} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import * as firebase from 'firebase';
 import {DatePipe} from '@angular/common';
@@ -26,23 +26,20 @@ export const snapshotToArray = (snapshot: any, room: any) => {
 })
 export class MessUserComponent implements OnInit {
 
-
   public listMess = [];
   public listIcon = [];
   public room = '';
   formSend: FormGroup;
   formSendRequest: FormGroup;
   firstRequest: FormGroup;
-  // firebase
-
   refUser = firebase.database().ref('users/');
 
-
-  constructor(private fb: FormBuilder, private datePipe: DatePipe, private messageService: MessageService) {
+  constructor(private el: ElementRef, private fb: FormBuilder, private datePipe: DatePipe, private messageService: MessageService) {
     firebase.database().ref('chats/').on('value', resp => {
       this.listMess = [];
       this.listMess = snapshotToArray(resp, this.room);
       $('.chat-body').scrollTop($('.chat-body')[0].scrollHeight);
+
     });
   }
 
@@ -53,14 +50,11 @@ export class MessUserComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       phone: ['', [Validators.required, Validators.pattern('^\\d{10,12}$')]]
     });
-
     this.formSend = this.fb.group({
       content: ['', Validators.required],
       isUser: ''
     });
-
     $(document).ready(() => {
-
       $('.openChatBtn').click(() => {
         $('.requiredChat').show();
         $('.openChatBtn').hide();
@@ -120,15 +114,14 @@ export class MessUserComponent implements OnInit {
   }
 
   sendRequest() {
+    for (const key of Object.keys(this.formSendRequest.controls)) {
+      if (this.formSendRequest.controls[key].invalid) {
+        const invalidControl = this.el.nativeElement.querySelector('[formControlName="' + key + '"]');
+        invalidControl.focus();
+        break;
+      }
+    }
     this.formSendRequest.markAllAsTouched();
-
-    // if (this.formSendRequest.controls.name.errors.required || this.formSendRequest.controls.name.errors.maxlength) {
-    //   $('#content-name').focus();
-    // } else if (this.formSendRequest.controls.email.errors.required || this.formSendRequest.controls.email.errors.email) {
-    //   $('#content-email').focus();
-    // } else if (this.formSendRequest.controls.phone.errors.required || this.formSendRequest.controls.phone.errors.pattern) {
-    //   $('#content-phone').focus();
-    // }
     if (this.formSendRequest.valid) {
       const request = this.formSendRequest.value;
       request.roomId = request.phone + Math.round(Math.random() * 10000);
