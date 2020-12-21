@@ -11,7 +11,7 @@
 			<table class="table table-striped table-hover">
 				<thead>
 				<tr>
-					
+
 					<th>Mã vé</th>
 					<th>Nơi đi</th>
 					<th>Nơi đến</th>
@@ -31,7 +31,7 @@
 				<!--							<td>{{employee.position}}</td>-->
 				<tr *ngFor="let ticket of ticketList| paginate: { itemsPerPage: 2, currentPage: p }">
 					<!--						<tr *ngFor="let ticket of ticketList">-->
-					
+
 					<td>{{ticket.ticketCode}}</td>
 					<td>{{ticket.flightInformation.departure}}</td>
 					<td>{{ticket.flightInformation.arrival}}</td>
@@ -54,12 +54,12 @@
 				</tr>
 				</tbody>
 			</table>
-			
+
 			<div class="clearfix">
 				<pagination-controls (pageChange)="p = $event"></pagination-controls>
 			</div>
-		
-		
+
+
 		</div>
 	</div>
 	<!--button paypal	-->
@@ -68,8 +68,8 @@
 		<div class="paypal" style="width: 100px" #paypalRef></div>
 	</div>
 	<!--	</div>-->
-	
-	
+
+
 	<!--pay ticket-->
 	<div class="col-12">
 		<div id="paypalStatusPayment" (click)="payTicket()"></div>

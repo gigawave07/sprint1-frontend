@@ -56,6 +56,12 @@ import {MessageService} from './service/message.service';
 import {DatePipe} from '@angular/common';
 import {PromotionModule} from './components/promotion/promotion.module';
 
+import {InvoiceListComponent} from './components/invoice-list/invoice-list.component';
+import {InvoiceDetailComponent} from './components/invoice-detail/invoice-detail.component';
+import { InvoiceDownloadComponent } from './components/invoice-download/invoice-download.component';
+import { PDFExportModule } from '@progress/kendo-angular-pdf-export';
+
+
 
 @NgModule({
   declarations: [
@@ -86,7 +92,7 @@ import {PromotionModule} from './components/promotion/promotion.module';
   ],
   imports: [BrowserModule, AppRoutingModule, MaterialModule, HttpClientModule, NgxPaginationModule, Ng2SearchPipeModule,
     FormsModule, MatDialogModule, ReactiveFormsModule, NgxLoadingModule.forRoot({}),
-    ChartsModule, SocialLoginModule, PromotionModule
+    ChartsModule, SocialLoginModule, PromotionModule, PDFExportModule
   ],
   // tslint:disable-next-line:max-line-length
   providers: [DatePipe, MessageService, FeedbackService

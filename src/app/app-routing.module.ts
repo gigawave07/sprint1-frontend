@@ -33,6 +33,9 @@ import {MessageNoticeEmployeeComponent} from './components/message-notice-employ
 import {PrintTicketTwoWayComponent} from './components/print-ticket-two-way/print-ticket-two-way.component';
 import {NoticePageComponent} from './components/notice-page/notice-page.component';
 import {PromotionListForCustomerComponent} from './components/promotion/promotion-list-for-customer/promotion-list-for-customer.component';
+import {InvoiceListComponent} from './components/invoice-list/invoice-list.component';
+import {InvoiceDetailComponent} from './components/invoice-detail/invoice-detail.component';
+import {InvoiceDownloadComponent} from './components/invoice-download/invoice-download.component';
 
 import {MessUserComponent} from './components/mess-user/mess-user.component';
 import {SendFeedbackComponent} from './components/send-feedback/send-feedback.component';
@@ -101,6 +104,10 @@ const routes: Routes = [
     component: PrintTicketTwoWayComponent
   },
   {path: 'notice-page', component: NoticePageComponent},
+  // khánh
+  {path: 'invoice-list', component: InvoiceListComponent},
+  {path: 'invoice-detail/:id', component: InvoiceDetailComponent},
+  {path: 'invoice-download', component: InvoiceDownloadComponent}
 ];
 
 @NgModule({

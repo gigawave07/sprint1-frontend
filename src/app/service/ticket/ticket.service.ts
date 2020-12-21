@@ -105,4 +105,9 @@ export class TicketService {
   /**
    * Chau end
    */
+  // khanh
+  findAllTicketByInvoiceId(invoiceId): Observable<any> {
+    return this.http.get(this.API + '/findAllTicketByInvoiceId/' + invoiceId);
+  }
+
 }

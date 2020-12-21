@@ -23,6 +23,8 @@
     "ngx-pagination": "^5.0.0",
     "@angular/router": "~8.2.14",
     "angularx-social-login": "^2.2.1",
+    "@progress/kendo-angular-common": "^1.2.2",
+    "@progress/kendo-angular-pdf-export": "^2.0.4",
     "bootstrap": "^4.5.3",
     "chart.js": "^2.9.4",
     "exceljs": "^4.2.0",
@@ -39,7 +41,10 @@
     "rxjs-compat": "^6.6.3",
     "tslib": "^1.10.0",
     "xlsx": "^0.16.9",
-    "zone.js": "~0.9.1"
+    "zone.js": "~0.9.1",
+    "@progress/kendo-drawing": "^1.2.0",
+    "@progress/kendo-theme-default": "latest",
+    "@syncfusion/ej2-pdf-export": "^18.2.55"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.803.29",
