@@ -26,7 +26,6 @@ import {EmployeeComponent} from './components/employee/employee.component';
 import {BaoCaoComponentComponent} from './components/report-statistic/bao-cao-thong-ke/bao-cao/bao-cao-component/bao-cao-component.component';
 import {ListTicketComponent} from './components/list-ticket/list-ticket.component';
 import {EditTicketComponent} from './components/edit-ticket/edit-ticket.component';
-import {MatInputModule} from '@angular/material/input';
 import {InputTicketSellComponent} from './components/input-ticket-sell/input-ticket-sell.component';
 import {PrintTicketComponent} from './components/print-ticket/print-ticket.component';
 import {MessageNoticeEmployeeComponent} from './components/message-notice-employee/message-notice-employee.component';
@@ -38,6 +37,7 @@ import {MessUserComponent} from './components/mess-user/mess-user.component';
 import {SendFeedbackComponent} from './components/send-feedback/send-feedback.component';
 import {ConsultantComponent} from './components/consultant/consultant.component';
 import {MessageConsultantComponent} from './components/consultant/message-consultant/message-consultant.component';
+
 const routes: Routes = [
   // Quân :
   {path: '', component: HomeComponent},
