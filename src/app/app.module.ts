@@ -60,6 +60,11 @@ import {ChangePasswordSuccessfullyComponent} from './components/change-password-
 import {GetTokenEmailAdminComponent} from './components/get-token-email-admin/get-token-email-admin.component';
 import { GetCheckPasswordAdminComponent } from './components/get-check-password-admin/get-check-password-admin.component';
 
+import {InvoiceListComponent} from './components/invoice-list/invoice-list.component';
+import {InvoiceDetailComponent} from './components/invoice-detail/invoice-detail.component';
+import { InvoiceDownloadComponent } from './components/invoice-download/invoice-download.component';
+import { PDFExportModule } from '@progress/kendo-angular-pdf-export';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -91,7 +96,8 @@ import { GetCheckPasswordAdminComponent } from './components/get-check-password-
   ],
   imports: [BrowserModule, AppRoutingModule, MaterialModule, HttpClientModule, NgxPaginationModule, Ng2SearchPipeModule,
     FormsModule, MatDialogModule, ReactiveFormsModule, NgxLoadingModule.forRoot({}),
-    ChartsModule, SocialLoginModule, PromotionModule
+    ChartsModule, SocialLoginModule, PromotionModule,     PDFExportModule,
+
   ],
   // tslint:disable-next-line:max-line-length
   providers: [DatePipe, MessageService, FeedbackService
