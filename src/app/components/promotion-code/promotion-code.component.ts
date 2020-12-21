@@ -31,7 +31,7 @@ export class PromotionCodeComponent implements OnInit {
   sendEmail() {
     this.promotionCodeService.sendEmail(this.formSendEmail.value.emailPassgenger).subscribe(data => {
       console.log(data);
-      this.messageSuccess = 'Bạn đã đăng ký email thành công.';
+      this.messageSuccess = 'Bạn đã đăng ký email ' + this.formSendEmail.value.emailPassgenger + ' thành công.';
       setTimeout(() => {
         this.messageSuccess = '';
       }, 2000);
