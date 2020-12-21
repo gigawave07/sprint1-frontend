@@ -97,7 +97,8 @@ import {PromotionModule} from './components/promotion/promotion.module';
   }, {
     provide: AuthServiceConfig,
     useFactory: getAuthServiceConfigs
-  }, { provide: LOCALE_ID, useValue: 'vi-VN' },
+  },
+    // { provide: LOCALE_ID, useValue: 'vi-VN' },
     ExcelService],
   bootstrap: [AppComponent],
   entryComponents: [SpinnerOverlayComponent, TrangChinhComponent, BaoCaoComponentComponent, TrangChuThongKeComponent,
