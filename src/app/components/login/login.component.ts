@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup} from '@angular/forms';
 import {LoginService} from '../../service/login.service';
 import {Router} from '@angular/router';
 import {SpinnerOverlayService} from '../../service/animations/spinner-overlay.service';
+import {MatDialogRef} from '@angular/material';
 
 @Component({
   selector: 'app-login',
@@ -16,9 +17,10 @@ export class LoginComponent implements OnInit {
 
   constructor(public formBuilder: FormBuilder,
               public loginService: LoginService,
-              public router: Router,
-              public spinnerOverlayService: SpinnerOverlayService
+              public spinnerOverlayService: SpinnerOverlayService,
+              private dialogRef: MatDialogRef<LoginComponent>
   ) {
+    console.log(this);
   }
 
   ngOnInit() {
@@ -40,12 +42,12 @@ export class LoginComponent implements OnInit {
         this.loginService.logout();
       } else {
         this.loginService.broadcastLoginChange(this.user);
-        this.router.navigateByUrl('');
       }
     }, error => {
       this.message = 'Sai email hoặc password';
     }, () => {
       this.spinnerOverlayService.hide();
+      this.dialogRef.close();
     });
   }
 }

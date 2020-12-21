@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 
@@ -7,10 +7,16 @@ import {Observable} from 'rxjs';
 })
 export class TicketService {
   public readonly API: string = 'http://localhost:8080/ticket';
+  public apiAdd = 'http://localhost:8080/ticket/add';
 
   constructor(
     public http: HttpClient
-  ) { }
+  ) {
+  }
+
+  addTicketAndBooking(daoTicket): Observable<any> {
+    return this.http.post(this.apiAdd, daoTicket);
+  }
 
   getAllTicketService(): Observable<any> {
     return this.http.get(this.API + '/list');

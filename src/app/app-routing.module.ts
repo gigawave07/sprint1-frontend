@@ -8,6 +8,8 @@ import {ListTicketComponent} from './components/list-ticket/list-ticket.componen
 import {VerificationEmailComponent} from './components/verification-email/verification-email.component';
 import {ListPendingTicketComponent} from './components/list-pending-ticket/list-pending-ticket/list-pending-ticket.component';
 import {SearchPendingTicketComponent} from './components/search-pending-ticket/search-pending-ticket/search-pending-ticket.component';
+import {SearchFlightInformationComponent} from './components/flight/search-flight-information/search-flight-information.component';
+import {PaymentHistoryComponent} from './components/flight/payment-history/payment-history/payment-history.component';
 
 
 const routes: Routes = [
@@ -20,8 +22,12 @@ const routes: Routes = [
   {path: 'deleteTicket', component: DeleteTicketComponent},
   {path: 'listTicket', component: ListTicketComponent},
     // Đăng:
-  {path: 'list-pending-ticket', component: ListPendingTicketComponent},
+  {path: 'list-pending-ticket', component: ListPendingTicketComponent, children: [{
+    path : 'history' , component : PaymentHistoryComponent
+    }]},
   {path: 'search-pending-ticket', component: SearchPendingTicketComponent},
+  // Đin
+  {path: 'search', component: SearchFlightInformationComponent}
 ];
 
 @NgModule({
