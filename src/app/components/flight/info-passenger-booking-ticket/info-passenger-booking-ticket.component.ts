@@ -1,4 +1,4 @@
-import {Component, Inject, OnChanges, OnInit, QueryList, SimpleChanges, ViewChildren} from '@angular/core';
+import {Component, ElementRef, Inject, OnChanges, OnInit, QueryList, SimpleChanges, ViewChildren} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
 import {FormArray, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {LuggageService} from '../../../service/luggage/luggage.service';
@@ -34,6 +34,7 @@ export class InfoPassengerBookingTicketComponent implements OnInit {
 
   constructor(private dialogRef: MatDialogRef<InfoPassengerBookingTicketComponent>,
               @Inject(MAT_DIALOG_DATA) private data: any,
+              private el: ElementRef,
               private formBuilder: FormBuilder,
               private luggageService: LuggageService,
               private loginService: LoginService,

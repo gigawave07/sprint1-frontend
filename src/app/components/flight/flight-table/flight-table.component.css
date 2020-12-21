@@ -27,6 +27,17 @@ th {
   border-color: orange;
   color: white;
 }
+ .mat-button.choose {
+   background-color: blue;
+   border-color: blue;
+   color: white;
+ }
+
+.mat-button.choos:active {
+  background-color: black;
+  border-color: black;
+  color: white;
+}
 
 .border-flight {
   border-radius: 0.75rem;

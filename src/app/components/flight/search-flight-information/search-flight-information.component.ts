@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {AbstractControl, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {FlightService} from '../../../service/flight-information/flight.service';
 import {randomString} from '../RandomString';
 
@@ -40,7 +40,7 @@ export class SearchFlightInformationComponent implements OnInit {
       arrivalDate: ['', [Validators.required]],
       sort: ['id'],
       quantity: ['']
-    });
+    }, {validators : this.validatorDepartureAndArrival});
     this.minDepartureDate = new Date();
     this.minArrivalDate = new Date();
     console.log(randomString(10));
@@ -54,6 +54,16 @@ export class SearchFlightInformationComponent implements OnInit {
       return true;
     } else {
       return false;
+    }
+  }
+
+  validatorDepartureAndArrival(form: AbstractControl) {
+    const departure = form.get('departure').value;
+    const arrival = form.get('arrival').value;
+    if (departure === arrival) {
+      return {validator: true};
+    } else {
+      return null;
     }
   }
 
