@@ -11,9 +11,9 @@ import {DeleteEmployeeComponent} from '../delete-employee/delete-employee.compon
   styleUrls: ['./list-employee.component.css']
 })
 export class ListEmployeeComponent implements OnInit {
-  private list;
+  private list = [];
   private checkList = 'true';
-  key: string;
+  keywordSearch: '';
   p: number;
 
   constructor(
@@ -48,44 +48,48 @@ export class ListEmployeeComponent implements OnInit {
     });
   }
 
-  searchEmployee(key: string, attribute: any) {
-    if (attribute === 'fullName' && key !== '') {
-      this.employeeService.searchEmployeeFullNameService(key).subscribe(data => {
+  searchEmployee(attribute: any) {
+    if (attribute === 'fullName' && this.keywordSearch != '') {
+      this.employeeService.searchEmployeeFullNameService(this.keywordSearch).subscribe(data => {
         this.list = data;
         if (this.list.length === 0) {
           this.checkList = 'false';
         }
       });
-    } else if (attribute === 'email' && key !== '') {
-      this.employeeService.searchEmployeeEmailService(key).subscribe(data => {
+    } else if (attribute === 'email' && this.keywordSearch != '') {
+      this.employeeService.searchEmployeeEmailService(this.keywordSearch).subscribe(data => {
         this.list = data;
         if (this.list.length === 0) {
           this.checkList = 'false';
         }
       });
-    } else if (attribute === 'phoneNumber' && key !== '') {
-      this.employeeService.searchEmployeePhoneNumberService(key).subscribe(data => {
+    } else if (attribute === 'phoneNumber' && this.keywordSearch != '') {
+      this.employeeService.searchEmployeePhoneNumberService(this.keywordSearch).subscribe(data => {
         this.list = data;
         if (this.list.length === 0) {
           this.checkList = 'false';
         }
       });
-    } else if (attribute === 'choose' || this.key === '') {
+    } else if (attribute == 'choose' && this.keywordSearch != '') {
+      alert('Vui lòng chọn thuộc tính cần tìm!');
       this.employeeService.getAllEmployeeService().subscribe(data => {
         this.ngOnInit();
         if (this.list.length === 0) {
           this.checkList = 'false';
         }
       });
-    } else if (attribute !== 'choose' && key === '') {
+    } else if (attribute != 'choose' && this.keywordSearch == '') {
+      alert('Vui lòng nhập giá trị tương ứng cần tìm!');
       this.employeeService.getAllEmployeeService().subscribe(data => {
         this.ngOnInit();
       });
+    } else {
+      alert('Vui lòng chọn thuộc tính và nhập từ khóa tìm kiếm');
     }
   }
 
-  resetFind() {
-    this.key = '';
+  resetSearch() {
+    this.keywordSearch = '';
     this.checkList = 'true';
     this.ngOnInit();
   }

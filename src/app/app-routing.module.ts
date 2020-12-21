@@ -22,19 +22,21 @@ import {MaterialModule} from './material.module';
 import {MatDialogModule} from '@angular/material';
 import {NgxPaginationModule} from 'ngx-pagination';
 import {EmployeeComponent} from './components/employee/employee.component';
-import {BaoCaoComponentComponent} from "./components/report-statistic/bao-cao-thong-ke/bao-cao/bao-cao-component/bao-cao-component.component";
+// tslint:disable-next-line:max-line-length
+import {BaoCaoComponentComponent} from './components/report-statistic/bao-cao-thong-ke/bao-cao/bao-cao-component/bao-cao-component.component';
 import {ListTicketComponent} from './components/list-ticket/list-ticket.component';
 import {EditTicketComponent} from './components/edit-ticket/edit-ticket.component';
-import {MatInputModule} from '@angular/material/input';
 import {InputTicketSellComponent} from './components/input-ticket-sell/input-ticket-sell.component';
 import {PrintTicketComponent} from './components/print-ticket/print-ticket.component';
 import { PrintTicketTwoWayComponent } from './components/print-ticket-two-way/print-ticket-two-way.component';
 import { NoticePageComponent } from './components/notice-page/notice-page.component';
 import {MessageNoticeEmployeeComponent} from './components/message-notice-employee/message-notice-employee.component';
 
+
 const routes: Routes = [
   // Quân :
   {path: '', component: HomeComponent},
+
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'verification-email', component: VerificationEmailComponent},
@@ -90,7 +92,7 @@ const routes: Routes = [
   exports: [RouterModule],
   declarations: [ListEmployeeComponent, CreateEmployeeComponent, EditEmployeeComponent, DeleteEmployeeComponent,
     EmployeeComponent, EditTicketComponent, InputTicketSellComponent, PrintTicketTwoWayComponent, NoticePageComponent,
-    MessageNoticeEmployeeComponent
+    MessageNoticeEmployeeComponent,
   ]
 })
 export class AppRoutingModule { }

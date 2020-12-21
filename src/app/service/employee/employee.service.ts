@@ -36,6 +36,7 @@ export class EmployeeService {
   }
 
   editEmployeeService(employeeDTO, idNeedEdit): Observable<any> {
+    console.log('có vô');
     return this.http.put(this.API + '/editEmployee/' + idNeedEdit, employeeDTO);
   }
 

@@ -44,15 +44,16 @@ import {DeleteTicketComponent} from './components/delete-ticket/delete-ticket.co
 import {PrintTicketComponent} from './components/print-ticket/print-ticket.component';
 import {ListTicketComponent} from './components/list-ticket/list-ticket.component';
 import {AuthServiceConfig, FacebookLoginProvider, GoogleLoginProvider, SocialLoginModule} from 'angularx-social-login';
-import {UserDialogComponent} from "./components/user-dialog/user-dialog.component";
-import {MessageUserComponent} from "./components/message-user/message-user.component";
+import {UserDialogComponent} from './components/user-dialog/user-dialog.component';
+import {MessageUserComponent} from './components/message-user/message-user.component';
 
+// @ts-ignore
 @NgModule({
   declarations: [
     AppComponent,
     // Quân
     HomeComponent, LoginComponent, RegisterComponent, NavBarComponent, FooterComponent, VerificationEmailComponent,
-      // Đăngdcvsdacdasc
+    // Đăngdcvsdacdasc
     ListPendingTicketComponent, CancelPendingTicketComponent, SearchPendingTicketComponent, SpinnerComponent, SpinnerOverlayComponent,
     SpinnerComponent, SpinnerOverlayComponent,
     // Danh
@@ -60,14 +61,11 @@ import {MessageUserComponent} from "./components/message-user/message-user.compo
     // Đạt
     DetailUserComponent, EditUserComponent, ChangePasswordUserComponent, InformationUserComponent, UserDialogComponent,
     MessageUserComponent,
-
-
     // Nhật
     TrangChinhComponent, BaoCaoComponentComponent, TrangChuThongKeComponent,
     KetQuaComponent, KetQuaTableComponent, KetQuaSaiLogicComponent,
-
     // Châu
-    ListTicketComponent, DeleteTicketComponent, PrintTicketComponent
+    ListTicketComponent, DeleteTicketComponent, PrintTicketComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, MaterialModule, HttpClientModule, NgxPaginationModule, Ng2SearchPipeModule,
     FormsModule, MatDialogModule, ReactiveFormsModule, NgxLoadingModule.forRoot({}),
@@ -84,6 +82,8 @@ import {MessageUserComponent} from "./components/message-user/message-user.compo
   },
     ExcelService],
   bootstrap: [AppComponent],
+  exports: [
+  ],
   entryComponents: [SpinnerOverlayComponent, TrangChinhComponent, BaoCaoComponentComponent, TrangChuThongKeComponent,
     KetQuaComponent, KetQuaTableComponent, KetQuaSaiLogicComponent]
 })
