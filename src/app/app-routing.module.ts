@@ -41,7 +41,21 @@ import {MessageConsultantComponent} from './components/consultant/message-consul
 // KhánhPQ
 import {CheckinOnlineComponent} from './components/checkin-online/checkin-online.component';
 import {PromotionCodeComponent} from './components/promotion-code/promotion-code.component';
+import { PassengerComponent } from './components/passenger/passenger.component';
+import { CreatePassengerComponent } from './components/create-passenger/create-passenger.component';
+import { DeletePassengerComponent } from './components/delete-passenger/delete-passenger.component';
+import { EditPassengerComponent } from './components/edit-passenger/edit-passenger.component';
+import { ListPassengerComponent } from './components/list-passenger/list-passenger.component';
+import {MatRadioModule} from '@angular/material/radio';
+import { DatePipe } from '@angular/common';
+import { EmployeeInfoComponent } from './components/employee-info/employee-info.component';
+import { EmployeeDetailComponent } from './components/employee-detail/employee-detail.component';
+import {ChangePasswordEmployeeComponent } from './components/change-password-employee/change-password-employee.component';
+import {MatIconModule} from '@angular/material/icon';
 
+import {ChangePasswordSuccessfullyComponent} from './components/change-password-successfully/change-password-successfully.component';
+import {GetTokenEmailAdminComponent} from './components/get-token-email-admin/get-token-email-admin.component';
+import {GetCheckPasswordAdminComponent} from './components/get-check-password-admin/get-check-password-admin.component';
 const routes: Routes = [
   // Quân :
   {path: '', component: HomeComponent},
@@ -65,6 +79,15 @@ const routes: Routes = [
         path: 'information', component: InformationAdminComponent
       },
       {
+        path: 'change-password-successfully', component: ChangePasswordSuccessfullyComponent
+      },
+      {
+        path: 'get-token-email', component: GetTokenEmailAdminComponent
+      },
+      {
+        path: 'get-check-password', component: GetCheckPasswordAdminComponent
+      },
+      {
         // Nhật mới
         path: 'report', component: BaoCaoComponentComponent,
       }
@@ -84,6 +107,22 @@ const routes: Routes = [
       {path: 'search-pending-ticket', component: SearchPendingTicketComponent}
     ]
   },
+  // Quốc
+  {
+    path: 'passenger', component: PassengerComponent,
+    children: [
+      {path: 'list-Passenger', component: ListPassengerComponent},
+      {path: 'list-Passenger/create-Passenger', component: CreatePassengerComponent},
+      {path: 'list-Passenger/edit-Passenger/:id', component: EditPassengerComponent},
+      {path: 'employee-Detail', component: EmployeeDetailComponent},
+    ]
+  },
+  // {
+  //   path: 'employee-info', component: EmployeeInfoComponent,
+  //   children: [
+  //     {path: 'employee-Detail', component: EmployeeDetailComponent},
+  //   ]
+  // },
 
   // Đăng:caca
   {path: 'list-pending-ticket', component: ListPendingTicketComponent},
@@ -112,12 +151,14 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes), CommonModule, ReactiveFormsModule, MaterialModule,
-    MatDialogModule, FormsModule, NgxPaginationModule],
+    imports: [RouterModule.forRoot(routes), CommonModule, ReactiveFormsModule, MaterialModule,
+        MatDialogModule, FormsModule, NgxPaginationModule, MatRadioModule, MatIconModule],
   exports: [RouterModule],
-  declarations: [ListEmployeeComponent, CreateEmployeeComponent, EditEmployeeComponent, DeleteEmployeeComponent,
-    EmployeeComponent, EditTicketComponent, InputTicketSellComponent, PrintTicketTwoWayComponent, NoticePageComponent,
-    MessageNoticeEmployeeComponent, CheckinOnlineComponent, PromotionCodeComponent
+  declarations: [ListEmployeeComponent, CreateEmployeeComponent, EditEmployeeComponent, DeleteEmployeeComponent, EmployeeComponent, EditTicketComponent, InputTicketSellComponent, PrintTicketTwoWayComponent, MessageNoticeEmployeeComponent, CheckinOnlineComponent, PromotionCodeComponent, NoticePageComponent, PassengerComponent, CreatePassengerComponent, DeletePassengerComponent, EditPassengerComponent, ListPassengerComponent, EmployeeInfoComponent, EmployeeDetailComponent, ChangePasswordEmployeeComponent
+  ],
+  providers: [
+    DatePipe
+  //
   ]
 })
 export class AppRoutingModule {

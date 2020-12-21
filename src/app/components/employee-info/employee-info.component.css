@@ -7,7 +7,6 @@
   color: #424e5d;
   text-decoration: none;
 }
-/**/
 
 .accordion .card-header {
   background: linear-gradient(#fff, #f1f1f1);
@@ -72,7 +71,7 @@
 
 .accordion .list-group-item:hover .badge {
   background: #fff;
-  color: #e5f0be;
+  color: #007bff;
 }
 
 .accordion .list-group-item a {
@@ -87,10 +86,4 @@
 
 .accordion .rotate {
   transform: rotate(180deg);
-}
-
-@media only screen and (min-width: 600px) {
-  [class*="col-"] {
-    width: 100%;
-  }
 }

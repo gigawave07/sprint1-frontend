@@ -1,16 +1,9 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, FormGroupDirective, NgForm, Validators} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ErrorStateMatcher} from '@angular/material/core';
 import {AdminService} from '../../service/admin/admin.service';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
-
-export class MyErrorStateMatcher implements ErrorStateMatcher {
-  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
-    const invalid = !!(control && control.invalid && control.parent.touched);
-    const invalidForm = !!(control && control.parent && control.parent.invalid && control.parent.touched);
-    return (invalid || invalidForm);
-  }
-}
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-change-password-admin',
@@ -22,38 +15,73 @@ export class ChangePasswordAdminComponent implements OnInit {
   public username;
   public account;
 
-  matcher = new MyErrorStateMatcher();
+  matcher = new ErrorStateMatcher();
 
   constructor(public formBuilder: FormBuilder,
               public adminService: AdminService,
+              public route: Router,
               public dialogRef: MatDialogRef<ChangePasswordAdminComponent>,
               @Inject(MAT_DIALOG_DATA) public data: any) {
     this.changePasswordForm = this.formBuilder.group({
-      passwordOld: ['', [Validators.required]],
-      passwordNew: ['', [Validators.required]],
-      confirmPassword: ['', [Validators.required]]
-    }, {validator: this.checkPasswords});
+      passwordOld: ['',
+        [
+          Validators.required,
+          Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[A-Za-z\\d]{8,20}$')
+        ]
+      ],
+      passwordNew: ['',
+        [
+          Validators.required,
+          Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[A-Za-z\\d]{8,20}$')
+        ]
+      ],
+      confirmPassword: ['',
+        [
+          Validators.required,
+          Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[A-Za-z\\d]{8,20}$')
+        ]
+      ],
+      verificationCode: ['', Validators.required],
+    }, {validator: this.checkPasswordConfirm});
   }
 
-  checkPasswords(group: FormGroup) {
+  checkPasswordConfirm(group: FormGroup) {
     const passwordNew = group.controls.passwordNew.value;
     const confirmPass = group.controls.confirmPassword.value;
     return passwordNew === confirmPass ? null : {notSame: true};
   }
 
+
   ngOnInit() {
     this.username = this.data.dataAdmin.email;
+    // send email confirm
+    this.adminService.sendConfirmEmailService(this.username).subscribe(dataSendEmail => {
+    });
   }
 
   changePassword() {
-    this.adminService.findAppAccountService(this.username).subscribe(dataAdmin => {
+    this.adminService.findAppAccountService(this.username).subscribe(dataAppAccount => {
       this.account = {
         passwordOld: this.changePasswordForm.controls.passwordOld.value,
-        password: this.changePasswordForm.controls.password.value
+        passwordNew: this.changePasswordForm.controls.passwordNew.value,
+        verificationCode: this.changePasswordForm.controls.verificationCode.value
       };
-      this.adminService.savePasswordAdminService(dataAdmin.username, this.account).subscribe(dataSavePassword => {
-        console.log(dataSavePassword.message);
-        this.dialogRef.close();
+      this.adminService.confirmEmail(dataAppAccount.username, this.account).subscribe(dataConfirmEmail => {
+        if (dataConfirmEmail) {
+          this.adminService.savePasswordAdminService(dataAppAccount.username, this.account).subscribe(dataSavePassword => {
+            console.log(dataSavePassword.message);
+            if (dataSavePassword.message === 'Password changed') {
+              this.dialogRef.close();
+              this.route.navigateByUrl('/admin/change-password-successfully');
+            } else {
+              this.dialogRef.close();
+              this.route.navigateByUrl('/admin/get-check-password');
+            }
+          });
+        } else {
+          this.dialogRef.close();
+          this.route.navigateByUrl('/admin/get-token-email');
+        }
       });
     });
   }
