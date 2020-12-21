@@ -43,19 +43,7 @@ import {ExcelService} from './components/report-statistic/service/excel.service'
 import {DeleteTicketComponent} from './components/delete-ticket/delete-ticket.component';
 import {PrintTicketComponent} from './components/print-ticket/print-ticket.component';
 import {ListTicketComponent} from './components/list-ticket/list-ticket.component';
-import {AuthServiceConfig, FacebookLoginProvider, GoogleLoginProvider, SocialLoginModule} from 'angularx-social-login';
-import {UserDialogComponent} from './components/user-dialog/user-dialog.component';
-import {MessageUserComponent} from './components/message-user/message-user.component';
-
-import {SendFeedbackComponent} from './components/send-feedback/send-feedback.component';
-import {ConsultantComponent} from './components/consultant/consultant.component';
-import {MessageConsultantComponent} from './components/consultant/message-consultant/message-consultant.component';
-import {FeedbackService} from './service/feedback.service';
-import {MessUserComponent} from './components/mess-user/mess-user.component';
-import {MessageService} from './service/message.service';
-import {DatePipe} from '@angular/common';
-import {PromotionModule} from './components/promotion/promotion.module';
-
+import {AuthServiceConfig, GoogleLoginProvider, SocialLoginModule} from 'angularx-social-login';
 
 @NgModule({
   declarations: [
@@ -86,7 +74,7 @@ import {PromotionModule} from './components/promotion/promotion.module';
   ],
   imports: [BrowserModule, AppRoutingModule, MaterialModule, HttpClientModule, NgxPaginationModule, Ng2SearchPipeModule,
     FormsModule, MatDialogModule, ReactiveFormsModule, NgxLoadingModule.forRoot({}),
-    ChartsModule, SocialLoginModule, PromotionModule
+    ChartsModule, SocialLoginModule
   ],
   // tslint:disable-next-line:max-line-length
   providers: [DatePipe, MessageService, FeedbackService
@@ -101,8 +89,9 @@ import {PromotionModule} from './components/promotion/promotion.module';
     // { provide: LOCALE_ID, useValue: 'vi-VN' },
     ExcelService],
   bootstrap: [AppComponent],
-  entryComponents: [SpinnerOverlayComponent, TrangChinhComponent, BaoCaoComponentComponent, TrangChuThongKeComponent,
-    KetQuaComponent, KetQuaTableComponent, KetQuaSaiLogicComponent]
+  // tslint:disable-next-line:max-line-length
+  entryComponents: [SpinnerOverlayComponent, TrangChinhComponent, BaoCaoComponentComponent, TrangChuThongKeComponent, ChangePasswordEmployeeComponent,
+    KetQuaComponent, KetQuaTableComponent, KetQuaSaiLogicComponent, DeletePassengerComponent]
 })
 export class AppModule {
 }
