@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {PromotionCodeService} from '../../service/promotion_code/promotion-code.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-promotion-code',
@@ -8,11 +9,13 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
   styleUrls: ['./promotion-code.component.css']
 })
 export class PromotionCodeComponent implements OnInit {
+  public messageSuccess = '';
   public promotionCodeResult: any;
   public formSendEmail: FormGroup;
   constructor(
     public formBuilder: FormBuilder,
-    public promotionCodeService: PromotionCodeService
+    public promotionCodeService: PromotionCodeService,
+    public router: Router
   ) { }
 
   ngOnInit() {
@@ -26,5 +29,14 @@ export class PromotionCodeComponent implements OnInit {
   }
 
   sendEmail() {
+    this.promotionCodeService.sendEmail(this.formSendEmail.value.emailPassgenger).subscribe(data => {
+      console.log(data);
+      this.messageSuccess = 'Bạn đã đăng ký email thành công.';
+      setTimeout(() => {
+        this.messageSuccess = '';
+      }, 2000);
+      this.formSendEmail.value.emailPassgenger = null;
+      this.ngOnInit();
+    });
   }
 }
