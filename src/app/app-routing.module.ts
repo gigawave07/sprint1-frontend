@@ -12,6 +12,9 @@ import { CheckinOnlineComponent } from './components/checkin-online/checkin-onli
 import { PromotionCodeComponent } from './components/promotion-code/promotion-code.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {CommonModule} from '@angular/common';
+import {NgxPaginationModule} from "ngx-pagination";
+
+
 
 
 const routes: Routes = [
@@ -32,7 +35,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes), ReactiveFormsModule, CommonModule, FormsModule],
+  imports: [RouterModule.forRoot(routes), ReactiveFormsModule, CommonModule, FormsModule, NgxPaginationModule],
   exports: [RouterModule],
   declarations: [CheckinOnlineComponent, PromotionCodeComponent]
 })

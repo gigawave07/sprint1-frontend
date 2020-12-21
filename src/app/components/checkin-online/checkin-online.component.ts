@@ -20,7 +20,7 @@ export class CheckinOnlineComponent implements OnInit {
   constructor(
     public formBuilder: FormBuilder,
     public checkinOnlineService: CheckinOnlineService,
-    public router: Router,
+    public router: Router
   ) {
   }
 
@@ -43,7 +43,7 @@ export class CheckinOnlineComponent implements OnInit {
             this.messageSuccess = 'Không tìm thấy thông tin của bạn.';
             setTimeout(() => {
               this.messageSuccess = '';
-            }, 2000);
+            }, 5000);
           }
           // this.router.navigateByUrl('checkin-online');
         }
@@ -68,7 +68,7 @@ export class CheckinOnlineComponent implements OnInit {
       this.messageSuccess = 'checkin online thành công.';
       setTimeout(() => {
         this.messageSuccess = '';
-      }, 2000);
+      }, 5000);
     });
     this.checkinResult = undefined;
     this.router.navigateByUrl('checkin-online');

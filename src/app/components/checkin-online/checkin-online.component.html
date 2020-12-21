@@ -27,7 +27,7 @@
 <div class=" container-fluid ">
 
   <div class="row">
-    <div class="col-12 d-flex justify-content-center">
+    <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 d-flex justify-content-center">
       <div style="margin-left: 5% ; margin-right: 5%  ">
 
         <br>
@@ -38,7 +38,7 @@
         <div class="box " style="border: 1px solid black; background: aliceblue">
           <div style="margin: 20px; font-size: 20px">
             <div class="row">
-              <div class="col-12">
+              <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12">
                 <h2 style="color: orange">Tự Làm Thủ Tục
                   Chuyến Bay Qua Web Tại Đây</h2>
                 <p> Sẵn sàng cho chuyến bay vui vẻ, thoải mái cùng Vietjet .
@@ -60,10 +60,10 @@
                 <br>
               </div>
             </div>
-            <div class="col-12">
+            <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12">
               <p>2. Lưu ý: Tự làm thủ tục không áp dụng cho các trường hợp sau:</p>
             </div>
-            <div class="col-12">
+            <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12">
               <ul>
                 <li> Hành khách đi cùng em bé hoặc hành khách đang mang thai.</li>
                 <li> Hành khách hạn chế khả năng vận động hoặc cần trợ giúp đặc biệt.</li>
@@ -79,10 +79,10 @@
 
             </div>
             <br>
-            <form [formGroup]="formCheckinOnline">
+            <form [formGroup]="formCheckinOnline" (ngSubmit)="searchFlight()">
               <div class="row">
 
-                <div class="col-3 form-group">
+                <div class="col-sm-3 col-xs-3 col-md-3 col-lg-3 form-group">
                   <p>Mã đặt chỗ (<span class="noteStar">*</span>):</p>
                   <input size="10px" class="form-control" type="text" formControlName="bookingCode">
                   <p *ngIf="formCheckinOnline.controls.bookingCode.errors?.required &&
@@ -92,7 +92,7 @@
                   </p>
                 </div>
 
-                <div class="col-9">
+                <div class="col-sm-9 col-xs-9 col-md-9 col-lg-9">
                   <p>Họ và Tên (ví dụ: Nguyen Thi Tien Quoc) (<span class="noteStar">*</span>):</p>
                   <input size="40px" placeholder="Nguyen Thi Tien Quoc" class="form-control" type="text"
                          formControlName="fullName">
@@ -112,7 +112,7 @@
               <br>
               <div class="row justify-content-center">
                 <button class="btn btn-warning  mr-3 ">Trang chủ</button>
-                <button [disabled]="formCheckinOnline.invalid"
+                <button type="submit" [disabled]="formCheckinOnline.invalid"
                   class="btn btn-warning  mr-3" (click)="searchFlight()">Tìm kiếm đặt chỗ
                 </button>
               </div>
