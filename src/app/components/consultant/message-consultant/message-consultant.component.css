@@ -6,22 +6,26 @@
 }
 
 .mess-consultant {
+  width: auto;
   color: white;
-  border-radius: 10px;
+  border-radius: 10px 0px 10px 10px;
   border: blue solid 1px;
   background-color: #4545ff;
   padding-left: 5px;
   padding-right: 5px;
+  word-wrap: break-word;
 }
 
 
 .mess-from-user {
+  width: auto;
   color: black;
-  border-radius: 10px;
+  border-radius: 10px 10px 10px 0px;
   border: #d1d1d5 solid 1px;
   background-color: #e4e6eb;
   padding-left: 5px;
   padding-right: 5px;
+  word-wrap: break-word;
 }
 
 div #chat-option {

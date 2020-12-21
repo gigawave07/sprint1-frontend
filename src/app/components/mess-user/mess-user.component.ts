@@ -88,29 +88,39 @@ export class MessUserComponent implements OnInit {
   }
 
   sendMessage() {
-    const chat = this.formSend.value;
-    chat.nickName = this.formSendRequest.value.name;
-    chat.roomId = this.room;
-    chat.isUser = 'true';
-    chat.sendDate = this.datePipe.transform(new Date(), 'dd/MM/yyyy HH:mm:ss');
-    chat.type = 'message';
-    const newMessage = firebase.database().ref('chats/').push();
-    newMessage.set(chat);
-    this.formSend = this.fb.group({
-      content: ['', Validators.required],
-      isUser: ''
-    });
-    firebase.database().ref('chats/').on('value', resp => {
-      this.listMess = [];
-      this.listMess = snapshotToArray(resp, this.room);
-    });
-    firebase.database().ref('users/').orderByChild('roomId').equalTo(this.room).once('value', (snapShot) => {
-      if (!snapShot.exists()) {
-        const newUser = firebase.database().ref('users/').push();
-        newUser.set(this.firstRequest.value);
-        localStorage.setItem('roomId', this.firstRequest.value.roomId);
+    this.formSend.markAllAsTouched();
+    for (const key of Object.keys(this.formSend.controls)) {
+      if (this.formSend.controls[key].invalid) {
+        const invalidControl = this.el.nativeElement.querySelector('[formControlName="' + key + '"]');
+        invalidControl.focus();
+        break;
       }
-    });
+    }
+    if (this.formSend.valid) {
+      const chat = this.formSend.value;
+      chat.nickName = this.formSendRequest.value.name;
+      chat.roomId = this.room;
+      chat.isUser = 'true';
+      chat.sendDate = this.datePipe.transform(new Date(), 'dd/MM/yyyy HH:mm:ss');
+      chat.type = 'message';
+      const newMessage = firebase.database().ref('chats/').push();
+      newMessage.set(chat);
+      this.formSend = this.fb.group({
+        content: ['', Validators.required],
+        isUser: ''
+      });
+      firebase.database().ref('chats/').on('value', resp => {
+        this.listMess = [];
+        this.listMess = snapshotToArray(resp, this.room);
+      });
+      firebase.database().ref('users/').orderByChild('roomId').equalTo(this.room).once('value', (snapShot) => {
+        if (!snapShot.exists()) {
+          const newUser = firebase.database().ref('users/').push();
+          newUser.set(this.firstRequest.value);
+          localStorage.setItem('roomId', this.firstRequest.value.roomId);
+        }
+      });
+    }
   }
 
   sendRequest() {

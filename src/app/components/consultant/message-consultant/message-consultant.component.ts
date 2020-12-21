@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, ElementRef, OnInit} from '@angular/core';
 import {Subscription} from 'rxjs';
 import {ActivatedRoute, ParamMap} from '@angular/router';
 import {MessageService} from '../../../service/message.service';
@@ -28,7 +28,6 @@ export const snapshotToArray = (snapshot: any, room: any) => {
 })
 export class MessageConsultantComponent implements OnInit {
 
-  lastMessage: string;
   room: string;
   formSendMess: FormGroup;
   listMessage = [];
@@ -39,7 +38,8 @@ export class MessageConsultantComponent implements OnInit {
   constructor(private activatedRoute: ActivatedRoute,
               private messageService: MessageService,
               private fb: FormBuilder,
-              private datePipe: DatePipe) {
+              private datePipe: DatePipe,
+              private el: ElementRef) {
   }
 
   ngOnInit() {
@@ -69,18 +69,28 @@ export class MessageConsultantComponent implements OnInit {
   }
 
   sendMess() {
-    const chat = this.formSendMess.value;
-    chat.nickName = 'admin';
-    chat.roomId = this.room;
-    chat.isUser = 'false';
-    chat.sendDate = this.datePipe.transform(new Date(), 'dd/MM/yyyy HH:mm:ss');
-    chat.type = 'message';
-    const newMessage = firebase.database().ref('chats/').push();
-    newMessage.set(chat);
-    this.formSendMess = this.fb.group({
-      content: ['', Validators.required],
-      isUser: '',
-    });
+    this.formSendMess.markAllAsTouched();
+    for (const key of Object.keys(this.formSendMess.controls)) {
+      if (this.formSendMess.controls[key].invalid) {
+        const invalidControl = this.el.nativeElement.querySelector('[formControlName="' + key + '"]');
+        invalidControl.focus();
+        break;
+      }
+    }
+    if (this.formSendMess.valid) {
+      const chat = this.formSendMess.value;
+      chat.nickName = 'admin';
+      chat.roomId = this.room;
+      chat.isUser = 'false';
+      chat.sendDate = this.datePipe.transform(new Date(), 'dd/MM/yyyy HH:mm:ss');
+      chat.type = 'message';
+      const newMessage = firebase.database().ref('chats/').push();
+      newMessage.set(chat);
+      this.formSendMess = this.fb.group({
+        content: ['', Validators.required],
+        isUser: '',
+      });
+    }
   }
 
   getIcons() {

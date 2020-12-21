@@ -1,4 +1,4 @@
-<div id="animation-border" class="align-self-center"></div>
+<!--<div id="animation-border" class="align-self-center"></div>-->
 <div class="openChatBtn" align="center">
   <img id="icon-message" class="align-self-center"
        src="https://scontent.fsgn2-1.fna.fbcdn.net/v/t1.0-9/131426681_844750992982252_5573492330164978289_n.jpg?_nc_cat=105&ccb=2&_nc_sid=730e14&_nc_ohc=kcCsG2i189EAX8OmaTn&_nc_ht=scontent.fsgn2-1.fna&oh=5c32128ce6a38e2ea5daad12680c2dfa&oe=5FFF5DAD">
@@ -63,18 +63,18 @@
         <div class="col-lg-12 chat-body" id="chat-body">
           <div *ngFor="let mess of listMess">
             <div *ngIf="(mess.isUser == 'false')">
-              <div class="row" style="margin-bottom: 5px ;margin-top: 5px; z-index: 1">
-                <div class="col-lg-9 mess-consultant d-inline-flex">
+              <div class="row mt-1 mb-1" style=" z-index: 1">
+                <div class="col-lg-6 mess-consultant" align="left" style="width:20px">
                 <span><span
                   style="margin-left: 2px"></span>{{mess.content}}<span style="margin-right: 2px"></span></span>
-                  <div class="col-lg-3"></div>
+                  <div class="col-lg-6"></div>
                 </div>
               </div>
             </div>
             <div *ngIf="(mess.isUser == 'true')">
-              <div class="row" style="z-index: 1">
-                <div class="col-lg-3"></div>
-                <div class="col-lg-9 mess-from-user"><span><span
+              <div class="row mt-1 mb-1" style="z-index: 1">
+                <div class="col-lg-6"></div>
+                <div class="col-lg-6 mess-from-user" align="right"><span><span
                   style="margin-left: 2px"></span>{{mess.content}}<span style="margin-right: 2px"></span></span>
                 </div>
               </div>
@@ -99,8 +99,7 @@
             <span class="input-group-btn ml-1 mt-2">
               <i class="fa fa-smile-o icon-option" id="icon"></i>
             </span>
-            <button [disabled]="formSend.controls.content.errors?.required" type="submit"
-                    class="input-group-btn ml-1 mt-1" id="btn-submit-mess">
+            <button type="submit" class="input-group-btn ml-1 mt-1" id="btn-submit-mess">
               <i class="fa fa-paper-plane icon-option"></i>
             </button>
           </div>

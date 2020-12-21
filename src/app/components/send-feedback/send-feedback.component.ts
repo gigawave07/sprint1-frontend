@@ -25,8 +25,10 @@ export class SendFeedbackComponent implements OnInit {
     });
 
     $(document).ready(() => {
+      // animation thay đổi opacity
       $('#feedback-form').css('opacity', 0).animate({opacity: 1}, 4000);
       $('#direct-map').css('opacity', 0).animate({opacity: 1}, 4000);
+      // ----------------------------------
       $('#btn-submit-feedback-form').click(() => {
         $('.content-textbox').val('');
       });
@@ -43,6 +45,7 @@ export class SendFeedbackComponent implements OnInit {
       }
     }
     // ----------------------------------
+    // nhấn submit nhưng nếu chưa valid thì sẽ không submit được
     this.formFeedBack.markAllAsTouched();
     if (this.formFeedBack.valid) {
       this.feedbackService.sendFeedBack(this.formFeedBack.value).subscribe(data => {
@@ -50,6 +53,6 @@ export class SendFeedbackComponent implements OnInit {
         alert('Bạn đã gửi phản hồi thành công');
       });
     }
-
+    // ----------------------------------
   }
 }

@@ -75,13 +75,14 @@ form .close {
 }
 
 
-form .btn:hover{
+form .btn:hover {
   opacity: 1;
 }
 
 #content-mess {
   width: 248px;
   border-radius: 20px 20px 20px 20px;
+  word-wrap: break-word;
 }
 
 #content-mess:focus {
@@ -130,10 +131,25 @@ div .content-box {
 }
 
 #icon-message {
+  box-shadow: 0px 0px 10px 10px rgba(255, 211, 116, 0.82);
   position: relative;
   width: 7vh;
   height: 7vh;
   border-radius: 140px;
+  animation-name: zoom-out;
+  animation-duration: 1s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate-reverse;
+}
+
+@keyframes zoom-out {
+  from {
+    box-shadow: 0px 0px 2px 2px rgba(241, 189, 31, 0.82);
+  }
+  to {
+    box-shadow: 0px 0px 10px 10px rgba(241, 189, 31, 0.82);
+  }
 }
 
 .begin-chat {
@@ -198,49 +214,33 @@ div #file-space {
 }
 
 .mess-consultant {
+  width: auto;
   z-index: 1;
   color: black;
-  border-radius: 10px;
+  border-radius: 10px 10px 10px 0px;
   border: #d1d1d5 solid 1px;
   background-color: #e4e6eb;
   padding-left: 5px;
   padding-right: 5px;
+  word-wrap: break-word;
 }
 
 
 .mess-from-user {
+  width: auto;
   z-index: 1;
   color: white;
-  border-radius: 10px;
+  border-radius: 10px 0px 10px 10px;
   border: blue solid 1px;
   background-color: #4545ff;
   padding-left: 5px;
   padding-right: 5px;
+  word-wrap: break-word;
 
 }
 
-#chat-body{
+#chat-body {
   z-index: 0;
 }
 
-#animation-border{
-  z-index: 10000;
-  position: fixed;
-  bottom: 10px;
-  right: 10px;
-  width: 10vh;
-  border: orange solid 30px;
-  opacity: 0.4;
-  width: 10vh;
-  height: 10vh;
-  border-radius: 140px;
-  animation-name: zoom-out;
-  animation-duration: 1s;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-}
 
-@keyframes zoom-out {
-from {transform: scale(0)}
-  to {transform: scale(1.3)}
-}

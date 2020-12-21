@@ -3,16 +3,16 @@
     <div class="col-lg-12" id="body-chat-consultant">
       <div *ngFor="let mess of listMessage">
         <div *ngIf="(mess.isUser == 'false')">
-          <div class="row" style="margin-bottom: 2px">
+          <div class="row mt-1 mb-1" style="margin-bottom: 2px">
             <div class="col-lg-6"></div>
-            <div class="col-lg-6 mess-consultant" align="right" style="width: auto; margin-top: 5px"><span><span
+            <div class="col-lg-6 mess-consultant" align="right"><span><span
               style="margin-left: 2px; "></span>{{mess.content}}<span style="margin-right: 2px"></span></span>
             </div>
           </div>
         </div>
         <div *ngIf="(mess.isUser == 'true')">
-          <div class="row">
-            <div class="col-lg-6 " align="left"> <span class="mess-from-user"><span
+          <div class="row mt-1 mb-1">
+            <div class="col-lg-6 mess-from-user" align="left"><span><span
               style="margin-left: 2px"></span>{{mess.content}}<span style="margin-right: 2px"></span></span></div>
             <div class="col-lg-6"></div>
           </div>
@@ -33,14 +33,13 @@
             <input formControlName="content" class="form-control form-control-lg" type="text"
                    placeholder="Type message ..." id="content-chat-cons">
             <span class="input-group-btn ml-1 mt-1">
-              <i class="fa fa-paperclip option-icon" ></i>
+              <i class="fa fa-paperclip option-icon"></i>
             </span>
             <span class="input-group-btn ml-1 mt-1">
               <i class="fa fa-smile-o option-icon" id="consultant-icon"></i>
             </span>
 
-            <button [disabled]="formSendMess.controls.content.errors?.required" type="submit"
-                    class="input-group-btn ml-1 mt-1 option-icon" id="submit-consultant">
+            <button type="submit" class="input-group-btn ml-1 mt-1 option-icon" id="submit-consultant">
               <i class="fa fa-paper-plane icon-option"></i>
             </button>
           </div>
