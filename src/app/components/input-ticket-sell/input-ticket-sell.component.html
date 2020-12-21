@@ -128,7 +128,7 @@
                   <div class="col-sm-9">
                     <mat-form-field class="matInputMaterial">
                       <mat-label></mat-label>
-                      <input matInput formControlName="passengerName" type="text">
+                      <textarea matInput formControlName="passengerName" type="text"></textarea>
                     </mat-form-field>
                     <p class="text-danger passengerList"
                        *ngIf="formCreate.get('passengerName').hasError('required')

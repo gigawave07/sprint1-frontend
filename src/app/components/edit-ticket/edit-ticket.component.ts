@@ -1,4 +1,4 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import {Component, ElementRef, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {TicketService} from '../../service/ticket/ticket.service';
@@ -21,7 +21,8 @@ export class EditTicketComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any,
     protected formBuilder: FormBuilder,
     private ticketService: TicketService,
-    protected router: Router
+    protected router: Router,
+    private el: ElementRef
   ) {
   }
 
@@ -76,6 +77,14 @@ export class EditTicketComponent implements OnInit {
             });
           }
         );
+    } else {
+      for (const KEY of Object.keys(this.formEdit.controls)) {
+        if (this.formEdit.controls[KEY].invalid) {
+          const INVALID_CONTROL = this.el.nativeElement.querySelector('[formControlName="' + KEY + '"]');
+          INVALID_CONTROL.focus();
+          break;
+        }
+      }
     }
   }
 
