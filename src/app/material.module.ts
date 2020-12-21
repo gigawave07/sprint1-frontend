@@ -32,7 +32,11 @@ import {MessageUserComponent} from './components/message-user/message-user.compo
     MatDividerModule,
     MatButtonModule,
     MatDialogModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatStepperModule,
+    MatTabsModule,
+    MatRadioModule,
+    MatIconModule,
   ],
   exports: [
     CommonModule,
@@ -45,8 +49,11 @@ import {MessageUserComponent} from './components/message-user/message-user.compo
     MatDividerModule,
     MatButtonModule,
     MatProgressSpinnerModule,
-    MatDialogModule
-
+    MatDialogModule,
+    MatStepperModule,
+    MatTabsModule,
+    MatRadioModule,
+    MatIconModule,
   ],
   providers: [
     MatDatepickerModule,
@@ -55,7 +62,9 @@ import {MessageUserComponent} from './components/message-user/message-user.compo
     ChangePasswordAdminComponent,
     EditUserComponent, ChangePasswordUserComponent,
     CancelPendingTicketComponent, DeleteTicketComponent, EditTicketComponent,
-    UserDialogComponent, MessageUserComponent
-  ]
+    UserDialogComponent, MessageUserComponent,
+    FlightDetailComponent, FlightTicketComponent, InfoPassengerBookingTicketComponent, ChooseTicketComponent],
+  bootstrap: [InfoPassengerBookingTicketComponent]
+]
 })
 export class MaterialModule { }

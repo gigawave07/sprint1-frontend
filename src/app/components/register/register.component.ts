@@ -92,13 +92,5 @@ export class RegisterComponent implements OnInit {
       }
     };
   }
-
-  checkAge(control: AbstractControl) {
-    const birthday = new Date(control.value);
-    const current = new Date();
-    const diffTime = (current.getTime() - birthday.getTime()) / (1000 * 60 * 60 * 24 * 365);
-    return (diffTime > 18 && diffTime < 150) ? true : {ageError: true};
-  }
-
 }
 

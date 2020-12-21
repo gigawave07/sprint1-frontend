@@ -65,6 +65,15 @@ import {InvoiceDetailComponent} from './components/invoice-detail/invoice-detail
 import { InvoiceDownloadComponent } from './components/invoice-download/invoice-download.component';
 import { PDFExportModule } from '@progress/kendo-angular-pdf-export';
 
+import {SearchFlightInformationComponent} from './components/flight/search-flight-information/search-flight-information.component';
+import { FlightTableComponent } from './components/flight/flight-table/flight-table.component';
+import {FlightTicketComponent} from './components/flight/flight-ticket/flight-ticket.component';
+import {WeekdaysPipe} from './components/flight/flight-table/weekdays.pipe';
+import {FlightDetailComponent} from './components/flight/flight-detail/flight-detail.component';
+import {InfoPassengerBookingTicketComponent} from './components/flight/info-passenger-booking-ticket/info-passenger-booking-ticket.component';
+import { ChooseTicketComponent } from './components/flight/alertError/choose-ticket/choose-ticket.component';
+import { PaymentHistoryComponent } from './components/flight/payment-history/payment-history/payment-history.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -94,7 +103,17 @@ import { PDFExportModule } from '@progress/kendo-angular-pdf-export';
     SendFeedbackComponent,
     MessUserComponent,
     ConsultantComponent,
-    MessageConsultantComponent
+    MessageConsultantComponent,
+    // Đin
+    SearchFlightInformationComponent,
+    FlightTableComponent,
+    WeekdaysPipe,
+    FlightDetailComponent,
+    FlightTicketComponent,
+    InfoPassengerBookingTicketComponent,
+    ChooseTicketComponent,
+    PaymentHistoryComponent
+
   ],
   imports: [BrowserModule, AppRoutingModule, MaterialModule, HttpClientModule, NgxPaginationModule, Ng2SearchPipeModule,
     FormsModule, MatDialogModule, ReactiveFormsModule, NgxLoadingModule.forRoot({}),

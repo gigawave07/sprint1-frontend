@@ -15,20 +15,20 @@ export class ListPendingTicketComponent implements OnInit {
 	public p = 1;
 	public isChecked: boolean;
 	public ticketStatusPaymentDTO = {id: 1, statusPaymentName: ''};
-	
-	
+
+
 	constructor(
 		private ticketService: TicketService,
 		private dialog: MatDialog
 	) {
 	}
-	
+
 	@ViewChild('paypalRef', {static : true}) private paypalRef: ElementRef;
 	ngOnInit(): void {
 		// console.log('this.ticketStatusPaymentDTO');
 		// console.log(this.ticketStatusPaymentDTO);
 		//
-		
+
 		this.ticketService.findAllPendingTicket().subscribe(value => {
 			this.ticketList = value;
 			console.log('this.ticketList');
@@ -45,7 +45,7 @@ export class ListPendingTicketComponent implements OnInit {
 					tagline: true,
 					height: 50
 				},
-				
+
 				createOrder: (data, actions) => {
 					// console.log('createOrder');
 					// This function sets up the details of the transaction,
@@ -75,17 +75,17 @@ export class ListPendingTicketComponent implements OnInit {
 				onError: (data, actions) => {
 					console.log('Transaction error');
 				}
-				
+
 			}
 		).render(this.paypalRef.nativeElement);
 	}
-	
+
 	onCheckboxChange($event: Event, ticket: any) {
 		// console.log('filter change called. TicketCode: ' + ticketCode);
-		
+
 		// console.log('$event.target');
 		// console.log($event.target.checked);
-		
+
 		// @ts-ignore
 		this.isChecked = $event.target.checked;
 		console.log(ticket.ticketCode + ' ' + this.isChecked);
@@ -94,7 +94,7 @@ export class ListPendingTicketComponent implements OnInit {
 		console.log(ticketCode);
 		if (this.isChecked) {
 			this.payTicketList.push(ticket);
-			
+
 			this.amountMoney += ticket.flightInformation.price;
 			// this.renderPaypalButton();
 			console.log('this.amountMoney');
@@ -113,10 +113,10 @@ export class ListPendingTicketComponent implements OnInit {
 			console.log(this.payTicketList);
 		}
 	}
-	
+
 	payTicket() {
 		alert('click');
-		
+
 		for (let i=0; i<this.payTicketList.length;i++){
 			this.ticketStatusPaymentDTO.id =this.payTicketList[i].id;
 			this.ticketStatusPaymentDTO.statusPaymentName = 'Paid';
@@ -128,18 +128,18 @@ export class ListPendingTicketComponent implements OnInit {
 		}
 		window.location.reload();
 	}
-	
+
 	openCancelDialogTicket(ticket: any): void {
 		const dialogRef = this.dialog.open(CancelPendingTicketComponent, {
 			width: '500px',
 			data: {dataCancel: ticket},
 			disableClose: true
 		});
-		
+
 		dialogRef.afterClosed().subscribe(result => {
 			// this.ngOnInit();
 			window.location.reload();
 		});
 	}
-	
+
 }

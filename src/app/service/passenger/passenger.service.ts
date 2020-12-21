@@ -7,6 +7,10 @@ import {Observable} from 'rxjs';
 })
 export class PassengerService {
   public readonly API: string = 'http://localhost:8080/rest';
+  private apiDin = 'http://localhost:8080/rest/passengers';
+  private apiSentMail = 'http://localhost:8080/rest/sent-mail?idAccount=';
+
+
   constructor(public http: HttpClient) {
   }// @ts-ignore
    // khi gọi hàm search gửi đến list kết quả
@@ -40,4 +44,11 @@ export class PassengerService {
     return this.http.get(this.API + '/passengers' + '/' + id);
   }
 
+  addPassenger(passenger): Observable<any> {
+    return this.httpClient.post(this.apiDin, passenger);
+  }
+
+  sentEmail(id): Observable<any> {
+    return this.httpClient.get(this.apiSentMail + id);
+  }
 }

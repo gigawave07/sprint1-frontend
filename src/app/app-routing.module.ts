@@ -1,5 +1,5 @@
-import {NgModule} from '@angular/core';
-import {RouterModule, Routes} from '@angular/router';
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
 import {HomeComponent} from './components/home/home.component';
 import {LoginComponent} from './components/login/login.component';
 import {RegisterComponent} from './components/register/register.component';
@@ -58,6 +58,9 @@ import {MatIconModule} from '@angular/material/icon';
 import {ChangePasswordSuccessfullyComponent} from './components/change-password-successfully/change-password-successfully.component';
 import {GetTokenEmailAdminComponent} from './components/get-token-email-admin/get-token-email-admin.component';
 import {GetCheckPasswordAdminComponent} from './components/get-check-password-admin/get-check-password-admin.component';
+import {SearchFlightInformationComponent} from './components/flight/search-flight-information/search-flight-information.component';
+import {PaymentHistoryComponent} from './components/flight/payment-history/payment-history/payment-history.component';
+
 const routes: Routes = [
   // Quân :
   {path: '', component: HomeComponent},
@@ -154,7 +157,9 @@ const routes: Routes = [
   {path: 'invoice-list', component: InvoiceListComponent},
   {path: 'invoice-detail/:id', component: InvoiceDetailComponent},
   {path: 'invoice-download', component: InvoiceDownloadComponent}
-];
+  // Đin
+  {path: 'search', component: SearchFlightInformationComponent}
+  ];
 
 @NgModule({
     imports: [RouterModule.forRoot(routes), CommonModule, ReactiveFormsModule, MaterialModule,
