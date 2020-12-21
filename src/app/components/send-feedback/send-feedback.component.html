@@ -7,7 +7,7 @@
               tabindex="0"></iframe>
     </div>
     <div class="col-lg-6 col-sm-12 bg-light feedback-form" id="feedback-form">
-      <h1>Customer feedback</h1>
+      <h1>Phản hồi của khách hàng</h1>
       <form (ngSubmit)="sendFeedBack()" [formGroup]="formFeedBack">
         <div class="form-group content-feedback">
           <label>Tên<span style="color: red">*</span></label>
@@ -49,7 +49,7 @@
           </small>
         </div>
         <div align="center">
-          <button [disabled]="formFeedBack.invalid" class="btn" id="btn-submit-feedback-form">Gửi phản hồi</button>
+          <button class="btn" id="btn-submit-feedback-form">Gửi phản hồi</button>
         </div>
       </form>
     </div>

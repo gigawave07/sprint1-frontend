@@ -1,5 +1,5 @@
 import {BrowserModule} from '@angular/platform-browser';
-import {LOCALE_ID, NgModule} from '@angular/core';
+import {NgModule} from '@angular/core';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
@@ -52,7 +52,13 @@ import {ConsultantComponent} from './components/consultant/consultant.component'
 import {MessageConsultantComponent} from './components/consultant/message-consultant/message-consultant.component';
 import {FeedbackService} from './service/feedback.service';
 import {MessUserComponent} from './components/mess-user/mess-user.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MessageService} from './service/message.service';
+import {HttpClientModule} from '@angular/common/http';
+import {ConsultantComponent} from './components/consultant/consultant.component';
+import {FeedbackService} from './service/feedback.service';
+import {MessageConsultantComponent} from './components/consultant/message-consultant/message-consultant.component';
+import {HTTP_INTERCEPTORS} from '@angular/common/http';
 import {DatePipe} from '@angular/common';
 import {PromotionModule} from './components/promotion/promotion.module';
 

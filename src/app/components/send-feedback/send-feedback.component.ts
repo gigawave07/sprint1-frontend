@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, ElementRef, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {FeedbackService} from '../../service/feedback.service';
 
@@ -13,7 +13,7 @@ export class SendFeedbackComponent implements OnInit {
 
   formFeedBack: FormGroup;
 
-  constructor(private fb: FormBuilder, private feedbackService: FeedbackService) {
+  constructor(private el: ElementRef, private fb: FormBuilder, private feedbackService: FeedbackService) {
   }
 
   ngOnInit(): void {
@@ -24,21 +24,35 @@ export class SendFeedbackComponent implements OnInit {
       content: ['', Validators.required]
     });
 
-    // tslint:disable-next-line:only-arrow-functions
-    $(document).ready(function() {
-
+    $(document).ready(() => {
+      // animation thay đổi opacity
       $('#feedback-form').css('opacity', 0).animate({opacity: 1}, 4000);
       $('#direct-map').css('opacity', 0).animate({opacity: 1}, 4000);
-
-      // tslint:disable-next-line:only-arrow-functions
-      $('#btn-submit-feedback-form').click(function() {
+      // ----------------------------------
+      $('#btn-submit-feedback-form').click(() => {
         $('.content-textbox').val('');
       });
     });
   }
 
   public sendFeedBack() {
-    this.feedbackService.sendFeedBack(this.formFeedBack.value).subscribe(data => {
-    });
+    // ---------- autofocus ------------
+    for (const key of Object.keys(this.formFeedBack.controls)) {
+      if (this.formFeedBack.controls[key].invalid) {
+        const invalidControl = this.el.nativeElement.querySelector('[formControlName="' + key + '"]');
+        invalidControl.focus();
+        break;
+      }
+    }
+    // ----------------------------------
+    // nhấn submit nhưng nếu chưa valid thì sẽ không submit được
+    this.formFeedBack.markAllAsTouched();
+    if (this.formFeedBack.valid) {
+      this.feedbackService.sendFeedBack(this.formFeedBack.value).subscribe(data => {
+        console.log(data);
+        alert('Bạn đã gửi phản hồi thành công');
+      });
+    }
+    // ----------------------------------
   }
 }

@@ -10,6 +10,7 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatButtonModule} from '@angular/material/button';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {ChangePasswordAdminComponent} from './components/change-password-admin/change-password-admin.component';
+import {MatDialogModule} from '@angular/material';
 
 import {MatDialogModule} from '@angular/material';
 import {EditUserComponent} from './components/edit-user/edit-user.component';
