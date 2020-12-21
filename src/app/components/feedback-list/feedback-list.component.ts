@@ -96,6 +96,7 @@ export class FeedbackListComponent implements OnInit {
   }
 
 
+
   openFeedbackDialog(feedback): void {
     this.feedback = feedback;
     const dialogRef = this.dialog.open(FeedbackContentComponent, {
