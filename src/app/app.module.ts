@@ -85,6 +85,8 @@ import { PDFExportModule } from '@progress/kendo-angular-pdf-export';
     // Nhật mới
     TrangChinhComponent, BaoCaoComponentComponent, TrangChuThongKeComponent,
     KetQuaComponent, KetQuaTableComponent, KetQuaSaiLogicComponent,
+    // Khánh
+    InvoiceListComponent, InvoiceDownloadComponent, InvoiceDetailComponent,
 
     // Châu
     DeleteTicketComponent, PrintTicketComponent, ListTicketComponent,
