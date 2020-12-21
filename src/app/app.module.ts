@@ -43,14 +43,25 @@ import {ExcelService} from './components/report-statistic/service/excel.service'
 import {DeleteTicketComponent} from './components/delete-ticket/delete-ticket.component';
 import {PrintTicketComponent} from './components/print-ticket/print-ticket.component';
 import {ListTicketComponent} from './components/list-ticket/list-ticket.component';
-import {AuthServiceConfig, GoogleLoginProvider, SocialLoginModule} from 'angularx-social-login';
+import {AuthServiceConfig, FacebookLoginProvider, GoogleLoginProvider, SocialLoginModule} from 'angularx-social-login';
+import {MessageUserComponent} from './components/message-user/message-user.component';
+import {SendFeedbackComponent} from './components/send-feedback/send-feedback.component';
+import {MessUserComponent} from './components/mess-user/mess-user.component';
+import {ConsultantComponent} from './components/consultant/consultant.component';
+import {DatePipe} from '@angular/common';
+import {MessageService} from './service/message.service';
+import {FeedbackService} from './service/feedback.service';
+import {MessageConsultantComponent} from './components/consultant/message-consultant/message-consultant.component';
+import {UserDialogComponent} from './components/user-dialog/user-dialog.component';
+import {DeletePassengerComponent} from './components/delete-passenger/delete-passenger.component';
+import {ChangePasswordEmployeeComponent} from './components/change-password-employee/change-password-employee.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     // Quân
     HomeComponent, LoginComponent, RegisterComponent, NavBarComponent, FooterComponent, VerificationEmailComponent,
-      // Đăngdcvsdacdasc
+      // Đăngdcvsdacdascbb
     ListPendingTicketComponent, CancelPendingTicketComponent, SearchPendingTicketComponent, SpinnerComponent, SpinnerOverlayComponent,
     SpinnerComponent, SpinnerOverlayComponent,
     // Danh
