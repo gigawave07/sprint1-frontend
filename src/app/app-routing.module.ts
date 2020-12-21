@@ -37,6 +37,9 @@ import {MessUserComponent} from './components/mess-user/mess-user.component';
 import {SendFeedbackComponent} from './components/send-feedback/send-feedback.component';
 import {ConsultantComponent} from './components/consultant/consultant.component';
 import {MessageConsultantComponent} from './components/consultant/message-consultant/message-consultant.component';
+// KhánhPQ
+import {CheckinOnlineComponent} from './components/checkin-online/checkin-online.component';
+import {PromotionCodeComponent} from './components/promotion-code/promotion-code.component';
 
 const routes: Routes = [
   // Quân :
@@ -47,7 +50,8 @@ const routes: Routes = [
   // Vinh
   {path: 'message', component: MessUserComponent},
   {path: 'send-feedback', component: SendFeedbackComponent},
-  {path: 'consultant', component: ConsultantComponent,
+  {
+    path: 'consultant', component: ConsultantComponent,
     children: [
       {path: 'mess/:id', component: MessageConsultantComponent}
     ]
@@ -101,6 +105,9 @@ const routes: Routes = [
     component: PrintTicketTwoWayComponent
   },
   {path: 'notice-page', component: NoticePageComponent},
+  // PQ Khánh:
+  {path: 'checkin-online', component: CheckinOnlineComponent},
+  {path: 'promotion-code', component: PromotionCodeComponent}
 ];
 
 @NgModule({
@@ -109,7 +116,8 @@ const routes: Routes = [
   exports: [RouterModule],
   declarations: [ListEmployeeComponent, CreateEmployeeComponent, EditEmployeeComponent, DeleteEmployeeComponent,
     EmployeeComponent, EditTicketComponent, InputTicketSellComponent, PrintTicketTwoWayComponent, NoticePageComponent,
-    MessageNoticeEmployeeComponent
+    MessageNoticeEmployeeComponent, CheckinOnlineComponent, PromotionCodeComponent
   ]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}
