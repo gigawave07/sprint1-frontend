@@ -34,6 +34,7 @@ export class InvoiceDetailComponent implements OnInit {
       this.ticketList = dataTicket;
       this.invoiceService.findInvoiceById(this.invoiceId).subscribe(dataInvoice => {
         this.invoice = dataInvoice;
+        console.log(this.invoice);
       });
     });
     this.appUserService.findAppUserById(this.appUserId).subscribe(dataUser => {

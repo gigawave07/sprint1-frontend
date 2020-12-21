@@ -1,6 +1,7 @@
+
 <div class="container-fluid p-5">
   <h2 id="td" >DANH SÁCH THANH TOÁN</h2>
-  <div class="row p-3">
+  <div class="row p-3" *ngIf="appUser">
     <div class="col-md-6 ">
       <div class="row">
         <div class="col-md-12">
@@ -37,9 +38,9 @@
         </div>
       </div>
     </div>
-    <div class="col-lg-12"></div>
+    <div class="col-md-12"></div>
   </div>
-  <div class="row p-3 text-center">
+  <div class="row p-3 text-center" *ngIf="invoiceList">
     <div class="col-md-12">
       <table class="table  table-bordered bg-white">
         <thead class="thead-light ">
@@ -50,7 +51,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let invoice of invoiceList | paginate: { itemsPerPage: 3, currentPage: p } ">
+        <tr *ngFor="let invoice of invoiceList | paginate: { itemsPerPage: 2, currentPage: p } ">
           <td>{{invoice.id}}</td>
           <td>{{invoice.totalMoney}}</td>
           <td><a href="#" [routerLink]="'/invoice-detail/'+invoice.id">Chi tiết</a></td>
@@ -58,44 +59,25 @@
         </tbody>
       </table>
     </div>
+    <div class="row">
+      <div class="col-md-12" *ngIf="invoiceList.length===0">
+      <h2 style="color: orange">Không tồn tại danh sách hóa đơn đã thanh toán</h2>
+      </div>
+    </div>
   </div>
   <div class="row ">
 
     <div class="col-md-6">
-      <button class="btn btn-primary " data-toggle="modal" data-target="#myModal" id="add"> Tạo Hóa Đơn
-        <i class="material-icons" id="iconAdd">add_circle</i></button>
+      <button class="btn btn-primary " data-toggle="modal" data-target="#myModal" id="add" routerLink="/invoice-download">
+        Tạo Hóa Đơn
+         <i class="material-icons" id="iconAdd">add_circle</i></button>
     </div>
-    <div class="col-md-3" id="pt" >
-      <pagination-controls (pageChange)="p = $event"  previousLabel="Quay Lại"  nextLabel="Kế Tiếp"></pagination-controls>
+    <div class="col-md-3" id="pt" style="color: white" >
+      <pagination-controls  (pageChange)="p = $event"  previousLabel="Quay Lại" responsive="false"  nextLabel="Kế Tiếp"
+                           autoHide="false">
+
+      </pagination-controls>
   </div>
-
 </div>
-</div>
-
-<!-- The Modal -->
-<div class="modal" id="myModal">
-  <div class="modal-dialog">
-    <div class="modal-content">
-
-      <!-- Modal Header -->
-      <div class="modal-header">
-        <h4 class="modal-title"> Bạn Có Muốn Tạo Hóa Đơn Hay Không ?</h4>
-      </div>
-
-      <!-- Modal body -->
-      <div class="modal-body">
-        <p id="note">Lưu ý: Các tiền dịch vụ khác không được ghi trong hóa đơn này!</p>
-      </div>
-
-      <!-- Modal footer -->
-      <div class="modal-footer d-flex justify-content-center">
-        <button class="btn btn-success" id="yes" [routerLink]="'download-invoice'" data-dismiss="modal">Có</button>
-        <button type="button" class="btn btn-secondary align-content-center  " id="no"
-                data-dismiss="modal">Không
-        </button>
-      </div>
-
-    </div>
-  </div>
 </div>
 

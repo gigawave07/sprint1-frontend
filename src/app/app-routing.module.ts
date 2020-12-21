@@ -10,7 +10,7 @@ import {ListPendingTicketComponent} from './components/list-pending-ticket/list-
 import {SearchPendingTicketComponent} from './components/search-pending-ticket/search-pending-ticket/search-pending-ticket.component';
 import {InvoiceListComponent} from './components/invoice-list/invoice-list.component';
 import {InvoiceDetailComponent} from './components/invoice-detail/invoice-detail.component';
-
+import {InvoiceDownloadComponent} from './components/invoice-download/invoice-download.component';
 
 
 const routes: Routes = [
@@ -27,7 +27,8 @@ const routes: Routes = [
   {path: 'search-pending-ticket', component: SearchPendingTicketComponent},
   // khánh
   {path: 'invoice-list', component: InvoiceListComponent},
-  {path: 'invoice-detail/:id', component: InvoiceDetailComponent}
+  {path: 'invoice-detail/:id', component: InvoiceDetailComponent},
+  {path: 'invoice-download', component: InvoiceDownloadComponent}
 ];
 
 @NgModule({

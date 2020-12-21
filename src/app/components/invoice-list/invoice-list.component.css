@@ -1,60 +1,87 @@
-#td{
- color: orange; font-family: 'Helvetica Neue',serif;
+#td {
+  color: orange;
+  font-family: 'Helvetica Neue', serif;
   font-weight: bold;
 }
-#nameKH{
+
+#nameKH {
   margin: 0px 0px 0px 25px;
 }
-#khdc{
-margin: 0px 0px 0px 25px;
-}
-#pnb{
+
+#khdc {
   margin: 0px 0px 0px 25px;
 }
-#khEmail{
+
+#pnb {
   margin: 0px 0px 0px 25px;
 }
-#pt{
- position: relative;
+
+#khEmail {
+  margin: 0px 0px 0px 25px;
+}
+
+#pt {
+  position: relative;
   left: 200px;
 }
+
 .fontuser {
   position: relative;
   margin: 10px;
   height: 45px;
 }
 
-.fontuser i{
+.fontuser i {
   position: absolute;
   left: 15px;
   top: 10px;
   color: orange;
 }
-#add{
+
+#add {
   color: white;
   font-weight: bold;
   position: relative;
-  width: 170px;
-  text-align: right;
+  text-align: justify-all;
   left: 25px;
+  background-color: #FAA61A;
+  width: 190px;
+  height: 40px;
+  border: none;
 
 }
-#yes{
+
+#add:hover {
+  background-color: black;
+}
+
+#yes {
   width: 80px;
   color: white;
+  background-color: #FAA61A;
+  border: none;
 }
-#no{
+
+#yes:hover {
+  background-color: black;
+}
+
+#no {
   color: white;
 }
-#iconAdd{
+
+#iconAdd {
   position: absolute;
   left: 20px;
 
 }
-#note{
+
+#note {
   color: red;
 }
-#paging{
-  position: relative;
-  left: 200px;
+
+@media only screen and (min-width: 375px) {
+  [class*="col-"] {
+    width: 100%;
+  }
 }

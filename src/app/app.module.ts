@@ -25,6 +25,11 @@ import {AuthInterceptor} from './service/AuthInterceptor';
 import {InvoiceListComponent} from './components/invoice-list/invoice-list.component';
 import {InvoiceDetailComponent} from './components/invoice-detail/invoice-detail.component';
 import {NgxPaginationModule} from 'ngx-pagination';
+import { InvoiceDownloadComponent } from './components/invoice-download/invoice-download.component';
+import { PDFExportModule } from '@progress/kendo-angular-pdf-export';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+
 
 @NgModule({
   declarations: [
@@ -34,10 +39,12 @@ import {NgxPaginationModule} from 'ngx-pagination';
     // Châu
     InputTicketSellComponent, DeleteTicketComponent, EditTicketComponent, PrintTicketComponent, ListTicketComponent,
     // Đăng
-    ListPendingTicketComponent, CancelPendingTicketComponent, SearchPendingTicketComponent, InvoiceListComponent, InvoiceDetailComponent,
+    ListPendingTicketComponent, CancelPendingTicketComponent, SearchPendingTicketComponent, InvoiceListComponent, InvoiceDetailComponent, InvoiceDownloadComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, MaterialModule, HttpClientModule, FormsModule, MatDialogModule, ReactiveFormsModule,
-    NgxPaginationModule],
+    NgxPaginationModule,
+    PDFExportModule,
+    BrowserAnimationsModule],
   providers: [{
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptor,

@@ -10,12 +10,11 @@ export class InvoiceService {
 
   constructor(private http: HttpClient) {
   }
-
-  findAllInvoice(): Observable<any> {
-    return this.http.get(this.API_INVOICE + '/list');
-  }
-
   findInvoiceById(idInvoice: any): Observable<any> {
     return this.http.get(this.API_INVOICE + '/findByInvoiceId/' + idInvoice);
+  }
+
+  findInvoiceListByIdUser(idUser: any): Observable<any> {
+    return this.http.get(this.API_INVOICE + '/findAllInvoiceByUserId/' + idUser);
   }
 }

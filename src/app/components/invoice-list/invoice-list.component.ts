@@ -11,7 +11,6 @@ import {InvoiceService} from '../../service/invoice/invoice.service';
 export class InvoiceListComponent implements OnInit {
   private invoiceList;
   private appUser;
-  private appUser1;
   private readonly appUserId;
 
   constructor(public loginService: LoginService, private appUserService: AppUserService, private invoiceService: InvoiceService) {
@@ -23,7 +22,7 @@ export class InvoiceListComponent implements OnInit {
       console.log(dataAppUser);
       this.appUser = dataAppUser;
     });
-    this.invoiceService.findAllInvoice().subscribe(dataInvoice => {
+    this.invoiceService.findInvoiceListByIdUser(this.appUserId).subscribe(dataInvoice => {
       this.invoiceList = dataInvoice;
       console.log(dataInvoice);
     });

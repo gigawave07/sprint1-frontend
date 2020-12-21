@@ -1,4 +1,6 @@
-<div class="container-fluid " id="content" >
+
+<div class="container-fluid bg-white my-3" id="content" >
+
   <div class="row">
     <div class="col-md-12">
       <p class="navbar-brand" id="brand"><span id="logo"><i class="fa fa-plane" id="iconLogo" >
@@ -11,7 +13,7 @@
       <p>Mã Số thuế: <span id="mst"> 123567323</span></p>
       <p>Địa Chỉ: <span id="dc"> 293 Nguyễn Tất Thành, Thành Phố Đà Nẵng</span></p>
     </div>
-    <div class="col-md-3 text-right">
+    <div class="col-md-3 text-right" *ngIf="invoice">
       <p>Mẫu Số: <span>{{invoice.formCode}}</span></p>
       <p>Kí Hiệu: <span>{{invoice.invoiceCode}}</span></p>
       <p>Số: <span  id="so">{{'0000' + invoice.id}}</span></p>
@@ -23,35 +25,37 @@
       <br>
       <h1>HÓA ĐƠN TIỀN CƯỚC VẬN CHUYỂN VÀ PHÍ DỊCH VỤ</h1>
       <h2>(COMMERCIAL INVOICE)</h2>
-      <h4>Ngày tạo: <span>{{invoice.dateCreated}}</span></h4>
+      <h4>Ngày tạo: <span id="nt">{{invoice.dateCreated | date:'dd/MM/yyyy'}}</span></h4>
     </div>
   </div>
   <br>
   <br>
-  <div class="row">
+  <div class="row" *ngIf="appUser">
     <div class="col-md-12" id="kh" >
       <p>Tên Khách Hàng: <span id="tenKH" >{{appUser.fullName}}</span></p>
       <p>Số Điện Thoại: <span id="sdt" >{{appUser.phoneNumber}}</span></p>
       <p>Địa chỉ: <span id="dckh" >{{appUser.address}}</span></p>
       <p>Hình Thức Thanh Toán: <span id="tmck"> TMCK</span></p>
-      <p>Loại Tiền Tệ: VND &nbsp;&nbsp;&nbsp;&nbsp;<span id="tg" >Tỷ Giá(Exchange rate): 1 </span>
+      <p>Loại Tiền Tệ: <span style="font-weight: bold">VND</span> &nbsp;&nbsp;&nbsp;&nbsp;<span  >Tỷ Giá(Exchange rate):
+        <span id="tg">1</span>  </span>
         &nbsp;&nbsp;&nbsp;&nbsp;
-        <span id="ngtg">Ngày tỷ giá(Date of ex): {{invoice.dateCreated}}</span></p>
+        <span >Ngày tỷ giá(Date of ex): <span id="ngtg" >{{invoice.dateCreated | date: 'dd/MM/yyyy'}}</span>
+        </span></p>
     </div>
   </div>
   <div class="row">
-    <div class="col-md-12">
-      <table class="table  table-bordered bg-white " id="mytable" *ngIf="ticketList.length !== 0">
+    <div class="col-md-12" >
+      <table class="table  table-bordered bg-white " id="mytable">
         <thead class="thead-light ">
         <tr>
           <th>Số Thứ Tự</th>
           <th>Mã Số Vé</th>
           <th>Chiều Đi</th>
           <th>Chiều Về</th>
-          <th>Thành Tiền</th>
+          <th>Thành Tiền (VND)</th>
         </tr>
         </thead>
-        <tbody>
+        <tbody *ngIf="ticketList">
         <tr *ngFor="let ticket of ticketList">
           <td>{{ticket.id}}</td>
           <td>{{ticket.ticketCode}}</td>
@@ -66,7 +70,10 @@
       <h3 style="font-family: 'Helvetica Neue',serif; color: orange">Chưa có vé nào được thanh toán</h3>
     </div>
   </div>
+
 </div>
-<button *ngIf="ticketList.length !==0" class="btn btn-primary" style="position: relative;left: 1250px" id="btn"
-        (click)="generatePDF()">Generate
+<button *ngIf="ticketList.length !==0" class="ml-auto " style="position: relative;left: 1100px" id="btn"
+        (click)="generatePDF()">Tải Về
 </button>
+
+
