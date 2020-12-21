@@ -21,7 +21,6 @@ export class FeedbackService {
   };
 
 
-  // tslint:disable-next-line:ban-types
   getFeedbackHttpOptions(searchField: FeedbackSearch, page: number): Object {
     const feedback = {
       headers: new HttpHeaders({

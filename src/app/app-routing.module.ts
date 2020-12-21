@@ -11,6 +11,7 @@ import {SearchPendingTicketComponent} from './components/search-pending-ticket/s
 import { FeedbackListComponent } from './components/feedback-list/feedback-list.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {CommonModule} from "@angular/common";
+import {FeedbackContentComponent} from './components/feedback-content/feedback-content.component';
 
 
 
