@@ -10,6 +10,9 @@ export class PromotionListForCustomerComponent implements OnInit {
   public listPromotion;
   p: number;
   term: string;
+  promotion: any;
+  key: any;
+  inputSearch: any;
 
   constructor(
     public promotionService: PromotionService
@@ -25,5 +28,11 @@ export class PromotionListForCustomerComponent implements OnInit {
       }
     });
   }
-
+  getPromotion() {
+    this.promotionService.search(this.key, this.inputSearch).subscribe(data => {
+      this.promotion = data.content;
+      console.log(data);
+    });
+  }
 }
+

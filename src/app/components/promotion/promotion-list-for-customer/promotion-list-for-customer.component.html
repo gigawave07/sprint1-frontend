@@ -3,10 +3,27 @@
     <div class="col-12">
       <div class ="row" style="margin-bottom: 20px">
         <h2 style="margin-left: 30px">Danh sách khuyến mãi</h2>
-        <button type="button" class="btn btn-success" style="height: 40px; margin-left: 20px" [routerLink]="['/add-new']">Thêm mới</button>
-        <div class="d-flex" style="margin-left: 1050px; margin-top: -40px">
-          <input class="form-control mr-2" type="text" width="400px;" placeholder="Tìm kiếm" [(ngModel)]="term">
-          <button type="button" class="btn btn-success" style="height: 40px; width: 140px">Tìm kiếm</button>
+        <button type="button" class="btn btn-success" style="height: 40px; margin-left: 20px" [routerLink]="['/promotion-for-Admin']">Quản lý khuyến mãi</button>
+<!--        <div class="d-flex" style="margin-left: 1050px; margin-top: -40px">-->
+<!--          <input class="form-control mr-2" type="text" width="400px;" placeholder="Tìm kiếm" [(ngModel)]="term">-->
+<!--          <button type="button" class="btn btn-success" style="height: 40px; width: 140px">Tìm kiếm</button>-->
+        <div class="row" style="margin-left: 300px">
+          <div class="col-4">
+            <select [(ngModel)]="key" style="height: 40px">
+              <option>Chọn Mục Tìm Kiếm</option>
+              <option value="tất cả">Tất cả</option>
+              <option value="chuyến bay">Chuyến bay</option>
+              <option value="giá">Giá</option>
+            </select>
+          </div>
+          <div class="col-4">
+              <div class="form-group card">
+                <input [(ngModel)]="inputSearch" type="text" class="form-control empty" placeholder="Tìm kiếm"/>
+              </div>
+          </div>
+          <div class="col-4">
+            <button type="submit" class="btn btn-success" (click)="getPromotion()" style="margin-left: 1px">Tìm kiếm</button>
+          </div>
         </div>
       </div>
     </div>
@@ -29,13 +46,13 @@
     <table class="table" style="font-size: 20px">
       <thead class="table-dark">
       <tr>
-        <th scope="col">Chuyến bay</th>
+<!--        <th scope="col">Chuyến bay</th>-->
         <th scope="col">Hãng hàng không</th>
         <th scope="col">Số hiệu Chuyến bay</th>
         <th scope="col">Ngày Khởi hành</th>
-        <th scope="col">Ga Khởi hành</th>
+<!--        <th scope="col">Ga Khởi hành</th>-->
         <th scope="col">Thời gian Khởi hành</th>
-        <th scope="col">Ga đến</th>
+<!--        <th scope="col">Ga đến</th>-->
         <th scope="col">Thời gian đến</th>
         <th scope="col">Giá</th>
         <th scope="col">Đặt vé</th>
@@ -43,13 +60,13 @@
       </thead>
       <tbody *ngFor="let promotion of listPromotion|filter:term|paginate: { itemsPerPage: 2, currentPage: p}" style="color: white">
       <tr>
-        <td>{{promotion.flight}}</td>
+<!--        <td>{{promotion.flight}}</td>-->
         <td>{{promotion.airline}}</td>
         <td>{{promotion.flightNumber}}</td>
         <td>{{promotion.departureDate | date: 'dd/MM/yyyy'}}
-        <td>{{promotion.departurePlace}}</td>
+<!--        <td>{{promotion.departurePlace}}</td>-->
         <td>{{promotion.departureTime | date:'HH:mm'}}</td>
-        <td>{{promotion.arrivalPlace}}</td>
+<!--        <td>{{promotion.arrivalPlace}}</td>-->
         <td>{{promotion.arrivalTime | date:'HH:mm'}}</td>
         <td>{{promotion.price}}</td>
         <td style="width: 15%;">

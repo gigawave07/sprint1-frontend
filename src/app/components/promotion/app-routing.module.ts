@@ -23,6 +23,7 @@ import { SunComponent } from './days/sun/sun.component';
 import {Ng2SearchPipeModule} from 'ng2-search-filter';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { DadSgnComponent } from './flights/dad-sgn/dad-sgn.component';
+import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 
 
 const routes: Routes = [
@@ -44,19 +45,20 @@ const routes: Routes = [
   // tslint:disable-next-line:max-line-length
   declarations: [PromotionListComponent, AddNewComponent, EditComponent, DeleteComponent, PromotionListForCustomerComponent,
     MonComponent, TuesComponent, WedsComponent, ThursComponent, FriComponent, SatComponent, SunComponent, DadSgnComponent, ],
-    imports: [
-        CommonModule,
-        RouterModule.forRoot(routes),
-        ReactiveFormsModule,
-        MaterialModule,
-        MatDatepickerModule,
-        MatFormFieldModule,
-        MatInputModule,
-        MatDialogModule,
-        Ng2SearchPipeModule,
-        FormsModule,
-        NgxPaginationModule
-    ],
+  imports: [
+    CommonModule,
+    RouterModule.forRoot(routes),
+    ReactiveFormsModule,
+    MaterialModule,
+    MatDatepickerModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatDialogModule,
+    Ng2SearchPipeModule,
+    FormsModule,
+    NgxPaginationModule,
+    NgxMaterialTimepickerModule
+  ],
   exports: [RouterModule, PromotionListForCustomerComponent]
 })
 export class AppRoutingModule { }

@@ -21,9 +21,9 @@ export class AddNewComponent implements OnInit {
   ngOnInit() {
     // @ts-ignore
     this.formAddNew = this.formBuilder.group({
-      flight: ['', [Validators.required, Validators.pattern('^\\D{3}-\\D{3}$')]],
+      flight: ['', [Validators.required, Validators.pattern('^\\D{3}-\\D{3}$'), Validators.minLength(7)]],
       airline: ['', [Validators.required]],
-      flightNumber: ['', [Validators.required, Validators.pattern('^VJ \\d{3}|QH \\d{3}|VN \\d{3}$')]],
+      flightNumber: ['', [Validators.required, Validators.pattern('^VJ \\d{3}|QH \\d{3}|VN \\d{3}$'),  Validators.minLength(6)]],
       departureDate: ['', [Validators.required]],
       departurePlace: ['', [Validators.required]],
       departureTime: ['', [Validators.required]],

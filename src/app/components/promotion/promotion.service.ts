@@ -12,6 +12,7 @@ export class PromotionService {
     public http: HttpClient
   ) {
   }
+
   public API_GET_INFO_BY_ID = 'http://localhost:8080/promotion/getPromoById';
   public API_GET_ALL_INFO = 'http://localhost:8080/promotion/getAll';
   public API_ADD_NEW = 'http://localhost:8080/promotion/addNewPromo';
@@ -20,49 +21,62 @@ export class PromotionService {
   public API_GET_INFO = 'http://localhost:8080/promotion/getPromo';
   public API_GET_BY_DATE = 'http://localhost:8080/promotion/getPromoByDepartureDate?promotion';
   public API_GET_BY_FLIGHT = 'http://localhost:8080/promotion/getPromoByFlight';
+  public API_GET_FLIGHT = 'http://localhost:8080/promotion/findPromotion';
 
   getPromoInMon(): Observable<any> {
     return this.http.get(this.API_GET_BY_DATE + '=2021/01/04');
   }
+
   // @ts-ignore
   getPromoInTues(): Observable<any> {
     return this.http.get(this.API_GET_BY_DATE + '=2021/01/05');
   }
+
   getPromoInWeds(): Observable<any> {
     return this.http.get(this.API_GET_BY_DATE + '=2021/01/06');
   }
+
   getPromoInThurs(): Observable<any> {
     return this.http.get(this.API_GET_BY_DATE + '=2021/01/07');
   }
+
   getPromoInFri(): Observable<any> {
     return this.http.get(this.API_GET_BY_DATE + '=2021/01/08');
   }
+
   getPromoInSat(): Observable<any> {
-    return this.http.get(this.API_GET_BY_DATE + '=2021/01/02');
+    return this.http.get(this.API_GET_BY_DATE + '=2021/01/09');
   }
+
   getPromoInSun(): Observable<any> {
-    return this.http.get(this.API_GET_BY_DATE + '=2021/01/03');
+    return this.http.get(this.API_GET_BY_DATE + '=2021/01/10');
   }
+
   getPromoByFlightDAD_SGN(): Observable<any> {
     // @ts-ignore
     return this.http.get(this.API_GET_BY_FLIGHT + '/' + 'DAD-SGN');
   }
+
   getPromoByFlightDAD_HAN(): Observable<any> {   // @ts-ignore
     return this.http.get(this.API_GET_BY_FLIGHT + '/' + 'DAD-HAN');
   }
+
   getPromoByFlightSGN_DLI(): Observable<any> {
     // @ts-ignore
     return this.http.get(this.API_GET_BY_FLIGHT + '/' + 'SGN-DLI');
   }
+
   getAll(): Observable<any> {
     // console.log(this.http.get(this.API_GET_ALL_INFO));
     // return this.http.get(this.API);
     return this.http.get(this.API_GET_ALL_INFO);
   }
+
   // @ts-ignore
   getPromo(): Observable<any> {
     return this.http.get(this.API_GET_INFO);
   }
+
   addNewPromo(promotion): Observable<any> {
     return this.http.post(this.API_ADD_NEW, promotion);
     // return this.http.get(this.API, promotion);
@@ -71,10 +85,16 @@ export class PromotionService {
   getPromoById(promotionid): Observable<any> {
     return this.http.get(this.API_GET_INFO_BY_ID + '/' + promotionid);
   }
+
   updatePromo(promotion, promotionid): Observable<any> {
     return this.http.put(this.API_UPDATE + '/' + promotionid, promotion);
   }
+
   deletePromo(promotionid): Observable<any> {
     return this.http.delete(this.API_DELETE + '/' + promotionid);
+  }
+
+  search(key, inputSearch): Observable<any> {
+    return this.http.get(this.API_GET_FLIGHT + '?by=' + key + '&search=' + inputSearch);
   }
 }

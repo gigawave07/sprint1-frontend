@@ -1,6 +1,6 @@
 <div class="container">
   <h2 class="text-center">Thêm mới chuyến bay khuyến mãi</h2>
-  <div class="col-6 justify-content-center">
+  <div class="col-6 justify-content-center" style="background-color: white">
     <form [formGroup]="formAddNew" class="form-group">
       <div class="form-group" style="align-content: center">
         <div class="form-group">
@@ -45,7 +45,7 @@
         <select class="form-control" id="type" formControlName="airline">
           <option name="type" disabled>Select a branch</option>
           <option name="type" value="VietJet Air">VietJet Air</option>
-          <option name="type" value="Vietnam Airline">Vietnam Airline</option>
+          <option name="type" value="Vietnam Airline">Vietnam Airlines</option>
           <option name="type" value="Bamboo Airway">Bamboo Airway</option>
         </select>
         <p *ngIf="formAddNew.get('airline').invalid && formAddNew.get('airline').touched"
@@ -59,31 +59,29 @@
       </div>
       <div class="form-group">
         <label for="departureDate">Ngày khởi hành</label>
-        <input class="form-control" id="departureDate" name="departureDate" formControlName="departureDate" matInput [matDatepicker]="picker1">
-        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
-        <mat-datepicker #picker1></mat-datepicker>
+        <input type="date" class="form-control" id="departureDate" name="departureDate" formControlName="departureDate">
         <p *ngIf="formAddNew.get('departureDate').invalid && formAddNew.get('departureDate').touched"
            class="text-danger">Ngày khởi hành không được để trống</p>
       </div>
       <div class="form-group">
-        <label for="arrivalTime">Giờ khởi hành</label>
-        <input type="time" class="form-control" id="arrivalTime" name="arrivalTime" formControlName="departureTime">
+        <label>Giờ khởi hành</label><br>
+          <input type="time" class="form-control" formControlName="departureTime">
         <p *ngIf="formAddNew.get('departureTime').invalid && formAddNew.get('departureTime').touched"
            class="text-danger">Giờ khởi hành không được để trống</p>
       </div>
       <div class="form-group">
-        <label for="arrivalTime">Giờ đến</label>
-        <input type="time" class="form-control" id="arrival_time" name="arrival_time" formControlName="arrivalTime">
+        <label>Giờ đến</label><br>
+        <input type="time" class="form-control" formControlName="arrivalTime">
         <p *ngIf="formAddNew.get('arrivalTime').invalid && formAddNew.get('arrivalTime').touched"
            class="text-danger">Giờ đến không được để trống</p>
       </div>
       <div class="form-group">
-        <label for="price">Giá vé</label>
+        <label for="price">Giá vé (VNĐ)</label>
         <input type="text" class="form-control" id="price" name="price" formControlName="price">
         <p *ngIf="formAddNew.get('price').invalid && formAddNew.get('price').touched"
            class="text-danger">Vui lòng nhập giá vé bằng số</p>
       </div>
-      <button type="submit" [disabled]="formAddNew.invalid" class="btn btn-primary" (click)="addNewPromo()">Submit</button>
+      <button type="submit" [disabled]="formAddNew.invalid" class="btn btn-primary" (click)="addNewPromo()">Thêm mới</button>
     </form>
   </div>
 </div>

@@ -1,6 +1,15 @@
 label{
-  color: white;
+  color: black;
 }
 h2{
+  color: white;
+}
+mat-datepicker-toggle {
+  color: black;
+}
+mat-label {
+  color: black;
+}
+pagination-controls{
   color: white;
 }

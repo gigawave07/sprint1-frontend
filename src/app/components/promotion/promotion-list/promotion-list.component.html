@@ -25,13 +25,13 @@
     <table class="table" style="font-size: 20px">
       <thead class="table-dark">
       <tr>
-        <th scope="col">Chuyến bay</th>
+        <!--        <th scope="col">Chuyến bay</th>-->
         <th scope="col">Hãng hàng không</th>
         <th scope="col">Số hiệu Chuyến bay</th>
         <th scope="col">Ngày Khởi hành</th>
-        <th scope="col">Ga Khởi hành</th>
+        <!--        <th scope="col">Ga Khởi hành</th>-->
         <th scope="col">Thời gian Khởi hành</th>
-        <th scope="col">Ga đến</th>
+        <!--        <th scope="col">Ga đến</th>-->
         <th scope="col">Thời gian đến</th>
         <th scope="col">Giá</th>
         <th scope="col">Các thao tác</th>
@@ -39,20 +39,20 @@
       </thead>
       <tbody *ngFor="let promotion of listPromotion|filter:term |paginate: { itemsPerPage: 2, currentPage: p}">
       <tr>
-        <td>{{promotion.flight}}</td>
+        <!--        <td>{{promotion.flight}}</td>-->
         <td>{{promotion.airline}}</td>
         <td>{{promotion.flightNumber}}</td>
         <td>{{promotion.departureDate | date: 'dd/MM/yyyy'}}
-        <td>{{promotion.departurePlace}}</td>
+          <!--        <td>{{promotion.departurePlace}}</td>-->
         <td>{{promotion.departureTime | date:'HH:mm'}}</td>
-        <td>{{promotion.arrivalPlace}}</td>
+        <!--        <td>{{promotion.arrivalPlace}}</td>-->
         <td>{{promotion.arrivalTime | date:'HH:mm'}}</td>
         <td>{{promotion.price}}</td>
         <td style="width: 15%;">
           <button type="button" class="btn btn-warning" style="margin-right: 10px"
-                  [routerLink]="['/edit/'+promotion.id]">Edit
+                  [routerLink]="['/edit/'+promotion.id]">Chỉnh sửa
           </button>
-          <button type="button" class="btn btn-dark" (click)=confirmDelete(promotion.id)>Delete</button>
+          <button type="button" class="btn btn-dark" (click)=confirmDelete(promotion.id)>Xóa</button>
         </td>
       </tr>
       </tbody>

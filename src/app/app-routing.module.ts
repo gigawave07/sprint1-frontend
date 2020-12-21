@@ -22,6 +22,7 @@ import {MaterialModule} from './material.module';
 import {MatDialogModule} from '@angular/material';
 import {NgxPaginationModule} from 'ngx-pagination';
 import {EmployeeComponent} from './components/employee/employee.component';
+import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 // tslint:disable-next-line:max-line-length
 import {BaoCaoComponentComponent} from './components/report-statistic/bao-cao-thong-ke/bao-cao/bao-cao-component/bao-cao-component.component';
 import {ListTicketComponent} from './components/list-ticket/list-ticket.component';
@@ -38,6 +39,7 @@ import {MessUserComponent} from './components/mess-user/mess-user.component';
 import {SendFeedbackComponent} from './components/send-feedback/send-feedback.component';
 import {ConsultantComponent} from './components/consultant/consultant.component';
 import {MessageConsultantComponent} from './components/consultant/message-consultant/message-consultant.component';
+import {PromotionListComponent} from './components/promotion/promotion-list/promotion-list.component';
 const routes: Routes = [
   // Quân :
   {path: '', component: HomeComponent},
@@ -85,6 +87,7 @@ const routes: Routes = [
   {path: 'search-pending-ticket', component: SearchPendingTicketComponent},
   // Ngân
   {path: 'promotion', component: PromotionListForCustomerComponent},
+  {path: 'promotion-for-Admin', component: PromotionListComponent},
   // Mai :
   {path: 'list-employee', component: ListEmployeeComponent},
   {path: 'list-employee/create-employee', component: CreateEmployeeComponent},
@@ -105,7 +108,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes), CommonModule, ReactiveFormsModule, MaterialModule,
-    MatDialogModule, FormsModule, NgxPaginationModule],
+    MatDialogModule, FormsModule, NgxPaginationModule, NgxMaterialTimepickerModule],
   exports: [RouterModule],
   declarations: [ListEmployeeComponent, CreateEmployeeComponent, EditEmployeeComponent, DeleteEmployeeComponent,
     EmployeeComponent, EditTicketComponent, InputTicketSellComponent, PrintTicketTwoWayComponent, NoticePageComponent,
