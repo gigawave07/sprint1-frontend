@@ -10,7 +10,7 @@ import {LoginService} from '../../service/login.service';
   styleUrls: ['./information-admin.component.css']
 })
 export class InformationAdminComponent implements OnInit {
-  public idAdmin;
+  public email;
   public admin;
 
   constructor(
@@ -21,10 +21,10 @@ export class InformationAdminComponent implements OnInit {
   }
 
   ngOnInit() {
-    // get idAdmin
-    this.idAdmin = this.loginService.currentUserValue.id;
+    // get username account
+    this.email = this.loginService.currentUserValue.username;
     // show inf admin
-    this.adminService.getAdminByIdService(this.idAdmin).subscribe(data => {
+    this.adminService.getAdminByEmailService(this.email).subscribe(data => {
       this.admin = data;
     });
   }

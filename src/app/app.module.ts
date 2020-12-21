@@ -23,6 +23,8 @@ import {AdminComponent} from './components/admin/admin.component';
 import {InformationAdminComponent} from './components/information-admin/information-admin.component';
 import {ChangePasswordAdminComponent} from './components/change-password-admin/change-password-admin.component';
 import {ChangePasswordSuccessfullyComponent} from './components/change-password-successfully/change-password-successfully.component';
+import {GetTokenEmailAdminComponent} from './components/get-token-email-admin/get-token-email-admin.component';
+import { GetCheckPasswordAdminComponent } from './components/get-check-password-admin/get-check-password-admin.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +34,7 @@ import {ChangePasswordSuccessfullyComponent} from './components/change-password-
     SpinnerComponent, SpinnerOverlayComponent,
     // Danh
     AdminComponent, InformationAdminComponent, ChangePasswordAdminComponent, ChangePasswordSuccessfullyComponent,
+    GetTokenEmailAdminComponent, GetCheckPasswordAdminComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, MaterialModule, HttpClientModule, NgxPaginationModule, Ng2SearchPipeModule,
     FormsModule, MatDialogModule, ReactiveFormsModule, NgxLoadingModule.forRoot({})],

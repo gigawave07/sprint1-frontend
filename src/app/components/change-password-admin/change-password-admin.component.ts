@@ -26,44 +26,63 @@ export class ChangePasswordAdminComponent implements OnInit {
       passwordOld: ['',
         [
           Validators.required,
-          Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$')
+          Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[A-Za-z\\d]{8,20}$')
         ]
       ],
       passwordNew: ['',
         [
           Validators.required,
-          Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$')
+          Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[A-Za-z\\d]{8,20}$')
         ]
       ],
       confirmPassword: ['',
         [
           Validators.required,
-          Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$')
+          Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[A-Za-z\\d]{8,20}$')
         ]
-      ]
-    }, {validator: this.checkPasswords});
+      ],
+      verificationCode: ['', Validators.required],
+    }, {validator: this.checkPasswordConfirm});
   }
 
-  checkPasswords(group: FormGroup) {
+  checkPasswordConfirm(group: FormGroup) {
     const passwordNew = group.controls.passwordNew.value;
     const confirmPass = group.controls.confirmPassword.value;
     return passwordNew === confirmPass ? null : {notSame: true};
   }
 
+
   ngOnInit() {
     this.username = this.data.dataAdmin.email;
+    // send email confirm
+    this.adminService.sendConfirmEmailService(this.username).subscribe(dataSendEmail => {
+    });
   }
 
   changePassword() {
-    this.adminService.findAppAccountService(this.username).subscribe(dataAdmin => {
+    this.adminService.findAppAccountService(this.username).subscribe(dataAppAccount => {
       this.account = {
         passwordOld: this.changePasswordForm.controls.passwordOld.value,
-        passwordNew: this.changePasswordForm.controls.passwordNew.value
+        passwordNew: this.changePasswordForm.controls.passwordNew.value,
+        verificationCode: this.changePasswordForm.controls.verificationCode.value
       };
-      this.adminService.savePasswordAdminService(dataAdmin.username, this.account).subscribe(dataSavePassword => {
-        this.dialogRef.close();
+      this.adminService.confirmEmail(dataAppAccount.username, this.account).subscribe(dataConfirmEmail => {
+        if (dataConfirmEmail) {
+          this.adminService.savePasswordAdminService(dataAppAccount.username, this.account).subscribe(dataSavePassword => {
+            console.log(dataSavePassword.message);
+            if (dataSavePassword.message === 'Password changed') {
+              this.dialogRef.close();
+              this.route.navigateByUrl('/admin/change-password-successfully');
+            } else {
+              this.dialogRef.close();
+              this.route.navigateByUrl('/admin/get-check-password');
+            }
+          });
+        } else {
+          this.dialogRef.close();
+          this.route.navigateByUrl('/admin/get-token-email');
+        }
       });
-      this.route.navigateByUrl('/admin/change-password-successfully');
     });
   }
 }
