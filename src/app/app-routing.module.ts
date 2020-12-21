@@ -36,6 +36,8 @@ import {PromotionListForCustomerComponent} from './components/promotion/promotio
 import {InvoiceListComponent} from './components/invoice-list/invoice-list.component';
 import {InvoiceDetailComponent} from './components/invoice-detail/invoice-detail.component';
 import {InvoiceDownloadComponent} from './components/invoice-download/invoice-download.component';
+import {SearchFlightInformationComponent} from './components/flight/search-flight-information/search-flight-information.component';
+import {PaymentHistoryComponent} from './components/flight/payment-history/payment-history/payment-history.component';
 
 import {MessUserComponent} from './components/mess-user/mess-user.component';
 import {SendFeedbackComponent} from './components/send-feedback/send-feedback.component';
@@ -108,7 +110,9 @@ const routes: Routes = [
   {path: 'invoice-list', component: InvoiceListComponent},
   {path: 'invoice-detail/:id', component: InvoiceDetailComponent},
   {path: 'invoice-download', component: InvoiceDownloadComponent}
-];
+  // Đin
+  {path: 'search', component: SearchFlightInformationComponent}
+  ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes), CommonModule, ReactiveFormsModule, MaterialModule,

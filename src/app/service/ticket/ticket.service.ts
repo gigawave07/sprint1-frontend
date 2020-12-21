@@ -12,6 +12,7 @@ const API = 'http://localhost:8080/ticket';
 })
 export class TicketService {
   protected readonly API: string = 'http://localhost:8080/ticket';
+  public apiAdd = 'http://localhost:8080/ticket/add';
 
   constructor(
     protected http: HttpClient
@@ -20,6 +21,10 @@ export class TicketService {
 
   getAllTicketService(): Observable<any> {
     return this.http.get(this.API + '/list');
+  }
+  // Đin
+  addTicketAndBooking(daoTicket): Observable<any> {
+    return this.http.post(this.apiAdd, daoTicket);
   }
 
   /*

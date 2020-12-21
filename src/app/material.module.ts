@@ -48,15 +48,21 @@ import {MessageUserComponent} from './components/message-user/message-user.compo
     MatProgressSpinnerModule,
     MatDialogModule
 
+    MatProgressSpinnerModule,
+    MatRadioModule,
+    MatIconModule,
+    MatStepperModule,
+    MatTabsModule,
   ],
   providers: [
-    MatDatepickerModule,
+    MatDatepickerModule, {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}
   ],
   entryComponents: [
     ChangePasswordAdminComponent,
     EditUserComponent, ChangePasswordUserComponent,
     CancelPendingTicketComponent, DeleteTicketComponent, EditTicketComponent,
-    UserDialogComponent, MessageUserComponent
+    FlightDetailComponent, FlightTicketComponent, InfoPassengerBookingTicketComponent, LoginComponent, ChooseTicketComponent],
+  UserDialogComponent, MessageUserComponent
   ]
 })
 export class MaterialModule { }
