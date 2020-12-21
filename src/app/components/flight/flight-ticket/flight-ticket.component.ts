@@ -36,11 +36,13 @@ export class FlightTicketComponent implements OnInit {
     this.dialogRef.close();
   }
 
+  sum(price, tax, result) {
+  }
+
   dialogPassenger() {
     this.dialogRef.close();
     const dialogRef = this.dialog.open(InfoPassengerBookingTicketComponent, {
       width: '80%',
-      height: '100%',
       data: {
         flightDetailOne: this.flightOne,
         flightDetailTwo: this.flightTwo,

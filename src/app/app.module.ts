@@ -70,6 +70,13 @@ import {FlightDetailComponent} from './components/flight/flight-detail/flight-de
 import {InfoPassengerBookingTicketComponent} from './components/flight/info-passenger-booking-ticket/info-passenger-booking-ticket.component';
 import { ChooseTicketComponent } from './components/flight/alertError/choose-ticket/choose-ticket.component';
 import { PaymentHistoryComponent } from './components/flight/payment-history/payment-history/payment-history.component';
+import {SearchFlightInformationComponent} from './components/flight/search-flight-information/search-flight-information.component';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { FlightTableComponent } from './components/flight/flight-table/flight-table.component';
+import { WeekdaysPipe } from './components/flight/flight-table/weekdays.pipe';
+import { FlightDetailComponent } from './components/flight/flight-detail/flight-detail.component';
+import { FlightTicketComponent } from './components/flight/flight-ticket/flight-ticket.component';
+import { InfoPassengerBookingTicketComponent } from './components/flight/info-passenger-booking-ticket/info-passenger-booking-ticket.component';
 
 @NgModule({
   declarations: [
@@ -108,8 +115,6 @@ import { PaymentHistoryComponent } from './components/flight/payment-history/pay
     FlightDetailComponent,
     FlightTicketComponent,
     InfoPassengerBookingTicketComponent,
-    ChooseTicketComponent,
-    PaymentHistoryComponent
   ],
   imports: [BrowserModule, AppRoutingModule, MaterialModule, HttpClientModule, NgxPaginationModule, Ng2SearchPipeModule,
     FormsModule, MatDialogModule, ReactiveFormsModule, NgxLoadingModule.forRoot({}),

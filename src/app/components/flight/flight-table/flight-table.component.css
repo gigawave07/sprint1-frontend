@@ -14,7 +14,7 @@
 
 
 table {
-  width: 100%;
+  width: 100vh;
 }
 
 th {
@@ -30,8 +30,4 @@ th {
 
 .border-flight {
   border-radius: 0.75rem;
-}
-a {
-  pointer-events: none;
-  cursor: default;
 }
