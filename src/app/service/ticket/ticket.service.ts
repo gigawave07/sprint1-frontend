@@ -68,8 +68,8 @@ export class TicketService {
     return this.http.delete(this.API + '/delete/' + idDelete);
   }
 
-  editTicketService(idEdit, passengerEdit, appUserEdit, ticketEdit): Observable<any> {
-    return this.http.put(this.API + '/edit/' + idEdit + '/' + passengerEdit + '/' + appUserEdit, ticketEdit);
+  editTicketService(passengerEdit, appUserEdit, ticketEdit): Observable<any> {
+    return this.http.put(this.API + '/edit/' + passengerEdit + '/' + appUserEdit, ticketEdit);
   }
 
   saveTicketService(idFlightInformationDeparture, idFlightInformationArrival, ticket): Observable<any> {
@@ -105,4 +105,10 @@ export class TicketService {
   /**
    * Chau end
    */
+
+  // khanh
+  findAllTicketByInvoiceId(invoiceId): Observable<any> {
+    return this.http.get(this.API + '/findAllTicketByInvoiceId/' + invoiceId);
+  }
+
 }

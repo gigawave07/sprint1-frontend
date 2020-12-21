@@ -1,4 +1,4 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import {Component, ElementRef, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {TicketService} from '../../service/ticket/ticket.service';
@@ -21,7 +21,8 @@ export class EditTicketComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any,
     protected formBuilder: FormBuilder,
     private ticketService: TicketService,
-    protected router: Router
+    protected router: Router,
+    private el: ElementRef
   ) {
   }
 
@@ -33,15 +34,15 @@ export class EditTicketComponent implements OnInit {
       priceArrival: [this.data.dataTicket.priceArrival],
       priceDeparture: [this.data.dataTicket.priceDeparture],
       statusCheckin: [this.data.dataTicket.statusCheckin],
-      ticketCode: [this.data.dataTicket.statusCheckin],
-      booking: [this.data.dataTicket.booking],
-      employee: [this.data.dataTicket.employee],
-      flightInformation: [this.data.dataTicket.flightInformation],
-      invoice: [this.data.dataTicket.invoice],
+      ticketCode: [this.data.dataTicket.ticketCode],
+      booking: [this.data.dataTicket.booking.bookingCode],
+      employee: [this.data.dataTicket.employee.id],
+      flightInformation: [this.data.dataTicket.flightInformation.id],
+      invoice: [this.data.dataTicket.invoice.id],
       passengerName: [this.data.dataTicket.passenger,
         [Validators.required, Validators.minLength(10), Validators.maxLength(50),
           Validators.pattern('^([a-zA-Z]([ ]?[a-zA-Z])*)$')]],
-      statusPayment: [this.data.dataTicket.statusPayment],
+      statusPayment: [this.data.dataTicket.statusPayment.name],
       appUser: ['', {
         validators:
           [Validators.required, Validators.maxLength(50),
@@ -57,8 +58,7 @@ export class EditTicketComponent implements OnInit {
     if (this.formEdit.valid) {
       this.passengerEdit = this.formEdit.value.passengerName;
       this.appUserEdit = this.formEdit.value.appUser;
-      const ID_EDIT = this.data.dataTicket.id;
-      this.ticketService.editTicketService(ID_EDIT, this.passengerEdit, this.appUserEdit, this.formEdit.value)
+      this.ticketService.editTicketService(this.passengerEdit, this.appUserEdit, this.formEdit.value)
         .subscribe(
           data => {
           if (data.message === 'Succeed') {
@@ -77,6 +77,20 @@ export class EditTicketComponent implements OnInit {
             });
           }
         );
+    } else {
+      for (const KEY of Object.keys(this.formEdit.controls)) {
+        if (this.formEdit.controls[KEY].invalid) {
+          const INVALID_CONTROL = this.el.nativeElement.querySelector('[formControlName="' + KEY + '"]');
+          INVALID_CONTROL.focus();
+          break;
+        }
+      }
+    }
+  }
+
+  keyDownFunction(event) {
+    if (event.keyCode === 13) {
+      this.edit();
     }
   }
 }

@@ -22,10 +22,10 @@ import {Ng2SearchPipeModule} from 'ng2-search-filter';
 import {AdminComponent} from './components/admin/admin.component';
 import {InformationAdminComponent} from './components/information-admin/information-admin.component';
 import {ChangePasswordAdminComponent} from './components/change-password-admin/change-password-admin.component';
-import { DetailUserComponent } from './components/detail-user/detail-user.component';
-import { EditUserComponent } from './components/edit-user/edit-user.component';
-import { ChangePasswordUserComponent } from './components/change-password-user/change-password-user.component';
-import { InformationUserComponent } from './components/information-user/information-user.component';
+import {DetailUserComponent} from './components/detail-user/detail-user.component';
+import {EditUserComponent} from './components/edit-user/edit-user.component';
+import {ChangePasswordUserComponent} from './components/change-password-user/change-password-user.component';
+import {InformationUserComponent} from './components/information-user/information-user.component';
 import {ListPendingTicketComponent} from './components/list-pending-ticket/list-pending-ticket/list-pending-ticket.component';
 import {CancelPendingTicketComponent} from './components/list-pending-ticket/cancel-pending-ticket/cancel-pending-ticket.component';
 import {SearchPendingTicketComponent} from './components/search-pending-ticket/search-pending-ticket/search-pending-ticket.component';
@@ -56,6 +56,14 @@ import {MessageService} from './service/message.service';
 import {DatePipe} from '@angular/common';
 import {PromotionModule} from './components/promotion/promotion.module';
 
+import {ChangePasswordSuccessfullyComponent} from './components/change-password-successfully/change-password-successfully.component';
+import {GetTokenEmailAdminComponent} from './components/get-token-email-admin/get-token-email-admin.component';
+import { GetCheckPasswordAdminComponent } from './components/get-check-password-admin/get-check-password-admin.component';
+
+import {InvoiceListComponent} from './components/invoice-list/invoice-list.component';
+import {InvoiceDetailComponent} from './components/invoice-detail/invoice-detail.component';
+import { InvoiceDownloadComponent } from './components/invoice-download/invoice-download.component';
+import { PDFExportModule } from '@progress/kendo-angular-pdf-export';
 
 @NgModule({
   declarations: [
@@ -66,7 +74,9 @@ import {PromotionModule} from './components/promotion/promotion.module';
     ListPendingTicketComponent, CancelPendingTicketComponent, SearchPendingTicketComponent, SpinnerComponent, SpinnerOverlayComponent,
     SpinnerComponent, SpinnerOverlayComponent,
     // Danh
-    AdminComponent, InformationAdminComponent, ChangePasswordAdminComponent,
+    AdminComponent, InformationAdminComponent, ChangePasswordAdminComponent, ChangePasswordSuccessfullyComponent,
+    GetTokenEmailAdminComponent, GetCheckPasswordAdminComponent,
+
     // Đạt
     DetailUserComponent, EditUserComponent, ChangePasswordUserComponent, InformationUserComponent, UserDialogComponent,
     MessageUserComponent,
@@ -75,6 +85,8 @@ import {PromotionModule} from './components/promotion/promotion.module';
     // Nhật mới
     TrangChinhComponent, BaoCaoComponentComponent, TrangChuThongKeComponent,
     KetQuaComponent, KetQuaTableComponent, KetQuaSaiLogicComponent,
+    // Khánh
+    InvoiceListComponent, InvoiceDownloadComponent, InvoiceDetailComponent,
 
     // Châu
     DeleteTicketComponent, PrintTicketComponent, ListTicketComponent,
@@ -86,7 +98,8 @@ import {PromotionModule} from './components/promotion/promotion.module';
   ],
   imports: [BrowserModule, AppRoutingModule, MaterialModule, HttpClientModule, NgxPaginationModule, Ng2SearchPipeModule,
     FormsModule, MatDialogModule, ReactiveFormsModule, NgxLoadingModule.forRoot({}),
-    ChartsModule, SocialLoginModule, PromotionModule
+    ChartsModule, SocialLoginModule, PromotionModule,     PDFExportModule,
+
   ],
   // tslint:disable-next-line:max-line-length
   providers: [DatePipe, MessageService, FeedbackService
@@ -98,6 +111,7 @@ import {PromotionModule} from './components/promotion/promotion.module';
     provide: AuthServiceConfig,
     useFactory: getAuthServiceConfigs
   },
+    // { provide: LOCALE_ID, useValue: 'vi-VN' },
     ExcelService],
   bootstrap: [AppComponent],
   entryComponents: [SpinnerOverlayComponent, TrangChinhComponent, BaoCaoComponentComponent, TrangChuThongKeComponent,

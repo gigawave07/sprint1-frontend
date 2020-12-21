@@ -37,14 +37,10 @@ export class ConsultantComponent implements OnInit {
     setInterval(() => {
       firebase.database().ref('chats/').remove().then(() => {
       });
-    }, 6000000);
+      firebase.database().ref('users/').remove().then(() => {
+      });
+    }, 12000000);
   }
 
-  deleteUser(key) {
-    firebase.database().ref('users/').child(key).remove().then(() => {
-      this.router.navigate(['/consultant']).then(() => {
-      });
-    });
-  }
 
 }

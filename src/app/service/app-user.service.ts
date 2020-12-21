@@ -5,14 +5,13 @@ import {Observable} from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class UserMessService {
-
-  private baseUrl = 'http://localhost:8080/message/';
+export class AppUserService {
+  public API_USER = 'http://localhost:8080/appUser';
 
   constructor(private http: HttpClient) {
   }
 
-  public getListUser(): Observable<any> {
-    return this.http.get(this.baseUrl + 'user-chat');
+  findAppUserById(idUser): Observable<any> {
+    return this.http.get(this.API_USER + '/findAppUserById/' + idUser);
   }
 }

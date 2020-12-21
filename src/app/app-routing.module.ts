@@ -22,7 +22,6 @@ import {MaterialModule} from './material.module';
 import {MatDialogModule} from '@angular/material';
 import {NgxPaginationModule} from 'ngx-pagination';
 import {EmployeeComponent} from './components/employee/employee.component';
-import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 // tslint:disable-next-line:max-line-length
 import {BaoCaoComponentComponent} from './components/report-statistic/bao-cao-thong-ke/bao-cao/bao-cao-component/bao-cao-component.component';
 import {ListTicketComponent} from './components/list-ticket/list-ticket.component';
@@ -87,7 +86,6 @@ const routes: Routes = [
   {path: 'search-pending-ticket', component: SearchPendingTicketComponent},
   // Ngân
   {path: 'promotion', component: PromotionListForCustomerComponent},
-  {path: 'promotion-for-Admin', component: PromotionListComponent},
   // Mai :
   {path: 'list-employee', component: ListEmployeeComponent},
   {path: 'list-employee/create-employee', component: CreateEmployeeComponent},
@@ -108,7 +106,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes), CommonModule, ReactiveFormsModule, MaterialModule,
-    MatDialogModule, FormsModule, NgxPaginationModule, NgxMaterialTimepickerModule],
+    MatDialogModule, FormsModule, NgxPaginationModule],
   exports: [RouterModule],
   declarations: [ListEmployeeComponent, CreateEmployeeComponent, EditEmployeeComponent, DeleteEmployeeComponent,
     EmployeeComponent, EditTicketComponent, InputTicketSellComponent, PrintTicketTwoWayComponent, NoticePageComponent,

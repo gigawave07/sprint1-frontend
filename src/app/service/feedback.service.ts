@@ -13,6 +13,6 @@ export class FeedbackService {
   }
 
   public sendFeedBack(feedback): Observable<any> {
-    return this.http.post(this.feedBackUrl + 'send-feedback', feedback);
+    return this.http.post(this.feedBackUrl + 'feedback/send-feedback', feedback);
   }
 }
