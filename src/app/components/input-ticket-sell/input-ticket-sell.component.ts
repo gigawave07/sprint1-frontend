@@ -42,7 +42,7 @@ export class InputTicketSellComponent implements OnInit {
       this.idFlightDeparture = data.idFlightDeparture;
       this.idFlightArrival = data.idFlightArrival;
     });
-    if (this.idFlightDeparture !== 0) {
+    if (this.idFlightDeparture != 0) {
       this.idEmployee = this.loginService.currentUserValue.id;
       this.ticketService.findFlightInformationByIDService(this.idFlightDeparture).subscribe(
         (data) => {
@@ -56,7 +56,7 @@ export class InputTicketSellComponent implements OnInit {
           this.error();
         },
         () => {
-          if (this.idFlightArrival !== 0) {
+          if (this.idFlightArrival != 0) {
             this.ticketService.findFlightInformationByIDService(this.idFlightArrival).subscribe(
               data => {
                 if (data != null) {

@@ -345,12 +345,12 @@
                     <p class="properties">Tổng giá gốc</p>
                   </div>
                   <div class="col-sm-3 col-xs-3 col-md-3 col-lg-3">
-                    <mat-form-field [hidden]="idFlightArrival !== 0" class="matInputMaterial price">
+                    <mat-form-field [hidden]="idFlightArrival != 0" class="matInputMaterial price">
                       <mat-label></mat-label>
                       <input matInput
                              value="{{flightInformationDeparture.price}} VNĐ" readonly>
                     </mat-form-field>
-                    <mat-form-field [hidden]="idFlightArrival === 0" class="matInputMaterial price">
+                    <mat-form-field [hidden]="idFlightArrival == 0" class="matInputMaterial price">
                       <mat-label></mat-label>
                       <input matInput
                              value="{{flightInformationDeparture.price + flightInformationArrival.price}} VNĐ" readonly>
