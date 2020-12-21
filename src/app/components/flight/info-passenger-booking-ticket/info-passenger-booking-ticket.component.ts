@@ -4,13 +4,11 @@ import {FormArray, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {LuggageService} from '../../../service/luggage/luggage.service';
 import {LoginService} from '../../../service/login.service';
 import {Router} from '@angular/router';
-import {LoginComponent} from '../../login/login.component';
 import {FlightService} from '../../../service/flight-information/flight.service';
 import {PassengerService} from '../../../service/passenger/passenger.service';
 import {BookingService} from '../../../service/booking/booking.service';
 import {randomString} from '../RandomString';
 import {TicketService} from '../../../service/ticket/ticket.service';
-import {SpinnerOverlayService} from '../../../service/animations/spinner-overlay.service';
 import {MatInput} from '@angular/material';
 
 @Component({
@@ -43,7 +41,7 @@ export class InfoPassengerBookingTicketComponent implements OnInit {
               private flightService: FlightService,
               private passengerService: PassengerService,
               private ticketService: TicketService,
-              public spinnerOverlayService: SpinnerOverlayService) {
+              ) {
     this.maxBirthdayOfHuman = new Date(Date.parse(new Date().toString()) - 18 * 1000 * 3600 * 24 * 365);
     this.maxBirthdayOfChildren = new Date(Date.parse(new Date().toString()) - 2 * 1000 * 3600 * 24 * 365);
     this.minBirthdayOfChildren = new Date(Date.parse(new Date().toString()) - 12 * 1000 * 3600 * 24 * 365);
@@ -135,80 +133,79 @@ export class InfoPassengerBookingTicketComponent implements OnInit {
 
 
   pay() {
-    if (this.loginService.currentUserValue === null) {
-      const dialogRef = this.dialog.open(LoginComponent, {
-        width: '80%',
-        height: '100%',
-        disableClose: true,
-        hasBackdrop: true
-      });
-      dialogRef.afterClosed().subscribe();
-    } else {
-      this.spinnerOverlayService.show('Đang chuyển hướng đến lịch sử thanh toán');
-      const daoBooking = {
-        bookingCode: '',
-        bookingDate: '',
-        appUserId: 0,
-      };
-      const daoTicket = {
-        ticketCode: [],
-        passengerName: [],
-        priceDeparture: [],
-        priceArrival: [],
-        flightInformation: [],
-        daoBooking,
-        countDeparture: 0,
-        countArrival: 0
-      };
-      // Chiều đi
-      for (let i = 0; i < this.passengerForm(this.passengerFormOne).length; i++) {
-        daoTicket.passengerName.push(this.passengerFormIndex(this.passengerFormOne, i).value.fullName);
-        daoTicket.priceDeparture.push(this.flightOne.price * (1 + (10 / 100)));
+    // if (this.loginService.currentUserValue === null) {
+    //   const dialogRef = this.dialog.open(LoginComponent, {
+    //     width: '80%',
+    //     height: '100%',
+    //     disableClose: true,
+    //     hasBackdrop: true
+    //   });
+    //   dialogRef.afterClosed().subscribe();
+    // } else {
+    // this.spinnerOverlayService.show('Đang chuyển hướng đến lịch sử thanh toán');
+    const daoBooking = {
+      bookingCode: '',
+      bookingDate: '',
+      appUserId: 0,
+    };
+    const daoTicket = {
+      ticketCode: [],
+      passengerName: [],
+      priceDeparture: [],
+      priceArrival: [],
+      flightInformation: [],
+      daoBooking,
+      countDeparture: 0,
+      countArrival: 0
+    };
+    // Chiều đi
+    for (let i = 0; i < this.passengerForm(this.passengerFormOne).length; i++) {
+      daoTicket.passengerName.push(this.passengerFormIndex(this.passengerFormOne, i).value.fullName);
+      daoTicket.priceDeparture.push(this.flightOne.price * (1 + (10 / 100)));
+      daoTicket.priceArrival.push(null);
+      daoTicket.countDeparture++;
+      daoTicket.ticketCode.push(randomString(10));
+      for (let k = 0; k < this.passengerList(this.passengerFormOne, i).length; k++) {
+        daoTicket.passengerName.push(this.passengerListIndex(this.passengerFormOne, i, k).value.fullName);
+        daoTicket.priceDeparture.push(this.flightOne.price * (75 / 100) * (1 + (10 / 100)));
         daoTicket.priceArrival.push(null);
         daoTicket.countDeparture++;
         daoTicket.ticketCode.push(randomString(10));
-        for (let k = 0; k < this.passengerList(this.passengerFormOne, i).length; k++) {
-          daoTicket.passengerName.push(this.passengerListIndex(this.passengerFormOne, i, k).value.fullName);
-          daoTicket.priceDeparture.push(this.flightOne.price * (75 / 100) * (1 + (10 / 100)));
-          daoTicket.priceArrival.push(null);
-          daoTicket.countDeparture++;
-          daoTicket.ticketCode.push(randomString(10));
-        }
-        this.passengerService.addPassenger(this.passengerFormIndex(this.passengerFormOne, i).value).subscribe();
       }
-      daoTicket.flightInformation.push(this.flightOne.id);
-      if (this.flightTwo !== '') {
-        for (let i = 0; i < this.passengerForm(this.passengerFormTwo).length; i++) {
-          daoTicket.passengerName.push(this.passengerFormIndex(this.passengerFormTwo, i).value.fullName);
-          daoTicket.priceArrival.push(this.flightOne.price * (1 + (10 / 100)));
+      this.passengerService.addPassenger(this.passengerFormIndex(this.passengerFormOne, i).value).subscribe();
+    }
+    daoTicket.flightInformation.push(this.flightOne.id);
+    if (this.flightTwo !== '') {
+      for (let i = 0; i < this.passengerForm(this.passengerFormTwo).length; i++) {
+        daoTicket.passengerName.push(this.passengerFormIndex(this.passengerFormTwo, i).value.fullName);
+        daoTicket.priceArrival.push(this.flightOne.price * (1 + (10 / 100)));
+        daoTicket.priceDeparture.push(null);
+        daoTicket.countArrival++;
+        daoTicket.ticketCode.push(randomString(10));
+        for (let k = 0; k < this.passengerList(this.passengerFormTwo, i).length; k++) {
+          daoTicket.passengerName.push(this.passengerListIndex(this.passengerFormTwo, i, k).value.fullName);
+          daoTicket.priceArrival.push(this.flightOne.price * (75 / 100) * (1 + (10 / 100)));
           daoTicket.priceDeparture.push(null);
           daoTicket.countArrival++;
           daoTicket.ticketCode.push(randomString(10));
-          for (let k = 0; k < this.passengerList(this.passengerFormTwo, i).length; k++) {
-            daoTicket.passengerName.push(this.passengerListIndex(this.passengerFormTwo, i, k).value.fullName);
-            daoTicket.priceArrival.push(this.flightOne.price * (75 / 100) * (1 + (10 / 100)));
-            daoTicket.priceDeparture.push(null);
-            daoTicket.countArrival++;
-            daoTicket.ticketCode.push(randomString(10));
-          }
-          this.passengerService.addPassenger(this.passengerFormIndex(this.passengerFormTwo, i).value).subscribe();
         }
-        daoTicket.flightInformation.push(this.flightTwo.id);
+        this.passengerService.addPassenger(this.passengerFormIndex(this.passengerFormTwo, i).value).subscribe();
       }
-      daoBooking.bookingCode = randomString(10);
-      daoBooking.bookingDate = new Date().toLocaleDateString();
-      daoBooking.appUserId = this.loginService.currentUserValue.id;
-      daoTicket.daoBooking = daoBooking;
-      this.passengerService.sentEmail(this.loginService.currentUserValue.id).subscribe();
-      this.ticketService.addTicketAndBooking(daoTicket).subscribe(data => {
-        }, error => {
-        },
-        () => {
-          this.spinnerOverlayService.hide();
-        });
-      this.dialogRef.close();
-      this.router.navigateByUrl('/list-pending-ticket/history');
+      daoTicket.flightInformation.push(this.flightTwo.id);
     }
+    daoBooking.bookingCode = randomString(10);
+    daoBooking.bookingDate = new Date().toLocaleDateString();
+    daoBooking.appUserId = this.loginService.currentUserValue.id;
+    daoTicket.daoBooking = daoBooking;
+    this.passengerService.sentEmail(this.loginService.currentUserValue.id).subscribe();
+    this.ticketService.addTicketAndBooking(daoTicket).subscribe(data => {
+      // }, error => {
+      // },
+      // () => {
+      //   this.spinnerOverlayService.hide();
+      });
+    this.dialogRef.close();
+    this.router.navigateByUrl('/list-pending-ticket/history');
+    // }
   }
-
 }
