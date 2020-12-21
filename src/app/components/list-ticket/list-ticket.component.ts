@@ -9,7 +9,7 @@ import {TicketService} from '../../service/ticket/ticket.service';
   styleUrls: ['./list-ticket.component.css']
 })
 export class ListTicketComponent implements OnInit {
-  public ticketList;
+  private ticketList;
   totalPage: any = [];
   numberPage: number;
 
@@ -57,7 +57,6 @@ export class ListTicketComponent implements OnInit {
 
   gotoPage(index)   {
     this.numberPage = index;
-    console.log(this.numberPage);
     this.getDataPage(index - 1);
   }
 }

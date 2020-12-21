@@ -1,13 +1,20 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {Observable} from 'rxjs';
+import {BehaviorSubject, Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TicketService {
   public readonly API: string = 'http://localhost:8080/ticket';
-
+  private searchTicketSubject = new BehaviorSubject(null);
+  private searchTicketDepSubject = new BehaviorSubject(null);
+  private dateDeparture;
+  private arrival;
+  private departure;
+  private dateArrival;
+  private airline;
+  private radio;
   constructor(
     public http: HttpClient
   ) { }
@@ -35,7 +42,54 @@ export class TicketService {
   searchTicketService(key, inputSearch): Observable<any> {
     return this.http.get(this.API + '/search/' + inputSearch + '/' + key);
   }
-  searchTicketEmptyService(departure, arrival, departureDate, arrivalDate, airline): Observable<any> {
-    return this.http.get(this.API + '/searchTicketEmpty/' + departure + '/' + arrival + '/' + departureDate + '/' + arrivalDate + '/' + airline);
+  searchTicketEmptyService(departure, arrival, departureDate, arrivalDate, airline) {
+    this.dateDeparture = departureDate;
+    this.dateArrival = arrivalDate;
+    this.airline = airline;
+    this.arrival = arrival;
+    this.departure = departure;
+    this.http.get(
+      this.API + '/searchTicketEmpty/' + departure + '/' + arrival + '/' + departureDate + '/' + arrivalDate + '/' + airline).subscribe(
+        data => {
+      this.searchTicketSubject.next(data);
+    });
+  }
+  searchTicketEmptyDepService(departure, arrival, departureDate, airline) {
+    this.dateDeparture = departureDate;
+    this.airline = airline;
+    this.arrival = arrival;
+    this.departure = departure;
+    this.http.get(
+      this.API + '/searchTicketDepEmpty/' + departure + '/' + arrival + '/' + departureDate + '/' + airline).subscribe(
+      data => {
+        this.searchTicketDepSubject.next(data);
+      });
+  }
+  get(radio) {
+   return this.radio = radio;
+  }
+  getRadio() {
+    return this.radio;
+  }
+  getDateArrival() {
+    return this.dateArrival;
+  }
+  getAirline() {
+    return this.airline;
+  }
+  getArrival() {
+    return this.arrival;
+  }
+  getDeparture() {
+    return this.departure;
+  }
+  getDateDeparture() {
+    return this.dateDeparture;
+  }
+  getSearchTicketEmpty() {
+    return this.searchTicketSubject.asObservable();
+  }
+  getSearchTicketDepEmpty() {
+    return this.searchTicketDepSubject.asObservable();
   }
 }

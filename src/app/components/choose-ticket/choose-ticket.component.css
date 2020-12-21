@@ -1,5 +1,8 @@
 .date-button {
   background-color: orange;
-  width: 130px;
+  width: 120px;
   border-top-right-radius: 80px;
+}
+.mat-button {
+  line-height: 20px;
 }

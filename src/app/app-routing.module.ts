@@ -8,6 +8,7 @@ import {InformationAdminComponent} from './components/information-admin/informat
 import {AdminComponent} from './components/admin/admin.component';
 import {ListTicketComponent} from './components/list-ticket/list-ticket.component';
 import {SearchTicketEmptyComponent} from './components/search-ticket-empty/search-ticket-empty.component';
+import {ChooseTicketComponent} from './components/choose-ticket/choose-ticket.component';
 
 
 const routes: Routes = [
@@ -27,7 +28,9 @@ const routes: Routes = [
   },
   // Hoạt
   {path: 'list-ticket', component: ListTicketComponent},
-  {path: 'search-ticket-empty', component: SearchTicketEmptyComponent}
+  {path: 'search-ticket-empty', component: SearchTicketEmptyComponent},
+  {path: 'choose-ticket', component: ChooseTicketComponent},
+
 ];
 
 @NgModule({

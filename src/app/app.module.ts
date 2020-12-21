@@ -25,18 +25,19 @@ import {ChangePasswordAdminComponent} from './components/change-password-admin/c
 import {ListTicketComponent} from './components/list-ticket/list-ticket.component';
 import {SearchTicketEmptyComponent} from './components/search-ticket-empty/search-ticket-empty.component';
 import {ChooseTicketComponent} from './components/choose-ticket/choose-ticket.component';
+import {WeekdaysPipe} from './components/choose-ticket/weekdays.pipe';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    // Quân
-    HomeComponent, LoginComponent, RegisterComponent, NavBarComponent, FooterComponent, VerificationEmailComponent,
-    SpinnerComponent, SpinnerOverlayComponent,
-    // Danh
-    AdminComponent, InformationAdminComponent, ChangePasswordAdminComponent,
-    // Hoạt
-    ListTicketComponent, SearchTicketEmptyComponent, ChooseTicketComponent,
-  ],
+    declarations: [
+        AppComponent,
+        // Quân
+        HomeComponent, LoginComponent, RegisterComponent, NavBarComponent, FooterComponent, VerificationEmailComponent,
+        SpinnerComponent, SpinnerOverlayComponent,
+        // Danh
+        AdminComponent, InformationAdminComponent, ChangePasswordAdminComponent,
+        // Hoạt
+        ListTicketComponent, SearchTicketEmptyComponent, ChooseTicketComponent, WeekdaysPipe,
+    ],
   imports: [BrowserModule, AppRoutingModule, MaterialModule, HttpClientModule, NgxPaginationModule, Ng2SearchPipeModule,
     FormsModule, MatDialogModule, ReactiveFormsModule, NgxLoadingModule.forRoot({})],
   providers: [{

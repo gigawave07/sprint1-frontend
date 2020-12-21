@@ -1,41 +1,7 @@
-<!--<div class="container-fluid">-->
-<!--  <div class="row">-->
-<!--    <table class="table mt-3 table-striped table-bordered">-->
-<!--      <thead>-->
-<!--      <tr>-->
-<!--        <th>STT</th>-->
-<!--        <th>Mã vé</th>-->
-<!--        <th>Giá đi</th>-->
-<!--        <th>Giá về</th>-->
-<!--        <th>Hãng bay</th>-->
-<!--        <th>Chức năng</th>-->
-<!--      </tr>-->
-<!--      </thead>-->
 
-<!--      <tbody>-->
-<!--      <tr *ngFor="let element of ticketList">-->
-<!--        <td>{{element.id}}</td>-->
-<!--        <td>{{element.ticketCode}}</td>-->
-<!--        <td>{{element.priceDeparture}}</td>-->
-<!--        <td>{{element.priceArrival}}</td>-->
-<!--        <td>{{element.flightInformation.airline}}</td>-->
-<!--        <td style="width: 135px">-->
-
-<!--&lt;!&ndash;          <span (click)="openDialogEdit(element.id)">&ndash;&gt;-->
-<!--&lt;!&ndash;            <span class="material-icons" style="color: darkviolet">create</span></span>&ndash;&gt;-->
-
-<!--&lt;!&ndash;          <span class="material-icons icon-image-preview" style="color: red; margin-left: 3%"&ndash;&gt;-->
-<!--&lt;!&ndash;                (click)="openDialogDelete(element.id)">delete</span>&ndash;&gt;-->
-
-<!--        </td>-->
-<!--      </tr>-->
-<!--      </tbody>-->
-<!--    </table>-->
-<!--  </div>-->
-<!--</div>-->
 <div class="row my-4">
   <!--  <div class="col-3"></div>-->
-  <div class="col-9 d-flex justify-content-center" style="font-size: 50px">Quản lý bán vé</div>
+  <div class="col-9 d-flex justify-content-center" style="font-size: 50px; color: white">Quản lý bán vé</div>
   <div class="col-3"></div>
 </div>
 <div class="row">
@@ -45,16 +11,19 @@
       <div class="col-3"></div>
       <div class="col-9">
         <select class="custom-select" #key>
-          <option value="price">price</option>
-          <option  value="full name passenger">full name passenger</option>
-          <option  value="booking code">booking code</option>
+          <option value="Price">Giá</option>
+          <option  value="Full name passenger">Họ và tên</option>
+          <option  value="Departure">Nơi đi</option>
+          <option  value="Arrival">Nơi đến</option>
+          <option  value="Day departure">Ngày đi</option>
+
         </select></div>
     </div>
 
   </div>
   <div class="col-3">
     <form class="form-inline row">
-      <input class="form-control mr-2 col-7" type="search" placeholder="Search" aria-label="Search" #inputSearch>
+      <input class="form-control mr-2 col-7" type="search" placeholder="Tìm kiếm" aria-label="Search" #inputSearch>
       <button class="btn bg-warning text-white bt my-2 my-sm-0 col-3" (click)="search(key.value,inputSearch.value)" type="submit">Tìm</button>
     </form>
   </div>

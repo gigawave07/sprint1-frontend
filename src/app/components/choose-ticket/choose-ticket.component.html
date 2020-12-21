@@ -1,87 +1,95 @@
-<!--<div class="row border bg-white border-flight mb-5">-->
-<!--  <div class="pl-5">-->
-<!--    <pre>{{dateDeparture}}</pre>-->
-<!--    <h2>Chọn vé tàu đi</h2>-->
-<!--    <p>Danh sách các chuyến bay từ {{departure}} <i-->
-<!--      class="fa fa-fighter-jet"></i> {{arrival}}-->
-<!--    <p>{{dateDeparture | date: "EEEE" | weekdays }} - -->
-<!--      Ngày {{dateDeparture| date: "dd/MM/yyyy"}}</p>-->
-<!--  </div>-->
-<!--  <div class="d-flex pl-5" *ngIf="listOneWayTable !== undefined">-->
-<!--    <button mat-button class="date-button"-->
-<!--            *ngFor="let index of arraysOneWay" (click)="searchOneWayPage(index)">{{index | date: "EEEE"| weekdays}}<br>-->
-<!--      {{index | date: "dd/MM/yyyy"}}</button>-->
-<!--  </div>-->
-<!--  <div *ngIf="listOneWayTable !== undefined">-->
-<!--    <table class="table" id="table1">-->
-<!--      <thead>-->
-<!--      <tr>-->
-<!--        <th>Hãng</th>-->
-<!--        <th>Mã chuyến bay</th>-->
-<!--        <th>Giờ</th>-->
-<!--        <th>Hạng</th>-->
-<!--        <th>Giá VND</th>-->
-<!--        <th>Chi tiết</th>-->
-<!--        <th>Đặt vé</th>-->
-<!--      </tr>-->
-<!--      </thead>-->
-<!--      <tbody>-->
-<!--      <tr *ngFor="let oneWay of listOneWayTable">-->
-<!--        <td>{{oneWay.airline}}</td>-->
-<!--        <td>{{oneWay.flightCode}}</td>-->
-<!--        <td>{{oneWay.departureTime}} - {{oneWay.arrivalTime}}</td>-->
-<!--        <td>{{oneWay.type}}</td>-->
-<!--        <td>{{oneWay.price}}</td>-->
-<!--        <td>-->
-<!--          <button mat-button style="background-color: orange" (click)="dialogFlight(oneWay.id)">Chi tiết</button>-->
-<!--        </td>-->
-<!--        <td>-->
-<!--          <mat-radio-button></mat-radio-button>-->
-<!--        </td>-->
-<!--      </tr>-->
-<!--      </tbody>-->
-<!--    </table>-->
-<!--  </div>-->
-<!--</div>-->
-<!--<div class="row border bg-white border-flight" *ngIf="listReturnTable !== undefined">-->
-<!--  <div class="pl-5">-->
-<!--    <h2>Chọn vé tàu đi</h2>-->
-<!--    <p>Danh sách các chuyến bay từ {{arrival}} <i-->
-<!--      class="fa fa-fighter-jet"></i> {{departure}}-->
-<!--    <p>{{dateArrival | date: "EEEE" | weekdays }} - -->
-<!--      Ngày {{dateArrival| date: "dd/MM/yyyy"}}</p>-->
-<!--  </div>-->
-<!--  <div class="d-flex pl-5" *ngIf="listReturnTable !== undefined">-->
-<!--    <button mat-button class="date-button"-->
-<!--            *ngFor="let arrivalReturen of arraysReturn" (click)="searchReturnPage(arrivalReturen)">{{arrivalReturen | date: "EEEE"| weekdays}}<br>-->
-<!--      {{arrivalReturen | date: "dd/MM/yyyy"}}</button>-->
-<!--  </div>-->
-<!--  <div *ngIf="listReturnTable !== undefined">-->
-<!--    <table class="table" id="table2">-->
-<!--      <thead>-->
-<!--      <tr>-->
-<!--        <th>Hãng</th>-->
-<!--        <th>Mã chuyến bay</th>-->
-<!--        <th>Giờ</th>-->
-<!--        <th>Hạng</th>-->
-<!--        <th>Giá VND</th>-->
-<!--        <th>Chi tiết</th>-->
-<!--        <th>Đặt vé</th>-->
-<!--      </tr>-->
-<!--      </thead>-->
-<!--      <tbody>-->
-<!--      <tr *ngFor="let return of listReturnTable">-->
-<!--        <td>{{return.airline}}</td>-->
-<!--        <td>{{return.flightCode}}</td>-->
-<!--        <td>{{return.departureTime}} - {{return.arrivalTime}}</td>-->
-<!--        <td>{{return.type}}</td>-->
-<!--        <td>{{return.price}}</td>-->
-<!--        <td>-->
-<!--          <button mat-button style="background-color: orange">Chi tiết</button>-->
-<!--        </td>-->
-<!--        <td><mat-radio-button name="a"></mat-radio-button></td>-->
-<!--      </tr>-->
-<!--      </tbody>-->
-<!--    </table>-->
-<!--  </div>-->
-<!--</div>-->
+<div class="container-fluid">
+  <div class="row mt-5">
+    <div class="col-12 ml-5">
+      <div class="row">
+        <div class="col-12 pl-5">
+          <h2>Chọn vé tàu đi</h2>
+          <p>Danh sách các chuyến bay từ {{departure}} - {{arrival}}
+          <p>{{dateDeparture | date: "EEEE" | weekdays }} -
+            Ngày {{dateDeparture| date: "dd/MM/yyyy"}}</p>
+        </div>
+        <div class="d-flex pl-5" *ngIf="listTicketDepEmpty !== undefined">
+          <button mat-button class="date-button" *ngFor="let index of arrayOneWay" (click)="searchOneWayPage(index, 1)">
+            {{index | date: "EEEE"| weekdays}}<br>
+            {{index | date: "dd/MM/yyyy"}}</button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="table-responsive">
+          <div style="background-color:#f7f5f2 ">
+            <table class="table table-striped">
+              <thead>
+              <tr>
+                <th>Hãng</th>
+                <th>Mã chuyến bay</th>
+                <th>Giờ</th>
+                <th>Giá VND</th>
+                <th>Chọn vé</th>
+              </tr>
+              </thead>
+              <tbody
+                *ngFor="let ticketEmpty of listTicketDepEmpty|filter:term|paginate: { itemsPerPage: 5, currentPage: p}">
+              <tr>
+                <td>{{ticketEmpty.flightInformation.airline}}</td>
+                <td>{{ticketEmpty.flightInformation.flightCode}}</td>
+                <td>{{ticketEmpty.flightInformation.departureTime}}</td>
+                <td>{{ticketEmpty.flightInformation.price}}</td>
+                <td><input type="radio" value="{{ticketEmpty.id}}" name="one-way" [(ngModel)]="oneWay"></td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+          <pagination-controls (pageChange)="p = $event"></pagination-controls>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 ml-5" *ngIf="listTicketEmpty !== undefined">
+      <div class="row">
+        <div class="col-12 pl-5">
+          <h2>Chọn vé tàu về</h2>
+          <p>Danh sách các chuyến bay từ {{arrival}} - {{departure}}
+          <p>{{dateArrival | date: "EEEE" | weekdays }} -
+            Ngày {{dateArrival| date: "dd/MM/yyyy"}}</p>
+        </div>
+        <div class="d-flex pl-5" *ngIf="listTicketEmpty !== undefined">
+          <button mat-button class="date-button"
+                  *ngFor="let index of arrayTowWay"
+                  (click)="searchOneWayPage(index, 2)">{{index | date: "EEEE"| weekdays}}
+            <br>
+            {{index | date: "dd/MM/yyyy"}}</button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="table-responsive">
+          <div style="background-color:#f7f5f2" *ngIf="listTicketEmpty !== undefined">
+            <table class="table table-striped">
+              <thead>
+              <tr>
+                <th>Hãng</th>
+                <th>Mã chuyến bay</th>
+                <th>Giờ</th>
+                <th>Giá VND</th>
+                <th>Chọn vé</th>
+              </tr>
+              </thead>
+              <tbody
+                *ngFor="let ticketEmpty of listTicketEmpty|filter:term|paginate: { itemsPerPage: 5, currentPage: p}">
+              <tr>
+                <td>{{ticketEmpty.flightInformation.airline}}</td>
+                <td>{{ticketEmpty.flightInformation.flightCode}}</td>
+                <td>{{ticketEmpty.flightInformation.departureTime}}</td>
+                <td>{{ticketEmpty.flightInformation.price}}</td>
+                <td><input type="radio" value="{{ticketEmpty.id}}" name="tow-way" [(ngModel)]="towWay"></td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+          <pagination-controls (pageChange)="p = $event"></pagination-controls>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <button class="btn bg-warning text-white" style="width: 150px" type="submit" [routerLink]="'/booking-ticket' + oneWay + '/' + towWay"> Đặt vé</button>
+  </div>
+</div>
