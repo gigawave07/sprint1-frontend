@@ -6,7 +6,7 @@ import {Observable} from 'rxjs';
   providedIn: 'root'
 })
 export class PassengerService {
-  private api = 'http://localhost:8080/rest/passengers';
+  private api = 'http://localhost:8080/rest/passengers-form-array';
   private apiSentMail = 'http://localhost:8080/rest/sent-mail?idAccount=';
 
   constructor(private httpClient: HttpClient) {
