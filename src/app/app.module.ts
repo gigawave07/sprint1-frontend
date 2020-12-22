@@ -56,14 +56,16 @@ import {NavBarComponent} from './components/nav-bar/nav-bar.component';
 import {FooterComponent} from './components/footer/footer.component';
 import {PromotionModule} from './components/promotion/promotion.module';
 import {ExcelService} from "./components/report-statistic/service/excel.service";
-
+import {DeletePassengerComponent} from './components/delete-passenger/delete-passenger.component';
+import {ChangePasswordEmployeeComponent} from './components/change-password-employee/change-password-employee.component';
+import {ToastrModule} from 'ngx-toastr';
 
 @NgModule({
   declarations: [
     AppComponent,
     // Quân
     HomeComponent, LoginComponent, RegisterComponent, NavBarComponent, FooterComponent, VerificationEmailComponent,
-      // Đăngdcvsdacdasc
+    // Đăngdcvsdacdasc
     ListPendingTicketComponent, CancelPendingTicketComponent, SearchPendingTicketComponent, SpinnerComponent, SpinnerOverlayComponent,
     SpinnerComponent, SpinnerOverlayComponent,
     // Danh
@@ -86,8 +88,15 @@ import {ExcelService} from "./components/report-statistic/service/excel.service"
     MessageConsultantComponent
   ],
   imports: [BrowserModule, AppRoutingModule, MaterialModule, HttpClientModule, NgxPaginationModule, Ng2SearchPipeModule,
-    FormsModule, MatDialogModule, ReactiveFormsModule, NgxLoadingModule.forRoot({}), PickerModule, EmojiModule,ChartsModule, SocialLoginModule, PromotionModule],
-  providers: [DatePipe, MessageService, FeedbackService, {
+    FormsModule, MatDialogModule, ReactiveFormsModule, NgxLoadingModule.forRoot({}), PickerModule, EmojiModule,ChartsModule, SocialLoginModule, PromotionModule, ToastrModule.forRoot({
+      positionClass: 'toast-top-center',
+      preventDuplicates: true,
+    } )],
+  providers: [DatePipe, MessageService, FeedbackService,{
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi: true
+  }, {
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptor,
     multi: true
@@ -98,8 +107,8 @@ import {ExcelService} from "./components/report-statistic/service/excel.service"
     // { provide: LOCALE_ID, useValue: 'vi-VN' },
     ExcelService],
   bootstrap: [AppComponent],
-  entryComponents: [SpinnerOverlayComponent, TrangChinhComponent, BaoCaoComponentComponent, TrangChuThongKeComponent,
-    KetQuaComponent, KetQuaTableComponent, KetQuaSaiLogicComponent]
+  entryComponents: [SpinnerOverlayComponent, TrangChinhComponent, BaoCaoComponentComponent, TrangChuThongKeComponent,ChangePasswordEmployeeComponent,
+    KetQuaComponent, KetQuaTableComponent, KetQuaSaiLogicComponent, DeletePassengerComponent]
 })
 export class AppModule {
 }
