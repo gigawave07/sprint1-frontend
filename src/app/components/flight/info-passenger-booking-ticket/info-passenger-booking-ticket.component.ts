@@ -205,9 +205,10 @@ export class InfoPassengerBookingTicketComponent implements OnInit {
         },
         () => {
           this.spinnerOverlayService.hide();
+          this.dialogRef.close();
+// @ts-ignore
+          setTimeout( this.router.navigateByUrl('/informationUser/list-pending-ticket' ) , 1000);
         });
-      this.dialogRef.close();
-      this.router.navigateByUrl('/list-pending-ticket/history');
     }
   }
 

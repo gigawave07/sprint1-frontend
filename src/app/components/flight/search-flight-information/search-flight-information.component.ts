@@ -85,6 +85,7 @@ export class SearchFlightInformationComponent implements OnInit {
     this.flightServiceService.search(0, form.controls.departure.value, form.controls.arrival.value,
       departureDate, form.controls.sort.value).subscribe(data => {
       this.listOneWay = data;
+      console.log(data);
     });
   }
 
@@ -104,6 +105,7 @@ export class SearchFlightInformationComponent implements OnInit {
   }
 
   search(flightTableHTML) {
+    console.log(this.formSearch.value);
     this.listOneWay = '';
     this.listReturn = '';
     flightTableHTML.wayChildren = this.formSearch.controls.way.value;

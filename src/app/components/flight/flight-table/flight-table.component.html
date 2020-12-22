@@ -41,7 +41,7 @@
       </tbody>
     </table>
     <div class="row justify-content-end pr-5">
-      <nav aria-label="Page navigation example" *ngIf="listOneWayTable.totalPages !== 0">
+      <nav aria-label="Page navigation example" *ngIf="listOneWayTable.totalPages > 1">
         <ul class="pagination">
           <li class="page-item" *ngIf="listOneWayTable.pageable?.pageNumber !== 0"
               (click)="searchOneWayPage(undefined,listOneWayTable.pageable?.pageNumber - 1)"><a class="page-link" href="#">Trước</a></li>
@@ -100,7 +100,7 @@
       </tbody>
     </table>
     <div class="row justify-content-end pr-5">
-      <nav aria-label="Page navigation example" *ngIf="listReturnTable.totalPages !== 0">
+      <nav aria-label="Page navigation example" *ngIf="listReturnTable.totalPages > 1">
         <ul class="pagination">
           <li class="page-item" *ngIf="listReturnTable.pageable?.pageNumber !== 0"
               (click)="searchReturnPage(undefined,listReturnTable.pageable?.pageNumber - 1)"><a class="page-link" href="#">Trước</a></li>

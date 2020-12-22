@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {BookingService} from '../../../../service/booking/booking.service';
+import {TicketService} from '../../../../service/ticket/ticket.service';
+import {LoginService} from '../../../../service/login.service';
 
 @Component({
   selector: 'app-payment-history',
@@ -9,14 +10,29 @@ import {BookingService} from '../../../../service/booking/booking.service';
 export class PaymentHistoryComponent implements OnInit {
   listBooking;
   constructor(
-    private bookingService: BookingService
+    private ticketService: TicketService,
+    private loginService: LoginService
   ) { }
 
   ngOnInit() {
-    // this.bookingService.getAllPassenger(0).subscribe(data => {
-    //   this.listBooking = this.bookingService;
-    //   console.log(data);
-    // });
+    this.ticketService.getAllTicketByAppAccount(this.loginService.currentUserValue.id , 0).subscribe(data => {
+      this.listBooking = data;
+      console.log(data);
+    });
+  }
+  createFor(lenght): Array<number> {
+    const array = [];
+    for (let i = 0; i < lenght; i++) {
+      array.push(i);
+    }
+    // @ts-ignore
+    return array;
   }
 
+  listHistory(param) {
+    this.ticketService.getAllTicketByAppAccount(this.loginService.currentUserValue.id , param).subscribe(data => {
+      this.listBooking = data;
+      console.log(data);
+    });
+  }
 }

@@ -99,6 +99,7 @@ const routes: Routes = [
       {path: 'list-pending-ticket', component: ListPendingTicketComponent},
       {path: 'search-pending-ticket', component: SearchPendingTicketComponent},
       {path: 'invoice-list', component: InvoiceListComponent},
+      {path: 'history' , component: PaymentHistoryComponent},
     ]
   },
   // Quốc
