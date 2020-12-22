@@ -33,9 +33,6 @@ import {PrintTicketTwoWayComponent} from './components/print-ticket-two-way/prin
 import {NoticePageComponent} from './components/notice-page/notice-page.component';
 import {PromotionListForCustomerComponent} from './components/promotion/promotion-list-for-customer/promotion-list-for-customer.component';
 import {DeleteTicketComponent} from './components/delete-ticket/delete-ticket.component';
-import {ListTicketComponent} from './components/list-ticket/list-ticket.component';
-import {ListPendingTicketComponent} from './components/list-pending-ticket/list-pending-ticket/list-pending-ticket.component';
-import {SearchPendingTicketComponent} from './components/search-pending-ticket/search-pending-ticket/search-pending-ticket.component';
 
 import {MessUserComponent} from './components/mess-user/mess-user.component';
 import {SendFeedbackComponent} from './components/send-feedback/send-feedback.component';
@@ -54,6 +51,9 @@ import {EmployeeInfoComponent} from './components/employee-info/employee-info.co
 import {EmployeeDetailComponent} from './components/employee-detail/employee-detail.component';
 import {ChangePasswordEmployeeComponent} from './components/change-password-employee/change-password-employee.component';
 import {MatIconModule} from '@angular/material/icon';
+import {DetailInvoiceComponent} from "./components/invoice-manager/components/detail-invoice/detail-invoice.component";
+import {ListInvoiceComponent} from "./components/invoice-manager/components/list-invoice/list-invoice.component";
+import {InvoiceListSearchComponent} from "./components/invoice-manager/components/invoice-list-search/invoice-list-search.component";
 
 const routes: Routes = [
   // Quân :
@@ -137,14 +137,18 @@ const routes: Routes = [
   {path: 'notice-page', component: NoticePageComponent},
   // PQ Khánh:
   {path: 'checkin-online', component: CheckinOnlineComponent},
-  {path: 'promotion-code', component: PromotionCodeComponent}
+  {path: 'promotion-code', component: PromotionCodeComponent},
   {path: 'deleteTicket', component: DeleteTicketComponent},
   {path: 'listTicket', component: ListTicketComponent},
     // Đăng:
   {path: 'list-pending-ticket', component: ListPendingTicketComponent},
-];
+//Hoàng
+  {path: 'detail-invoice', component: DetailInvoiceComponent},
+  {path: 'invoice-list', component: ListInvoiceComponent},
+  {path: 'invoice-list-search', component: InvoiceListSearchComponent}
 
 ];
+
 @NgModule({
   imports: [RouterModule.forRoot(routes), CommonModule, ReactiveFormsModule, MaterialModule,
     MatDialogModule, FormsModule, NgxPaginationModule,MatRadioModule, MatIconModule],
