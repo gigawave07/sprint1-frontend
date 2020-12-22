@@ -138,6 +138,7 @@ const routes: Routes = [
   // PQ Khánh:
   {path: 'checkin-online', component: CheckinOnlineComponent},
   {path: 'promotion-code', component: PromotionCodeComponent},
+
   {path: 'deleteTicket', component: DeleteTicketComponent},
   {path: 'listTicket', component: ListTicketComponent},
     // Đăng:

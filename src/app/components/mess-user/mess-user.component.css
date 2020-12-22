@@ -227,6 +227,7 @@ div #file-space {
 }
 
 .mess-consultant {
+  width: 50px;
   z-index: 1;
   color: black;
   border-radius: 10px 10px 10px 0px;
@@ -239,6 +240,7 @@ div #file-space {
 
 
 .mess-from-user {
+  width: 50px;
   z-index: 1;
   color: white;
   border-radius: 10px 0px 10px 10px;
