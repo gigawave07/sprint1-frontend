@@ -1,9 +1,11 @@
-import {Component, OnInit, ElementRef} from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {Component, ElementRef, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import * as firebase from 'firebase';
 import {DatePipe} from '@angular/common';
 import {MessageService} from '../../service/message.service';
+import {EmojiEvent} from "@ctrl/ngx-emoji-mart/ngx-emoji";
 
+const CUSTOM_EMOJIS = [];
 
 declare var $: any;
 
@@ -32,6 +34,11 @@ export class MessUserComponent implements OnInit {
   formSend: FormGroup;
   formSendRequest: FormGroup;
   firstRequest: FormGroup;
+  checkRequest: boolean;
+  CUSTOM_EMOJIS = CUSTOM_EMOJIS;
+  set = 'native';
+  native = true;
+
   refUser = firebase.database().ref('users/');
 
   constructor(private el: ElementRef, private fb: FormBuilder, private datePipe: DatePipe, private messageService: MessageService) {
@@ -39,32 +46,39 @@ export class MessUserComponent implements OnInit {
       this.listMess = [];
       this.listMess = snapshotToArray(resp, this.room);
       $('.chat-body').scrollTop($('.chat-body')[0].scrollHeight);
-
     });
+    setInterval(() => {
+      this.checkRequest = this.firstRequest.value.name !== "" && this.firstRequest.value.email !== "" && this.firstRequest.value.phone !== "";
+    }, 1000);
   }
 
   ngOnInit() {
+
     this.getIcons();
     this.formSendRequest = this.fb.group({
       name: ['', [Validators.required, Validators.maxLength(25)]],
       email: ['', [Validators.required, Validators.email]],
       phone: ['', [Validators.required, Validators.pattern('^\\d{10,12}$')]]
     });
+    this.firstRequest = this.formSendRequest;
     this.formSend = this.fb.group({
       content: ['', Validators.required],
       isUser: ''
     });
     $(document).ready(() => {
       $('.openChatBtn').click(() => {
-        $('.requiredChat').show();
-        $('.openChatBtn').hide();
-        $('#animation-border').hide();
+        if (this.checkRequest) {
+          $('.requiredChat').hide();
+          $('.openChat').show();
+        } else {
+          $('.requiredChat').show();
+          $('.openChatBtn').hide();
+        }
       });
       $('.close').click(() => {
         $('.openChat').hide();
         $('.requiredChat').hide();
         $('.openChatBtn').show();
-        $('#animation-border').show();
       }),
         $('.begin-chat').click(() => {
           if (this.formSendRequest.valid) {
@@ -76,6 +90,9 @@ export class MessUserComponent implements OnInit {
         }),
         $('#icon').click(() => {
             $('#icon-box').toggle();
+            setInterval(() => {
+              $('.emoji-mart-anchor-selected').hide();
+            }, 100);
           }
         );
       $('#icon-upload-file').click(() => {
@@ -165,6 +182,10 @@ export class MessUserComponent implements OnInit {
     this.messageService.getIcon().subscribe((data) => {
       this.listIcon = data;
     });
+  }
+
+  handleClick($event: EmojiEvent) {
+    console.log($event.emoji);
   }
 }
 

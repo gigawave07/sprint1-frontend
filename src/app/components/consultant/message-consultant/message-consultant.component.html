@@ -21,9 +21,14 @@
     </div>
   </div>
   <div class="row" id="icon-box-consultant">
-    <div *ngFor="let icon of listIcon">
-      <img style="margin-left: 2px" [src]="icon.name"/>
-    </div>
+    <emoji-mart
+      [set]="set"
+      [isNative]="native"
+      [hideRecent]="false"
+      (emojiSelect)="handleClick($event)"
+      title="Pick your emoji…"
+      emoji="point_up">
+    </emoji-mart>
   </div>
   <div class="row">
     <div class="col-lg-12">

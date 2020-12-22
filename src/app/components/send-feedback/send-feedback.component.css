@@ -15,16 +15,17 @@
   animation: feedback;
   animation-duration: 4s;
   animation-fill-mode: forwards;
+  display: block;
 
 }
 
 @keyframes feedback {
-  from{transform: translate(1000px)}
-  to{transform: translate(0px)}
+  from{transform: translate(1000px); opacity: 0}
+  to{transform: translate(0px); opacity: 1}
 }
 @keyframes map {
-  from{transform: translate(-1000px)}
-  to{transform: translate(-35px)}
+  from{transform: translate(-1000px); opacity: 0}
+  to{transform: translate(-35px); opacity: 1}
 
 }
 
