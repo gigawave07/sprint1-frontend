@@ -12,8 +12,7 @@
         <div class="card">
           <div class="card-header">
             <h2 class="mb-0">
-              <a [routerLink]="['change-password-successfully']"><span><i
-                class="fa fa-users"></i> Quản lý nhân viên</span>
+              <a [routerLink]="['/list-employee']"><span><i class="fa fa-cc-paypal"></i>Quản lí nhân viên</span>
               </a>
             </h2>
           </div>
@@ -21,19 +20,14 @@
         <div class="card">
           <div class="card-header">
             <h2 class="mb-0">
-              <a [routerLink]="['get-token-email']"><span><i class="fa fa-line-chart"></i> Thống kê</span></a>
+              <a [routerLink]="['report']"><span><i class="fa fa-search"></i>Thống kê</span></a>
             </h2>
           </div>
         </div>
       </div>
     </div>
     <div class="col-lg-9 mx-auto">
-      <div class="row">
-        <router-outlet></router-outlet>
-      </div>
+      <router-outlet></router-outlet>
     </div>
   </div>
 </div>
-
-
-
