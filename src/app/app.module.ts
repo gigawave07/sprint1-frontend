@@ -74,6 +74,8 @@ import {ChooseTicketComponent} from './components/flight/alertError/choose-ticke
 import {PaymentHistoryComponent} from './components/flight/payment-history/payment-history/payment-history.component';
 import {SuccessfullyPaidPendingTicketComponent} from "./components/list-pending-ticket/successfully-paid-pending-ticket/successfully-paid-pending-ticket.component";
 import { FeedbackDialogComponent } from './components/send-feedback/feedback-dialog/feedback-dialog.component';
+import {MAT_DATE_LOCALE} from '@angular/material';
+import {MAT_MOMENT_DATE_ADAPTER_OPTIONS} from '@angular/material-moment-adapter';
 
 @NgModule({
   declarations: [
@@ -134,7 +136,10 @@ import { FeedbackDialogComponent } from './components/send-feedback/feedback-dia
     useFactory: getAuthServiceConfigs
   },
     // { provide: LOCALE_ID, useValue: 'vi-VN' },
-    ExcelService],
+    ExcelService,
+    {provide: MAT_DATE_LOCALE, useValue: 'fr-FR'},
+    {provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS, useValue: {useUtc: true}},
+],
   bootstrap: [AppComponent],
   entryComponents: [SpinnerOverlayComponent, TrangChinhComponent, BaoCaoComponentComponent, TrangChuThongKeComponent,
     KetQuaComponent, KetQuaTableComponent, KetQuaSaiLogicComponent, FeedbackDialogComponent,
@@ -148,10 +153,10 @@ export class AppModule {
 export function getAuthServiceConfigs() {
   const config = new AuthServiceConfig(
     [
-      {
-        id: FacebookLoginProvider.PROVIDER_ID,
-        provider: new FacebookLoginProvider('927298648089577')
-      },
+      // {
+      //   id: FacebookLoginProvider.PROVIDER_ID,
+      //   provider: new FacebookLoginProvider('927298648089577')
+      // },
       {
         id: GoogleLoginProvider.PROVIDER_ID,
         provider: new GoogleLoginProvider('462543400761-9dlslrfotn225t12crirhc7hpcmdemcu.apps.googleusercontent.com')

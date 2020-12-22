@@ -4,6 +4,9 @@ import {LoginService} from '../../service/login.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {EditUserComponent} from '../edit-user/edit-user.component';
 import {MatDialog} from '@angular/material';
+import {datepickerAnimation} from 'ngx-bootstrap/datepicker/datepicker-animations';
+import {getDate} from 'ngx-bootstrap/chronos/utils/date-getters';
+import {createUTCDate} from 'ngx-bootstrap/chronos/create/date-from-array';
 
 
 @Component({
@@ -12,42 +15,33 @@ import {MatDialog} from '@angular/material';
   styleUrls: ['./detail-user.component.css']
 })
 export class DetailUserComponent implements OnInit {
+
+  constructor(
+    private dialog: MatDialog,
+    private userService: UserService,
+    private loginService: LoginService ) {
+  }
+
   public users;
   public idUser;
   infoFormUser: FormGroup;
+  // Trần  Đạt - Dialog chỉnh sửa thông tin.;
 
-  constructor(
-    public dialog: MatDialog,
-    public userService: UserService,
-    public loginService: LoginService,
-    public formBuilder: FormBuilder) {
-  }
-
+  // Trần  Đạt -  Form hiển thị thông tin khách hàng.
   ngOnInit(): void {
     this.idUser = this.loginService.currentUserValue.id;
     this.userService.getUserById(this.idUser).subscribe(data => {
-      console.log(this.idUser);
-      console.log(data);
-      this.users = data;
-      if (this.users.gender === false) {
-        this.users.gender = 'Nữ';
-      } else {
-        this.users.gender = 'Nam';
+        console.log(this.idUser);
+        console.log(data);
+        this.users = data;
+        if (this.users.gender === false) {
+          this.users.gender = 'Nữ';
+        } else {
+          this.users.gender = 'Nam';
+        }
       }
-    }, error => {
-      console.log('a');
-    }, () => {
-      this.infoFormUser.patchValue(this.users);
-    });
-    this.infoFormUser = this.formBuilder.group({
-      address: [''],
-      birthday: [''],
-      email: [''],
-      fullName: [''],
-      gender: [''],
-      phoneNumber: [''],
-      userRank: [''],
-    });
+    );
+
   }
 
   openDialogEdit() {

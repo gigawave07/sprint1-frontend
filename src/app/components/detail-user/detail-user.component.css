@@ -27,7 +27,7 @@
   font-family: 'Lato', sans-serif;
   font-size: 30px;
   font-weight: bolder;
-  text-transform: uppercase;
+  text-transform: initial;
   margin-bottom: 10px;
 }
 .form-control {
@@ -37,15 +37,14 @@
   flex: auto;
 }
 img {
-  border-radius: 50%;
+  border-radius: 0%;
   margin-right: auto;
   margin-left: auto;
   display: block;
-  width: 310px;
+  width: 250px;
   height: 100%;
 }
-.btn-orange {
-  background-color: orange;
+.btn-warning {
   color: white;
   height: 40px;
   border: none;
@@ -151,4 +150,9 @@ img {
 
 .accordion .rotate {
   transform: rotate(180deg);
+}
+.container-fluid{
+  background-image: url("https://images.vexels.com/media/users/3/144709/raw/95b04989b71b9375d9d04c3ee50cfc05-abstract-white-background-or-backdrop.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
 }
