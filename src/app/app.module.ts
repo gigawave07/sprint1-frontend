@@ -23,6 +23,7 @@ import {SearchPendingTicketComponent} from './components/search-pending-ticket/s
 import {VerificationEmailComponent} from './components/verification-email/verification-email.component';
 import {InvoiceManagerModule} from './components/invoice-manager/invoice-manager.module';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +32,7 @@ import {InvoiceManagerModule} from './components/invoice-manager/invoice-manager
     // Châu
     InputTicketSellComponent, DeleteTicketComponent, EditTicketComponent, PrintTicketComponent, ListTicketComponent,
     // Đăng
-    ListPendingTicketComponent, CancelPendingTicketComponent, SearchPendingTicketComponent,
+    ListPendingTicketComponent, CancelPendingTicketComponent,
   ],
   imports: [InvoiceManagerModule, BrowserModule, AppRoutingModule, MaterialModule, HttpClientModule, FormsModule, MatDialogModule, ReactiveFormsModule],
   providers: [],

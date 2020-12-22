@@ -9,6 +9,7 @@ import {Invoice} from '../../model/invoice.class';
 })
 export class ListInvoiceComponent implements OnInit {
   public listInvoice: Invoice[] = [];
+  public p: number;
   constructor(private invoiceService: InvoiceService) { }
 
   ngOnInit(): void {

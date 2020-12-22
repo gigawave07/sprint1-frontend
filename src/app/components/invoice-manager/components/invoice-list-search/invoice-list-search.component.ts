@@ -24,7 +24,7 @@ export class InvoiceListSearchComponent implements OnInit {
     this.message = '';
     this.message1 = '';
     this.search = this.form.group({
-      formCode: [''],
+      invoiceCode: [''],
       // tslint:disable-next-line:triple-equals
       codeConfirm: ['', [Validators.required]],
     });
@@ -35,9 +35,9 @@ export class InvoiceListSearchComponent implements OnInit {
   }
 
   searchByCode(key, capcha) {
-    if (this.number + '' === capcha){
+    if (this.number + '' === capcha) {
       this.message = '';
-      this.invoiceService.getInvoiceByFormCode(key, capcha).subscribe(data => {
+      this.invoiceService.getInvoiceByInvoiceCode(key, capcha).subscribe(data => {
             this.listInvoice = data;
         }, error => {
         console.log('a');
@@ -45,7 +45,7 @@ export class InvoiceListSearchComponent implements OnInit {
         this.listInvoice = [];
         console.log(this.listInvoice.length);
       });
-    }else {
+    } else {
       this.message = 'capcha sai';
     }
   }

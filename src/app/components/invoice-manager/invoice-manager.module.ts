@@ -6,13 +6,14 @@ import {routesManager} from './invoice-manager.router';
 import { InvoiceListSearchComponent } from './components/invoice-list-search/invoice-list-search.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import { DetailInvoiceComponent } from './components/detail-invoice/detail-invoice.component';
-
+import {NgxPaginationModule} from 'ngx-pagination';
 @NgModule({
   declarations: [ListInvoiceComponent, InvoiceListSearchComponent, DetailInvoiceComponent],
     imports: [
         CommonModule,
         RouterModule.forChild(routesManager),
-        ReactiveFormsModule
+        ReactiveFormsModule,
+      NgxPaginationModule
     ],
   exports: [
   ]

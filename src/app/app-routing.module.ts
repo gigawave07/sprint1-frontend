@@ -19,7 +19,6 @@ const routes: Routes = [
   {path: 'listTicket', component: ListTicketComponent},
     // Đăng:
   {path: 'list-pending-ticket', component: ListPendingTicketComponent},
-  {path: 'search-pending-ticket', component: SearchPendingTicketComponent},
 ];
 
 @NgModule({

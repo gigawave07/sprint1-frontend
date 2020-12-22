@@ -13,12 +13,14 @@ export class InvoiceService {
     public http: HttpClient
   ) {
   }
-
   getAllInvoice(): Observable<Invoice[]> {
     return this.http.get<Invoice[]>(this.API + '/list');
   }
 
-  getInvoiceByFormCode(key, capcha): Observable<any> {
+  getListInvoiceById(value): Observable<any[]> {
+    return this.http.get<any[]>(this.API + '/listInvoiceById' + value);
+  }
+  getInvoiceByInvoiceCode(key, capcha): Observable<any> {
     return this.http.get(this.API + '/find/' + key + '&' + capcha);
   }
   getCapcha(): Observable<number> {

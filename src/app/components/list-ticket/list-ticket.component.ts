@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {MatDialog} from "@angular/material/dialog";
-import {TicketService} from "../../service/ticket/ticket.service";
-import {DeleteTicketComponent} from "../delete-ticket/delete-ticket.component";
+import {MatDialog} from '@angular/material/dialog';
+import {TicketService} from '../../service/ticket/ticket.service';
+import {DeleteTicketComponent} from '../delete-ticket/delete-ticket.component';
 
 @Component({
   selector: 'app-list-ticket',

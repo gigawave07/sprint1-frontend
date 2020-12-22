@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup} from "@angular/forms";
-import {TicketService} from "../../../service/ticket/ticket.service";
+import {FormBuilder, FormGroup} from '@angular/forms';
+import {TicketService} from '../../../service/ticket/ticket.service';
 
 @Component({
   selector: 'app-search-pending-ticket',

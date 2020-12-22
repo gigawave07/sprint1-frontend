@@ -40,12 +40,12 @@
     <tbody >
     <tr *ngFor="let element of listInvoice; let i= index">
       <td>{{i + 1}}</td>
-      <td>{{element.invoiceCode}}</td>
+      <td>{{element.invoiceSymbol}}</td>
       <td>{{element.formCode}}</td>
+      <td>{{element.invoiceCode}}</td>
       <td>{{element.dateCreated}}</td>
       <td>{{element.totalMoney}}</td>
-      <td>{{element.appUser}}</td>
-      <td><i class="fa fa-eye" aria-hidden="true" [routerLink]="['/detail-invoice']"></i></td>
+      <td><i class="fa fa-eye" aria-hidden="true" [routerLink]="['/detail-invoice/'+ element.id]"></i></td>
     </tr>
     </tbody>
   </table>
