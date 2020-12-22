@@ -44,8 +44,7 @@ img {
   width: 250px;
   height: 100%;
 }
-.btn-orange {
-  background-color: orange;
+.btn-warning {
   color: white;
   height: 40px;
   border: none;

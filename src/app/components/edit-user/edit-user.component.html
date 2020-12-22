@@ -17,12 +17,12 @@
             *ngIf="formEditUser.get('fullName').hasError('maxlength') && formEditUser.get('fullName').touched">Họ va tên phải có ít hơn 30 ký tự.</span>
     </div>
 
-    <div class="d-flex form-group mt-4">
+    <div class="d-flex form-group mt-4 p-0">
       <label class="col-lg-3 col-md-3">Ngày sinh <span style="color: red">(*)</span>:</label>
       <!--      <input type="date" class="col-lg-9 col-md-9 form-control form-control-sm" formControlName="birthday">-->
-      <mat-form-field appearance="outline" class="col-lg-9 col-md-9 px-0">
+      <mat-form-field appearance="outline" class="col-lg-9 col-md-9 p-0">
         <mat-label>Vui lòng chọn ngày sinh</mat-label>
-        <input [max]="maxDate" [min]="minDate" matInput [matDatepicker]="picker" formControlName="birthday">
+        <input  [max]="maxDate" [min]="minDate" matInput [matDatepicker]="picker" formControlName="birthday">
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
@@ -37,7 +37,7 @@
       <span style="color: red"
             *ngIf="formEditUser.get('birthday').hasError('chooseDateGreaterThanCurrentDate') && formEditUser.get('birthday').touched">Ngày sinh không được lớn hơn ngày hiện tại.</span>
     </div>
-    <div class=" d-flex form-group mt-4">
+    <div class=" d-flex form-group mt-2">
       <label class=" col-lg-3 col-md-3">Địa chỉ<span style="color: red">(*)</span>:</label>
       <textarea type="text" rows="1" class=" col-lg-9 col-md-9 form-control form-control-sm "
                 formControlName="address">
@@ -68,12 +68,12 @@
         <div class="radio 4">
           <input id="radio-1" name="radio" type="radio" [checked]="valueGender === true"
                  (click)="valueGenderClick(true)">
-          <label for="radio-1" class="radio-label">Nam</label>
+          <label for="radio-1" class="radio-label ml-1">Nam</label>
         </div>
         <div class="radio ml-4 ">
           <input id="radio-2" name="radio" type="radio" [checked]="valueGender === false"
                  (click)="valueGenderClick(false)">
-          <label for="radio-2" class="radio-label">Nữ</label>
+          <label for="radio-2" class="radio-label ml-1">Nữ</label>
         </div>
       </div>
     </div>
