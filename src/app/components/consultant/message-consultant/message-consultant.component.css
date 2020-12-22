@@ -6,7 +6,7 @@
 }
 
 .mess-consultant {
-  width: auto;
+  width: 50px;
   color: white;
   border-radius: 10px 0px 10px 10px;
   border: blue solid 1px;
@@ -18,7 +18,7 @@
 
 
 .mess-from-user {
-  width: auto;
+  width: 50px;
   color: black;
   border-radius: 10px 10px 10px 0px;
   border: #d1d1d5 solid 1px;
@@ -58,6 +58,7 @@ div #input-inline {
 }
 
 #icon-box-consultant {
+  display: block;
   background-color: #e6ecf5;
   z-index: 100;
   position: relative;

@@ -16,7 +16,7 @@ import {ListEmployeeComponent} from './components/list-employee/list-employee.co
 import {CreateEmployeeComponent} from './components/create-employee/create-employee.component';
 import {EditEmployeeComponent} from './components/edit-employee/edit-employee.component';
 import {DeleteEmployeeComponent} from './components/delete-employee/delete-employee.component';
-import {CommonModule} from '@angular/common';
+import {CommonModule, DatePipe} from '@angular/common';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MaterialModule} from './material.module';
 import {MatDialogModule} from '@angular/material';
@@ -37,6 +37,7 @@ import {InvoiceDetailComponent} from './components/invoice-detail/invoice-detail
 import {InvoiceDownloadComponent} from './components/invoice-download/invoice-download.component';
 import {SearchFlightInformationComponent} from './components/flight/search-flight-information/search-flight-information.component';
 import {PaymentHistoryComponent} from './components/flight/payment-history/payment-history/payment-history.component';
+import {DeleteTicketComponent} from './components/delete-ticket/delete-ticket.component';
 
 import {MessUserComponent} from './components/mess-user/mess-user.component';
 import {SendFeedbackComponent} from './components/send-feedback/send-feedback.component';
@@ -51,7 +52,6 @@ import {DeletePassengerComponent} from './components/delete-passenger/delete-pas
 import {EditPassengerComponent} from './components/edit-passenger/edit-passenger.component';
 import {ListPassengerComponent} from './components/list-passenger/list-passenger.component';
 import {MatRadioModule} from '@angular/material/radio';
-import {DatePipe} from '@angular/common';
 import {EmployeeInfoComponent} from './components/employee-info/employee-info.component';
 import {EmployeeDetailComponent} from './components/employee-detail/employee-detail.component';
 import {ChangePasswordEmployeeComponent} from './components/change-password-employee/change-password-employee.component';
@@ -118,6 +118,22 @@ const routes: Routes = [
   //     {path: 'employee-Detail', component: EmployeeDetailComponent},
   //   ]
   // },
+  // Quốc
+  {
+    path: 'passenger', component: PassengerComponent,
+    children: [
+      {path: 'list-Passenger', component: ListPassengerComponent},
+      {path: 'list-Passenger/create-Passenger', component: CreatePassengerComponent},
+      {path: 'list-Passenger/edit-Passenger/:id', component: EditPassengerComponent},
+      {path: 'employee-Detail', component: EmployeeDetailComponent},
+    ]
+  },
+  // {
+  //   path: 'employee-info', component: EmployeeInfoComponent,
+  //   children: [
+  //     {path: 'employee-Detail', component: EmployeeDetailComponent},
+  //   ]
+  // },
 
   // Đăng:caca
   {path: 'list-pending-ticket', component: ListPendingTicketComponent},
@@ -143,11 +159,18 @@ const routes: Routes = [
   // PQ Khánh:
   {path: 'checkin-online', component: CheckinOnlineComponent},
   {path: 'promotion-code', component: PromotionCodeComponent},
+
+  {path: 'deleteTicket', component: DeleteTicketComponent},
+  {path: 'listTicket', component: ListTicketComponent},
   // khánh
   {path: 'invoice-detail/:id', component: InvoiceDetailComponent},
   {path: 'invoice-download', component: InvoiceDownloadComponent},
   // Đin
-  {path: 'search', component: SearchFlightInformationComponent}
+  {path: 'search', component: SearchFlightInformationComponent},
+  //Hoàng
+  {path: 'detail-invoice', component: DetailInvoiceComponent},
+  {path: 'invoice-list', component: ListInvoiceComponent},
+  {path: 'invoice-list-search', component: InvoiceListSearchComponent}
 ];
 
 // @ts-ignore
@@ -155,7 +178,14 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes), CommonModule, ReactiveFormsModule, MaterialModule,
     MatDialogModule, FormsModule, NgxPaginationModule, MatRadioModule, MatIconModule],
   exports: [RouterModule],
-  declarations: [ListEmployeeComponent, CreateEmployeeComponent, EditEmployeeComponent, DeleteEmployeeComponent, EmployeeComponent, EditTicketComponent, InputTicketSellComponent, PrintTicketTwoWayComponent, MessageNoticeEmployeeComponent, CheckinOnlineComponent, PromotionCodeComponent, NoticePageComponent, PassengerComponent, CreatePassengerComponent, DeletePassengerComponent, EditPassengerComponent, ListPassengerComponent, EmployeeInfoComponent, EmployeeDetailComponent, ChangePasswordEmployeeComponent
+  declarations: [ListEmployeeComponent, CreateEmployeeComponent, EditEmployeeComponent,
+    DeleteEmployeeComponent, EmployeeComponent, EditTicketComponent, InputTicketSellComponent,
+    PrintTicketTwoWayComponent, MessageNoticeEmployeeComponent, CheckinOnlineComponent, PromotionCodeComponent,
+    NoticePageComponent, PassengerComponent, CreatePassengerComponent, DeletePassengerComponent, EditPassengerComponent,
+    ListPassengerComponent, EmployeeInfoComponent, EmployeeDetailComponent, ChangePasswordEmployeeComponent,
+    NoticePageComponent, CreatePassengerComponent, DeletePassengerComponent, EditPassengerComponent, ListPassengerComponent, EmployeeInfoComponent, EmployeeDetailComponent, ChangePasswordEmployeeComponent,
+    MessageNoticeEmployeeComponent, CheckinOnlineComponent, PromotionCodeComponent
+
   ],
   providers: [
     DatePipe

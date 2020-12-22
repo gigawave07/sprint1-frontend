@@ -14,6 +14,7 @@ export class EmployeeService {
   public readonly API: string = 'http://localhost:8080/employee';
   public readonly API_SEND_EMAIL = 'http://localhost:8080/sendEmail';
   public readonly API_CHANGE_PASSWORD = 'http://localhost:8080/changePassword';
+  public readonly API_FIND_ID = 'http://localhost:8080/employee';
 
   constructor(
     public http: HttpClient
@@ -24,6 +25,11 @@ export class EmployeeService {
      Create by : Quoc_NT
      function : send Token Code Random to Email Employee when employee change password
      */
+  findEmployeeByIdAccount(idFind: any): Observable<any> {
+    return this.http.get(this.API_FIND_ID + '/findEmployee/' + idFind);
+  }
+
+
 
   sendToEmailEmployee(id: number): Observable<any> {
     console.log(this.API_SEND_EMAIL + '/' + id);

@@ -37,7 +37,7 @@ import {KetQuaTableComponent} from './components/report-statistic/bao-cao-thong-
 // tslint:disable-next-line:max-line-length
 import {KetQuaSaiLogicComponent} from './components/report-statistic/bao-cao-thong-ke/thong-ke/ket-qua/ket-qua-sai-logic/ket-qua-sai-logic.component';
 import {ChartsModule} from 'ng2-charts';
-import {AuthServiceConfig, FacebookLoginProvider, GoogleLoginProvider, SocialLoginModule} from 'angularx-social-login';
+import {AuthServiceConfig, GoogleLoginProvider, SocialLoginModule} from 'angularx-social-login';
 import {UserDialogComponent} from './components/user-dialog/user-dialog.component';
 import {MessageUserComponent} from './components/message-user/message-user.component';
 
@@ -49,12 +49,15 @@ import {ConsultantComponent} from './components/consultant/consultant.component'
 import {FeedbackService} from './service/feedback.service';
 import {MessageConsultantComponent} from './components/consultant/message-consultant/message-consultant.component';
 import {DatePipe} from '@angular/common';
-import {PickerModule} from "@ctrl/ngx-emoji-mart";
-import {EmojiModule} from "@ctrl/ngx-emoji-mart/ngx-emoji";
+import {PickerModule} from '@ctrl/ngx-emoji-mart';
+import {EmojiModule} from '@ctrl/ngx-emoji-mart/ngx-emoji';
 import {NavBarComponent} from './components/nav-bar/nav-bar.component';
 import {FooterComponent} from './components/footer/footer.component';
 import {PromotionModule} from './components/promotion/promotion.module';
-import {ExcelService} from "./components/report-statistic/service/excel.service";
+import {ExcelService} from './components/report-statistic/service/excel.service';
+import {DeletePassengerComponent} from './components/delete-passenger/delete-passenger.component';
+import {ToastrModule} from 'ngx-toastr';
+import {InvoiceManagerModule} from './components/invoice-manager/invoice-manager.module';
 
 import {ChangePasswordSuccessfullyComponent} from './components/change-password-successfully/change-password-successfully.component';
 import {GetTokenEmailAdminComponent} from './components/get-token-email-admin/get-token-email-admin.component';
@@ -72,8 +75,8 @@ import {FlightDetailComponent} from './components/flight/flight-detail/flight-de
 import {InfoPassengerBookingTicketComponent} from './components/flight/info-passenger-booking-ticket/info-passenger-booking-ticket.component';
 import {ChooseTicketComponent} from './components/flight/alertError/choose-ticket/choose-ticket.component';
 import {PaymentHistoryComponent} from './components/flight/payment-history/payment-history/payment-history.component';
-import {SuccessfullyPaidPendingTicketComponent} from "./components/list-pending-ticket/successfully-paid-pending-ticket/successfully-paid-pending-ticket.component";
-import { FeedbackDialogComponent } from './components/send-feedback/feedback-dialog/feedback-dialog.component';
+import {SuccessfullyPaidPendingTicketComponent} from './components/list-pending-ticket/successfully-paid-pending-ticket/successfully-paid-pending-ticket.component';
+import {FeedbackDialogComponent} from './components/send-feedback/feedback-dialog/feedback-dialog.component';
 import {MAT_DATE_LOCALE} from '@angular/material';
 import {MAT_MOMENT_DATE_ADAPTER_OPTIONS} from '@angular/material-moment-adapter';
 
@@ -95,7 +98,7 @@ import {MAT_MOMENT_DATE_ADAPTER_OPTIONS} from '@angular/material-moment-adapter'
     DetailUserComponent, EditUserComponent, ChangePasswordUserComponent, InformationUserComponent, UserDialogComponent,
     MessageUserComponent,
     // Khánh
-    InvoiceListComponent,InvoiceDetailComponent, InvoiceDownloadComponent,
+    InvoiceListComponent, InvoiceDetailComponent, InvoiceDownloadComponent,
 
 
     // Nhật mới
@@ -121,8 +124,13 @@ import {MAT_MOMENT_DATE_ADAPTER_OPTIONS} from '@angular/material-moment-adapter'
     FeedbackDialogComponent
   ],
   imports: [BrowserModule, AppRoutingModule, MaterialModule, HttpClientModule, NgxPaginationModule, Ng2SearchPipeModule,
-    FormsModule, MatDialogModule, ReactiveFormsModule, NgxLoadingModule.forRoot({}), PickerModule, EmojiModule,ChartsModule, SocialLoginModule, PromotionModule,
+    FormsModule, MatDialogModule, ReactiveFormsModule, NgxLoadingModule.forRoot({}), PickerModule, EmojiModule, ChartsModule, SocialLoginModule, PromotionModule,
     ChartsModule, SocialLoginModule, PromotionModule, PDFExportModule,
+    InvoiceManagerModule, AppRoutingModule, MaterialModule,
+     NgxLoadingModule.forRoot({}), PromotionModule, ToastrModule.forRoot({
+      positionClass: 'toast-top-center',
+      preventDuplicates: true,
+    } )
 
   ],
   // tslint:disable-next-line:max-line-length
@@ -144,7 +152,7 @@ import {MAT_MOMENT_DATE_ADAPTER_OPTIONS} from '@angular/material-moment-adapter'
   entryComponents: [SpinnerOverlayComponent, TrangChinhComponent, BaoCaoComponentComponent, TrangChuThongKeComponent,
     KetQuaComponent, KetQuaTableComponent, KetQuaSaiLogicComponent, FeedbackDialogComponent,
     //  Đăng update
-    SuccessfullyPaidPendingTicketComponent
+    SuccessfullyPaidPendingTicketComponent, DeletePassengerComponent
   ]
 })
 export class AppModule {

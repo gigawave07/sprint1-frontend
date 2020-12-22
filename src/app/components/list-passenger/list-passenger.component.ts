@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {PassengerService} from '../../service/passenger/passenger.service';
 import {MatDialog} from '@angular/material/dialog';
 import {ActivatedRoute} from '@angular/router';
@@ -15,22 +15,20 @@ export class ListPassengerComponent implements OnInit {
   private pages: Array<number>;
   private by = 'all';
   private search = '';
-  private hasNext: boolean;
-  private hasPre: boolean;
+  public hide = false;
 
-  constructor(private passengerService: PassengerService,
+  constructor(private passengerService: PassengerService ,
               public dialog: MatDialog,
-              private route: ActivatedRoute) {
-  }
+              private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.getPassenger();
   }
-
   getPassenger() {
     this.passengerService.search(this.currentPage, this.by, this.search).subscribe(data => {
       this.passengers = data.content;
       console.log(data);
+      console.log(this.passengers);
       this.pages = new Array(data.totalPages);
     });
   }
@@ -72,5 +70,6 @@ export class ListPassengerComponent implements OnInit {
         this.ngOnInit();
       });
     });
+
   }
 }

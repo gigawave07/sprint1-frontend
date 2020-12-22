@@ -24,9 +24,10 @@ export class ChangePasswordEmployeeComponent implements OnInit {
   changePasswordForm: FormGroup;
   matcher = new MyErrorStateMatcher();
   public idEmployee;
+  public employee;
   hide = true;
   validToken: string;
-
+  public idAppAccount;
   constructor(
     public toast: ToastrService,
     public dialogRef: MatDialogRef<ChangePasswordEmployeeComponent>,
@@ -49,12 +50,19 @@ export class ChangePasswordEmployeeComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.idEmployee = this.loginService.currentUserValue.id;
-    this.idEmployee = 1;
+    this.idAppAccount = this.loginService.currentUserValue.id;
+    this.employeeService.findEmployeeByIdAccount(this.idAppAccount).subscribe(value => {
+      this.idEmployee = value;
+      this.employeeService.findEmployeeByIdService(this.idEmployee).subscribe(value => {
+        this.employee = value;
+        console.log(value);
+      });
+    });
   }
 
   changePassword() {
     this.employeeService.changePasswordEmployee(this.idEmployee, this.changePasswordForm.value).subscribe(data => {
+      alert(this.idEmployee);
       if (data["result"] === 1 ) {
        this.toast.success('Đổi Mật Khẩu Thành Công', 'Thông Báo');
        this.dialogRef.close();
@@ -62,5 +70,9 @@ export class ChangePasswordEmployeeComponent implements OnInit {
         this.toast.warning('Đổi Mật Khẩu Thất Bại', 'Thông Báo');
       }
     });
+  }
+
+  cancel() {
+    this.dialogRef.close();
   }
 }

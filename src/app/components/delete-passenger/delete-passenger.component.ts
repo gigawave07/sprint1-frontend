@@ -2,7 +2,7 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {PassengerService} from '../../service/passenger/passenger.service';
 import {Router} from '@angular/router';
-import {ToastrService} from "ngx-toastr";
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-delete-passenger',
@@ -12,13 +12,12 @@ import {ToastrService} from "ngx-toastr";
 export class DeletePassengerComponent implements OnInit {
   public eleName;
   public eleId;
-  public check;
 
   constructor(public dialogRef: MatDialogRef<DeletePassengerComponent>,
-              public toast: ToastrService,
               @Inject(MAT_DIALOG_DATA)
               public data: any,
               public passengerService: PassengerService,
+              public toast: ToastrService,
               private router: Router) { }
 
   ngOnInit() {

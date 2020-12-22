@@ -1,8 +1,8 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {PassengerService} from '../../service/passenger/passenger.service';
 import {ActivatedRoute, Router} from '@angular/router';
-import {ToastrService} from "ngx-toastr";
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-edit-passenger',
@@ -29,13 +29,11 @@ export class EditPassengerComponent implements OnInit {
   private eleId: number;
   private err: any;
 
-  constructor(
-    private toat: ToastrService,
-    private formBuilder: FormBuilder,
-    private passengerService: PassengerService,
-    private router: Router,
-    private route: ActivatedRoute) {
-  }
+  constructor(private formBuilder: FormBuilder,
+              private toat: ToastrService,
+              private passengerService: PassengerService,
+              private router: Router,
+              private route: ActivatedRoute) { }
 
   ngOnInit() {
     // @ts-ignore
@@ -60,7 +58,6 @@ export class EditPassengerComponent implements OnInit {
     this.passengerService.getLuggage()
       .subscribe(data => this.luggageList = data, error => this.luggageList = []);
   }
-
   callAPi() {
     console.log(this.formEdit.value);
     this.passengerService.update(this.eleId, this.formEdit.value).subscribe(data => {
@@ -77,7 +74,6 @@ export class EditPassengerComponent implements OnInit {
       }
     });
   }
-
   cancel() {
     this.router.navigate(['/passenger/list-Passenger']);
   }

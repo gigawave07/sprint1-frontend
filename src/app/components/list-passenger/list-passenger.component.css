@@ -98,4 +98,6 @@ a.delete{
  margin-left: 15px;
 }
 
-
+.material-icons:hover{
+  cursor: pointer;
+}
