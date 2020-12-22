@@ -45,21 +45,22 @@ import {MessageConsultantComponent} from './components/consultant/message-consul
 // KhánhPQ
 import {CheckinOnlineComponent} from './components/checkin-online/checkin-online.component';
 import {PromotionCodeComponent} from './components/promotion-code/promotion-code.component';
-import { PassengerComponent } from './components/passenger/passenger.component';
-import { CreatePassengerComponent } from './components/create-passenger/create-passenger.component';
-import { DeletePassengerComponent } from './components/delete-passenger/delete-passenger.component';
-import { EditPassengerComponent } from './components/edit-passenger/edit-passenger.component';
-import { ListPassengerComponent } from './components/list-passenger/list-passenger.component';
+import {PassengerComponent} from './components/passenger/passenger.component';
+import {CreatePassengerComponent} from './components/create-passenger/create-passenger.component';
+import {DeletePassengerComponent} from './components/delete-passenger/delete-passenger.component';
+import {EditPassengerComponent} from './components/edit-passenger/edit-passenger.component';
+import {ListPassengerComponent} from './components/list-passenger/list-passenger.component';
 import {MatRadioModule} from '@angular/material/radio';
-import { DatePipe } from '@angular/common';
-import { EmployeeInfoComponent } from './components/employee-info/employee-info.component';
-import { EmployeeDetailComponent } from './components/employee-detail/employee-detail.component';
-import {ChangePasswordEmployeeComponent } from './components/change-password-employee/change-password-employee.component';
+import {DatePipe} from '@angular/common';
+import {EmployeeInfoComponent} from './components/employee-info/employee-info.component';
+import {EmployeeDetailComponent} from './components/employee-detail/employee-detail.component';
+import {ChangePasswordEmployeeComponent} from './components/change-password-employee/change-password-employee.component';
 import {MatIconModule} from '@angular/material/icon';
 
 import {ChangePasswordSuccessfullyComponent} from './components/change-password-successfully/change-password-successfully.component';
 import {GetTokenEmailAdminComponent} from './components/get-token-email-admin/get-token-email-admin.component';
 import {GetCheckPasswordAdminComponent} from './components/get-check-password-admin/get-check-password-admin.component';
+
 const routes: Routes = [
   // Quân :
   {path: '', component: HomeComponent},
@@ -79,22 +80,12 @@ const routes: Routes = [
   {
     path: 'admin', component: AdminComponent,
     children: [
-      {
-        path: 'information', component: InformationAdminComponent
-      },
-      {
-        path: 'change-password-successfully', component: ChangePasswordSuccessfullyComponent
-      },
-      {
-        path: 'get-token-email', component: GetTokenEmailAdminComponent
-      },
-      {
-        path: 'get-check-password', component: GetCheckPasswordAdminComponent
-      },
-      {
-        // Nhật mới
-        path: 'report', component: BaoCaoComponentComponent,
-      }
+      {path: 'information', component: InformationAdminComponent},
+      {path: 'change-password-successfully', component: ChangePasswordSuccessfullyComponent},
+      {path: 'get-token-email', component: GetTokenEmailAdminComponent},
+      {path: 'get-check-password', component: GetCheckPasswordAdminComponent},
+      // Nhật mới
+      {path: 'report', component: BaoCaoComponentComponent,}
     ]
   },
   // Đạt
@@ -102,13 +93,12 @@ const routes: Routes = [
   {
     path: 'informationUser', component: InformationUserComponent,
     children: [
-      {
-        path: 'detailUser', component: DetailUserComponent
-      },
+      {path: 'detailUser', component: DetailUserComponent},
       {path: 'editUser', component: EditUserComponent},
       {path: 'changPassword', component: ChangePasswordUserComponent},
       {path: 'list-pending-ticket', component: ListPendingTicketComponent},
-      {path: 'search-pending-ticket', component: SearchPendingTicketComponent}
+      {path: 'search-pending-ticket', component: SearchPendingTicketComponent},
+      {path: 'invoice-list', component: InvoiceListComponent},
     ]
   },
   // Quốc
@@ -153,7 +143,6 @@ const routes: Routes = [
   {path: 'checkin-online', component: CheckinOnlineComponent},
   {path: 'promotion-code', component: PromotionCodeComponent},
   // khánh
-  {path: 'invoice-list', component: InvoiceListComponent},
   {path: 'invoice-detail/:id', component: InvoiceDetailComponent},
   {path: 'invoice-download', component: InvoiceDownloadComponent},
   // Đin
@@ -161,14 +150,15 @@ const routes: Routes = [
 ];
 
 @NgModule({
-    imports: [RouterModule.forRoot(routes), CommonModule, ReactiveFormsModule, MaterialModule,
-        MatDialogModule, FormsModule, NgxPaginationModule, MatRadioModule, MatIconModule],
+  imports: [RouterModule.forRoot(routes), CommonModule, ReactiveFormsModule, MaterialModule,
+    MatDialogModule, FormsModule, NgxPaginationModule, MatRadioModule, MatIconModule],
   exports: [RouterModule],
   declarations: [ListEmployeeComponent, CreateEmployeeComponent, EditEmployeeComponent, DeleteEmployeeComponent, EmployeeComponent, EditTicketComponent, InputTicketSellComponent, PrintTicketTwoWayComponent, MessageNoticeEmployeeComponent, CheckinOnlineComponent, PromotionCodeComponent, NoticePageComponent, PassengerComponent, CreatePassengerComponent, DeletePassengerComponent, EditPassengerComponent, ListPassengerComponent, EmployeeInfoComponent, EmployeeDetailComponent, ChangePasswordEmployeeComponent
   ],
   providers: [
     DatePipe
-  //
+    //
   ]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}

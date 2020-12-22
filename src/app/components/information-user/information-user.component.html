@@ -34,6 +34,14 @@
         <div class="card">
           <div class="card-header">
             <h2 class="mb-0">
+              <a [routerLink]="['/informationUser/invoice-list']"><span><i class="fa fa-file-word-o"
+                                                                           aria-hidden="true"></i>Danh Sách Hóa Đơn</span></a>
+            </h2>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            <h2 class="mb-0">
               <a (click)="openDialogChangePassword()"><span><i class="fa fa-id-card-o"></i>Đổi mật khẩu</span></a>
             </h2>
           </div>
@@ -41,7 +49,7 @@
       </div>
     </div>
     <div class="col-lg-9 mx-auto">
-        <router-outlet></router-outlet>
+      <router-outlet></router-outlet>
     </div>
   </div>
 </div>

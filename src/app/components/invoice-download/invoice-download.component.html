@@ -129,7 +129,7 @@
                 (click)="printInvoice()">Xác nhận
         </button>
 
-        <button id="print" type="button" (click)="pdf.saveAs('invoice.pdf')" hidden></button>
+        <button id="print" type="button" (click)="pdf.saveAs(invoice.formCode)" hidden></button>
       </div>
     </div>
   </div>

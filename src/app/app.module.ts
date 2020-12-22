@@ -91,6 +91,8 @@ import {SuccessfullyPaidPendingTicketComponent} from "./components/list-pending-
     // Đạt
     DetailUserComponent, EditUserComponent, ChangePasswordUserComponent, InformationUserComponent, UserDialogComponent,
     MessageUserComponent,
+    // Khánh
+    InvoiceListComponent,InvoiceDetailComponent, InvoiceDownloadComponent,
 
 
     // Nhật mới
@@ -116,7 +118,7 @@ import {SuccessfullyPaidPendingTicketComponent} from "./components/list-pending-
   ],
   imports: [BrowserModule, AppRoutingModule, MaterialModule, HttpClientModule, NgxPaginationModule, Ng2SearchPipeModule,
     FormsModule, MatDialogModule, ReactiveFormsModule, NgxLoadingModule.forRoot({}),
-    ChartsModule, SocialLoginModule, PromotionModule,     PDFExportModule,
+    ChartsModule, SocialLoginModule, PromotionModule, PDFExportModule,
 
   ],
   // tslint:disable-next-line:max-line-length

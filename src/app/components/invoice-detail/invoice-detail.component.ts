@@ -53,7 +53,7 @@ export class InvoiceDetailComponent implements OnInit {
       const position = 0;
       pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight);
       if (this.ticketList.length !== 0) {
-        pdf.save('invoice.pdf');
+        pdf.save(this.invoice.formCode);
       }
     });
   }
