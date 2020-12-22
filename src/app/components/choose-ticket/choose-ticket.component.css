@@ -1,3 +1,7 @@
+.container-fluid {
+  background-color: white;
+}
+
 .date-button {
   background-color: orange;
   width: 120px;

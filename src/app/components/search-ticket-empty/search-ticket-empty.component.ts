@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {TicketService} from '../../service/ticket/ticket.service';
-import {FormBuilder, FormGroup} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {format} from 'url';
 
 
 @Component({
@@ -10,6 +11,7 @@ import {FormBuilder, FormGroup} from '@angular/forms';
 })
 export class SearchTicketEmptyComponent implements OnInit {
   radio: number;
+  dayNow = new Date().toLocaleDateString();
   // tslint:disable-next-line:variable-name
   arrival_date: string;
 

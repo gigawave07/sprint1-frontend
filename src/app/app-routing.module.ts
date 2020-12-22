@@ -9,6 +9,7 @@ import {AdminComponent} from './components/admin/admin.component';
 import {ListTicketComponent} from './components/list-ticket/list-ticket.component';
 import {SearchTicketEmptyComponent} from './components/search-ticket-empty/search-ticket-empty.component';
 import {ChooseTicketComponent} from './components/choose-ticket/choose-ticket.component';
+import { InputTicketSellComponent } from './components/input-ticket-sell/input-ticket-sell.component';
 
 
 const routes: Routes = [
@@ -30,12 +31,14 @@ const routes: Routes = [
   {path: 'list-ticket', component: ListTicketComponent},
   {path: 'search-ticket-empty', component: SearchTicketEmptyComponent},
   {path: 'choose-ticket', component: ChooseTicketComponent},
+  {path: 'input-ticket-sell', component: InputTicketSellComponent},
 
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  declarations: [InputTicketSellComponent]
 })
 export class AppRoutingModule {
 }

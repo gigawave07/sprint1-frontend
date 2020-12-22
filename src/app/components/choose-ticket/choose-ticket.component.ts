@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {TicketService} from '../../service/ticket/ticket.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-choose-ticket',
@@ -23,7 +24,8 @@ export class ChooseTicketComponent implements OnInit {
   term: any;
   p: any;
   constructor(
-    private ticketService: TicketService
+    private ticketService: TicketService,
+    private route: Router
   ) {
   }
 
@@ -61,19 +63,18 @@ export class ChooseTicketComponent implements OnInit {
     return this.arraysWay;
   }
   searchOneWayPage(index, item) {
-    // Để lấy ngày tháng năm đi theo dạng dd/mm/yyyy
     this.dateDeparture = index;
-    console.log(this.dateDeparture);
     const dateDepartureTempt = new Date(index).toLocaleDateString();
-    console.log(dateDepartureTempt);
-    // Lấy list Flight đi
-    // this.ticketService.searchWeek(0, this.departure, this.arrival,
-    //   dateDepartureTempt, this.sortChildren).subscribe(data => {
-    //   this.listOneWayTable = data.content;
-    // });
+    if (item === 1 && (this.ticketService.getRadio() == 1)) {
+      console.log(this.departure, this.arrival, dateDepartureTempt, this.airline);
+      this.ticketService.searchTicketEmptyDepService(this.departure, this.arrival, dateDepartureTempt, this.airline);
+    }
   }
 
-  show() {
-    console.log(this.towWay + this.oneWay);
+  bookingTicket(oneWay: number, towWay: number) {
+    if (towWay === undefined) {
+      towWay = 0;
+    }
+    this.route.navigate(['input-ticket-sell', {idFlightDeparture: oneWay, idFlightArrival: towWay}]);
   }
 }
