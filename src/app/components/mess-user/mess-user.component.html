@@ -64,19 +64,40 @@
         <div class="col-lg-12 chat-body" id="chat-body">
           <div *ngFor="let mess of listMess">
             <div *ngIf="(mess.isUser == 'false')">
-              <div class="row mt-1 mb-1" style=" z-index: 1">
-                <div class="col-lg-6 mess-consultant" align="left">
+              <div *ngIf="mess.content.length > 7">
+                <div class="row mt-1 mb-1" style=" z-index: 1">
+                  <div class="col-lg-6 mess-consultant" align="left">
                 <span><span
                   style="margin-left: 2px"></span>{{mess.content}}<span style="margin-right: 2px"></span></span>
-                  <div class="col-lg-6"></div>
+                    <div class="col-lg-6"></div>
+                  </div>
+                </div>
+              </div>
+              <div *ngIf="mess.content.length <= 7">
+                <div class="row mt-1 mb-1" style=" z-index: 1">
+                  <div class="col-lg-3 mess-consultant" align="left">
+                <span><span
+                  style="margin-left: 2px"></span>{{mess.content}}<span style="margin-right: 2px"></span></span>
+                    <div class="col-lg-9"></div>
+                  </div>
                 </div>
               </div>
             </div>
             <div *ngIf="(mess.isUser == 'true')">
-              <div class="row mt-1 mb-1" style="z-index: 1">
-                <div class="col-lg-6"></div>
-                <div class="col-lg-6 mess-from-user" align="right"><span><span
-                  style="margin-left: 2px"></span>{{mess.content}}<span style="margin-right: 2px"></span></span>
+              <div *ngIf="mess.content.length > 7">
+                <div class="row mt-1 mb-1" style="z-index: 1">
+                  <div class="col-lg-6"></div>
+                  <div class="col-lg-6 mess-from-user" align="right"><span><span
+                    style="margin-left: 2px"></span>{{mess.content}}<span style="margin-right: 2px"></span></span>
+                  </div>
+                </div>
+              </div>
+              <div *ngIf="mess.content.length <= 7">
+                <div class="row mt-1 mb-1" style="z-index: 1">
+                  <div class="col-lg-9"></div>
+                  <div class="col-lg-3 mess-from-user" align="right"><span><span
+                    style="margin-left: 2px"></span>{{mess.content}}<span style="margin-right: 2px"></span></span>
+                  </div>
                 </div>
               </div>
             </div>
