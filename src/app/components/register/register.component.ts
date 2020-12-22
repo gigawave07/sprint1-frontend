@@ -65,6 +65,7 @@ export class RegisterComponent implements OnInit {
             this.message = data.message;
           } else {
             this.router.navigateByUrl('/verification-email');
+          //
           }
         });
     } else {
