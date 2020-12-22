@@ -5,6 +5,8 @@ import {MessageService} from '../../../service/message.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import * as firebase from 'firebase';
 import {DatePipe} from '@angular/common';
+import {EmojiEvent} from "@ctrl/ngx-emoji-mart/ngx-emoji";
+
 
 declare var $: any;
 
@@ -32,6 +34,8 @@ export class MessageConsultantComponent implements OnInit {
   formSendMess: FormGroup;
   listMessage = [];
   listIcon = [];
+  set = 'native';
+  native = true;
 
   sub: Subscription;
 
@@ -97,5 +101,8 @@ export class MessageConsultantComponent implements OnInit {
     this.messageService.getIcon().subscribe((data) => {
       this.listIcon = data;
     });
+  }
+  handleClick($event: EmojiEvent) {
+    console.log($event.emoji);
   }
 }

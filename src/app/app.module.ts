@@ -34,6 +34,8 @@ import {ConsultantComponent} from './components/consultant/consultant.component'
 import {FeedbackService} from './service/feedback.service';
 import {MessageConsultantComponent} from './components/consultant/message-consultant/message-consultant.component';
 import {DatePipe} from '@angular/common';
+import {PickerModule} from "@ctrl/ngx-emoji-mart";
+import {EmojiModule} from "@ctrl/ngx-emoji-mart/ngx-emoji";
 
 
 @NgModule({
@@ -57,7 +59,8 @@ import {DatePipe} from '@angular/common';
     MessageConsultantComponent
   ],
   imports: [BrowserModule, AppRoutingModule, MaterialModule, HttpClientModule, NgxPaginationModule, Ng2SearchPipeModule,
-    FormsModule, MatDialogModule, ReactiveFormsModule, NgxLoadingModule.forRoot({})],
+    FormsModule, MatDialogModule, ReactiveFormsModule, NgxLoadingModule.forRoot({}),    PickerModule,
+    EmojiModule],
   providers: [DatePipe, MessageService, FeedbackService, {
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptor,
