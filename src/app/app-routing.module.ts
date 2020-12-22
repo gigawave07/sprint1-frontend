@@ -150,6 +150,7 @@ const routes: Routes = [
   {path: 'search', component: SearchFlightInformationComponent}
 ];
 
+// @ts-ignore
 @NgModule({
   imports: [RouterModule.forRoot(routes), CommonModule, ReactiveFormsModule, MaterialModule,
     MatDialogModule, FormsModule, NgxPaginationModule, MatRadioModule, MatIconModule],

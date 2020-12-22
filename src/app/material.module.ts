@@ -28,6 +28,7 @@ import {FlightTicketComponent} from "./components/flight/flight-ticket/flight-ti
 import {InfoPassengerBookingTicketComponent} from "./components/flight/info-passenger-booking-ticket/info-passenger-booking-ticket.component";
 import {LoginComponent} from "./components/login/login.component";
 import {ChooseTicketComponent} from "./components/flight/alertError/choose-ticket/choose-ticket.component";
+import {MatMomentDateModule} from '@angular/material-moment-adapter';
 
 @NgModule({
   declarations: [],
@@ -47,6 +48,7 @@ import {ChooseTicketComponent} from "./components/flight/alertError/choose-ticke
     MatIconModule,
     MatStepperModule,
     MatTabsModule,
+    MatMomentDateModule,
   ],
   exports: [
     CommonModule,
@@ -64,6 +66,7 @@ import {ChooseTicketComponent} from "./components/flight/alertError/choose-ticke
     MatIconModule,
     MatStepperModule,
     MatTabsModule,
+    MatMomentDateModule,
 
   ],
   providers: [

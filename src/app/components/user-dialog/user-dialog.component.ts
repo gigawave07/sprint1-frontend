@@ -1,9 +1,13 @@
+// @ts-ignore
 import { Component, OnInit } from '@angular/core';
+// @ts-ignore
 import {MatDialogRef} from '@angular/material';
+// @ts-ignore
 import {Router} from '@angular/router';
-import {UserService} from '../../service/user/user.service';
+
 import {LoginService} from '../../service/login.service';
 
+// @ts-ignore
 @Component({
   selector: 'app-user-dialog',
   templateUrl: './user-dialog.component.html',
