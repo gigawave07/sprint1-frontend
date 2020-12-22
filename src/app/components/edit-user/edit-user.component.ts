@@ -62,6 +62,7 @@ export class EditUserComponent implements OnInit {
     this.dataIdUser = this.data.dataE;
     console.log(this.dataIdUser);
     this.userService.getUserById(this.dataIdUser).subscribe(getData => {
+      console.log(getData);
       this.valueGender = getData.gender;
       this.formEditUser.patchValue(getData);
     });
