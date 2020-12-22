@@ -9,6 +9,7 @@ import {RegisterComponent} from './components/register/register.component';
 import {MaterialModule} from './material.module';
 import {DeleteTicketComponent} from './components/delete-ticket/delete-ticket.component';
 import {PrintTicketComponent} from './components/print-ticket/print-ticket.component';
+import {HttpClientModule} from '@angular/common/http';
 import {ListTicketComponent} from './components/list-ticket/list-ticket.component';
 import {ListPendingTicketComponent} from './components/list-pending-ticket/list-pending-ticket/list-pending-ticket.component';
 import {CancelPendingTicketComponent} from './components/list-pending-ticket/cancel-pending-ticket/cancel-pending-ticket.component';
@@ -59,6 +60,14 @@ import {ExcelService} from "./components/report-statistic/service/excel.service"
 import {DeletePassengerComponent} from './components/delete-passenger/delete-passenger.component';
 import {ChangePasswordEmployeeComponent} from './components/change-password-employee/change-password-employee.component';
 import {ToastrModule} from 'ngx-toastr';
+import {ListPendingTicketComponent} from './components/list-pending-ticket/list-pending-ticket/list-pending-ticket.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {CancelPendingTicketComponent} from './components/list-pending-ticket/cancel-pending-ticket/cancel-pending-ticket.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import {SearchPendingTicketComponent} from './components/search-pending-ticket/search-pending-ticket/search-pending-ticket.component';
+import {VerificationEmailComponent} from './components/verification-email/verification-email.component';
+import {InvoiceManagerModule} from './components/invoice-manager/invoice-manager.module';
+
 
 @NgModule({
   declarations: [

@@ -32,6 +32,10 @@ import {MessageNoticeEmployeeComponent} from './components/message-notice-employ
 import {PrintTicketTwoWayComponent} from './components/print-ticket-two-way/print-ticket-two-way.component';
 import {NoticePageComponent} from './components/notice-page/notice-page.component';
 import {PromotionListForCustomerComponent} from './components/promotion/promotion-list-for-customer/promotion-list-for-customer.component';
+import {DeleteTicketComponent} from './components/delete-ticket/delete-ticket.component';
+import {ListTicketComponent} from './components/list-ticket/list-ticket.component';
+import {ListPendingTicketComponent} from './components/list-pending-ticket/list-pending-ticket/list-pending-ticket.component';
+import {SearchPendingTicketComponent} from './components/search-pending-ticket/search-pending-ticket/search-pending-ticket.component';
 
 import {MessUserComponent} from './components/mess-user/mess-user.component';
 import {SendFeedbackComponent} from './components/send-feedback/send-feedback.component';
@@ -134,6 +138,11 @@ const routes: Routes = [
   // PQ Khánh:
   {path: 'checkin-online', component: CheckinOnlineComponent},
   {path: 'promotion-code', component: PromotionCodeComponent}
+  {path: 'deleteTicket', component: DeleteTicketComponent},
+  {path: 'listTicket', component: ListTicketComponent},
+    // Đăng:
+  {path: 'list-pending-ticket', component: ListPendingTicketComponent},
+];
 
 ];
 @NgModule({
