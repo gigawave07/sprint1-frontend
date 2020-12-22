@@ -6,8 +6,8 @@ import {Observable} from 'rxjs';
   providedIn: 'root'
 })
 export class FlightService {
-  private apiSearch = 'http://localhost:8080/flightInformation/search';
-  private apiById = 'http://localhost:8080/flightInformation/findByID/';
+  private apiSearch = 'http://localhost:8080/flight-information/search';
+  private apiById = 'http://localhost:8080/flight-information/find-by-id/';
   private sentEmail = 'http://localhost:8080/sent-email';
 
   constructor(private http: HttpClient) {
