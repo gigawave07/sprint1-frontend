@@ -14,14 +14,14 @@ export class PrintTicketComponent implements OnInit {
   protected flightInformationDisplay = [];
 
   constructor(
-    private activedRouter: ActivatedRoute,
+    private activatedRoute: ActivatedRoute,
     protected ticketService: TicketService,
     protected router: Router
   ) {
   }
 
   ngOnInit() {
-    this.activedRouter.params.subscribe(data => {
+    this.activatedRoute.params.subscribe(data => {
       this.idNeed = data.id;
     });
     this.ticketService.findTicketByIDService(this.idNeed).subscribe(
