@@ -77,7 +77,6 @@ export class ChooseTicketComponent implements OnInit {
     }
     this.ngOnInit();
   }
-
   
   bookingTicket(oneWay: number, towWay: number) {
     if (towWay === undefined) {
