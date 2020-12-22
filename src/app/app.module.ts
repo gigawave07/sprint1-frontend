@@ -1,5 +1,5 @@
 import {BrowserModule} from '@angular/platform-browser';
-import {LOCALE_ID, NgModule} from '@angular/core';
+import {NgModule} from '@angular/core';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
@@ -7,11 +7,13 @@ import {HomeComponent} from './components/home/home.component';
 import {LoginComponent} from './components/login/login.component';
 import {RegisterComponent} from './components/register/register.component';
 import {MaterialModule} from './material.module';
-import {NavBarComponent} from './components/nav-bar/nav-bar.component';
-import {FooterComponent} from './components/footer/footer.component';
-import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {DeleteTicketComponent} from './components/delete-ticket/delete-ticket.component';
+import {PrintTicketComponent} from './components/print-ticket/print-ticket.component';
+import {ListTicketComponent} from './components/list-ticket/list-ticket.component';
+import {ListPendingTicketComponent} from './components/list-pending-ticket/list-pending-ticket/list-pending-ticket.component';
+import {CancelPendingTicketComponent} from './components/list-pending-ticket/cancel-pending-ticket/cancel-pending-ticket.component';
 import {MatDialogModule} from '@angular/material/dialog';
+import {SearchPendingTicketComponent} from './components/search-pending-ticket/search-pending-ticket/search-pending-ticket.component';
 import {VerificationEmailComponent} from './components/verification-email/verification-email.component';
 import {AuthInterceptor} from './service/AuthInterceptor';
 import {SpinnerComponent} from './components/spinner/spinner.component';
@@ -26,9 +28,6 @@ import {DetailUserComponent} from './components/detail-user/detail-user.componen
 import {EditUserComponent} from './components/edit-user/edit-user.component';
 import {ChangePasswordUserComponent} from './components/change-password-user/change-password-user.component';
 import {InformationUserComponent} from './components/information-user/information-user.component';
-import {ListPendingTicketComponent} from './components/list-pending-ticket/list-pending-ticket/list-pending-ticket.component';
-import {CancelPendingTicketComponent} from './components/list-pending-ticket/cancel-pending-ticket/cancel-pending-ticket.component';
-import {SearchPendingTicketComponent} from './components/search-pending-ticket/search-pending-ticket/search-pending-ticket.component';
 import {TrangChinhComponent} from './components/report-statistic/bao-cao-thong-ke/trang-chinh/trang-chinh.component';
 // tslint:disable-next-line:max-line-length
 import {BaoCaoComponentComponent} from './components/report-statistic/bao-cao-thong-ke/bao-cao/bao-cao-component/bao-cao-component.component';
@@ -38,41 +37,43 @@ import {KetQuaTableComponent} from './components/report-statistic/bao-cao-thong-
 // tslint:disable-next-line:max-line-length
 import {KetQuaSaiLogicComponent} from './components/report-statistic/bao-cao-thong-ke/thong-ke/ket-qua/ket-qua-sai-logic/ket-qua-sai-logic.component';
 import {ChartsModule} from 'ng2-charts';
-import {ExcelService} from './components/report-statistic/service/excel.service';
-
-import {DeleteTicketComponent} from './components/delete-ticket/delete-ticket.component';
-import {PrintTicketComponent} from './components/print-ticket/print-ticket.component';
-import {ListTicketComponent} from './components/list-ticket/list-ticket.component';
 import {AuthServiceConfig, FacebookLoginProvider, GoogleLoginProvider, SocialLoginModule} from 'angularx-social-login';
 import {UserDialogComponent} from './components/user-dialog/user-dialog.component';
 import {MessageUserComponent} from './components/message-user/message-user.component';
 
 import {SendFeedbackComponent} from './components/send-feedback/send-feedback.component';
-import {ConsultantComponent} from './components/consultant/consultant.component';
-import {MessageConsultantComponent} from './components/consultant/message-consultant/message-consultant.component';
-import {FeedbackService} from './service/feedback.service';
 import {MessUserComponent} from './components/mess-user/mess-user.component';
-import {MessageService} from './service/message.service';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import {ConsultantComponent} from './components/consultant/consultant.component';
+import {FeedbackService} from './service/feedback.service';
+import {MessageConsultantComponent} from './components/consultant/message-consultant/message-consultant.component';
 import {DatePipe} from '@angular/common';
+import {PickerModule} from "@ctrl/ngx-emoji-mart";
+import {EmojiModule} from "@ctrl/ngx-emoji-mart/ngx-emoji";
+import {NavBarComponent} from './components/nav-bar/nav-bar.component';
+import {FooterComponent} from './components/footer/footer.component';
 import {PromotionModule} from './components/promotion/promotion.module';
+import {ExcelService} from "./components/report-statistic/service/excel.service";
 
 import {ChangePasswordSuccessfullyComponent} from './components/change-password-successfully/change-password-successfully.component';
 import {GetTokenEmailAdminComponent} from './components/get-token-email-admin/get-token-email-admin.component';
-import { GetCheckPasswordAdminComponent } from './components/get-check-password-admin/get-check-password-admin.component';
+import {GetCheckPasswordAdminComponent} from './components/get-check-password-admin/get-check-password-admin.component';
 
 import {InvoiceListComponent} from './components/invoice-list/invoice-list.component';
 import {InvoiceDetailComponent} from './components/invoice-detail/invoice-detail.component';
-import { InvoiceDownloadComponent } from './components/invoice-download/invoice-download.component';
-import { PDFExportModule } from '@progress/kendo-angular-pdf-export';
+import {InvoiceDownloadComponent} from './components/invoice-download/invoice-download.component';
+import {PDFExportModule} from '@progress/kendo-angular-pdf-export';
 import {SearchFlightInformationComponent} from './components/flight/search-flight-information/search-flight-information.component';
-import { FlightTableComponent } from './components/flight/flight-table/flight-table.component';
+import {FlightTableComponent} from './components/flight/flight-table/flight-table.component';
 import {FlightTicketComponent} from './components/flight/flight-ticket/flight-ticket.component';
 import {WeekdaysPipe} from './components/flight/flight-table/weekdays.pipe';
 import {FlightDetailComponent} from './components/flight/flight-detail/flight-detail.component';
 import {InfoPassengerBookingTicketComponent} from './components/flight/info-passenger-booking-ticket/info-passenger-booking-ticket.component';
-import { ChooseTicketComponent } from './components/flight/alertError/choose-ticket/choose-ticket.component';
-import { PaymentHistoryComponent } from './components/flight/payment-history/payment-history/payment-history.component';
+import {ChooseTicketComponent} from './components/flight/alertError/choose-ticket/choose-ticket.component';
+import {PaymentHistoryComponent} from './components/flight/payment-history/payment-history/payment-history.component';
 import {SuccessfullyPaidPendingTicketComponent} from "./components/list-pending-ticket/successfully-paid-pending-ticket/successfully-paid-pending-ticket.component";
+import { FeedbackDialogComponent } from './components/send-feedback/feedback-dialog/feedback-dialog.component';
 
 @NgModule({
   declarations: [
@@ -114,15 +115,16 @@ import {SuccessfullyPaidPendingTicketComponent} from "./components/list-pending-
     FlightTicketComponent,
     InfoPassengerBookingTicketComponent,
     ChooseTicketComponent,
-    PaymentHistoryComponent
+    PaymentHistoryComponent,
+    FeedbackDialogComponent
   ],
   imports: [BrowserModule, AppRoutingModule, MaterialModule, HttpClientModule, NgxPaginationModule, Ng2SearchPipeModule,
-    FormsModule, MatDialogModule, ReactiveFormsModule, NgxLoadingModule.forRoot({}),
+    FormsModule, MatDialogModule, ReactiveFormsModule, NgxLoadingModule.forRoot({}), PickerModule, EmojiModule,ChartsModule, SocialLoginModule, PromotionModule,
     ChartsModule, SocialLoginModule, PromotionModule, PDFExportModule,
 
   ],
   // tslint:disable-next-line:max-line-length
-  providers: [DatePipe, MessageService, FeedbackService
+  providers: [DatePipe, FeedbackService
     , {
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptor,
@@ -135,7 +137,7 @@ import {SuccessfullyPaidPendingTicketComponent} from "./components/list-pending-
     ExcelService],
   bootstrap: [AppComponent],
   entryComponents: [SpinnerOverlayComponent, TrangChinhComponent, BaoCaoComponentComponent, TrangChuThongKeComponent,
-    KetQuaComponent, KetQuaTableComponent, KetQuaSaiLogicComponent,
+    KetQuaComponent, KetQuaTableComponent, KetQuaSaiLogicComponent, FeedbackDialogComponent,
     //  Đăng update
     SuccessfullyPaidPendingTicketComponent
   ]
