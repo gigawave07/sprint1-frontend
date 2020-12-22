@@ -11,6 +11,7 @@ import {DeleteComponent} from '../../promotion-list/delete/delete.component';
 export class SatComponent implements OnInit {
   listPromotion: any;
   term: string;
+  p: any;
 
   constructor(
     public promotionService: PromotionService,
@@ -31,7 +32,7 @@ export class SatComponent implements OnInit {
     console.log(promotionid);
     this.promotionService.getPromoById(promotionid).subscribe(dataOfPromotion => {
       const dialogRef = this.dialog.open(DeleteComponent, {
-        width: '250px',
+        width: '450px',
         data: {data1: dataOfPromotion},
         disableClose: true
       });

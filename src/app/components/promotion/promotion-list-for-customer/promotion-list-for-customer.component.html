@@ -3,7 +3,7 @@
     <div class="col-12">
       <div class ="row" style="margin-bottom: 20px">
         <h2 style="margin-left: 30px">Danh sách khuyến mãi</h2>
-        <button type="button" class="btn btn-success" style="height: 40px; margin-left: 20px" [routerLink]="['/promotion-for-Admin']">Quản lý khuyến mãi</button>
+        <button type="button" class="btn btn-success" style="height: 40px; margin-left: 20px" [routerLink]="['/promotion-for-admin']">Quản lý khuyến mãi</button>
 <!--        <div class="d-flex" style="margin-left: 1050px; margin-top: -40px">-->
 <!--          <input class="form-control mr-2" type="text" width="400px;" placeholder="Tìm kiếm" [(ngModel)]="term">-->
 <!--          <button type="button" class="btn btn-success" style="height: 40px; width: 140px">Tìm kiếm</button>-->
@@ -11,9 +11,8 @@
           <div class="col-4">
             <select [(ngModel)]="key" style="height: 40px">
               <option>Chọn Mục Tìm Kiếm</option>
-              <option value="tất cả">Tất cả</option>
-              <option value="chuyến bay">Chuyến bay</option>
-              <option value="giá">Giá</option>
+              <option value="flight">Hãng hàng không</option>
+              <option value="">Số hiệu chuyến bay</option>
             </select>
           </div>
           <div class="col-4">
@@ -55,7 +54,7 @@
 <!--        <th scope="col">Ga đến</th>-->
         <th scope="col">Thời gian đến</th>
         <th scope="col">Giá</th>
-        <th scope="col">Đặt vé</th>
+<!--        <th scope="col">Đặt vé</th>-->
       </tr>
       </thead>
       <tbody *ngFor="let promotion of listPromotion|filter:term|paginate: { itemsPerPage: 2, currentPage: p}" style="color: white">
@@ -69,9 +68,9 @@
 <!--        <td>{{promotion.arrivalPlace}}</td>-->
         <td>{{promotion.arrivalTime | date:'HH:mm'}}</td>
         <td>{{promotion.price}}</td>
-        <td style="width: 15%;">
-          <button type="button" class="btn btn-warning" style="margin-right: 10px">Đặt vé</button>
-        </td>
+<!--        <td style="width: 15%;">-->
+<!--          <button type="button" class="btn btn-warning" style="margin-right: 10px">Đặt vé</button>-->
+<!--        </td>-->
       </tr>
       </tbody>
     </table>

@@ -12,6 +12,8 @@ export class PromotionListComponent implements OnInit {
   public listPromotion;
   term: any;
   p: any;
+  key: any;
+  inputSearch: any;
   constructor(
     public promotionService: PromotionService,
     public dialog: MatDialog
@@ -39,6 +41,16 @@ export class PromotionListComponent implements OnInit {
         console.log('The dialog was closed');
         this.ngOnInit();
       });
+    });
+  }
+  getPromotion() {
+    // @ts-ignore
+    this.promotionService.search(this.key, this.inputSearch).subscribe(data => {
+      this.listPromotion = data;
+      for (const cus of this.listPromotion) {
+        cus.arrivalTime = cus.departureDate + ' ' + cus.arrivalTime;
+        cus.departureTime = cus.departureDate + ' ' + cus.departureTime;
+      }
     });
   }
 }

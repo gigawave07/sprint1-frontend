@@ -1,15 +1,14 @@
-label{
-  color: black;
-}
 h2{
-  color: white;
-}
-mat-datepicker-toggle {
   color: black;
 }
-mat-label {
+table{
   color: black;
 }
-pagination-controls{
-  color: white;
+pagination-controls {
+  color: black;
+}
+.container{
+  background-image: url("https://wallpaperset.com/w/full/7/a/b/70196.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
 }

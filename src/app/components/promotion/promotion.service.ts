@@ -21,7 +21,8 @@ export class PromotionService {
   public API_GET_INFO = 'http://localhost:8080/promotion/getPromo';
   public API_GET_BY_DATE = 'http://localhost:8080/promotion/getPromoByDepartureDate?promotion';
   public API_GET_BY_FLIGHT = 'http://localhost:8080/promotion/getPromoByFlight';
-  public API_GET_FLIGHT = 'http://localhost:8080/promotion/findPromotion';
+  public API_GET_AIRLINE = 'http://localhost:8080/promotion/findPromotion';
+  public API_GET_FLIGHT = 'http://localhost:8080/promotion/findPromotionByFlightNumber';
 
   getPromoInMon(): Observable<any> {
     return this.http.get(this.API_GET_BY_DATE + '=2021/01/04');
@@ -95,6 +96,10 @@ export class PromotionService {
   }
 
   search(key, inputSearch): Observable<any> {
-    return this.http.get(this.API_GET_FLIGHT + '?by=' + key + '&search=' + inputSearch);
+    console.log(key, inputSearch);
+    return this.http.get(this.API_GET_AIRLINE + '/' + key + '/' + inputSearch);
+  }
+  getPromoByFlightNumber(key, inputSearch): Observable<any> {
+    return this.http.get(this.API_GET_FLIGHT + '/' + key + '/' + inputSearch);
   }
 }

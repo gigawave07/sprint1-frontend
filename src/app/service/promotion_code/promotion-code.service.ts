@@ -6,7 +6,7 @@ import {Observable} from 'rxjs';
   providedIn: 'root'
 })
 export class PromotionCodeService {
-  public readonly API: string = 'http://localhost:8080/promotionCode'
+  public readonly API: string = 'http://localhost:8080/promotion';
 
   constructor(
     public http: HttpClient
@@ -14,7 +14,7 @@ export class PromotionCodeService {
   }
 
   findAllPromotionCode(): Observable<any> {
-    return this.http.get(this.API + '/list');
+    return this.http.get(this.API + '/getAll');
   }
 
   sendEmail(email: any): Observable<any> {

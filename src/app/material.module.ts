@@ -18,6 +18,7 @@ import {DeleteTicketComponent} from './components/delete-ticket/delete-ticket.co
 import {EditTicketComponent} from './components/edit-ticket/edit-ticket.component';
 import {UserDialogComponent} from './components/user-dialog/user-dialog.component';
 import {MessageUserComponent} from './components/message-user/message-user.component';
+import {DeleteComponent} from './components/promotion/promotion-list/delete/delete.component';
 
 @NgModule({
   declarations: [],
@@ -55,7 +56,7 @@ import {MessageUserComponent} from './components/message-user/message-user.compo
     ChangePasswordAdminComponent,
     EditUserComponent, ChangePasswordUserComponent,
     CancelPendingTicketComponent, DeleteTicketComponent, EditTicketComponent,
-    UserDialogComponent, MessageUserComponent
+    UserDialogComponent, MessageUserComponent, DeleteComponent
   ]
 })
 export class MaterialModule { }

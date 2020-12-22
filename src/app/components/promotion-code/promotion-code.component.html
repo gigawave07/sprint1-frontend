@@ -56,7 +56,7 @@
                   </tr>
                   </thead>
                   <tbody>
-                  <tr ng *ngFor="let promotion of promotionCodeResult  | paginate: { itemsPerPage: 3, currentPage: p }">
+                  <tr ng *ngFor="let promotion of listPromotion | paginate: { itemsPerPage: 3, currentPage: p }">
                     <td>
                       <p class="ml-0">{{promotion.airline}}, {{promotion.flightNumber}}</p>
                       <p class="ml-0">{{promotion.departurePlace}}-{{promotion.arrivalPlace}}</p>
@@ -81,91 +81,13 @@
                 </table>
                 <pagination-controls (pageChange)="p = $event"></pagination-controls>
                 <p style="font-size: 10px"><span style="color: red">*</span> Chưa bao gồm: Thuế + phí, hành lý ký gửi,
-                  các yêu cầu đặc
-                  biệt trong chuyến bay và có áp dụng các điều kiện.</p>
-
+                  các yêu cầu đặc biệt trong chuyến bay và có áp dụng các điều kiện.</p>
               </div>
-
             </div>
             <br>
-
           </div>
-
-          <div class="col-sm-4 col-xs-4 col-md-4 col-lg-4 ">
-            <div class="row">
-
-              <div class="col-12 d-flex justify-content-center">
-                <div class="row box "
-                     style="border: 1px ;margin: 20px; font-size: 20px">
-
-                  <div style="margin: 20px; font-size: 20px">
-
-                    <h3>Tổng đài đặt vé và hỗ trợ khách hàng</h3>
-                    <br>
-                    <h2>Gọi ngay: <span style="color: orange;">1900 1886</span></h2>
-                    <br>
-                    <form [formGroup]="formSendEmail" (ngSubmit)="sendEmail()">
-                      <H4>Đăng ký email để nhận thông tin khuyến mãi tại đây.</H4>
-                      <input placeholder="Email của bạn: " class="mr-3 rounded " formControlName="emailPassgenger">
-                      <p *ngIf="formSendEmail.controls.emailPassgenger.errors?.required &&
-              formSendEmail.controls.emailPassgenger.touched"
-                         class="text-danger">
-                        Vui lòng nhập email
-                      </p>
-                      <p *ngIf="formSendEmail.controls.emailPassgenger.errors?.email &&
-              formSendEmail.controls.emailPassgenger.touched"
-                         class="text-danger">
-                        Vui lòng nhập đúng định dạng email
-                      </p>
-                      <button type="submit" class="btn btn-success mt-2" (click)="sendEmail()">
-                        Đăng ký
-                      </button>
-                    </form>
-                    <div *ngIf="messageSuccess == ''; else blockMessage"></div>
-                    <ng-template #blockMessage>
-                      <div class="alert alert-danger mt-2 " role="alert">{{messageSuccess}}</div>
-                    </ng-template>
-
-                    <br>
-                    <div>
-                      <br>
-                      <h5> C06Ariline trên mạng xã hội:</h5>
-
-                      <a class="link1" href="#">
-                        <i class="fab fa-twitter"></i>
-                        <span class="span1"> C06Ariline trên Twitter</span>
-                      </a>
-                      <br>
-                      <a class="link1" href="#">
-                        <i class="fab fa-youtube" style="color: red"></i>
-                        <span class="span1"> Xem C06Ariline trên Youtuber</span>
-
-                      </a>
-                      <br>
-
-                      <a class="link1" href="#">
-                        <i class="fab fa-facebook" style="color: #1b19a9"></i>
-                        <span class="span1"> C06Ariline trên Facebook</span>
-                      </a>
-                    </div>
-                  </div>
-
-                </div>
-              </div>
-            </div>
-          </div>
-          <br>
-
-
         </div>
       </div>
     </div>
   </div>
 </div>
-
-
-</body>
-</html>
-
-
-

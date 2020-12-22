@@ -29,9 +29,13 @@ export class PromotionListForCustomerComponent implements OnInit {
     });
   }
   getPromotion() {
+    // @ts-ignore
     this.promotionService.search(this.key, this.inputSearch).subscribe(data => {
-      this.promotion = data.content;
-      console.log(data);
+      this.listPromotion = data;
+      for (const cus of this.listPromotion) {
+        cus.arrivalTime = cus.departureDate + ' ' + cus.arrivalTime;
+        cus.departureTime = cus.departureDate + ' ' + cus.departureTime;
+      }
     });
   }
 }

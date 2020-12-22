@@ -22,6 +22,7 @@ import {MaterialModule} from './material.module';
 import {MatDialogModule} from '@angular/material';
 import {NgxPaginationModule} from 'ngx-pagination';
 import {EmployeeComponent} from './components/employee/employee.component';
+import {PromotionListComponent} from './components/promotion/promotion-list/promotion-list.component';
 // tslint:disable-next-line:max-line-length
 import {BaoCaoComponentComponent} from './components/report-statistic/bao-cao-thong-ke/bao-cao/bao-cao-component/bao-cao-component.component';
 import {ListTicketComponent} from './components/list-ticket/list-ticket.component';
@@ -33,12 +34,24 @@ import {MessageNoticeEmployeeComponent} from './components/message-notice-employ
 import {PrintTicketTwoWayComponent} from './components/print-ticket-two-way/print-ticket-two-way.component';
 import {NoticePageComponent} from './components/notice-page/notice-page.component';
 import {PromotionListForCustomerComponent} from './components/promotion/promotion-list-for-customer/promotion-list-for-customer.component';
-
 import {MessUserComponent} from './components/mess-user/mess-user.component';
 import {SendFeedbackComponent} from './components/send-feedback/send-feedback.component';
 import {ConsultantComponent} from './components/consultant/consultant.component';
 import {MessageConsultantComponent} from './components/consultant/message-consultant/message-consultant.component';
-import {PromotionListComponent} from './components/promotion/promotion-list/promotion-list.component';
+import {PromotionCodeComponent} from './components/promotion-code/promotion-code.component';
+import {AddNewComponent} from './components/promotion/promotion-list/add-new/add-new.component';
+import {EditComponent} from './components/promotion/promotion-list/edit/edit.component';
+import {MonComponent} from './components/promotion/days/mon/mon.component';
+import {TuesComponent} from './components/promotion/days/tues/tues.component';
+import {WedsComponent} from './components/promotion/days/weds/weds.component';
+import {ThursComponent} from './components/promotion/days/thurs/thurs.component';
+import {FriComponent} from './components/promotion/days/fri/fri.component';
+import {SatComponent} from './components/promotion/days/sat/sat.component';
+import {SunComponent} from './components/promotion/days/sun/sun.component';
+import {DadSgnComponent} from './components/promotion/flights/dad-sgn/dad-sgn.component';
+import {DeleteComponent} from './components/promotion/promotion-list/delete/delete.component';
+import {Ng2SearchPipeModule} from 'ng2-search-filter';
+
 const routes: Routes = [
   // Quân :
   {path: '', component: HomeComponent},
@@ -85,7 +98,18 @@ const routes: Routes = [
   {path: 'list-pending-ticket', component: ListPendingTicketComponent},
   {path: 'search-pending-ticket', component: SearchPendingTicketComponent},
   // Ngân
-  {path: 'promotion', component: PromotionListForCustomerComponent},
+  {path: 'promotion-for-customer', component: PromotionCodeComponent},
+  {path: 'promotion-for-admin', component: PromotionListComponent},
+  {path: 'add-new-promotion', component: AddNewComponent},
+  {path: 'update-promotion/:id', component: EditComponent},
+  {path: 'mon', component: MonComponent},
+  {path: 'tues', component: TuesComponent},
+  {path: 'weds', component: WedsComponent},
+  {path: 'thurs', component: ThursComponent},
+  {path: 'fri', component: FriComponent},
+  {path: 'sat', component: SatComponent},
+  {path: 'sun', component: SunComponent},
+  {path: 'dad-sgn', component: DadSgnComponent},
   // Mai :
   {path: 'list-employee', component: ListEmployeeComponent},
   {path: 'list-employee/create-employee', component: CreateEmployeeComponent},
@@ -106,11 +130,13 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes), CommonModule, ReactiveFormsModule, MaterialModule,
-    MatDialogModule, FormsModule, NgxPaginationModule],
+    MatDialogModule, FormsModule, NgxPaginationModule, Ng2SearchPipeModule],
   exports: [RouterModule],
   declarations: [ListEmployeeComponent, CreateEmployeeComponent, EditEmployeeComponent, DeleteEmployeeComponent,
     EmployeeComponent, EditTicketComponent, InputTicketSellComponent, PrintTicketTwoWayComponent, NoticePageComponent,
-    MessageNoticeEmployeeComponent
+    MessageNoticeEmployeeComponent, PromotionCodeComponent, PromotionListComponent, PromotionListForCustomerComponent, AddNewComponent,
+    EditComponent, MonComponent, TuesComponent, WedsComponent, ThursComponent, FriComponent, SatComponent, SunComponent, DadSgnComponent,
+    DeleteComponent
   ]
 })
 export class AppRoutingModule { }

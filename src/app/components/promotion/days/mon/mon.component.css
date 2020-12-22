@@ -1,6 +1,14 @@
-h2 {
-  color: white;
+h2{
+  color: black;
 }
 table{
-  color: white;
+  color: black;
+}
+pagination-controls {
+  color: black;
+}
+.container-fluid{
+  background-image: url("https://wallpaperset.com/w/full/7/a/b/70196.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
 }

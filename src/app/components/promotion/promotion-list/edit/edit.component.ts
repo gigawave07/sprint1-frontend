@@ -41,7 +41,7 @@ export class EditComponent implements OnInit {
   updatePromo() {
     console.log(this.formEdit.value);
     this.promotionService.updatePromo(this.formEdit.value, this.promotionId).subscribe(data => {
-      this.router.navigateByUrl('promotion-list');
+      this.router.navigateByUrl('promotion-for-admin');
     });
   }
   }

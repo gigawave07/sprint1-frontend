@@ -1,13 +1,21 @@
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+        integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
+        crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
 <div class="container-fluid">
   <div class="row justify-content-between">
-    <div class="row">
+    <div class="row mt-4">
       <h2 style="margin-left: 30px">Danh sách khuyến mãi</h2>
-      <button type="button" class="btn btn-success" style="height: 40px; margin-left: 20px" [routerLink]="['/add-new']">Thêm mới</button>
+      <button type="button" class="btn btn-success" style="height: 40px; margin-left: 20px" [routerLink]="['/add-new-promotion']">Thêm mới</button>
       <div class="d-flex" style="margin-left: 1050px; margin-top: -40px">
         <input class="form-control mr-2" type="text" width="400px;" placeholder="tìm kiếm" [(ngModel)]="term">
         <button type="button" class="btn btn-success" style="height: 40px; width: 140px">Tìm kiếm</button>
       </div>
     </div>
+  </div>
     <thead class="table-light" style="font-size: 25px; font-weight: bold; margin-top: 20px">
     <tr>
       <a style="padding-left: 30px; font-family: 'Book Antiqua';color: #faa61a" [routerLink]="['/mon']">Thứ hai</a>
@@ -16,7 +24,7 @@
       <a style="padding-left: 100px; font-family: 'Book Antiqua';color: #faa61a" [routerLink]="['/thurs']">Thứ năm</a>
       <a style="padding-left: 90px;font-family: 'Book Antiqua';color:  #faa61a" [routerLink]="['/fri']">Thứ sáu</a>
       <a style="padding-left: 130px;font-family: 'Book Antiqua';color:  #faa61a" [routerLink]="['/sat']">Thứ bảy</a>
-      <a style="padding-left: 180px;font-family: 'Book Antiqua';color:  #faa61a; width: 350px"
+      <a style="padding-left: 180px;margin-left: -50px; font-family: 'Book Antiqua';color:  #faa61a; width: 350px"
          [routerLink]="['/sun']">Chủ nhật</a>
       <a style="padding-left: 200px;font-family: 'Book Antiqua';color:  #faa61a; width: 50px"
          [routerLink]="['/sun']"></a>
@@ -25,7 +33,7 @@
     <table class="table" style="font-size: 20px;">
       <thead class="table-dark">
       <tr>
-        <!--        <th scope="col">Chuyến bay</th>-->
+                <th scope="col">Chuyến bay</th>
         <th scope="col">Hãng hàng không</th>
         <th scope="col">Số hiệu Chuyến bay</th>
         <th scope="col">Ngày Khởi hành</th>
@@ -39,9 +47,9 @@
         <th scope="col">Các thao tác</th>
       </tr>
       </thead>
-      <tbody *ngFor="let promotion of listPromotion|filter:term|paginate: { itemsPerPage: 2, currentPage: p}">
+      <tbody *ngFor="let promotion of listPromotion|filter:term|paginate: { itemsPerPage: 10, currentPage: p}">
       <tr>
-        <!--        <td>{{promotion.flight}}</td>-->
+                <td>{{promotion.flight}}</td>
         <td>{{promotion.airline}}</td>
         <td>{{promotion.flightNumber}}</td>
         <td>{{promotion.departureDate | date: 'dd/MM/yyyy'}}</td>
@@ -52,15 +60,17 @@
         <td>{{promotion.arrivalTime | date:'HH:mm'}}</td>
         <td>{{promotion.price}}</td>
         <td style="width: 15%;">
-          <button type="button" class="btn btn-warning" style="margin-right: 10px" [routerLink]="['/edit/'+promotion.id]">Edit</button>
-          <button type="button" class="btn btn-dark" (click)=confirmDelete(promotion.id)>Delete</button>
+          <i class="fas fa-edit btn btn-warning"  [routerLink]="['/update-promotion/'+promotion.id]"></i>
+          <i class="fas fa-trash-alt btn btn-dark ml-1" (click)="confirmDelete(promotion.id)"></i>
         </td>
       </tr>
       </tbody>
     </table>
-    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    <div align="center">
+      <pagination-controls (pageChange)="p = $event" previousLabel="Trước" nextLabel="Sau"
+                           responsive="true"></pagination-controls>
+    </div>
   </div>
-</div>
 
 
 

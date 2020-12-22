@@ -35,7 +35,7 @@ export class AddNewComponent implements OnInit {
   addNewPromo() {
     console.log(this.formAddNew.value);
     this.promotionService.addNewPromo(this.formAddNew.value).subscribe(data => {
-      this.router.navigateByUrl('promotion-list');
+      this.router.navigateByUrl('promotion-for-admin');
     });
   }
 }

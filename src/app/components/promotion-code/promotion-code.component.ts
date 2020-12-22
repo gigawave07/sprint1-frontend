@@ -1,5 +1,5 @@
 import {Component, ElementRef, OnInit} from '@angular/core';
-import {PromotionCodeService} from '../../service/promotion_code/promotion-code.service';
+import {PromotionService} from '../promotion/promotion.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 
@@ -11,51 +11,22 @@ import {Router} from '@angular/router';
   styleUrls: ['./promotion-code.component.css']
 })
 export class PromotionCodeComponent implements OnInit {
-  public messageSuccess = '';
-  public promotionCodeResult: any;
-  public formSendEmail: FormGroup;
-  public p: any;
 
   constructor(
     public formBuilder: FormBuilder,
-    public promotionCodeService: PromotionCodeService,
+    // tslint:disable-next-line:no-shadowed-variable
+    public PromotionService: PromotionService,
     public router: Router,
     private el: ElementRef
   ) {
   }
+  listPromotion: any;
+  p: any;
 
   ngOnInit() {
-    this.promotionCodeService.findAllPromotionCode().subscribe(data => {
-      this.promotionCodeResult = data;
-      console.log(this.promotionCodeResult);
+    this.PromotionService.getAll().subscribe(data => {
+      this.listPromotion = data;
+      console.log(this.listPromotion);
     });
-    // validate email frontend
-    this.formSendEmail = this.formBuilder.group({
-      emailPassgenger: ['', [Validators.required, Validators.email]],
-    });
-  }
-
-  // loading , gửi email, thông báo nhận email thành công hoặc thất bại
-  sendEmail() {
-    if (this.formSendEmail.valid) {
-      // this.spinnerOverlayService.show();
-      this.promotionCodeService.sendEmail(this.formSendEmail.value.emailPassgenger)
-        // .pipe(finalize(() => this.spinnerOverlayService.hide()))
-        .subscribe(data => {
-        console.log(data);
-        this.messageSuccess = 'Bạn đã đăng ký email ' + this.formSendEmail.value.emailPassgenger + ' thành công.';
-        setTimeout(() => {
-          this.messageSuccess = '';
-        }, 5000);
-        this.formSendEmail.value.emailPassgenger = null;
-        this.ngOnInit();
-      });
-    } else {
-      this.messageSuccess = 'Bạn nhập chưa đúng định dạng email';
-      setTimeout(() => {
-        this.messageSuccess = '';
-      }, 5000);
-    }
-
   }
 }

@@ -1,10 +1,11 @@
+<div align="center">
 <div class="container">
   <h2 class="text-center">Chỉnh sửa thông tin</h2>
-  <div class="col-6 justify-content-center" style="background-color: white">
+  <div class="col-6 justify-content-center">
     <form [formGroup]="formEdit" class="form-group">
       <div class="form-group" style="align-content: center">
         <div class="form-group">
-          <label for="departurePlace">Ga đi</label>
+          <label for="departurePlace"style="margin-left: -93%">Ga đi</label>
           <select class="form-control" id="departurePlace" formControlName="departurePlace">
             <option name="departurePlace">Chọn sân bay khởi hành</option>
             <option name="departurePlace" value="Đà Nẵng (DAD)">Đà Nẵng (DAD)</option>
@@ -17,10 +18,10 @@
             <option name="departurePlace" value="Vinh (VII)">Vinh (VII)</option>
           </select>
           <p *ngIf="formEdit.get('departurePlace').invalid && formEdit.get('departurePlace').touched"
-             class="text-danger">Ga đi không được để trống</p>
+             class="text-danger" style="margin-left: -240px">Ga đi không được để trống</p>
         </div>
         <div class="form-group">
-          <label for="arrivalPlace">Ga đến</label>
+          <label for="arrivalPlace" style="margin-left: -90%">Ga đến</label>
           <select class="form-control" id="arrivalPlace" formControlName="arrivalPlace">
             <option name="type">Chọn sân bay đến</option>
             <option name="type" value="Đà Nẵng (DAD)">Đà Nẵng (DAD)</option>
@@ -36,29 +37,29 @@
              class="text-danger">Ga đến không được để trống</p>
         </div>
         <div class="form-group">
-          <label for="flight">Tên chuyến bay</label>
+          <label for="flight" style="margin-left: -80%">Tên chuyến bay</label>
           <input type="text" class="form-control" id="flight" name="flight" formControlName="flight">
           <p *ngIf="formEdit.get('flight').invalid && formEdit.get('flight').touched"
-             class="text-danger">Vui lòng nhập tên chuyến bay theo định dạng như sau: DAD-SGN</p>
+             class="text-danger" style="margin-left: -50px">Vui lòng nhập tên chuyến bay theo định dạng như sau: DAD-SGN</p>
         </div>
-        <label for="type">Hãng hàng không</label>
+        <label for="type"  style="margin-left: -75%">Hãng hàng không</label>
         <select class="form-control" id="type" formControlName="airline">
           <option name="type" disabled>Select a branch</option>
           <option name="type" value="VietJet Air">VietJet Air</option>
-          <option name="type" value="Vietnam Airline">Vietnam Airlines</option>
+          <option name="type" value="Vietnam Airlines">Vietnam Airlines</option>
           <option name="type" value="Bamboo Airway">Bamboo Airway</option>
         </select>
         <p *ngIf="formEdit.get('airline').invalid && formEdit.get('airline').touched"
            class="text-danger">Hãng hàng không được để trống</p>
       </div>
       <div class="form-group">
-        <label for="flightNumber">Số hiệu chuyến bay</label>
+        <label for="flightNumber" style="margin-left: -73%">Số hiệu chuyến bay</label>
         <input type="text" class="form-control" id="flightNumber" name="flightNumber" formControlName="flightNumber">
         <p *ngIf="formEdit.get('flightNumber').invalid && formEdit.get('flightNumber').touched"
-           class="text-danger">Vui lòng nhập số hiệu chuyến bay theo định dạng: VN /VJ /QH 246</p>
+           class="text-danger" style="margin-left: -50px">Vui lòng nhập số hiệu chuyến bay theo định dạng: VN /VJ /QH 246</p>
       </div>
       <div class="form-group">
-        <mat-label>Ngày khởi hành</mat-label><br>
+        <mat-label style="margin-left: -78%">Ngày khởi hành</mat-label><br>
         <input type="date" class="form-control" id="departureDate" name="departureDate" formControlName="departureDate">
         <p *ngIf="formEdit.get('departureDate').invalid && formEdit.get('departureDate').touched"
            class="text-danger">Ngày khởi hành không được để trống</p>
@@ -66,7 +67,7 @@
      <div class="row">
        <div class="col-6">
         <div class="form-group">
-         <label>Giờ khởi hành</label><br>
+         <label style="margin-left: -55%">Giờ khởi hành</label><br>
           <input type="time" class="form-control" formControlName="departureTime">
          <p *ngIf="formEdit.get('departureTime').invalid && formEdit.get('departureTime').touched"
             class="text-danger">Giờ khởi hành không được để trống</p>
@@ -74,7 +75,7 @@
        </div>
        <div class="col-6">
           <div class="form-group">
-         <label>Giờ đến</label><br>
+         <label  style="margin-left: -75%">Giờ đến</label><br>
             <input type="time" class="form-control" formControlName="arrivalTime">
          <p *ngIf="formEdit.get('arrivalTime').invalid && formEdit.get('arrivalTime').touched"
             class="text-danger">Giờ đến không được để trống</p>
@@ -82,14 +83,15 @@
        </div>
      </div>
       <div class="form-group">
-        <label for="price">Giá vé</label>
+        <label  style="margin-left: -83%">Giá vé (VNĐ)</label>
         <input type="text" class="form-control" id="price" name="price" formControlName="price">
         <p *ngIf="formEdit.get('price').invalid && formEdit.get('price').touched"
-           class="text-danger">Vui lòng nhập giá vé bằng số</p>
+           class="text-danger" style="margin-left: -280px">Vui lòng nhập giá vé bằng số</p>
       </div>
       <button type="submit" [disabled]="formEdit.invalid" class="btn btn-primary" (click)="updatePromo()">Hoàn tất</button>
     </form>
   </div>
+</div>
 </div>
 
 
