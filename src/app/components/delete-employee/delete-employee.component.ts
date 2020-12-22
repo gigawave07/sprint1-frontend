@@ -33,13 +33,9 @@ export class DeleteEmployeeComponent implements OnInit {
       () => {
         const NOTICE = 'Xóa không thành công';
         this.router.navigate(['message-notice-employee', {message: NOTICE}]).then(r => {
-        });
-      }, () => {
-        const NOTICE = 'Xóa thành công';
-        this.router.navigate(['message-notice-employee', {message: NOTICE}]).then(r => {
           setTimeout(() => {
-              this.router.navigateByUrl('list-employee');
-            }, 2000
+            this.router.navigateByUrl('list-employee');
+          }, 1000
           );
         });
       });

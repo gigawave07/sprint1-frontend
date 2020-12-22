@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, ElementRef, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {DatePipe} from '@angular/common';
@@ -15,23 +15,22 @@ export class EditEmployeeComponent implements OnInit {
   private pipe: DatePipe;
   private employee: Employee;
   private idNeed;
-  private listRole: [];
+  protected roleEdit;
+  protected genderEdit;
   private maxDate = new Date(2012, 11, 23);
-  private minDate = new Date(1920, 0, 1);
+  private minDate = new Date(1970, 0, 1);
 
   constructor(
     private formBuilder: FormBuilder,
     private employeeService: EmployeeService,
     private router: Router,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private el: ElementRef
   ) {
   }
 
   ngOnInit() {
     this.pipe = new DatePipe('en-US');
-    this.employeeService.getAllRole().subscribe(dataRole => {
-      this.listRole = dataRole;
-    });
     this.formEdit = this.formBuilder.group({
       id: [''],
       employeeCode: [''],
@@ -44,13 +43,18 @@ export class EditEmployeeComponent implements OnInit {
       email: [''],
       phoneNumber: ['', [Validators.required, Validators.pattern('^((\\d+){10})$'),
         Validators.maxLength(12)]],
-      role: ['', [Validators.required]]
+      role: ['']
     });
-
     this.activatedRoute.params.subscribe(data => {
       this.idNeed = data.id;
       this.employeeService.findEmployeeByIdService(this.idNeed).subscribe(dataEdit => {
         this.formEdit.patchValue(dataEdit);
+        this.roleEdit = dataEdit.appAccount.appRole.name;
+        if (dataEdit.gender === false) {
+          this.genderEdit = 'Nu';
+        } else {
+          this.genderEdit = 'Nam';
+        }
       });
     });
   }
@@ -58,25 +62,43 @@ export class EditEmployeeComponent implements OnInit {
   editEmployee() {
     this.formEdit.markAllAsTouched();
     if (this.formEdit.valid) {
-    this.employee = Object.assign({}, this.formEdit.value);
-    this.employee.birthday = this.pipe.transform(this.employee.birthday, 'dd-MM-yyyy');
-    this.employeeService.editEmployeeService(this.employee, this.employee.id).subscribe(data => {
-          this.router.navigateByUrl('list-employee').then(_ => {
+      if (this.genderEdit === 'Nu') {
+        this.formEdit.value.gender = '0';
+      } else {
+        this.formEdit.value.gender = '1';
+      }
+      if (this.formEdit.value.role == '') {
+        this.formEdit.value.role = this.roleEdit;
+      }
+      this.employee = Object.assign({}, this.formEdit.value);
+      this.employee.birthday = this.pipe.transform(this.employee.birthday, 'dd-MM-yyyy');
+      this.employeeService.editEmployeeService(this.employee, this.employee.id).subscribe(data => {
+            this.router.navigateByUrl('list-employee').then(_ => {
+            });
+          },
+          () => {
+            const NOTICE = 'Sửa không thành công';
+            this.router.navigate(['message-notice-employee', {message: NOTICE}]).then(r => {
+              setTimeout(() => {
+                  this.router.navigateByUrl('list-employee');
+                }, 1000
+              );
+            });
           });
-        },
-        () => {
-          const NOTICE = 'Sửa không thành công';
-          this.router.navigate(['message-notice-employee', {message: NOTICE}]).then(r => {
-          });
-        }, () => {
-          const NOTICE = 'Sửa thành công';
-          this.router.navigate(['message-notice-employee', {message: NOTICE}]).then(r => {
-            setTimeout(() => {
-                this.router.navigateByUrl('list-employee');
-              }, 2000
-            );
-          });
-        });
+      } else {
+        for (const KEY of Object.keys(this.formEdit.controls)) {
+          if (this.formEdit.controls[KEY].invalid) {
+            const INVALID_CONTROL = this.el.nativeElement.querySelector('[formControlName="' + KEY + '"]');
+            INVALID_CONTROL.focus();
+            break;
+          }
+        }
+    }
+  }
+
+  keyDownFunction(event) {
+    if (event.keyCode === 13) {
+      this.editEmployee();
     }
   }
 }
