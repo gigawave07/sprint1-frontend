@@ -108,8 +108,8 @@ const routes: Routes = [
   // PQ Khánh:
   {path: 'checkin-online', component: CheckinOnlineComponent},
   {path: 'promotion-code', component: PromotionCodeComponent}
-];
 
+];
 @NgModule({
   imports: [RouterModule.forRoot(routes), CommonModule, ReactiveFormsModule, MaterialModule,
     MatDialogModule, FormsModule, NgxPaginationModule],
