@@ -66,7 +66,6 @@ export class EditUserComponent implements OnInit {
       this.formEditUser.patchValue(getData);
     });
   }// Trần  Đạt - Chỉnh sửa thông tin cá nhân.
-  // Validators.pattern(/^([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/)
   editUser() {
     this.formEditUser.value.gender = this.valueGender;
     this.formEditUser.markAllAsTouched();

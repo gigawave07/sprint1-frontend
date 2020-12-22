@@ -47,6 +47,8 @@ import {ListTicketComponent} from './components/list-ticket/list-ticket.componen
 import {AuthServiceConfig, GoogleLoginProvider, SocialLoginModule} from 'angularx-social-login';
 import {UserDialogComponent} from './components/user-dialog/user-dialog.component';
 import {MessageUserComponent} from './components/message-user/message-user.component';
+import {MAT_DATE_LOCALE} from '@angular/material';
+import {MAT_MOMENT_DATE_ADAPTER_OPTIONS} from '@angular/material-moment-adapter';
 
 // @ts-ignore
 @NgModule({
@@ -84,7 +86,9 @@ import {MessageUserComponent} from './components/message-user/message-user.compo
     provide: AuthServiceConfig,
     useFactory: getAuthServiceConfigs
   },
-    ExcelService],
+    ExcelService,
+    {provide: MAT_DATE_LOCALE, useValue: 'fr-FR'},
+    {provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS, useValue: {useUtc: true}}],
   bootstrap: [AppComponent],
   entryComponents: [SpinnerOverlayComponent, TrangChinhComponent, BaoCaoComponentComponent, TrangChuThongKeComponent,
     KetQuaComponent, KetQuaTableComponent, KetQuaSaiLogicComponent]

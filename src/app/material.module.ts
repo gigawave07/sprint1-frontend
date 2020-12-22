@@ -18,7 +18,7 @@ import {DeleteTicketComponent} from './components/delete-ticket/delete-ticket.co
 import {EditTicketComponent} from './components/edit-ticket/edit-ticket.component';
 import {UserDialogComponent} from './components/user-dialog/user-dialog.component';
 import {MessageUserComponent} from './components/message-user/message-user.component';
-
+import {MatMomentDateModule} from '@angular/material-moment-adapter';
 
 @NgModule({
   declarations: [],
@@ -33,7 +33,8 @@ import {MessageUserComponent} from './components/message-user/message-user.compo
     MatDividerModule,
     MatButtonModule,
     MatDialogModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatMomentDateModule
   ],
   exports: [
     CommonModule,
@@ -46,7 +47,8 @@ import {MessageUserComponent} from './components/message-user/message-user.compo
     MatDividerModule,
     MatButtonModule,
     MatProgressSpinnerModule,
-    MatDialogModule
+    MatDialogModule,
+    MatMomentDateModule
 
   ],
   providers: [
