@@ -26,7 +26,7 @@
                *ngIf="currentUser.role == 'User'">Thông tin tài khoản</a>
             <a class="dropdown-item" href="#" id="accountAdminDetails" [routerLink]="['/admin/information']"
                *ngIf="currentUser.role == 'Admin'">Thông tin tài khoản</a>
-            <a class="dropdown-item" href="#" id="accountEmployeeDetails" [routerLink]="['/employee']"
+            <a class="dropdown-item" href="#" id="accountEmployeeDetails" [routerLink]="['/passenger']"
                *ngIf="currentUser.role == 'Employee'">Thông tin tài khoản</a>
             <a class="dropdown-item" href="#" routerLink="/consultant"
                *ngIf="currentUser.role == 'Employee' || currentUser.role == 'Admin'">Tin nhắn</a>

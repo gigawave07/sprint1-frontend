@@ -6,7 +6,7 @@ import {Observable} from 'rxjs';
   providedIn: 'root'
 })
 export class AppUserService {
-  public API_USER = 'http://localhost:8080/appUser';
+  public API_USER = 'http://localhost:8080/invoice';
 
   constructor(private http: HttpClient) {
   }

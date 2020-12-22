@@ -60,6 +60,9 @@ import {MatIconModule} from '@angular/material/icon';
 import {ChangePasswordSuccessfullyComponent} from './components/change-password-successfully/change-password-successfully.component';
 import {GetTokenEmailAdminComponent} from './components/get-token-email-admin/get-token-email-admin.component';
 import {GetCheckPasswordAdminComponent} from './components/get-check-password-admin/get-check-password-admin.component';
+import {DetailInvoiceComponent} from './components/invoice-manager/components/detail-invoice/detail-invoice.component';
+import {ListInvoiceComponent} from './components/invoice-manager/components/list-invoice/list-invoice.component';
+import {InvoiceListSearchComponent} from './components/invoice-manager/components/invoice-list-search/invoice-list-search.component';
 
 const routes: Routes = [
   // Quân :
@@ -85,7 +88,7 @@ const routes: Routes = [
       {path: 'get-token-email', component: GetTokenEmailAdminComponent},
       {path: 'get-check-password', component: GetCheckPasswordAdminComponent},
       // Nhật mới
-      {path: 'report', component: BaoCaoComponentComponent,}
+      {path: 'report', component: BaoCaoComponentComponent}
     ]
   },
   // Đạt
@@ -112,12 +115,6 @@ const routes: Routes = [
       {path: 'employee-Detail', component: EmployeeDetailComponent},
     ]
   },
-  // {
-  //   path: 'employee-info', component: EmployeeInfoComponent,
-  //   children: [
-  //     {path: 'employee-Detail', component: EmployeeDetailComponent},
-  //   ]
-  // },
   // Quốc
   {
     path: 'passenger', component: PassengerComponent,
@@ -125,15 +122,9 @@ const routes: Routes = [
       {path: 'list-Passenger', component: ListPassengerComponent},
       {path: 'list-Passenger/create-Passenger', component: CreatePassengerComponent},
       {path: 'list-Passenger/edit-Passenger/:id', component: EditPassengerComponent},
-      {path: 'employee-Detail', component: EmployeeDetailComponent},
+      {path: 'employee-detail', component: EmployeeDetailComponent},
     ]
   },
-  // {
-  //   path: 'employee-info', component: EmployeeInfoComponent,
-  //   children: [
-  //     {path: 'employee-Detail', component: EmployeeDetailComponent},
-  //   ]
-  // },
 
   // Đăng:caca
   {path: 'list-pending-ticket', component: ListPendingTicketComponent},
@@ -167,7 +158,8 @@ const routes: Routes = [
   {path: 'invoice-download', component: InvoiceDownloadComponent},
   // Đin
   {path: 'search', component: SearchFlightInformationComponent},
-  //Hoàng
+
+  // Hoàng
   {path: 'detail-invoice', component: DetailInvoiceComponent},
   {path: 'invoice-list', component: ListInvoiceComponent},
   {path: 'invoice-list-search', component: InvoiceListSearchComponent}
@@ -183,9 +175,6 @@ const routes: Routes = [
     PrintTicketTwoWayComponent, MessageNoticeEmployeeComponent, CheckinOnlineComponent, PromotionCodeComponent,
     NoticePageComponent, PassengerComponent, CreatePassengerComponent, DeletePassengerComponent, EditPassengerComponent,
     ListPassengerComponent, EmployeeInfoComponent, EmployeeDetailComponent, ChangePasswordEmployeeComponent,
-    NoticePageComponent, CreatePassengerComponent, DeletePassengerComponent, EditPassengerComponent, ListPassengerComponent, EmployeeInfoComponent, EmployeeDetailComponent, ChangePasswordEmployeeComponent,
-    MessageNoticeEmployeeComponent, CheckinOnlineComponent, PromotionCodeComponent
-
   ],
   providers: [
     DatePipe

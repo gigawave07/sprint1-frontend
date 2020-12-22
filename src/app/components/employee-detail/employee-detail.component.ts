@@ -21,14 +21,11 @@ export class EmployeeDetailComponent implements OnInit {
   ) { }
 
 
-  async ngOnInit() {
+  ngOnInit() {
     this.idAppAccount = this.loginService.currentUserValue.id;
     this.employeeService.findEmployeeByIdAccount(this.idAppAccount).subscribe(value => {
-      this.idEmployee = value;
-      this.employeeService.findEmployeeByIdService(this.idEmployee).subscribe(value => {
-        this.employee = value;
-        console.log(value);
-      });
+      console.log(value);
+      this.employee = value;
     });
   }
   openDialogChangePass(employee): any {

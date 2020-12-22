@@ -66,13 +66,13 @@
         </tbody>
       </table>
     </div>
-    <div class="rown d-flex justify-content-center" *ngIf="ticketList.length ===0">
+    <div class="rown d-flex justify-content-center" *ngIf="!ticketList">
       <h3 style="font-family: 'Helvetica Neue',serif; color: orange">Chưa có vé nào được thanh toán</h3>
     </div>
   </div>
 
 </div>
-<button *ngIf="ticketList.length !==0" class="ml-auto " style="position: relative;left: 1100px" id="btn"
+<button *ngIf="ticketList" class="ml-auto " style="position: relative;left: 1100px" id="btn"
         (click)="generatePDF()">Tải Về
 </button>
 

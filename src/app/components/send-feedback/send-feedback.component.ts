@@ -1,9 +1,9 @@
 import {Component, ElementRef, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {FeedbackService} from '../../service/feedback.service';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
-import {FeedbackDialogComponent} from "./feedback-dialog/feedback-dialog.component";
-import {Router} from "@angular/router";
+import {MatDialog} from '@angular/material/dialog';
+import {FeedbackDialogComponent} from './feedback-dialog/feedback-dialog.component';
+import {Router} from '@angular/router';
 
 declare var $: any;
 
@@ -52,8 +52,6 @@ export class SendFeedbackComponent implements OnInit {
     this.formFeedBack.markAllAsTouched();
     if (this.formFeedBack.valid) {
       this.feedbackService.sendFeedBack(this.formFeedBack.value).subscribe(data => {
-        console.log(data);
-        alert('Bạn đã gửi phản hồi thành công');
       });
     }
     // ----------------------------------

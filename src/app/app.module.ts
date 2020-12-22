@@ -124,10 +124,9 @@ import {MAT_MOMENT_DATE_ADAPTER_OPTIONS} from '@angular/material-moment-adapter'
     FeedbackDialogComponent
   ],
   imports: [BrowserModule, AppRoutingModule, MaterialModule, HttpClientModule, NgxPaginationModule, Ng2SearchPipeModule,
-    FormsModule, MatDialogModule, ReactiveFormsModule, NgxLoadingModule.forRoot({}), PickerModule, EmojiModule, ChartsModule, SocialLoginModule, PromotionModule,
+    FormsModule, MatDialogModule, ReactiveFormsModule, NgxLoadingModule.forRoot({}), PickerModule, EmojiModule,
     ChartsModule, SocialLoginModule, PromotionModule, PDFExportModule,
-    InvoiceManagerModule, AppRoutingModule, MaterialModule,
-     NgxLoadingModule.forRoot({}), PromotionModule, ToastrModule.forRoot({
+    InvoiceManagerModule, ToastrModule.forRoot({
       positionClass: 'toast-top-center',
       preventDuplicates: true,
     } )

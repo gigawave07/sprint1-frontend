@@ -32,10 +32,10 @@ export class InvoiceDetailComponent implements OnInit {
     });
     this.ticketService.findAllTicketByInvoiceId(this.invoiceId).subscribe(dataTicket => {
       this.ticketList = dataTicket;
-      this.invoiceService.findInvoiceById(this.invoiceId).subscribe(dataInvoice => {
-        this.invoice = dataInvoice;
-        console.log(this.invoice);
-      });
+    });
+    this.invoiceService.findInvoiceById(this.invoiceId).subscribe(dataInvoice => {
+      this.invoice = dataInvoice;
+      console.log(this.invoice);
     });
     this.appUserService.findAppUserById(this.appUserId).subscribe(dataUser => {
       this.appUser = dataUser;
