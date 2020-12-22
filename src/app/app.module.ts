@@ -54,6 +54,8 @@ import {FeedbackService} from './service/feedback.service';
 import {MessUserComponent} from './components/mess-user/mess-user.component';
 import {MessageService} from './service/message.service';
 import {DatePipe} from '@angular/common';
+import {SuccessfullyPaidPendingTicketComponent} from "./components/list-pending-ticket/successfully-paid-pending-ticket/successfully-paid-pending-ticket.component";
+import {PromotionModule} from "./components/promotion/promotion.module";
 
 @NgModule({
   declarations: [
@@ -97,7 +99,7 @@ import {DatePipe} from '@angular/common';
   }, {
     provide: AuthServiceConfig,
     useFactory: getAuthServiceConfigs
-  }, { provide: LOCALE_ID, useValue: 'vi-VN' },
+  },
     ExcelService],
   bootstrap: [AppComponent],
   entryComponents: [SpinnerOverlayComponent, TrangChinhComponent, BaoCaoComponentComponent, TrangChuThongKeComponent,

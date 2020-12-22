@@ -24,22 +24,27 @@ export class SearchPendingTicketComponent implements OnInit {
 	public pageSize = 2;
 	public checked = [];
 	public message: string = '';
+	public pageSizeArr = [
+		2,5,10
+	];
 
 	constructor(
 		private ticketService: TicketService,
 		private dialog: MatDialog,
 		public formBuilder: FormBuilder,
+		public el: ElementRef
 	) {
 	}
 	
 	@ViewChild('paypalRef', {static : true}) private paypalRef: ElementRef;
-	
 	ngOnInit(): void {
 		this.formTicketSearchDTO = this.formBuilder.group({
 			statusPaymentName: ['Pending', [Validators.required]],
 			searchBy: ['', [Validators.required]],
 			searchValue: ['', [Validators.required]],
 		});
+		console.log(this.formTicketSearchDTO);
+		
 		paypal.Buttons(
 			{
 				style: {
@@ -68,6 +73,8 @@ export class SearchPendingTicketComponent implements OnInit {
 				},
 				onCancel: function (data) {
 					console.log('onCancel');
+					// @ts-ignore
+					$("#refreshData").click();
 				},
 				onApprove: (data, actions) => {
 					return actions.order.capture().then(details => {
@@ -78,35 +85,51 @@ export class SearchPendingTicketComponent implements OnInit {
 				},
 				onError: (data, actions) => {
 					console.log('Transaction error');
+					// @ts-ignore
+					$("#refreshData").click();
 				}
 			}
 		).render(this.paypalRef.nativeElement);
 	}
 	
+	// getFormBuilderOnInit() {
+	//
+	// }
+	
 	searchPendingTicket() {
+		console.log(this.formTicketSearchDTO);
 		console.log(this.formTicketSearchDTO.value);
-		this.ticketService.searchTicket(this.formTicketSearchDTO.value).subscribe(data => {
-			this.ticketList = data;
-			console.log(this.ticketList);
-			this.hiddenPaypalButton = this.ticketList.length == 0;
-			this.isEmptyTicketList = this.ticketList.length == 0;
-			console.log('searchPendingTicket');
-			console.log('this.hiddenPaypalButton');
-			console.log(this.hiddenPaypalButton);
-			console.log('this.isEmptyTicketList');
-			console.log(this.isEmptyTicketList);
-		}, error => {
-			this.ticketList = [];
-			this.hiddenPaypalButton = true;
-			this.isEmptyTicketList = true;
-			// this.message = 'error searchPendingTicket';
-			console.log('error searchPendingTicket');
-			console.log('this.hiddenPaypalButton');
-			console.log(this.hiddenPaypalButton);
-			console.log('this.isEmptyTicketList');
-			console.log(this.isEmptyTicketList);
-		});
-		
+		if (this.formTicketSearchDTO.valid){
+			this.ticketService.searchTicket(this.formTicketSearchDTO.value).subscribe(data => {
+				this.ticketList = data;
+				console.log(this.ticketList);
+				this.hiddenPaypalButton = this.ticketList.length == 0;
+				this.isEmptyTicketList = this.ticketList.length == 0;
+				// console.log('searchPendingTicket');
+				// console.log('this.hiddenPaypalButton');
+				// console.log(this.hiddenPaypalButton);
+				// console.log('this.isEmptyTicketList');
+				// console.log(this.isEmptyTicketList);
+			}, error => {
+				this.ticketList = [];
+				this.hiddenPaypalButton = true;
+				this.isEmptyTicketList = true;
+				// // this.message = 'error searchPendingTicket';
+				// console.log('error searchPendingTicket');
+				// console.log('this.hiddenPaypalButton');
+				// console.log(this.hiddenPaypalButton);
+				// console.log('this.isEmptyTicketList');
+				// console.log(this.isEmptyTicketList);
+			});
+		} else {
+			for (const key of Object.keys(this.formTicketSearchDTO.controls)) {
+				if (this.formTicketSearchDTO.controls[key].invalid) {
+					const invalidControl = this.el.nativeElement.querySelector('[formControlName="' + key + '"]');
+					invalidControl.focus();
+					break;
+				}
+			}
+		}
 		
 		
 	}
@@ -176,11 +199,11 @@ export class SearchPendingTicketComponent implements OnInit {
 		this.amountMoney = 0;
 		this.checked = [];
 		// this.isEmptyTicketList = true;
-		// console.log('refreshData');
-		// console.log('this.hiddenPaypalButton');
-		// console.log(this.hiddenPaypalButton);
-		// console.log('this.isEmptyTicketList');
-		// console.log(this.isEmptyTicketList);
+		console.log('refreshData');
+		console.log('this.hiddenPaypalButton');
+		console.log(this.hiddenPaypalButton);
+		console.log('this.isEmptyTicketList');
+		console.log(this.isEmptyTicketList);
 		
 		
 	}
@@ -198,5 +221,35 @@ export class SearchPendingTicketComponent implements OnInit {
 	}
 	
 	
+	getFormBuilderAfterSelectSearchBy($event: Event) {
+		// console.log(this.formTicketSearchDTO);
+		// console.log(this.searchByValue);
+		// console.log('$event.value');
+		// // @ts-ignore
+		// console.log($event.value);
+		
+		// @ts-ignore
+		let eventValue = $event.value;
+		switch (eventValue) {
+			case 'bookingCode':
+				this.formTicketSearchDTO = this.formBuilder.group({
+					statusPaymentName: ['Pending', [Validators.required]],
+					searchBy: [eventValue, [Validators.required]],
+					searchValue: ['', [Validators.required, Validators.pattern("^[A-Za-z]{10}$")]]
+				});
+				console.log(this.formTicketSearchDTO);
+				break;
+			case 'phoneNumber':
+				this.formTicketSearchDTO = this.formBuilder.group({
+					statusPaymentName: ['Pending', [Validators.required]],
+					searchBy: [eventValue, [Validators.required]],
+					searchValue: ['', [Validators.required, Validators.pattern("^\\d{10,12}$")]]
+				});
+				console.log(this.formTicketSearchDTO);
+				break;
+			
+
+		}
 	
+	}
 }

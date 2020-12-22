@@ -22,6 +22,10 @@ export class ListPendingTicketComponent implements OnInit {
 	
 	public checked = [];
 	
+	public pageSizeArr = [
+		2,5,10
+	];
+	
 	constructor(
 		private ticketService: TicketService,
 		private dialog: MatDialog
@@ -29,12 +33,9 @@ export class ListPendingTicketComponent implements OnInit {
 	}
 	
 	@ViewChild('paypalRef', {static: true}) private paypalRef: ElementRef;
-	
-	
 	ngOnInit(): void {
 		// console.log('this.ticketStatusPaymentDTO');
 		// console.log(this.ticketStatusPaymentDTO);
-		
 		this.listPendingTicket();
 		paypal.Buttons(
 			{
@@ -64,6 +65,8 @@ export class ListPendingTicketComponent implements OnInit {
 				},
 				onCancel: function (data) {
 					console.log('onCancel');
+					// @ts-ignore
+					$("#refreshData").click();
 				},
 				onApprove: (data, actions) => {
 					return actions.order.capture().then(details => {
@@ -75,6 +78,8 @@ export class ListPendingTicketComponent implements OnInit {
 				},
 				onError: (data, actions) => {
 					console.log('Transaction error');
+					// @ts-ignore
+					$("#refreshData").click();
 				}
 				
 			}
@@ -145,12 +150,20 @@ export class ListPendingTicketComponent implements OnInit {
 		});
 		
 		dialogRef.afterClosed().subscribe(result => {
-			this.listPendingTicket();
-			this.pageNumber=1;
-			this.payTicketList = [];
-			this.amountMoney = 0;
-			this.checked = [];
+			this.refreshData();
 		});
+	}
+	
+	refreshData() {
+		this.listPendingTicket();
+		this.setPageNumberTo1();
+		this.payTicketList = [];
+		this.amountMoney = 0;
+		this.checked = [];
+	}
+	
+	private setPageNumberTo1() {
+		this.pageNumber = 1;
 	}
 	
 	openCancelDialogTicket(ticket: any): void {
@@ -161,12 +174,12 @@ export class ListPendingTicketComponent implements OnInit {
 		});
 		
 		dialogRef.afterClosed().subscribe(result => {
-			this.listPendingTicket();
-			this.pageNumber=1;
-			this.payTicketList = [];
-			this.amountMoney = 0;
-			this.checked = [];
+			this.refreshData();
 		});
 	}
 	
+	setDate(date: any) {
+		console.log(date);
+		
+	}
 }

@@ -1,5 +1,6 @@
-<!--			form-->
-<div class="container-fluid ml-lg-5 mr-lg-5 px-lg-0 mx-lg-0">
+
+<div class="container-fluid ml-lg-5 mr-lg-5 px-lg-0 mx-lg-0 bg-white">
+	<!--			form-->
 	<div class="search-form">
 		<div class="form-title">
 			<h2><b>TÌM KIẾM ĐẶT CHỖ</b></h2>
@@ -14,7 +15,7 @@
 					<div class="d-flex justify-content-center">
 						<mat-form-field>
 							<mat-label>Tìm kiếm theo</mat-label>
-							<mat-select formControlName="searchBy" [(value)]="searchByValue">
+							<mat-select formControlName="searchBy" [(value)]="searchByValue" (selectionChange)="getFormBuilderAfterSelectSearchBy($event)">
 								<mat-option value="bookingCode">Mã đặt chỗ</mat-option>
 								<mat-option value="phoneNumber">Số điện thoại</mat-option>
 							</mat-select>
@@ -27,30 +28,49 @@
 					</div>
 				</div>
 			</div>
-			<div class="row" *ngIf="searchByValue!=null">
+			<div class="row mt-2" *ngIf="searchByValue!=null">
 				<div class="col-12 ">
 					<div class="d-flex justify-content-center">
-						<mat-form-field>
-							<mat-label *ngIf="searchByValue== 'bookingCode'">Mã đặt chỗ</mat-label>
-							<mat-label *ngIf="searchByValue== 'phoneNumber'">Số điện thoại</mat-label>
-							<input matInput formControlName="searchValue">
+						<mat-form-field *ngIf="searchByValue== 'bookingCode'">
+							<mat-label >Mã đặt chỗ</mat-label>
+							<input  matInput formControlName="searchValue" placeholder="VD: AAAAAaaaaa (10 ký tự A-Z, a-z)">
 							<mat-error
 								*ngIf="formTicketSearchDTO.get('searchValue').errors?.required &&
 										formTicketSearchDTO.get('searchValue').touched"
 								class="text-danger">Vui lòng không để trống
 							</mat-error>
+							<mat-error
+								*ngIf="formTicketSearchDTO.get('searchValue').errors?.pattern && formTicketSearchDTO.get('searchValue').touched"
+								class="text-danger">Vui lòng nhập mã đặt chỗ đúng định dạng (10 ký tự A-Z, a-z)
+							</mat-error>
+						</mat-form-field>
+						
+						<mat-form-field *ngIf="searchByValue== 'phoneNumber'">
+							<mat-label >Số điện thoại</mat-label>
+							<input  matInput formControlName="searchValue" placeholder="VD: 09345678901, 849345678901 (10-12 số 0-9)">
+							<mat-error
+								*ngIf="formTicketSearchDTO.get('searchValue').errors?.required &&
+										formTicketSearchDTO.get('searchValue').touched"
+								class="text-danger">Vui lòng không để trống
+							</mat-error>
+							<mat-error
+								*ngIf="formTicketSearchDTO.get('searchValue').errors?.pattern && formTicketSearchDTO.get('searchValue').touched"
+								class="text-danger">Vui lòng nhập số điện thoại đúng định dạng (10-12 số 0-9)
+							</mat-error>
 						</mat-form-field>
 					</div>
 				</div>
 			</div>
-			<div class="row">
+			<div class="row mt-2">
 				<div class="col-12">
 					<div class="d-flex justify-content-center">
+<!--						<button class="btn btn-success" (click)="searchPendingTicket()"-->
+<!--						        [disabled]="formTicketSearchDTO.invalid"-->
+<!--						> Tìm kiếm-->
+<!--						</button>-->
 						<button class="btn btn-success" (click)="searchPendingTicket()"
-						        [disabled]="formTicketSearchDTO.invalid"
 						> Tìm kiếm
 						</button>
-					
 					</div>
 				</div>
 			</div>
@@ -78,7 +98,7 @@
 					<th>Nơi đến</th>
 					<th>Ngày đặt</th>
 					<th>Ngày bay</th>
-					<th>Giá</th>
+					<th>Giá (VND)</th>
 					<th>Huỷ</th>
 					<th>
 						Chọn
@@ -89,12 +109,10 @@
 				<tr *ngFor="let index = index;let ticket of ticketList| paginate: { itemsPerPage: pageSize, currentPage: pageNumber }">
 					<td>{{ticket.booking.bookingCode}}</td>
 					<td>{{ticket.ticketCode}}</td>
-<!--					<td *ngIf="pageNumber==1">{{ticket.ticketCode}} {{index}}</td>-->
-<!--					<td *ngIf="pageNumber>1">{{ticket.ticketCode}} {{(pageNumber-1)*pageSize+index}}</td>-->
 					<td>{{ticket.flightInformation.departure}}</td>
 					<td>{{ticket.flightInformation.arrival}}</td>
-					<td>{{ticket.booking.bookingDate}}</td>
-					<td>{{ticket.flightInformation.departureDate}}</td>
+					<td>{{ticket.booking.bookingDate| date: 'dd/MM/yyyy'}}</td>
+					<td>{{ticket.flightInformation.departureDate| date: 'dd/MM/yyyy'}}</td>
 					<td id="flightInformationPrice">{{ticket.flightInformation.price}}</td>
 					<td>
 						<button (click)="openCancelDialogTicket(ticket)" class="btn btn-danger">
@@ -119,20 +137,58 @@
 				</tr>
 				</tbody>
 			</table>
-			<div class="clearfix">
-				<pagination-controls (pageChange)="pageNumber = $event"></pagination-controls>
-			</div>
+<!--			<div class="row">-->
+<!--				<div class=" col-12">-->
+<!--					<pagination-controls (pageChange)="pageNumber = $event"></pagination-controls>-->
+<!--				</div>-->
+<!--				<div class="pt-2 ml-md-5 pl-md-3 col-12">-->
+<!--					<div>-->
+<!--						<mat-label><b>Chọn kích cỡ trang  </b></mat-label>-->
+<!--						<mat-select  matNativeControl [(ngModel)]="pageSize" name="pageSize">-->
+<!--							<mat-option value="" selected></mat-option>-->
+<!--							<mat-option *ngFor="let pageSizeValue of pageSizeArr" [value]="pageSizeValue">-->
+<!--								{{pageSizeValue}}-->
+<!--							</mat-option>-->
+<!--						</mat-select>-->
+<!--					</div>-->
+<!--				</div>-->
+<!--			</div>-->
 		</div>
 	</div>
 	
-	<div class="row mt-3">
+	<div class="row mt-2" *ngIf="ticketList.length !== 0;">
+		<!--		<div class="col-sm-12 col-md-8 mt-3 ">-->
+		<div class="mt-3 col-sm-12 col-md-7">
+			<pagination-controls (pageChange)="pageNumber = $event"></pagination-controls>
+		</div>
+		<!--		<div class=" col-sm-12 col-md-4">-->
+		<div class="offset-sm-1 col-sm-10 offset-md-1 col-md-2 ">
+			<mat-form-field appearance="fill">
+				<mat-label>Chọn kích cỡ trang </mat-label>
+				<mat-select [(ngModel)]="pageSize" name="pageSize"
+				            (selectionChange)="refreshData()">
+					<!--				<option value="" selected></option>-->
+					<mat-option *ngFor="let pageSizeValue of pageSizeArr"
+					            [value]="pageSizeValue">
+						{{pageSizeValue}}
+					</mat-option>
+				</mat-select>
+			</mat-form-field>
+		</div>
+	</div>
+	
+	<div class="row col-12 my-2">
 		<div [hidden]="hiddenPaypalButton"
-		     class="paypal ml-lg-5 ml-md-5" style="width: 100px" #paypalRef></div>
+		     class="offset-sm-1 col-sm-10 offset-md-9 col-md-2" style="width: 100px" #paypalRef></div>
 	</div>
 	
 	<!--pay ticket-->
-	<div class="row col-12">
+	<div class="row col-12 mt-2">
 		<div id="paypalStatusPayment" (click)="setTicketStatusPaymentToPaid()"></div>
+	</div>
+	<!--refresh data-->
+	<div class="row col-12 mt-2">
+		<div id="refreshData" (click)="refreshData()"></div>
 	</div>
 
 </div>

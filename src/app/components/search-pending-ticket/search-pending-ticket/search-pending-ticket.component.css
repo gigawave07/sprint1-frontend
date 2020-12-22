@@ -1,8 +1,8 @@
 
 /* search form*/
 .search-form .form-control, .form-control:focus, .input-group-addon {
-    border-color: #e1e1e1;
-    border-radius: 0;
+    /*border-color: #e1e1e1;*/
+    /*border-radius: 0;*/
 }
 
 .search-form {

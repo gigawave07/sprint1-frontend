@@ -4,7 +4,7 @@
 }
 
 .openChatBtn {
-  z-index: 100;
+  z-index: 10000;
   float: left;
   border: none;
   cursor: pointer;
@@ -16,6 +16,7 @@
 }
 
 .requiredChat {
+  z-index: 10000;
   height: 400px;
   width: 350px;
   display: none;
@@ -23,7 +24,6 @@
   bottom: 10px;
   right: 10px;
   border: 1px solid #ffffff;
-  z-index: 9;
   border-radius: 20px;
   background-color: white;
 }
@@ -38,7 +38,7 @@
   border: 1px solid #ffffff;
   border-radius: 20px;
   background-color: white;
-  z-index: 9;
+  z-index: 10000;
 }
 
 
