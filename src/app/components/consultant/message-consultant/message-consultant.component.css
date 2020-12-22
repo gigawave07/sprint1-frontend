@@ -58,6 +58,7 @@ div #input-inline {
 }
 
 #icon-box-consultant {
+  display: block;
   background-color: #e6ecf5;
   z-index: 100;
   position: relative;
