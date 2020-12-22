@@ -2,7 +2,6 @@ import {Component, ElementRef, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import * as firebase from 'firebase';
 import {DatePipe} from '@angular/common';
-import {MessageService} from '../../service/message.service';
 import {EmojiEvent} from "@ctrl/ngx-emoji-mart/ngx-emoji";
 
 const CUSTOM_EMOJIS = [];
@@ -41,7 +40,7 @@ export class MessUserComponent implements OnInit {
 
   refUser = firebase.database().ref('users/');
 
-  constructor(private el: ElementRef, private fb: FormBuilder, private datePipe: DatePipe, private messageService: MessageService) {
+  constructor(private el: ElementRef, private fb: FormBuilder, private datePipe: DatePipe) {
     firebase.database().ref('chats/').on('value', resp => {
       this.listMess = [];
       this.listMess = snapshotToArray(resp, this.room);
@@ -53,8 +52,6 @@ export class MessUserComponent implements OnInit {
   }
 
   ngOnInit() {
-
-    this.getIcons();
     this.formSendRequest = this.fb.group({
       name: ['', [Validators.required, Validators.maxLength(25)]],
       email: ['', [Validators.required, Validators.email]],
@@ -178,14 +175,8 @@ export class MessUserComponent implements OnInit {
     }
   }
 
-  getIcons() {
-    this.messageService.getIcon().subscribe((data) => {
-      this.listIcon = data;
-    });
-  }
-
   handleClick($event: EmojiEvent) {
-    console.log($event.emoji);
+    // console.log($event.emoji);
   }
 }
 

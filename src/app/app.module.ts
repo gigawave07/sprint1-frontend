@@ -44,7 +44,6 @@ import {MessageUserComponent} from './components/message-user/message-user.compo
 import {SendFeedbackComponent} from './components/send-feedback/send-feedback.component';
 import {MessUserComponent} from './components/mess-user/mess-user.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {MessageService} from './service/message.service';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {ConsultantComponent} from './components/consultant/consultant.component';
 import {FeedbackService} from './service/feedback.service';
@@ -74,6 +73,7 @@ import {InfoPassengerBookingTicketComponent} from './components/flight/info-pass
 import {ChooseTicketComponent} from './components/flight/alertError/choose-ticket/choose-ticket.component';
 import {PaymentHistoryComponent} from './components/flight/payment-history/payment-history/payment-history.component';
 import {SuccessfullyPaidPendingTicketComponent} from "./components/list-pending-ticket/successfully-paid-pending-ticket/successfully-paid-pending-ticket.component";
+import { FeedbackDialogComponent } from './components/send-feedback/feedback-dialog/feedback-dialog.component';
 
 @NgModule({
   declarations: [
@@ -115,7 +115,8 @@ import {SuccessfullyPaidPendingTicketComponent} from "./components/list-pending-
     FlightTicketComponent,
     InfoPassengerBookingTicketComponent,
     ChooseTicketComponent,
-    PaymentHistoryComponent
+    PaymentHistoryComponent,
+    FeedbackDialogComponent
   ],
   imports: [BrowserModule, AppRoutingModule, MaterialModule, HttpClientModule, NgxPaginationModule, Ng2SearchPipeModule,
     FormsModule, MatDialogModule, ReactiveFormsModule, NgxLoadingModule.forRoot({}), PickerModule, EmojiModule,ChartsModule, SocialLoginModule, PromotionModule,
@@ -123,7 +124,7 @@ import {SuccessfullyPaidPendingTicketComponent} from "./components/list-pending-
 
   ],
   // tslint:disable-next-line:max-line-length
-  providers: [DatePipe, MessageService, FeedbackService
+  providers: [DatePipe, FeedbackService
     , {
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptor,
@@ -136,7 +137,7 @@ import {SuccessfullyPaidPendingTicketComponent} from "./components/list-pending-
     ExcelService],
   bootstrap: [AppComponent],
   entryComponents: [SpinnerOverlayComponent, TrangChinhComponent, BaoCaoComponentComponent, TrangChuThongKeComponent,
-    KetQuaComponent, KetQuaTableComponent, KetQuaSaiLogicComponent,
+    KetQuaComponent, KetQuaTableComponent, KetQuaSaiLogicComponent, FeedbackDialogComponent,
     //  Đăng update
     SuccessfullyPaidPendingTicketComponent
   ]

@@ -15,7 +15,6 @@
   animation: feedback;
   animation-duration: 4s;
   animation-fill-mode: forwards;
-  display: block;
 
 }
 
@@ -67,4 +66,9 @@ div .focus-input:focus.focus-style {
 
 .content-feedback{
   height: 96px
+}
+
+#announce-success{
+  z-index: 10000;
+  width: 100px;
 }

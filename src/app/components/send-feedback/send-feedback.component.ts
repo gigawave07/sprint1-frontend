@@ -1,6 +1,9 @@
 import {Component, ElementRef, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {FeedbackService} from '../../service/feedback.service';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import {FeedbackDialogComponent} from "./feedback-dialog/feedback-dialog.component";
+import {Router} from "@angular/router";
 
 declare var $: any;
 
@@ -13,7 +16,11 @@ export class SendFeedbackComponent implements OnInit {
 
   formFeedBack: FormGroup;
 
-  constructor(private el: ElementRef, private fb: FormBuilder, private feedbackService: FeedbackService) {
+  constructor(private el: ElementRef,
+              private fb: FormBuilder,
+              private feedbackService: FeedbackService,
+              public dialog: MatDialog,
+              private router: Router) {
   }
 
   ngOnInit(): void {
@@ -50,5 +57,15 @@ export class SendFeedbackComponent implements OnInit {
       });
     }
     // ----------------------------------
+  }
+  openDialog(): void {
+    const dialogRef = this.dialog.open(FeedbackDialogComponent, {
+      width: '450px',
+      height: '150px',
+      data: 'Bạn đã gửi phản hồi thành công',
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+    });
   }
 }

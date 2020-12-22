@@ -1,7 +1,6 @@
 import {Component, ElementRef, OnInit} from '@angular/core';
 import {Subscription} from 'rxjs';
 import {ActivatedRoute, ParamMap} from '@angular/router';
-import {MessageService} from '../../../service/message.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import * as firebase from 'firebase';
 import {DatePipe} from '@angular/common';
@@ -39,7 +38,6 @@ export class MessageConsultantComponent implements OnInit {
   sub: Subscription;
 
   constructor(private activatedRoute: ActivatedRoute,
-              private messageService: MessageService,
               private fb: FormBuilder,
               private datePipe: DatePipe,
               private el: ElementRef) {
@@ -63,7 +61,6 @@ export class MessageConsultantComponent implements OnInit {
         $('#content-chat-cons').val('');
       });
       $('#consultant-icon').click(() => {
-          console.log('đã nhấn icon');
           $('#icon-box-consultant').toggle(500);
         }
       );
@@ -96,6 +93,6 @@ export class MessageConsultantComponent implements OnInit {
   }
 
   handleClick($event: EmojiEvent) {
-    console.log($event.emoji);
+    // console.log($event.emoji);
   }
 }
