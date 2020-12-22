@@ -54,7 +54,8 @@ export class ChooseTicketComponent implements OnInit {
     this.arrayTowWay = this.showWeek(dateArrivalTempt);
   }
   showWeek(tempt) {
-    this.arraysWay = [new Date(tempt).toString(), new Date(tempt + 3600 * 24 * 1000).toString(),
+    this.arraysWay = [
+      new Date(tempt).toString(), new Date(tempt + 3600 * 24 * 1000).toString(),
       new Date(tempt + 3600 * 24 * 2 * 1000).toString(),
       new Date(tempt + 3600 * 24 * 3 * 1000).toString(),
       new Date(tempt + 3600 * 24 * 4 * 1000).toString(),
@@ -64,11 +65,17 @@ export class ChooseTicketComponent implements OnInit {
   }
   searchOneWayPage(index, item) {
     this.dateDeparture = index;
-    const dateDepartureTempt = new Date(index).toLocaleDateString();
+    const dateDepartureTempt = new Date(index).toLocaleDateString('en-CA');
     if (item === 1 && (this.ticketService.getRadio() == 1)) {
-      console.log(this.departure, this.arrival, dateDepartureTempt, this.airline);
       this.ticketService.searchTicketEmptyDepService(this.departure, this.arrival, dateDepartureTempt, this.airline);
     }
+    if (item === 1 && (this.ticketService.getRadio() == 2)) {
+      this.ticketService.searchTicketEmptyDepService(this.departure, this.arrival, dateDepartureTempt, this.airline);
+    }
+    if (item === 2 && (this.ticketService.getRadio() == 2)) {
+      this.ticketService.searchTicketEmptyService(this.departure, this.arrival, dateDepartureTempt, this.arrival, this.airline);
+    }
+    this.ngOnInit();
   }
 
   bookingTicket(oneWay: number, towWay: number) {

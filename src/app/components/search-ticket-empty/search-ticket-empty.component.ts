@@ -11,7 +11,7 @@ import {format} from 'url';
 })
 export class SearchTicketEmptyComponent implements OnInit {
   radio: number;
-  dayNow = new Date().toLocaleDateString();
+  dayNow = new Date().toLocaleDateString('en-CA');
   // tslint:disable-next-line:variable-name
   arrival_date: string;
 
@@ -26,23 +26,24 @@ export class SearchTicketEmptyComponent implements OnInit {
     this.ticketService.get(this.radio);
     if (this.radio == 1) {
       if (departure_date === '') {
-        departure_date = ' ';
+        departure_date = this.dayNow;
       }
       this.ticketService.searchTicketEmptyDepService(departure, arrival, departure_date, airline);
     }
     if (this.radio == 2) {
       if (departure_date === '' && arrival_date === '') {
-        arrival_date = ' ';
-        departure_date = ' ';
+        arrival_date = this.dayNow;
+        departure_date = this.dayNow;
       }
       if (departure_date === '') {
-        departure_date = ' ';
+        departure_date = this.dayNow;
       }
-      if (arrival_date === '') {
-        arrival_date = ' ';
+      if (arrival_date === undefined) {
+        arrival_date = this.dayNow;
       }
-      this.ticketService.searchTicketEmptyService(departure, arrival, departure_date, arrival_date, airline);
+      console.log(arrival_date);
       this.ticketService.searchTicketEmptyDepService(departure, arrival, departure_date, airline);
+      this.ticketService.searchTicketEmptyService(departure, arrival, departure_date, arrival_date, airline);
     }
   }
 }

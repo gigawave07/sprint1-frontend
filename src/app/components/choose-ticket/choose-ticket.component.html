@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="backGround">
   <div class="row mt-5">
     <div class="col-12 ml-5">
       <div class="row">
@@ -54,7 +54,7 @@
         <div class="d-flex pl-5" *ngIf="listTicketEmpty !== undefined">
           <button mat-button class="date-button"
                   *ngFor="let index of arrayTowWay"
-                  (click)="searchOneWayPage(index)">{{index | date: "MM/dd/yyyy"| weekdays}}
+                  (click)="searchOneWayPage(index, 2)">{{index | date: "MM/dd/yyyy"| weekdays}}
             <br>
             {{index | date: "dd/MM/yyyy"}}</button>
         </div>

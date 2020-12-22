@@ -53,8 +53,6 @@ export class TicketService {
         data => {
       this.searchTicketSubject.next(data);
     });
-    return this.http.get(
-      this.API + '/searchTicketEmpty/' + departure + '/' + arrival + '/' + departureDate + '/' + arrivalDate + '/' + airline).subscribe();
   }
   searchTicketEmptyDepService(departure, arrival, departureDate, airline) {
     this.dateDeparture = departureDate;
@@ -66,8 +64,6 @@ export class TicketService {
       data => {
         this.searchTicketDepSubject.next(data);
       });
-    return this.http.get(
-      this.API + '/searchTicketDepEmpty/' + departure + '/' + arrival + '/' + departureDate + '/' + airline).subscribe();
   }
   get(radio) {
    return this.radio = radio;
