@@ -106,7 +106,8 @@ const routes: Routes = [
       {path: 'editUser', component: EditUserComponent},
       {path: 'changPassword', component: ChangePasswordUserComponent},
       {path: 'list-pending-ticket', component: ListPendingTicketComponent},
-      {path: 'search-pending-ticket', component: SearchPendingTicketComponent}
+      {path: 'search-pending-ticket', component: SearchPendingTicketComponent},
+      {path: 'invoice-list', component: InvoiceListComponent}
     ]
   },
   // Quốc

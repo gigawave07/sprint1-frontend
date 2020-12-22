@@ -1,5 +1,5 @@
 
-<div class="container-fluid p-5">
+<div class="container-fluid p-3">
   <h2 id="td" >DANH SÁCH THANH TOÁN</h2>
   <div class="row p-3" *ngIf="appUser">
     <div class="col-md-6 ">
@@ -38,11 +38,10 @@
         </div>
       </div>
     </div>
-    <div class="col-md-12"></div>
   </div>
-  <div class="row p-3 text-center" *ngIf="invoiceList">
-    <div class="col-md-12">
-      <table class="table  table-bordered bg-white">
+  <div class="row p-2 text-center" *ngIf="invoiceList">
+    <div class="col-md-12"  style="position: relative;left: 13px">
+      <table class="table  table-bordered bg-white" >
         <thead class="thead-light ">
         <tr>
           <th>Số Thứ Tự</th>
@@ -67,12 +66,13 @@
   </div>
   <div class="row ">
 
-    <div class="col-md-6">
+    <div class="col-md-4">
       <button class="btn btn-primary " data-toggle="modal" data-target="#myModal" id="add" routerLink="/invoice-download">
         Tạo Hóa Đơn
-         <i class="material-icons" id="iconAdd">add_circle</i></button>
+        <i class="material-icons" id="iconAdd">add_circle</i>
+      </button>
     </div>
-    <div class="col-md-3" id="pt" style="color: white" >
+    <div class="col-md-5" id="pt" style="color: white" >
       <pagination-controls  (pageChange)="p = $event"  previousLabel="Quay Lại" responsive="false"  nextLabel="Kế Tiếp"
                            autoHide="false">
 
