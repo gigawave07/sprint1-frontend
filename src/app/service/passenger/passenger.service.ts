@@ -7,7 +7,7 @@ import {Observable} from 'rxjs';
 })
 export class PassengerService {
   public readonly API: string = 'http://localhost:8080/rest';
-  private api = 'http://localhost:8080/rest/passengers';
+  private api = 'http://localhost:8080/rest/passengers-form-array';
   private apiSentMail = 'http://localhost:8080/rest/sent-mail?idAccount=';
 
   constructor(public http: HttpClient) {
