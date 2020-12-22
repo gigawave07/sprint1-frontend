@@ -23,8 +23,8 @@ export class EmployeeService {
     return this.http.get(this.API + '/list');
   }
 
-  getAllRole(): Observable<any> {
-    return this.http.get(this.API + '/listRole');
+  getRole(accountId): Observable<any> {
+    return this.http.get(this.API + '/find-role/' + accountId);
   }
 
   findEmployeeByIdService(idFind: any): Observable<any> {
@@ -36,7 +36,6 @@ export class EmployeeService {
   }
 
   editEmployeeService(employeeDTO, idNeedEdit): Observable<any> {
-    console.log('có vô');
     return this.http.put(this.API + '/editEmployee/' + idNeedEdit, employeeDTO);
   }
 

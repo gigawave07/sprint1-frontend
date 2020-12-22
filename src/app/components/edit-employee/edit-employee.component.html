@@ -163,9 +163,9 @@
             <div class="col-sm-2 col-xs-2 col-md-2 col-lg-2 p-0 m-0">
               <mat-form-field style="width: 100%">
                 <mat-label>Chọn giới tính</mat-label>
-                <mat-select formControlName="gender" [value]="genderEdit">
-                  <mat-option value="Nam">Nam</mat-option>
-                  <mat-option value="Nu">Nữ</mat-option>
+                <mat-select formControlName="gender" [(ngModel)]="genderEdit">
+                  <mat-option value = "Nam">Nam</mat-option>
+                  <mat-option value = "Nu">Nữ</mat-option>
                 </mat-select>
               </mat-form-field>
 

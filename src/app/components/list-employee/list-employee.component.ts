@@ -3,7 +3,7 @@ import {Router} from '@angular/router';
 import {MatDialog} from '@angular/material';
 import {EmployeeService} from '../../service/employee/employee.service';
 import {DeleteEmployeeComponent} from '../delete-employee/delete-employee.component';
-
+import {LoginService} from '../../service/login.service';
 
 @Component({
   selector: 'app-list-employee',
@@ -15,15 +15,22 @@ export class ListEmployeeComponent implements OnInit {
   private checkList = 'true';
   keywordSearch: '';
   p: number;
+  private accountId;
+  private role;
 
   constructor(
     private employeeService: EmployeeService,
     private dialog: MatDialog,
-    private router: Router
+    private router: Router,
+    private loginService: LoginService
   ) {
   }
 
   ngOnInit() {
+    this.accountId = this.loginService.currentUserValue.id;
+    this.employeeService.getRole(this.accountId).subscribe(data => {
+      this.role = data.name;
+    });
     this.employeeService.getAllEmployeeService().subscribe(data => {
       this.list = data;
     }, () => {
@@ -79,7 +86,7 @@ export class ListEmployeeComponent implements OnInit {
         }
       });
     } else if (attribute != 'choose' && this.keywordSearch == '') {
-      alert('Vui lòng nhập giá trị tương ứng cần tìm!');
+      alert('Vui lòng nhập từ khóa cần tìm!');
       this.employeeService.getAllEmployeeService().subscribe(data => {
         this.ngOnInit();
       });

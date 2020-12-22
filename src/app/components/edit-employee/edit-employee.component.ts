@@ -17,7 +17,6 @@ export class EditEmployeeComponent implements OnInit {
   private idNeed;
   protected roleEdit;
   protected genderEdit;
-  private listRole: [];
   private maxDate = new Date(2012, 11, 23);
   private minDate = new Date(1970, 0, 1);
 
@@ -32,9 +31,6 @@ export class EditEmployeeComponent implements OnInit {
 
   ngOnInit() {
     this.pipe = new DatePipe('en-US');
-    this.employeeService.getAllRole().subscribe(dataRole => {
-      this.listRole = dataRole;
-    });
     this.formEdit = this.formBuilder.group({
       id: [''],
       employeeCode: [''],
@@ -43,20 +39,19 @@ export class EditEmployeeComponent implements OnInit {
           this.employeeService.validateSpecialCharacter, Validators.maxLength(40)
         ]],
       birthday: ['', [Validators.required]],
-      gender: [this.genderEdit],
+      gender: ['', [Validators.required]],
       email: [''],
       phoneNumber: ['', [Validators.required, Validators.pattern('^((\\d+){10})$'),
         Validators.maxLength(12)]],
-      role: [this.roleEdit]
+      role: ['']
     });
-
     this.activatedRoute.params.subscribe(data => {
       this.idNeed = data.id;
       this.employeeService.findEmployeeByIdService(this.idNeed).subscribe(dataEdit => {
         this.formEdit.patchValue(dataEdit);
         this.roleEdit = dataEdit.appAccount.appRole.name;
         if (dataEdit.gender === false) {
-          this.genderEdit = 'Nữ';
+          this.genderEdit = 'Nu';
         } else {
           this.genderEdit = 'Nam';
         }
@@ -67,13 +62,16 @@ export class EditEmployeeComponent implements OnInit {
   editEmployee() {
     this.formEdit.markAllAsTouched();
     if (this.formEdit.valid) {
+      if (this.genderEdit === 'Nu') {
+        this.formEdit.value.gender = '0';
+      } else {
+        this.formEdit.value.gender = '1';
+      }
+      if (this.formEdit.value.role == '') {
+        this.formEdit.value.role = this.roleEdit;
+      }
       this.employee = Object.assign({}, this.formEdit.value);
       this.employee.birthday = this.pipe.transform(this.employee.birthday, 'dd-MM-yyyy');
-      if (this.formEdit.value.gender == 'Nu') {
-        this.formEdit.value.gender = 'false';
-      } else {
-        this.formEdit.value.gender = 'true';
-      }
       this.employeeService.editEmployeeService(this.employee, this.employee.id).subscribe(data => {
             this.router.navigateByUrl('list-employee').then(_ => {
             });

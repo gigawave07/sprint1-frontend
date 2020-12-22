@@ -14,7 +14,6 @@ export class CreateEmployeeComponent implements OnInit {
   private formCreateNew: FormGroup;
   private pipe: DatePipe;
   private employee: Employee;
-  private listRole: [];
   private maxDate = new Date(2012, 11, 23);
   private minDate = new Date(1970, 0, 1);
 
@@ -28,9 +27,6 @@ export class CreateEmployeeComponent implements OnInit {
 
   ngOnInit() {
     this.pipe = new DatePipe('en-US');
-    this.employeeService.getAllRole().subscribe(dataType => {
-      this.listRole = dataType;
-    });
     this.formCreateNew = this.formBuilder.group({
       employeeCode: ['',
         [Validators.required, Validators.pattern('^(NV-)[0-9]{4}$')],
