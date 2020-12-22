@@ -5,6 +5,9 @@
 
 .openChatBtn {
   z-index: 10000;
+  float: left;
+  border: none;
+  cursor: pointer;
   position: fixed;
   bottom: 10px;
   right: 10px;
@@ -20,8 +23,8 @@
   bottom: 10px;
   right: 10px;
   border: 1px solid #ffffff;
-  z-index: 10000;
   border-radius: 20px;
+  z-index: 10000;
   background-color: white;
 }
 

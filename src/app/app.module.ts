@@ -1,5 +1,5 @@
 import {BrowserModule} from '@angular/platform-browser';
-import {NgModule} from '@angular/core';
+import {LOCALE_ID, NgModule} from '@angular/core';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
@@ -72,6 +72,7 @@ import {FlightDetailComponent} from './components/flight/flight-detail/flight-de
 import {InfoPassengerBookingTicketComponent} from './components/flight/info-passenger-booking-ticket/info-passenger-booking-ticket.component';
 import { ChooseTicketComponent } from './components/flight/alertError/choose-ticket/choose-ticket.component';
 import { PaymentHistoryComponent } from './components/flight/payment-history/payment-history/payment-history.component';
+import {SuccessfullyPaidPendingTicketComponent} from "./components/list-pending-ticket/successfully-paid-pending-ticket/successfully-paid-pending-ticket.component";
 
 @NgModule({
   declarations: [
@@ -81,6 +82,8 @@ import { PaymentHistoryComponent } from './components/flight/payment-history/pay
       // Đăngdcvsdacdasc
     ListPendingTicketComponent, CancelPendingTicketComponent, SearchPendingTicketComponent, SpinnerComponent, SpinnerOverlayComponent,
     SpinnerComponent, SpinnerOverlayComponent,
+    //  Đăng update
+    SuccessfullyPaidPendingTicketComponent,
     // Danh
     AdminComponent, InformationAdminComponent, ChangePasswordAdminComponent, ChangePasswordSuccessfullyComponent,
     GetTokenEmailAdminComponent, GetCheckPasswordAdminComponent,
@@ -93,8 +96,6 @@ import { PaymentHistoryComponent } from './components/flight/payment-history/pay
     // Nhật mới
     TrangChinhComponent, BaoCaoComponentComponent, TrangChuThongKeComponent,
     KetQuaComponent, KetQuaTableComponent, KetQuaSaiLogicComponent,
-    // Khánh
-    InvoiceListComponent, InvoiceDownloadComponent, InvoiceDetailComponent,
 
     // Châu
     DeleteTicketComponent, PrintTicketComponent, ListTicketComponent,
@@ -132,7 +133,10 @@ import { PaymentHistoryComponent } from './components/flight/payment-history/pay
     ExcelService],
   bootstrap: [AppComponent],
   entryComponents: [SpinnerOverlayComponent, TrangChinhComponent, BaoCaoComponentComponent, TrangChuThongKeComponent,
-    KetQuaComponent, KetQuaTableComponent, KetQuaSaiLogicComponent]
+    KetQuaComponent, KetQuaTableComponent, KetQuaSaiLogicComponent,
+    //  Đăng update
+    SuccessfullyPaidPendingTicketComponent
+  ]
 })
 export class AppModule {
 }
