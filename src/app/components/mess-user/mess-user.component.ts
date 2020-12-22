@@ -3,7 +3,9 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import * as firebase from 'firebase';
 import {DatePipe} from '@angular/common';
 import {MessageService} from '../../service/message.service';
+import {EmojiEvent} from "@ctrl/ngx-emoji-mart/ngx-emoji";
 
+const CUSTOM_EMOJIS = [];
 
 declare var $: any;
 
@@ -33,6 +35,9 @@ export class MessUserComponent implements OnInit {
   formSendRequest: FormGroup;
   firstRequest: FormGroup;
   checkRequest: boolean;
+  CUSTOM_EMOJIS = CUSTOM_EMOJIS;
+  set = 'native';
+  native = true;
 
   refUser = firebase.database().ref('users/');
 
@@ -85,6 +90,9 @@ export class MessUserComponent implements OnInit {
         }),
         $('#icon').click(() => {
             $('#icon-box').toggle();
+            setInterval(() => {
+              $('.emoji-mart-anchor-selected').hide();
+            }, 100);
           }
         );
       $('#icon-upload-file').click(() => {
@@ -174,6 +182,10 @@ export class MessUserComponent implements OnInit {
     this.messageService.getIcon().subscribe((data) => {
       this.listIcon = data;
     });
+  }
+
+  handleClick($event: EmojiEvent) {
+    console.log($event.emoji);
   }
 }
 
