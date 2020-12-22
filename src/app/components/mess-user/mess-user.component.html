@@ -65,7 +65,7 @@
           <div *ngFor="let mess of listMess">
             <div *ngIf="(mess.isUser == 'false')">
               <div class="row mt-1 mb-1" style=" z-index: 1">
-                <div class="col-lg-6 mess-consultant" align="left" style="width:20px">
+                <div class="col-lg-6 mess-consultant" align="left" style="[width]: {{mess.length  + 10 + 'px'}}">
                 <span><span
                   style="margin-left: 2px"></span>{{mess.content}}<span style="margin-right: 2px"></span></span>
                   <div class="col-lg-6"></div>
@@ -75,7 +75,7 @@
             <div *ngIf="(mess.isUser == 'true')">
               <div class="row mt-1 mb-1" style="z-index: 1">
                 <div class="col-lg-6"></div>
-                <div class="col-lg-6 mess-from-user" align="right"><span><span
+                <div class="col-lg-6 mess-from-user" style="[width]: {{mess.length + 10+ 'px'}}" align="right"><span><span
                   style="margin-left: 2px"></span>{{mess.content}}<span style="margin-right: 2px"></span></span>
                 </div>
               </div>

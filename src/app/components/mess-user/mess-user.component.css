@@ -138,14 +138,22 @@ div .content-box {
 #icon-message {
   box-shadow: 0px 0px 10px 10px rgba(241, 189, 31, 0.82);
   position: relative;
-  width: 9vh;
-  height: 9vh;
+  width: 8vh;
+  height: 8vh;
   border-radius: 140px;
   animation-name: zoom-out;
   animation-duration: 1s;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
   animation-direction: alternate-reverse;
+}
+
+#icon-message:hover{
+  cursor: pointer;
+}
+
+#icon-message:target{
+  border: white solid 1px ;
 }
 
 @keyframes zoom-out {
@@ -219,7 +227,6 @@ div #file-space {
 }
 
 .mess-consultant {
-  width: auto;
   z-index: 1;
   color: black;
   border-radius: 10px 10px 10px 0px;
@@ -232,7 +239,6 @@ div #file-space {
 
 
 .mess-from-user {
-  width: auto;
   z-index: 1;
   color: white;
   border-radius: 10px 0px 10px 10px;

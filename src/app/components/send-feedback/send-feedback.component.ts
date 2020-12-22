@@ -25,10 +25,6 @@ export class SendFeedbackComponent implements OnInit {
     });
 
     $(document).ready(() => {
-      // animation thay đổi opacity
-      $('#feedback-form').css('opacity', 0).animate({opacity: 1}, 4000);
-      $('#direct-map').css('opacity', 0).animate({opacity: 1}, 4000);
-      // ----------------------------------
       $('#btn-submit-feedback-form').click(() => {
         $('.content-textbox').val('');
       });
