@@ -33,6 +33,10 @@ import {MessageUserComponent} from './components/message-user/message-user.compo
     MatButtonModule,
     MatDialogModule,
     MatProgressSpinnerModule
+    MatRadioModule,
+    MatIconModule,
+    MatStepperModule,
+    MatTabsModule,
   ],
   exports: [
     CommonModule,
@@ -45,17 +49,23 @@ import {MessageUserComponent} from './components/message-user/message-user.compo
     MatDividerModule,
     MatButtonModule,
     MatProgressSpinnerModule,
-    MatDialogModule
+    MatDialogModule,
+    MatRadioModule,
+    MatIconModule,
+    MatStepperModule,
+    MatTabsModule,
 
   ],
   providers: [
-    MatDatepickerModule,
+    MatDatepickerModule, {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}
   ],
   entryComponents: [
     ChangePasswordAdminComponent,
     EditUserComponent, ChangePasswordUserComponent,
     CancelPendingTicketComponent, DeleteTicketComponent, EditTicketComponent,
-    UserDialogComponent, MessageUserComponent
-  ]
+    UserDialogComponent, MessageUserComponent,
+    FlightDetailComponent, FlightTicketComponent, InfoPassengerBookingTicketComponent, LoginComponent, ChooseTicketComponent
+],
+  bootstrap: [InfoPassengerBookingTicketComponent]
 })
 export class MaterialModule { }

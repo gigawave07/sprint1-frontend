@@ -12,6 +12,8 @@ const API = 'http://localhost:8080/ticket';
 })
 export class TicketService {
   protected readonly API: string = 'http://localhost:8080/ticket';
+  public apiAdd = 'http://localhost:8080/ticket/add';
+  public apiTicket = 'http://localhost:8080/ticket/find-ticket-app-user';
 
   constructor(
     protected http: HttpClient
@@ -111,4 +113,12 @@ export class TicketService {
     return this.http.get(this.API + '/findAllTicketByInvoiceId/' + invoiceId);
   }
 
+  // Din
+  getAllTicketByAppAccount(idAccount, page): Observable<any> {
+    return this.http.get(this.apiTicket + '/' + idAccount + '/' + page);
+  }
+
+  addTicketAndBooking(daoTicket): Observable<any> {
+    return this.http.post(this.apiAdd, daoTicket);
+  }
 }
