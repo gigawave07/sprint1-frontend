@@ -18,16 +18,19 @@ import {DeleteTicketComponent} from './components/delete-ticket/delete-ticket.co
 import {EditTicketComponent} from './components/edit-ticket/edit-ticket.component';
 import {UserDialogComponent} from './components/user-dialog/user-dialog.component';
 import {MessageUserComponent} from './components/message-user/message-user.component';
-import {MatRadioModule} from "@angular/material/radio";
-import {MatIconModule} from "@angular/material/icon";
-import {MatStepperModule} from "@angular/material/stepper";
-import {MatTabsModule} from "@angular/material/tabs";
-import {MAT_DIALOG_DEFAULT_OPTIONS} from "@angular/material/dialog";
-import {FlightDetailComponent} from "./components/flight/flight-detail/flight-detail.component";
-import {FlightTicketComponent} from "./components/flight/flight-ticket/flight-ticket.component";
-import {InfoPassengerBookingTicketComponent} from "./components/flight/info-passenger-booking-ticket/info-passenger-booking-ticket.component";
-import {LoginComponent} from "./components/login/login.component";
-import {ChooseTicketComponent} from "./components/flight/alertError/choose-ticket/choose-ticket.component";
+import {MatRadioModule} from '@angular/material/radio';
+import {MatIconModule} from '@angular/material/icon';
+import {MatStepperModule} from '@angular/material/stepper';
+import {MatTabsModule} from '@angular/material/tabs';
+import {MAT_DIALOG_DEFAULT_OPTIONS} from '@angular/material/dialog';
+import {FlightDetailComponent} from './components/flight/flight-detail/flight-detail.component';
+import {FlightTicketComponent} from './components/flight/flight-ticket/flight-ticket.component';
+// tslint:disable-next-line:max-line-length
+import {InfoPassengerBookingTicketComponent} from './components/flight/info-passenger-booking-ticket/info-passenger-booking-ticket.component';
+import {LoginComponent} from './components/login/login.component';
+import {ChooseTicketComponent} from './components/flight/alertError/choose-ticket/choose-ticket.component';
+import {ChangePasswordSuccessfullyComponent} from './components/change-password-successfully/change-password-successfully.component';
+import {GetTokenEmailAdminComponent} from './components/get-token-email-admin/get-token-email-admin.component';
 
 @NgModule({
   declarations: [],
@@ -70,7 +73,7 @@ import {ChooseTicketComponent} from "./components/flight/alertError/choose-ticke
     MatDatepickerModule, {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}
   ],
   entryComponents: [
-    ChangePasswordAdminComponent,
+    ChangePasswordAdminComponent, ChangePasswordSuccessfullyComponent, GetTokenEmailAdminComponent,
     EditUserComponent, ChangePasswordUserComponent,
     CancelPendingTicketComponent, DeleteTicketComponent, EditTicketComponent,
     UserDialogComponent, MessageUserComponent,
