@@ -210,12 +210,15 @@ const routes: Routes = [
     DeleteEmployeeComponent, EmployeeComponent, EditTicketComponent, InputTicketSellComponent,
     PrintTicketTwoWayComponent, MessageNoticeEmployeeComponent, CheckinOnlineComponent, PromotionCodeComponent,
     NoticePageComponent, PassengerComponent, CreatePassengerComponent, DeletePassengerComponent, EditPassengerComponent,
-    ListPassengerComponent, EmployeeInfoComponent, EmployeeDetailComponent, ChangePasswordEmployeeComponent,
+    ListPassengerComponent, EmployeeInfoComponent, EmployeeDetailComponent, ChangePasswordEmployeeComponent, PromotionListComponent,
+    PromotionListForCustomerComponent, AddNewComponent, EditComponent, MonComponent, TuesComponent, WedsComponent, ThursComponent,
+    FriComponent, SatComponent, SunComponent, DadSgnComponent,
+    DeleteComponent
+    // Ngan update 23h30
   ],
   providers: [
     DatePipe
 ]
-    //
 })
 export class AppRoutingModule {
 }
