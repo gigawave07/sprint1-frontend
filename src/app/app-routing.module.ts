@@ -16,7 +16,7 @@ import {ListEmployeeComponent} from './components/list-employee/list-employee.co
 import {CreateEmployeeComponent} from './components/create-employee/create-employee.component';
 import {EditEmployeeComponent} from './components/edit-employee/edit-employee.component';
 import {DeleteEmployeeComponent} from './components/delete-employee/delete-employee.component';
-import {CommonModule} from '@angular/common';
+import {CommonModule, DatePipe} from '@angular/common';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MaterialModule} from './material.module';
 import {MatDialogModule} from '@angular/material';
@@ -34,11 +34,30 @@ import {MessageNoticeEmployeeComponent} from './components/message-notice-employ
 import {PrintTicketTwoWayComponent} from './components/print-ticket-two-way/print-ticket-two-way.component';
 import {NoticePageComponent} from './components/notice-page/notice-page.component';
 import {PromotionListForCustomerComponent} from './components/promotion/promotion-list-for-customer/promotion-list-for-customer.component';
+import {InvoiceListComponent} from './components/invoice-list/invoice-list.component';
+import {InvoiceDetailComponent} from './components/invoice-detail/invoice-detail.component';
+import {InvoiceDownloadComponent} from './components/invoice-download/invoice-download.component';
+// @ts-ignore
+import {SearchFlightInformationComponent} from './components/flight/search-flight-information/search-flight-information.component';
+// @ts-ignore
+import {PaymentHistoryComponent} from './components/flight/payment-history/payment-history/payment-history.component';
+import {DeleteTicketComponent} from './components/delete-ticket/delete-ticket.component';
+
 import {MessUserComponent} from './components/mess-user/mess-user.component';
 import {SendFeedbackComponent} from './components/send-feedback/send-feedback.component';
 import {ConsultantComponent} from './components/consultant/consultant.component';
 import {MessageConsultantComponent} from './components/consultant/message-consultant/message-consultant.component';
 import {PromotionCodeComponent} from './components/promotion-code/promotion-code.component';
+import {PassengerComponent} from './components/passenger/passenger.component';
+import {CreatePassengerComponent} from './components/create-passenger/create-passenger.component';
+import {DeletePassengerComponent} from './components/delete-passenger/delete-passenger.component';
+import {EditPassengerComponent} from './components/edit-passenger/edit-passenger.component';
+import {ListPassengerComponent} from './components/list-passenger/list-passenger.component';
+import {MatRadioModule} from '@angular/material/radio';
+import {EmployeeInfoComponent} from './components/employee-info/employee-info.component';
+import {EmployeeDetailComponent} from './components/employee-detail/employee-detail.component';
+import {ChangePasswordEmployeeComponent} from './components/change-password-employee/change-password-employee.component';
+import {MatIconModule} from '@angular/material/icon';
 import {AddNewComponent} from './components/promotion/promotion-list/add-new/add-new.component';
 import {EditComponent} from './components/promotion/promotion-list/edit/edit.component';
 import {MonComponent} from './components/promotion/days/mon/mon.component';
@@ -51,6 +70,17 @@ import {SunComponent} from './components/promotion/days/sun/sun.component';
 import {DadSgnComponent} from './components/promotion/flights/dad-sgn/dad-sgn.component';
 import {DeleteComponent} from './components/promotion/promotion-list/delete/delete.component';
 import {Ng2SearchPipeModule} from 'ng2-search-filter';
+
+import {ChangePasswordSuccessfullyComponent} from './components/change-password-successfully/change-password-successfully.component';
+import {GetTokenEmailAdminComponent} from './components/get-token-email-admin/get-token-email-admin.component';
+import {GetCheckPasswordAdminComponent} from './components/get-check-password-admin/get-check-password-admin.component';
+// @ts-ignore
+import {DetailInvoiceComponent} from './components/invoice-manager/components/detail-invoice/detail-invoice.component';
+// @ts-ignore
+import {ListInvoiceComponent} from './components/invoice-manager/components/list-invoice/list-invoice.component';
+// @ts-ignore
+import {InvoiceListSearchComponent} from './components/invoice-manager/components/invoice-list-search/invoice-list-search.component';
+import {CheckinOnlineComponent} from './components/checkin-online/checkin-online.component';
 
 const routes: Routes = [
   // Quân :
@@ -70,6 +100,12 @@ const routes: Routes = [
   {
     path: 'admin', component: AdminComponent,
     children: [
+      {path: 'information', component: InformationAdminComponent},
+      {path: 'change-password-successfully', component: ChangePasswordSuccessfullyComponent},
+      {path: 'get-token-email', component: GetTokenEmailAdminComponent},
+      {path: 'get-check-password', component: GetCheckPasswordAdminComponent},
+      // Nhật mới
+      {path: 'report', component: BaoCaoComponentComponent},
       {
         path: 'information', component: InformationAdminComponent
       },
@@ -84,13 +120,33 @@ const routes: Routes = [
   {
     path: 'informationUser', component: InformationUserComponent,
     children: [
-      {
-        path: 'detailUser', component: DetailUserComponent
-      },
+      {path: 'detailUser', component: DetailUserComponent},
       {path: 'editUser', component: EditUserComponent},
       {path: 'changPassword', component: ChangePasswordUserComponent},
       {path: 'list-pending-ticket', component: ListPendingTicketComponent},
-      {path: 'search-pending-ticket', component: SearchPendingTicketComponent}
+      {path: 'search-pending-ticket', component: SearchPendingTicketComponent},
+      {path: 'invoice-list', component: InvoiceListComponent},
+      {path: 'history' , component: PaymentHistoryComponent},
+    ]
+  },
+  // Quốc
+  {
+    path: 'passenger', component: PassengerComponent,
+    children: [
+      {path: 'list-Passenger', component: ListPassengerComponent},
+      {path: 'list-Passenger/create-Passenger', component: CreatePassengerComponent},
+      {path: 'list-Passenger/edit-Passenger/:id', component: EditPassengerComponent},
+      {path: 'employee-Detail', component: EmployeeDetailComponent},
+    ]
+  },
+  // Quốc
+  {
+    path: 'passenger', component: PassengerComponent,
+    children: [
+      {path: 'list-Passenger', component: ListPassengerComponent},
+      {path: 'list-Passenger/create-Passenger', component: CreatePassengerComponent},
+      {path: 'list-Passenger/edit-Passenger/:id', component: EditPassengerComponent},
+      {path: 'employee-detail', component: EmployeeDetailComponent},
     ]
   },
 
@@ -121,22 +177,45 @@ const routes: Routes = [
   {path: 'list-ticket', component: ListTicketComponent},
   {path: 'input-ticket-sell/:idFlightDeparture/:idFlightArrival', component: InputTicketSellComponent},
   {path: 'print-ticket/:id', component: PrintTicketComponent},
+  {path: 'input-ticket-sell', component: InputTicketSellComponent},
   {
     path: 'print-ticket-two-way/:bookingCode/:passengerList/:flightDeparture/:flightArrival',
     component: PrintTicketTwoWayComponent
   },
   {path: 'notice-page', component: NoticePageComponent},
+  // PQ Khánh:
+  {path: 'checkin-online', component: CheckinOnlineComponent},
+  {path: 'promotion-code', component: PromotionCodeComponent},
+
+  {path: 'deleteTicket', component: DeleteTicketComponent},
+  {path: 'listTicket', component: ListTicketComponent},
+  // khánh
+  {path: 'invoice-detail/:id', component: InvoiceDetailComponent},
+  {path: 'invoice-download', component: InvoiceDownloadComponent},
+  // Đin
+  {path: 'search', component: SearchFlightInformationComponent},
+
+  // Hoàng
+  {path: 'detail-invoice', component: DetailInvoiceComponent},
+  {path: 'invoice-list', component: ListInvoiceComponent},
+  {path: 'invoice-list-search', component: InvoiceListSearchComponent}
 ];
 
+// @ts-ignore
 @NgModule({
   imports: [RouterModule.forRoot(routes), CommonModule, ReactiveFormsModule, MaterialModule,
-    MatDialogModule, FormsModule, NgxPaginationModule, Ng2SearchPipeModule],
+    MatDialogModule, FormsModule, NgxPaginationModule, MatRadioModule, MatIconModule, Ng2SearchPipeModule],
   exports: [RouterModule],
-  declarations: [ListEmployeeComponent, CreateEmployeeComponent, EditEmployeeComponent, DeleteEmployeeComponent,
-    EmployeeComponent, EditTicketComponent, InputTicketSellComponent, PrintTicketTwoWayComponent, NoticePageComponent,
-    MessageNoticeEmployeeComponent, PromotionCodeComponent, PromotionListComponent, PromotionListForCustomerComponent, AddNewComponent,
-    EditComponent, MonComponent, TuesComponent, WedsComponent, ThursComponent, FriComponent, SatComponent, SunComponent, DadSgnComponent,
-    DeleteComponent
-  ]
+  declarations: [ListEmployeeComponent, CreateEmployeeComponent, EditEmployeeComponent,
+    DeleteEmployeeComponent, EmployeeComponent, EditTicketComponent, InputTicketSellComponent,
+    PrintTicketTwoWayComponent, MessageNoticeEmployeeComponent, CheckinOnlineComponent, PromotionCodeComponent,
+    NoticePageComponent, PassengerComponent, CreatePassengerComponent, DeletePassengerComponent, EditPassengerComponent,
+    ListPassengerComponent, EmployeeInfoComponent, EmployeeDetailComponent, ChangePasswordEmployeeComponent,
+  ],
+  providers: [
+    DatePipe
+]
+    //
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}
