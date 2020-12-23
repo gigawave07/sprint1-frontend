@@ -3,6 +3,7 @@ import {TicketService} from '../../../service/ticket/ticket.service';
 import {MatDialog} from '@angular/material/dialog';
 import {CancelPendingTicketComponent} from '../cancel-pending-ticket/cancel-pending-ticket.component';
 import {SuccessfullyPaidPendingTicketComponent} from "../successfully-paid-pending-ticket/successfully-paid-pending-ticket.component";
+import {LoginService} from "../../../service/login.service";
 
 @Component({
 	selector: 'app-list-pending-ticket',
@@ -28,7 +29,8 @@ export class ListPendingTicketComponent implements OnInit {
 	
 	constructor(
 		private ticketService: TicketService,
-		private dialog: MatDialog
+		private dialog: MatDialog,
+		private loginService: LoginService
 	) {
 	}
 	
@@ -102,12 +104,12 @@ export class ListPendingTicketComponent implements OnInit {
 		this.isChecked = $event.target.checked;
 		this.checked[index]=this.isChecked;
 		console.log(this.checked);
-		// console.log(ticket.ticketCode + ' ' + this.isChecked);
-		// let ticketCode = ticket.ticketCode;
-		// console.log('ticketCode');
-		// console.log(ticketCode);
-		// console.log('i');
-		// console.log(i);
+		console.log(ticket.ticketCode + ' ' + this.isChecked);
+		let ticketCode = ticket.ticketCode;
+		console.log('ticketCode');
+		console.log(ticketCode);
+		console.log('index');
+		console.log(index);
 		if (this.isChecked) {
 			this.payTicketList.push(ticket);
 			
@@ -143,6 +145,7 @@ export class ListPendingTicketComponent implements OnInit {
 	}
 	
 	openSuccessfullyPaidDialogTicket(payTicketList: any): void {
+		this.ticketService.sentEmail(this.loginService.currentUserValue.id).subscribe();
 		const dialogRef = this.dialog.open(SuccessfullyPaidPendingTicketComponent, {
 			width: '500px',
 			data: {dataSuccessfullyPaid: payTicketList},
@@ -152,17 +155,21 @@ export class ListPendingTicketComponent implements OnInit {
 		dialogRef.afterClosed().subscribe(result => {
 			this.refreshData();
 		});
+		
 	}
 	
 	refreshData() {
-		this.listPendingTicket();
 		this.setPageNumberTo1();
+		this.ticketList = [];
 		this.payTicketList = [];
 		this.amountMoney = 0;
 		this.checked = [];
+		this.listPendingTicket();
+		console.log('refresh data');
+		console.log(this.ticketList);
 	}
 	
-	private setPageNumberTo1() {
+	setPageNumberTo1() {
 		this.pageNumber = 1;
 	}
 	
@@ -178,8 +185,4 @@ export class ListPendingTicketComponent implements OnInit {
 		});
 	}
 	
-	setDate(date: any) {
-		console.log(date);
-		
-	}
 }

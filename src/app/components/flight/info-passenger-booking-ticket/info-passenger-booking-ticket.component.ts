@@ -199,7 +199,7 @@ export class InfoPassengerBookingTicketComponent implements OnInit {
       daoBooking.bookingDate = new Date().toLocaleDateString();
       daoBooking.appUserId = this.loginService.currentUserValue.id;
       daoTicket.daoBooking = daoBooking;
-      this.passengerService.sentEmail(this.loginService.currentUserValue.id).subscribe();
+      this.passengerService.sentEmail(this.loginService.currentUserValue.id, daoBooking.bookingCode).subscribe();
       this.ticketService.addTicketAndBooking(daoTicket).subscribe(data => {
         }, error => {
         },

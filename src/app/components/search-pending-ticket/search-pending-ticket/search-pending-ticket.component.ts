@@ -4,6 +4,7 @@ import {TicketService} from '../../../service/ticket/ticket.service';
 import {MatDialog} from '@angular/material/dialog';
 import {CancelPendingTicketComponent} from '../../list-pending-ticket/cancel-pending-ticket/cancel-pending-ticket.component';
 import {SuccessfullyPaidPendingTicketComponent} from "../../list-pending-ticket/successfully-paid-pending-ticket/successfully-paid-pending-ticket.component";
+import {LoginService} from "../../../service/login.service";
 
 @Component({
 	selector: 'app-search-pending-ticket',
@@ -32,6 +33,7 @@ export class SearchPendingTicketComponent implements OnInit {
 		private ticketService: TicketService,
 		private dialog: MatDialog,
 		public formBuilder: FormBuilder,
+		private loginService: LoginService,
 		public el: ElementRef
 	) {
 	}
@@ -130,8 +132,6 @@ export class SearchPendingTicketComponent implements OnInit {
 				}
 			}
 		}
-		
-		
 	}
 	
 	onCheckboxChange($event: Event, ticket: any, index: any) {
@@ -181,6 +181,7 @@ export class SearchPendingTicketComponent implements OnInit {
 	}
 	
 	openSuccessfullyPaidDialogTicket(payTicketList: any): void {
+		this.ticketService.sentEmail(this.loginService.currentUserValue.id).subscribe();
 		const dialogRef = this.dialog.open(SuccessfullyPaidPendingTicketComponent, {
 			width: '500px',
 			data: {dataSuccessfullyPaid: payTicketList},

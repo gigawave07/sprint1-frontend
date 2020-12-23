@@ -14,6 +14,7 @@ export class TicketService {
   protected readonly API: string = 'http://localhost:8080/ticket';
   public apiAdd = 'http://localhost:8080/ticket/add';
   public apiTicket = 'http://localhost:8080/ticket/find-ticket-app-user';
+  private apiSentMail ='http://localhost:8080/ticket/sent-mail?idAccount=';
 
   constructor(
     protected http: HttpClient
@@ -120,5 +121,9 @@ export class TicketService {
 
   addTicketAndBooking(daoTicket): Observable<any> {
     return this.http.post(this.apiAdd, daoTicket);
+  }
+  // Đăng
+  sentEmail(id: number): Observable<any>  {
+    return this.http.get(this.apiSentMail + id);
   }
 }

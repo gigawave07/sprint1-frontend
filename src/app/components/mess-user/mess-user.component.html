@@ -75,34 +75,38 @@
               </div>
               <div *ngIf="mess.content.length > 11 && mess.content.length <= 15">
                 <div class="row mt-1 mb-1" style="z-index: 1">
-                  <div class="col-lg-7"></div>
+                 
                   <div class="col-lg-5 mess-from-user" align="right"><span><span
                     style="margin-left: 2px"></span>{{mess.content}}<span style="margin-right: 2px"></span></span>
                   </div>
+                  <div class="col-lg-7"></div>
                 </div>
               </div>
               <div *ngIf="mess.content.length >7 && mess.content.length <= 11">
                 <div class="row mt-1 mb-1" style="z-index: 1">
-                  <div class="col-lg-8"></div>
+                  
                   <div class="col-lg-4 mess-from-user" align="right"><span><span
                     style="margin-left: 2px"></span>{{mess.content}}<span style="margin-right: 2px"></span></span>
                   </div>
+                  <div class="col-lg-8"></div>
                 </div>
               </div>
               <div *ngIf="mess.content.length > 4 && mess.content.length <= 7">
                 <div class="row mt-1 mb-1" style="z-index: 1">
-                  <div class="col-lg-9"></div>
+                  
                   <div class="col-lg-3 mess-from-user" align="right"><span><span
                     style="margin-left: 2px"></span>{{mess.content}}<span style="margin-right: 2px"></span></span>
                   </div>
+                  <div class="col-lg-9"></div>
                 </div>
               </div>
               <div *ngIf="mess.content.length > 1 && mess.content.length <= 4">
                 <div class="row mt-1 mb-1" style="z-index: 1">
-                  <div class="col-lg-10"></div>
+                
                   <div class="col-lg-2 mess-from-user" align="right"><span><span
                     style="margin-left: 2px"></span>{{mess.content}}<span style="margin-right: 2px"></span></span>
                   </div>
+                  <div class="col-lg-10"></div>
                 </div>
               </div>
               <div *ngIf="mess.content.length == 1">

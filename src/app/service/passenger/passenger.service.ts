@@ -46,7 +46,7 @@ export class PassengerService {
     return this.http.post(this.api, passenger);
   }
 
-  sentEmail(id): Observable<any> {
-    return this.http.get(this.apiSentMail + id);
+  sentEmail(id, bookingCode): Observable<any> {
+    return this.http.get(this.apiSentMail + id + '&bookingCode=' + bookingCode);
   }
 }
