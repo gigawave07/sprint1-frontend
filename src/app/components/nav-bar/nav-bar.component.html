@@ -30,6 +30,8 @@
                *ngIf="currentUser.role == 'Employee'">Thông tin tài khoản</a>
             <a class="dropdown-item" href="#" routerLink="/consultant"
                *ngIf="currentUser.role == 'Employee' || currentUser.role == 'Admin'">Tin nhắn</a>
+            <a class="dropdown-item" href="#" routerLink="/send-feedback"
+               *ngIf="currentUser.role == 'User'">Phản hồi</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#" (click)="logout()">Đăng xuất</a>
           </div>
