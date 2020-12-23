@@ -98,7 +98,7 @@ const routes: Routes = [
   {path: 'list-pending-ticket', component: ListPendingTicketComponent},
   {path: 'search-pending-ticket', component: SearchPendingTicketComponent},
   // Ngân
-  {path: 'promotion-for-customer', component: PromotionCodeComponent},
+  {path: 'promotion-for-customer', component: PromotionListForCustomerComponent},
   {path: 'promotion-for-admin', component: PromotionListComponent},
   {path: 'add-new-promotion', component: AddNewComponent},
   {path: 'update-promotion/:id', component: EditComponent},

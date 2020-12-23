@@ -1,9 +1,28 @@
 h2{
-  color: white;
+  color: black;
 }
 table{
-  color: white;
+  color: black;
 }
 pagination-controls {
+  color: black;
+}
+.container-fluid{
+  background-color: white;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+tr{
+  color: black;
+}
+thead tr th{
   color: white;
 }
+td{
+  text-align: center;
+}
+th{
+  text-align: center;
+}
+
+/*final update*/
