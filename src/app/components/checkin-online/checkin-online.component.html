@@ -17,7 +17,7 @@
           crossorigin="anonymous"></script>
 
   <style>
-    .noteStar { 
+    .noteStar {
       color: red;
     }
   </style>
@@ -83,21 +83,21 @@
               <div class="row">
 
                 <div class="col-sm-3 col-xs-3 col-md-3 col-lg-3 form-group">
-                  <p>Mã đặt chỗ (<span class="noteStar">*</span>):</p>
-                  <input size="10px" class="form-control" type="text" formControlName="bookingCode">
-                  <p *ngIf="formCheckinOnline.controls.bookingCode.errors?.required &&
-              formCheckinOnline.controls.bookingCode.touched"
+                  <p>Mã vé(<span class="noteStar">*</span>):</p>
+                  <input size="10px" class="form-control" type="text" formControlName="ticketCode">
+                  <p *ngIf="formCheckinOnline.controls.ticketCode.errors?.required &&
+              formCheckinOnline.controls.ticketCode.touched"
                      class="text-danger">
-                    Vui lòng nhập mã đặt chỗ
+                    Vui lòng nhập mã vé
                   </p>
                 </div>
 
                 <div class="col-sm-9 col-xs-9 col-md-9 col-lg-9">
                   <p>Họ và Tên (ví dụ: Nguyen Thi Tien Quoc) (<span class="noteStar">*</span>):</p>
                   <input size="40px" placeholder="Nguyen Thi Tien Quoc" class="form-control" type="text"
-                         formControlName="fullName">
-                  <p *ngIf="formCheckinOnline.controls.fullName.errors?.required &&
-              formCheckinOnline.controls.fullName.touched"
+                         formControlName="passengerName">
+                  <p *ngIf="formCheckinOnline.controls.passengerName.errors?.required &&
+              formCheckinOnline.controls.passengerName.touched"
                      class="text-danger">
                     Vui lòng nhập tên đầy đủ
                   </p>
@@ -113,53 +113,62 @@
               <div class="row justify-content-center">
                 <button class="btn btn-warning  mr-3 ">Trang chủ</button>
                 <button type="submit" [disabled]="formCheckinOnline.invalid"
-                  class="btn btn-warning  mr-3" (click)="searchFlight()">Tìm kiếm đặt chỗ
+                        class="btn btn-warning  mr-3" (click)="searchFlight()">Tìm kiếm đặt chỗ
                 </button>
               </div>
             </form>
             <br>
 
 
-            <div *ngIf="checkinResult" class="row justify-content-end">
-              <table class="table mt-3 table-striped" >
-                <thead>
-
-                <tr class="btn-warning">
-                  <th>Mã số đặt chỗ</th>
-                  <th>Tên hành khách</th>
-                  <th>Thông tin chuyến bay</th>
-                  <th>Đặt chỗ</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr *ngFor="let check of checkinResult">
-                  <td>{{check.booking.bookingCode}}</td>
-                  <td>{{check.passenger.fullName}}</td>
-                  <td>
-                    <p> {{check.flightInformation.flightCode}}</p>
-                    <p> {{check.flightInformation.departure}}-{{check.flightInformation.arrival}}</p>
-                    <p> {{check.flightInformation.departureTime}}
-                      {{check.flightInformation.departureDate | date:'MM-dd-yyyy'}}</p>
-                    <p> {{check.flightInformation.arrivalTime }}
-                      {{check.flightInformation.arrivalDate | date:'MM-dd-yyyy'}}</p>
-                  </td>
-                  <td class="text-center">
-                    <div *ngIf="check.statusCheckin == false; else block">
-                    <input type="checkbox" [(ngModel)]="check.isChecked" (change)="changeSelection()">
-                    </div>
-                    <ng-template #block>
-                      <span>Đã Đặt</span>
-                    </ng-template>
-                  </td>
-                </tr>
-                </tbody>
-              </table>
-            <a [routerLink]="['/checkin-online']">
-              <button type="button" class="btn btn-secondary mr-3" (click)="returnPage()" >Hủy</button>
-            </a>
-              <button type="button" class="btn btn-warning mr-3" (click)="checkInSubmit()">Đặt chỗ</button>
+            <div *ngIf="checkinResult" class="row">
+              <div *ngIf="checkinResult[0].statusPayment.id == 3">
+                <table class="table mt-3 table-striped ">
+                  <thead>
+                  <tr class="btn-warning">
+                    <th>Mã số</th>
+                    <th>Tên hành khách</th>
+                    <th>Thông tin chuyến bay</th>
+                    <th>Số ghế</th>
+                    <th>Đặt chỗ</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr *ngFor="let check of checkinResult">
+                    <td>{{check.ticketCode}}</td>
+                    <td>{{check.passengerName}}</td>
+                    <td>
+                      <p> {{check.flightInformation.flightCode}}</p>
+                      <p> {{check.flightInformation.departure}}-{{check.flightInformation.arrival}}</p>
+                      <input type="hidden" [(ngModel)]="abc" [value]="check.flightInformation.departure">
+                      <p> {{check.flightInformation.departureTime}}
+                        {{check.flightInformation.departureDate | date:'dd-MM-yyyy'}}</p>
+                      <p> {{check.flightInformation.arrivalTime }}
+                        {{check.flightInformation.arrivalDate | date:'dd-MM-yyyy'}}</p>
+                    </td>
+                    <td>{{check.seats}}</td>
+                    <td class="text-center">
+                      <div *ngIf="check.statusCheckin == false; else block">
+                        <input type="checkbox" [(ngModel)]="check.isChecked" (change)="changeSelection()">
+                      </div>
+                      <ng-template #block>
+                        <span>Đã Đặt</span>
+                      </ng-template>
+                    </td>
+                  </tr>
+                  </tbody>
+                </table>
+                <a [routerLink]="['/checkin-online']">
+                  <button type="button" class="btn btn-secondary mr-3" (click)="returnPage()">Hủy</button>
+                </a>
+                <button type="button" class="btn btn-warning mr-3" (click)="checkInSubmit()">Đặt chỗ</button>
+              </div>
+              <div *ngIf="checkinResult[0].statusPayment.id == 1; else block">
+                <p class="alert alert-danger" role="alert">Vé này đã bị hủy</p>
+              </div>
+              <div *ngIf="checkinResult[0].statusPayment.id == 2; else block">
+                <p class="alert alert-danger" role="alert">Vé của bạn chưa thanh toán. Vui lòng thanh toán vé trước khi checkin.</p>
+              </div>
             </div>
-
             <div *ngIf="messageSuccess == ''; else blockMessage"></div>
             <ng-template #blockMessage>
               <div class="alert alert-danger  " role="alert">{{messageSuccess}}</div>
