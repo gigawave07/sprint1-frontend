@@ -212,8 +212,7 @@ const routes: Routes = [
     NoticePageComponent, PassengerComponent, CreatePassengerComponent, DeletePassengerComponent, EditPassengerComponent,
     ListPassengerComponent, EmployeeInfoComponent, EmployeeDetailComponent, ChangePasswordEmployeeComponent, PromotionListComponent,
     PromotionListForCustomerComponent, AddNewComponent, EditComponent, MonComponent, TuesComponent, WedsComponent, ThursComponent,
-    FriComponent, SatComponent, SunComponent, DadSgnComponent,
-    DeleteComponent
+    FriComponent, SatComponent, SunComponent, DadSgnComponent, DeleteComponent
     // Ngan update 23h30
   ],
   providers: [
