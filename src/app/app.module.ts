@@ -76,6 +76,7 @@ import {SuccessfullyPaidPendingTicketComponent} from "./components/list-pending-
 import { FeedbackDialogComponent } from './components/send-feedback/feedback-dialog/feedback-dialog.component';
 import {MAT_DATE_LOCALE} from '@angular/material';
 import {MAT_MOMENT_DATE_ADAPTER_OPTIONS} from '@angular/material-moment-adapter';
+import { UpdateKetQuaComponent } from './components/report-statistic/bao-cao-thong-ke/thong-ke/update-ket-qua/update-ket-qua.component';
 
 @NgModule({
   declarations: [
@@ -118,7 +119,8 @@ import {MAT_MOMENT_DATE_ADAPTER_OPTIONS} from '@angular/material-moment-adapter'
     InfoPassengerBookingTicketComponent,
     ChooseTicketComponent,
     PaymentHistoryComponent,
-    FeedbackDialogComponent
+    FeedbackDialogComponent,
+    UpdateKetQuaComponent
   ],
   imports: [BrowserModule, AppRoutingModule, MaterialModule, HttpClientModule, NgxPaginationModule, Ng2SearchPipeModule,
     FormsModule, MatDialogModule, ReactiveFormsModule, NgxLoadingModule.forRoot({}), PickerModule, EmojiModule,ChartsModule, SocialLoginModule, PromotionModule,

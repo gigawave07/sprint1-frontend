@@ -7,14 +7,15 @@ import {Observable} from 'rxjs';
 })
 export class BaoCaoService {
   public API = 'http://localhost:8080/report';
+  public statisticAPI = 'http://localhost:8080/reportStatistic';
   constructor(
     public http: HttpClient
   ) { }
   // @ts-ignore
-  addNewReport(report): Observable<any>{
+  addNewReport(report): Observable<any> {
     return this.http.post(this.API, report);
   }
-  getAllReport(): Observable<any>{
-    return this.http.get(this.API);
+  addNewReportStatistic(report): Observable<any> {
+    return this.http.post(this.statisticAPI, report);
   }
 }

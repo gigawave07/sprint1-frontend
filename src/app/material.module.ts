@@ -29,6 +29,7 @@ import {InfoPassengerBookingTicketComponent} from "./components/flight/info-pass
 import {LoginComponent} from "./components/login/login.component";
 import {ChooseTicketComponent} from "./components/flight/alertError/choose-ticket/choose-ticket.component";
 import {MatMomentDateModule} from '@angular/material-moment-adapter';
+import {UpdateKetQuaComponent} from "./components/report-statistic/bao-cao-thong-ke/thong-ke/update-ket-qua/update-ket-qua.component";
 
 @NgModule({
   declarations: [],
@@ -77,7 +78,8 @@ import {MatMomentDateModule} from '@angular/material-moment-adapter';
     EditUserComponent, ChangePasswordUserComponent,
     CancelPendingTicketComponent, DeleteTicketComponent, EditTicketComponent,
     UserDialogComponent, MessageUserComponent,
-    FlightDetailComponent, FlightTicketComponent, InfoPassengerBookingTicketComponent, LoginComponent, ChooseTicketComponent
+    FlightDetailComponent, FlightTicketComponent, InfoPassengerBookingTicketComponent, LoginComponent, ChooseTicketComponent,
+    UpdateKetQuaComponent
 ],
   bootstrap: [InfoPassengerBookingTicketComponent]
 })

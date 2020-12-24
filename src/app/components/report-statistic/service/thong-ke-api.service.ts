@@ -7,6 +7,7 @@ import {Observable} from 'rxjs';
 })
 export class ThongKeApiService {
   public API = 'http://localhost:8080/statistic';
+  public statisticAPI = 'http://localhost:8080/reportStatisticResult';
   constructor(
     public http: HttpClient
   ) { }
@@ -17,5 +18,13 @@ export class ThongKeApiService {
   // @ts-ignore
   findStatisticByID(idStatistic): Observable<any>{
     return this.http.get(this.API + '/' + idStatistic);
+  }
+  // @ts-ignore
+  getAllStatisticUpdate(): Observable<any>{
+    return this.http.get(this.statisticAPI);
+  }
+  // @ts-ignore
+  findStatisticByIDUpdate(idStatistic): Observable<any>{
+    return this.http.get(this.statisticAPI + '/' + idStatistic);
   }
 }

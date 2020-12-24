@@ -7,6 +7,7 @@ import {KetQuaTableComponent} from '../../thong-ke/ket-qua/ket-qua-table/ket-qua
 import {KetQuaSaiLogicComponent} from '../../thong-ke/ket-qua/ket-qua-sai-logic/ket-qua-sai-logic.component';
 import {TrangChuThongKeComponent} from '../../thong-ke/demo/trang-chu-thong-ke.component';
 import {MatDialog} from '@angular/material/dialog';
+import {UpdateKetQuaComponent} from "../../thong-ke/update-ket-qua/update-ket-qua.component";
 
 @Component({
   selector: 'app-bao-cao-component',
@@ -14,8 +15,7 @@ import {MatDialog} from '@angular/material/dialog';
   styleUrls: ['./bao-cao-component.component.css']
 })
 export class BaoCaoComponentComponent implements OnInit {
-  maxDate = new Date();
-  minDateStart = new Date(2020, 0, 1);
+  timeSelectionChoose: string;
   timesSelection = [
     {value: 'week', viewValue: 'Tuần'},
     {value: 'month', viewValue: 'Tháng'},
@@ -56,90 +56,87 @@ export class BaoCaoComponentComponent implements OnInit {
         timeSelection: ['', Validators.required],
         dateStart: ['', Validators.required],
         dateEnd: ['', Validators.required],
-        compareReportTimeSelection: '',
-        compareReportDateStart: new Date(2019, 0, 1),
-        compareReportDateEnd: new Date(2019, 0, 1)
-      }
-    );
-    this.statisticForm = this.formBuilder.group({
-      numberItem: '',
-      numberTicketSellDateStart: '',
-      priceTicketSellDateStart: '',
-      numberTicketSellDateEnd: '',
-      priceTicketSellDateEnd: '',
-      numberTicketSellDateStartCompare: '',
-      priceTicketSellDateStartCompare: '',
-      numberTicketSellDateEndCompare: '',
-      priceTicketSellDateEndCompare: '',
-      item: '',
-      type: '',
-      message: ''
+        week: 0,
+        month: 0,
+        quarter: 0,
+        year: 0,
       }
     );
   }
   // tslint:disable-next-line:typedef
-  showCompareReportForm() {
-    const checkCompareReport = !this.compareReport;
-    this.compareReport = checkCompareReport;
-    this.validateCompareReportForm();
-  }
-  // tslint:disable-next-line:typedef
-  validateCompareReportForm() {
-    const compareReportTimeSelection = this.reportForm.get('compareReportTimeSelection');
-    const compareReportDateStart = this.reportForm.get('compareReportDateStart');
-    const compareReportDateEnd = this.reportForm.get('compareReportDateEnd');
-    // khi click vào check box sẽ chạy funtion này và validate compare report
-    if (this.compareReport) {
-      this.reportForm.controls.compareReportDateStart.setValue('');
-      this.reportForm.controls.compareReportDateEnd.setValue('');
-      // tslint:disable-next-line:no-unused-expression
-      compareReportTimeSelection.setValidators(Validators.required);
-      // tslint:disable-next-line:no-unused-expression
-      compareReportDateStart.setValidators(Validators.required);
-      compareReportDateEnd.setValidators(Validators.required);
-    } else {
-      // tslint:disable-next-line:no-unused-expression
-      compareReportTimeSelection.setValidators(null);
-      compareReportDateStart.setValidators(null);
-      // tslint:disable-next-line:no-unused-expression
-      compareReportDateEnd.setValidators(null);
-      this.reportForm.controls.compareReportTimeSelection.setValue('');
-      this.reportForm.controls.compareReportDateStart.setValue(new Date(2019, 0, 1));
-      this.reportForm.controls.compareReportDateEnd.setValue(new Date(2019, 0, 1));
-    }
-  }
+  // showCompareReportForm() {
+  //   //   const checkCompareReport = !this.compareReport;
+  //   //   this.compareReport = checkCompareReport;
+  //   //   this.validateCompareReportForm();
+  //   // }
+  //   // // tslint:disable-next-line:typedef
+  //   // validateCompareReportForm() {
+  //   //   const compareReportTimeSelection = this.reportForm.get('compareReportTimeSelection');
+  //   //   const compareReportDateStart = this.reportForm.get('compareReportDateStart');
+  //   //   const compareReportDateEnd = this.reportForm.get('compareReportDateEnd');
+  //   //   // khi click vào check box sẽ chạy funtion này và validate compare report
+  //   //   if (this.compareReport) {
+  //   //     this.reportForm.controls.compareReportDateStart.setValue('');
+  //   //     this.reportForm.controls.compareReportDateEnd.setValue('');
+  //   //     // tslint:disable-next-line:no-unused-expression
+  //   //     compareReportTimeSelection.setValidators(Validators.required);
+  //   //     // tslint:disable-next-line:no-unused-expression
+  //   //     compareReportDateStart.setValidators(Validators.required);
+  //   //     compareReportDateEnd.setValidators(Validators.required);
+  //   //   } else {
+  //   //     // tslint:disable-next-line:no-unused-expression
+  //   //     compareReportTimeSelection.setValidators(null);
+  //   //     compareReportDateStart.setValidators(null);
+  //   //     // tslint:disable-next-line:no-unused-expression
+  //   //     compareReportDateEnd.setValidators(null);
+  //   //     this.reportForm.controls.compareReportTimeSelection.setValue('');
+  //   //     this.reportForm.controls.compareReportDateStart.setValue(new Date(2019, 0, 1));
+  //   //     this.reportForm.controls.compareReportDateEnd.setValue(new Date(2019, 0, 1));
+  //   //   }
+  //   // }
   // tslint:disable-next-line:typedef
   addNewReport() {
     // tslint:disable-next-line:prefer-const
-    let idStatistic;
-    if (this.reportForm.valid) {
-      this.reportService.addNewReport(this.reportForm.value).subscribe(data => {
-        this.reportForm.patchValue(data);
-        // this.thongKeApiService.findStatisticByID(dat).subscribe(statistic => {
-        //   this.statisticForm.patchValue(statistic);
-        //   console.log(this.statisticForm);
-        // });
-        this.thongKeApiService.getAllStatistic().subscribe( listStatistic => {
-          // @ts-ignore
-          const statisticReply = listStatistic[listStatistic.length - 1];
-          if (statisticReply.type === '') {
-            const dialogStatistic = this.diaLog.open(KetQuaSaiLogicComponent, {
-              width: '600px',
-            });
-          } else if (statisticReply.type !== 'table') {
-            const dialogStatistic = this.diaLog.open(KetQuaComponent, {
-              width: '600px',
-              data: {data1: statisticReply},
-            });
-          } else {
-            const dialogStatistic = this.diaLog.open(KetQuaTableComponent, {
-              width: '600px',
-              data: {data1: statisticReply},
-            });
-          }
+    // let idStatistic;
+    // if (this.reportForm.valid) {
+    //   this.reportService.addNewReport(this.reportForm.value).subscribe(data => {
+    //     this.reportForm.patchValue(data);
+    //     // this.thongKeApiService.findStatisticByID(dat).subscribe(statistic => {
+    //     //   this.statisticForm.patchValue(statistic);
+    //     //   console.log(this.statisticForm);
+    //     // });
+    //     this.thongKeApiService.getAllStatistic().subscribe( listStatistic => {
+    //       // @ts-ignore
+    //       const statisticReply = listStatistic[listStatistic.length - 1];
+    //       if (statisticReply.type === '') {
+    //         const dialogStatistic = this.diaLog.open(KetQuaSaiLogicComponent, {
+    //           width: '600px',
+    //         });
+    //       } else if (statisticReply.type !== 'table') {
+    //         const dialogStatistic = this.diaLog.open(KetQuaComponent, {
+    //           width: '600px',
+    //           data: {data1: statisticReply},
+    //         });
+    //       } else {
+    //         const dialogStatistic = this.diaLog.open(KetQuaTableComponent, {
+    //           width: '600px',
+    //           data: {data1: statisticReply},
+    //         });
+    //       }
+    //     });
+    //   });
+    // }
+    this.reportService.addNewReportStatistic(this.reportForm.value).subscribe(data => {
+      this.reportForm.patchValue(this.reportForm.value);
+      this.thongKeApiService.getAllStatisticUpdate().subscribe(listStatisticUpdate => {
+        const statisticUpdateReply = listStatisticUpdate[listStatisticUpdate.length - 1];
+        console.log(listStatisticUpdate);
+        const dialogStatistic = this.diaLog.open(UpdateKetQuaComponent, {
+          width: '600px',
+          data: {data1: statisticUpdateReply},
         });
       });
-    }
+    });
   }
   // tslint:disable-next-line:typedef
   openDemoDialog() {
@@ -149,5 +146,9 @@ export class BaoCaoComponentComponent implements OnInit {
     demoDialog.afterClosed().subscribe(result => {
       this.reportForm.patchValue(this.reportForm.value);
     });
+  }
+
+  getTimeSelection() {
+    this.timeSelectionChoose = this.reportForm.controls.timeSelection.value;
   }
 }
